@@ -11,7 +11,7 @@ This folder contains the complete structural map of the AION-BRAIN repository.
 
 ## Why This Exists
 
-With 247 directories and 1,049 files, the AION-BRAIN repository can be overwhelming to navigate. This folder provides:
+With 247 directories and 1,350+ files, the AION-BRAIN repository can be overwhelming to navigate. This folder provides:
 
 1. **Quick Orientation** — See the full skeleton at a glance
 2. **Navigation Help** — Find what you're looking for faster
