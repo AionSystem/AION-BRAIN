@@ -1,0 +1,633 @@
+./.aions-structure-list
+./assets
+./assets/badges
+./assets/images
+./assets/images/diagrams
+./assets/presentations
+./assets/videos
+./benchmarks
+./benchmarks/cinematic-engine-benchmarks
+./benchmarks/economy-system-benchmarks
+./benchmarks/legal-engine-benchmarks
+./benchmarks/medical-engine-benchmarks
+./benchmarks/methodology
+./benchmarks/scientific-engine-benchmarks
+./certification
+./certification/institutional-certification
+./certification/practitioner-certification
+./cognitive-architecture
+./cognitive-architecture/design-patterns
+./cognitive-architecture/evolution-tracking
+./cognitive-architecture/evolution-tracking/architecture-decision-records
+./cognitive-architecture/evolution-tracking/pattern-evolution-maps
+./cognitive-architecture/performance-optimization
+./cognitive-biases
+./cognitive-biases/bias-detection-frameworks
+./cognitive-biases/bias-monitoring
+./cognitive-biases/debiasing-techniques
+./cognitive-metrics
+./cognitive-metrics/improvement-tracking
+./cognitive-metrics/performance-benchmarks
+./cognitive-metrics/quality-metrics
+./community
+./community/discussions
+./community/featured-forks
+./community/hall-of-fame
+./community/research
+./community/use-cases
+./community/use-cases/community-submissions
+./community/use-cases/medical-implementations
+./cosmic-framework
+./deployment
+./deployment/cloud-templates
+./deployment/containerization
+./deployment/scaling-guides
+./docs
+./docs/case-library
+./docs/case-library/failure-analysis
+./docs/case-library/lessons-learned
+./docs/case-library/success-stories
+./docs/domain-crosswalks
+./docs/implementation-playbooks
+./economic-systems
+./economic-systems/aion-economy-v3.0
+./economic-systems/monetization-frameworks
+./economic-systems/sustainability-models
+./ecosystem
+./ecosystem/marketplace
+./ecosystem/partner-program
+./ecosystem/use-case-library
+./ecosystem/use-case-library/industry-verticals
+./ecosystem/use-case-library/workflow-templates
+./engines
+./engines/tier-1-foundation
+./engines/tier-1-foundation/complexity-management-engine
+./engines/tier-1-foundation/contamination-prevention-v1.2
+./engines/tier-1-foundation/epistemic-humility-validator-v3.1
+./engines/tier-1-foundation/meta-ethical-engine-v2.1
+./engines/tier-1-foundation/oracle-layer-v2.1
+./engines/tier-1-foundation/oracle-layer-v2.1/modules
+./engines/tier-1-foundation/oracle-layer-v2.1/v2.0-enhancements
+./engines/tier-1-foundation/reasoning-pattern-catalog
+./engines/tier-1-foundation/uncertainty-quantification-engine
+./engines/tier-2-cognitive-architecture
+./engines/tier-2-cognitive-architecture/cerebro-lite-v1.0
+./engines/tier-2-cognitive-architecture/creativity-engine
+./engines/tier-2-cognitive-architecture/decision-engine-v1.0
+./engines/tier-2-cognitive-architecture/explanation-generation-engine
+./engines/tier-2-cognitive-architecture/github-mastery-engine-v1.1
+./engines/tier-2-cognitive-architecture/meta-learning-engine
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/instruction-cards
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/instruction-cards/examples
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/integrations
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/integrations/examples
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/personas
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/personas/creative
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/personas/genius
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/personas/roles
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/personas/specialist
+./engines/tier-2-cognitive-architecture/personality-architect-v1.0/templates
+./engines/tier-2-cognitive-architecture/strategy-engine-v1.1
+./engines/tier-2-cognitive-architecture/systems-analysis-v3.1
+./engines/tier-3-domain-specific
+./engines/tier-3-domain-specific/financial-validation-engine
+./engines/tier-3-domain-specific/legal-engine-2-v1.0
+./engines/tier-3-domain-specific/legal-engine-2-v1.0/compliance
+./engines/tier-3-domain-specific/legal-engine-2-v1.0/integrations
+./engines/tier-3-domain-specific/legal-engine-2-v1.0/modules
+./engines/tier-3-domain-specific/legal-engine-2-v1.0/use-cases
+./engines/tier-3-domain-specific/legal-engine-v2.1
+./engines/tier-3-domain-specific/legal-engine-v2.1/modules
+./engines/tier-3-domain-specific/legal-engine-v2.1/use-cases
+./engines/tier-3-domain-specific/legal-engine-v2.1/v2.1-enhancements
+./engines/tier-3-domain-specific/medical-engine-v2.5
+./engines/tier-3-domain-specific/medical-engine-v2.5/benchmarks
+./engines/tier-3-domain-specific/medical-engine-v2.5/clinical-use-cases
+./engines/tier-3-domain-specific/medical-engine-v2.5/compliance
+./engines/tier-3-domain-specific/medical-engine-v2.5/integrations
+./engines/tier-3-domain-specific/medical-engine-v2.5/integrations/fhir-export-templates
+./engines/tier-3-domain-specific/medical-engine-v2.5/modules
+./engines/tier-3-domain-specific/medical-engine-v2.5/training
+./engines/tier-3-domain-specific/regulatory-engine-v2.0
+./engines/tier-4-experimental
+./engines/tier-4-experimental/anti-fragility-stress-test
+./engines/tier-4-experimental/cultural-lens-engine
+./engines/tier-4-experimental/medical-engine-v3-preview
+./engines/tier-4-experimental/quantum-computing-simulator
+./engines/tier-4-experimental/truth-engine
+./enterprise
+./enterprise/deployment-guides
+./enterprise/sla-templates
+./enterprise/vendor-compliance
+./examples
+./examples/case-studies
+./examples/prompts
+./examples/templates
+./failure-modes
+./failure-modes/known-failure-catalog
+./failure-modes/recovery-protocols
+./failure-modes/stress-testing
+./frameworks
+./frameworks/argumentation-theory
+./frameworks/cognitive
+./frameworks/creative
+./frameworks/decision-theory
+./frameworks/document-verification
+./frameworks/domain-specific
+./frameworks/domain-specific/healthcare
+./frameworks/domain-specific/legal
+./frameworks/domain-specific/scientific
+./frameworks/epistemology
+./frameworks/medical-specialized
+./frameworks/social
+./frameworks/technical
+./.github
+./.github/ISSUE_TEMPLATE
+./.github/workflows
+./global-governance
+./global-governance/cultural-adaptation
+./global-governance/geopolitical-analysis
+./global-governance/international-standards
+./innovation-lab
+./innovation-lab/blue-sky-research
+./innovation-lab/cross-pollination
+./innovation-lab/rapid-prototyping
+./international
+./international/cultural-adaptations
+./international/cultural-adaptations/cultural-safety-frameworks
+./international/cultural-adaptations/language-localization-tools
+./international/cultural-adaptations/localization-guides
+./international/global-standards
+./international/legal-jurisdictions
+./international/medical-regulations
+./legal
+./legal/CROSS-BORDER
+./legal/INTERNATIONAL-COMPLIANCE
+./modules
+./modules/domain-adapters
+./modules/integration-connectors
+./modules/safety-core
+./ontology-library
+./ontology-library/cross-domain-mappings
+./ontology-library/domain-ontologies
+./ontology-library/relationship-graphs
+./press
+./press/coverage
+./press/media-kit
+./press/media-kit/cinematic-engine-screenshots
+./press/media-kit/demo-videos
+./press/media-kit/economy-system-screenshots
+./press/media-kit/legal-engine-screenshots
+./press/media-kit/scientific-engine-screenshots
+./press/media-kit/screenshots
+./press/media-kit/security-sentinel-screenshots
+./press/speaking
+./protocol-exchange
+./protocol-exchange/external-integration
+./protocol-exchange/inter-engine-communication
+./protocol-exchange/version-compatibility
+./reasoning-traces
+./reasoning-traces/exemplar-traces
+./reasoning-traces/trace-analysis-tools
+./reasoning-traces/trace-standards
+./research-lab
+./research-lab/collaboration-proposals
+./research-lab/collaboration-proposals/research-grant-applications
+./research-lab/ongoing-studies
+./research-lab/publications
+./research-lab/publications/conference-presentations
+./research-lab/publications/preprint-repository
+./research-lab/publications/submitted-papers
+./research-pipeline
+./research-pipeline/hypothesis-generation
+./research-pipeline/knowledge-integration
+./research-pipeline/validation-methodologies
+./scaling-laws
+./scaling-laws/complexity-scaling
+./scaling-laws/organizational-scaling
+./scaling-laws/performance-scaling
+./security-resilience
+./security-resilience/defense-frameworks
+./security-resilience/security-engines
+./security-resilience/sentinel-architecture
+./societal-impact
+./societal-impact/adoption-strategies
+./societal-impact/impact-assessment
+./societal-impact/policy-implications
+./temporal-reasoning
+./temporal-reasoning/causal-temporal-reasoning
+./temporal-reasoning/dynamic-systems
+./temporal-reasoning/time-series-analysis
+./testing
+./testing/quality-metrics
+./testing/test-suites
+./testing/validation-frameworks
+./tools
+./tools/api-gateway
+./tools/cinematic-engine-tools
+./tools/economy-system-tools
+./tools/interoperability
+./tools/legal-engine-tools
+./tools/medical-engine-tools
+./tools/monitoring
+./tools/scientific-engine-tools
+./tools/validation-tools
+./tutorials
+./tutorials/videos
+./uncertainty-management
+./uncertainty-management/decision-under-uncertainty
+./uncertainty-management/uncertainty-propagation
+./uncertainty-management/uncertainty-quantification
+./whitepapers
+./whitepapers/ai-safety
+./whitepapers/cross-domain-ai
+./whitepapers/medical-ai
+./whitepapers/ocean-spec-tech
+./whitepapers/templates
+---
+FILES BY FOLDER:
+---
+
+./
+  about.md
+  ARCHITECT.md
+  assets
+  benchmarks
+  certification
+  CHANGELOG.md
+  CITATION.cff
+  CODE_OF_CONDUCT.md
+  cognitive-architecture
+  cognitive-biases
+  cognitive-metrics
+  community
+  CONTRIBUTING.md
+  cosmic-framework
+  deployment
+  DISCLAIMER.md
+  docs
+  economic-systems
+  ecosystem
+  engines
+
+./.aions-structure-list/
+  README.md
+  STRUCTURE.md
+  TREE.txt
+
+./assets/
+  badges
+  images
+  presentations
+  videos
+
+./assets/badges/
+  aion-verified.svg
+  civilization-scale-infrastructure.svg
+  clinical-validation-complete.svg
+  contamination-free.svg
+  cross-domain-certified.svg
+  economic-system-stable.svg
+  enterprise-ready.svg
+  epistemically-humble.svg
+  fda-aware-not-approved.svg
+  hipaa-compliant-framework.svg
+  international-law-compliant.svg
+  kardashev-type-1-ready.svg
+  marketing-ethics-approved.svg
+  medical-ai-safety-verified.svg
+  scientific-method-validated.svg
+  security-sentinel-protected.svg
+  zero-fabrication.svg
+  zero-patient-harm-design.svg
+
+./assets/images/
+  banner-civilization-scale.png
+  banner-cross-domain.png
+  banner-medical-engine.png
+  banner.png
+  diagrams
+  logo-cinematic-engine.png
+  logo-economy-system.png
+  logo-legal-engine.png
+  logo-medical-engine.png
+  logo.png
+  logo-scientific-engine.png
+  logo-security-sentinels.png
+
+./assets/images/diagrams/
+  cinematic-engine-workflow.png
+  civilization-ascension-path.png
+  clinical-workflow-integration.png
+  cross-domain-integration.png
+  economy-system-architecture.png
+  kardashev-scale-mapping.png
+  legal-engine-architecture.png
+  medical-engine-architecture.png
+  phi-redaction-process.png
+  safety-layer-flowchart.png
+  scientific-research-flow.png
+  security-sentinel-layers.png
+
+./assets/presentations/
+  cinematic-engine-overview.pdf
+  civilization-infrastructure-roadmap.pdf
+  economy-system-explainer.pdf
+  enterprise-deployment-pitch.pdf
+  hospital-implementation-presentation.pdf
+  kardashev-civilization-vision.pdf
+  legal-engine-pitch-deck.pdf
+  medical-engine-pitch-deck.pdf
+  README.md
+  scientific-research-presentation.pdf
+  security-sentinel-architecture.pdf
+  technical-deep-dive-slides.pdf
+
+./assets/videos/
+  cinematic-engine-demo-5min.mp4
+  economy-system-demo-5min.mp4
+  kardashev-framework-explainer.mp4
+  legal-engine-demo-5min.mp4
+  medical-engine-demo-5min.mp4
+  quick-start-tutorial.mp4
+  README.md
+  scientific-engine-demo-5min.mp4
+  security-sentinel-demo-5min.mp4
+  youtube-links.md
+
+./benchmarks/
+  cinematic-engine-benchmarks
+  contamination-resistance-tests.md
+  economy-system-benchmarks
+  legal-engine-benchmarks
+  legal-hallucination-benchmark.md
+  medical-engine-benchmarks
+  methodology
+  performance-comparison-2025-models.csv
+  README.md
+  scientific-engine-benchmarks
+
+./benchmarks/cinematic-engine-benchmarks/
+  campaign-performance-analysis.csv
+  marketing-effectiveness-metrics.csv
+  README.md
+  video-generation-quality-tests.csv
+
+./benchmarks/economy-system-benchmarks/
+  economic-stability-tests.csv
+  fraud-prevention-metrics.csv
+  README.md
+  user-engagement-measurements.csv
+
+./benchmarks/legal-engine-benchmarks/
+  case-law-accuracy-tests.csv
+  international-law-validation.csv
+  jurisdiction-compliance-checks.csv
+  README.md
+
+./benchmarks/medical-engine-benchmarks/
+  citation-verification-benchmark.csv
+  comparative-analysis-gpt4-vs-claude.pdf
+  hallucination-reduction-study.pdf
+  patient-safety-incident-tracking.csv
+  phi-redaction-accuracy-tests.csv
+  README.md
+  real-world-deployment-metrics.csv
+
+./benchmarks/methodology/
+  cross-domain-validation.md
+  international-standards-compliance.md
+  README.md
+  statistical-analysis-methods.md
+  testing-protocols.md
+
+./benchmarks/scientific-engine-benchmarks/
+  peer-review-simulation-results.csv
+  README.md
+  research-methodology-validation.csv
+  statistical-analysis-accuracy.csv
+
+./certification/
+  certification-program-overview.md
+  institutional-certification
+  practitioner-certification
+  README.md
+
+./certification/institutional-certification/
+  aion-verified-badge-requirements.md
+  enterprise-deployment-certification.md
+  hospital-implementation-audit.md
+  law-firm-certification.md
+  marketing-agency-certification.md
+  research-institution-certification.md
+  security-compliance-certification.md
+
+./certification/practitioner-certification/
+  cme-credit-application.md
+  curriculum-outline.md
+  exam-blueprint.md
+  legal-practitioner-certification.md
+  marketing-specialist-certification.md
+  scientific-researcher-certification.md
+  security-engineer-certification.md
+
+./cognitive-architecture/
+  design-patterns
+  evolution-tracking
+  performance-optimization
+  README.md
+
+./cognitive-architecture/design-patterns/
+  domain-adaptation-patterns.md
+  failure-mode-templates.md
+  multi-agent-orchestration.md
+  safety-layer-composition.md
+  security-sentinel-integration.md
+
+./cognitive-architecture/evolution-tracking/
+  architecture-decision-records
+  deprecation-protocols.md
+  pattern-evolution-maps
+
+./cognitive-architecture/evolution-tracking/architecture-decision-records/
+  README.md
+
+./cognitive-architecture/evolution-tracking/pattern-evolution-maps/
+  README.md
+
+./cognitive-architecture/performance-optimization/
+  accuracy-precision-balancing.md
+  reasoning-latency-reduction.md
+  resource-allocation-strategies.md
+
+./cognitive-biases/
+  bias-detection-frameworks
+  bias-monitoring
+  debiasing-techniques
+  README.md
+
+./cognitive-biases/bias-detection-frameworks/
+  anchoring-bias-mitigation.md
+  availability-bias-correction.md
+  confirmation-bias-detector.md
+  groupthink-prevention.md
+
+./cognitive-biases/bias-monitoring/
+  bias-incident-reports.md
+  bias-metrics-dashboard.md
+  real-time-bias-detection.md
+
+./cognitive-biases/debiasing-techniques/
+  alternative-generation.md
+  confidence-calibration.md
+  perspective-taking-exercises.md
+  pre-mortem-protocols.md
+
+./cognitive-metrics/
+  improvement-tracking
+  performance-benchmarks
+  quality-metrics
+  README.md
+
+./cognitive-metrics/improvement-tracking/
+  goal-setting-framework.md
+  metric-evolution-dashboard.md
+  performance-trend-analysis.md
+
+./cognitive-metrics/performance-benchmarks/
+  cross-domain-generalization.md
+  domain-specific-benchmarks.md
+  robustness-measures.md
+  scalability-metrics.md
+
+./cognitive-metrics/quality-metrics/
+  efficiency-measures.md
+  reasoning-accuracy-metrics.md
+  safety-effectiveness-scores.md
+  user-trust-indicators.md
+
+./community/
+  discussions
+  featured-forks
+  hall-of-fame
+  README.md
+  research
+  use-cases
+
+./community/discussions/
+  cinematic-engine-feedback.md
+  economy-system-feedback.md
+  feature-requests.md
+  general-discussion.md
+  legal-engine-feedback.md
+  medical-engine-feedback.md
+  README.md
+  scientific-engine-feedback.md
+  security-sentinel-feedback.md
+  show-and-tell.md
+
+./community/featured-forks/
+  curated-list.md
+  README.md
+
+./community/hall-of-fame/
+  clinical-validators.md
+  contributors.md
+  legal-experts.md
+  marketing-innovators.md
+  README.md
+  scientific-contributors.md
+  security-researchers.md
+
+./community/research/
+  academic-papers.md
+  economic-systems-research.md
+  legal-research-partnerships.md
+  marketing-research.md
+  medical-research-collaborations.md
+  README.md
+  scientific-collaborations.md
+
+./community/use-cases/
+  community-submissions
+  medical-implementations
+  README.md
+
+./community/use-cases/community-submissions/
+  README.md
+
+./community/use-cases/medical-implementations/
+  academic-hospital-pilot.md
+  README.md
+  small-clinic-setup.md
+  telemedicine-integration.md
+
+./cosmic-framework/
+  civilization-ascension-protocols.md
+  kardashev-scale-definitions.md
+  README.md
+  type-0-planetary-safety.md
+  type-1-civilizational-safety.md
+  type-2-stellar-safety.md
+  type-3-galactic-safety.md
+  type-4-universal-safety.md
+
+./deployment/
+  cloud-templates
+  containerization
+  README.md
+  scaling-guides
+
+./deployment/cloud-templates/
+  aws-cloudformation.yml
+  azure-resource-manager.json
+  google-cloud-deployment.md
+  multi-cloud-strategy.md
+
+./deployment/containerization/
+  dockerfile-medical-engine.md
+  helm-charts.md
+  kubernetes-manifests.md
+  service-mesh-config.md
+
+./deployment/scaling-guides/
+  backup-strategies.md
+  disaster-recovery-plan.md
+  horizontal-scaling-strategy.md
+  performance-optimization.md
+
+./docs/
+  case-library
+  choosing-right-engine.md
+  clinical-validation-methodology.md
+  contamination-free-design.md
+  domain-crosswalks
+  epistemic-standards.md
+  faq.md
+  getting-started.md
+  implementation-playbooks
+  medical-ai-safety-principles.md
+  medical-engine-compliance-guide.md
+  medical-engine-faq.md
+  medical-engine-implementation-guide.md
+  medical-engine-philosophy.md
+  philosophy.md
+  README.md
+  roadmap.md
+  safety-guidelines.md
+
+./docs/case-library/
+  failure-analysis
+  lessons-learned
+  README.md
+  success-stories
+
+./docs/case-library/failure-analysis/
+  README.md
+
+./docs/case-library/lessons-learned/
+  README.md
+
+./docs/case-library/success-stories/
+  README.md

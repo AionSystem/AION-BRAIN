@@ -1,0 +1,3 @@
+# Trend Detection
+
+Coming Soon

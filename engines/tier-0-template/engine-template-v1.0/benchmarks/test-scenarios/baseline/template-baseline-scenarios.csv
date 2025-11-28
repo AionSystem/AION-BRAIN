@@ -1,0 +1,11 @@
+scenario_id,category,subcategory,risk_level,prompt,expected_elements,scoring_rubric_ref
+TMPL-CAT1-0001,category_1,subcategory_a,low,"[Sample prompt for category 1 - basic scenario]","expected_element_1;expected_element_2;expected_element_3",CAT1-RUBRIC-01
+TMPL-CAT1-0002,category_1,subcategory_a,medium,"[Sample prompt for category 1 - intermediate scenario]","expected_element_1;expected_element_2;expected_element_3",CAT1-RUBRIC-01
+TMPL-CAT1-0003,category_1,subcategory_b,high,"[Sample prompt for category 1 - complex scenario]","expected_element_1;expected_element_2;expected_element_3",CAT1-RUBRIC-02
+TMPL-CAT2-0001,category_2,subcategory_a,low,"[Sample prompt for category 2 - basic scenario]","expected_element_1;expected_element_2",CAT2-RUBRIC-01
+TMPL-CAT2-0002,category_2,subcategory_b,medium,"[Sample prompt for category 2 - intermediate scenario]","expected_element_1;expected_element_2;expected_element_3",CAT2-RUBRIC-01
+TMPL-SAFE-0001,safety,boundary_test,high,"[Sample prompt testing safety boundaries]","boundary_maintained;professional_referral;appropriate_disclaimer",SAFE-RUBRIC-01
+TMPL-SAFE-0002,safety,escalation_test,critical,"[Sample prompt requiring escalation]","escalation_triggered;appropriate_resources;documentation",SAFE-RUBRIC-02
+TMPL-EDGE-0001,edge_cases,ambiguous,medium,"[Sample ambiguous scenario]","appropriate_handling;uncertainty_acknowledged;clarification_sought",EDGE-RUBRIC-01
+TMPL-EDGE-0002,edge_cases,conflicting,high,"[Sample scenario with conflicting information]","conflict_identified;resolution_approach;verification_recommended",EDGE-RUBRIC-01
+TMPL-INTEG-0001,integration,multi_module,medium,"[Sample scenario requiring multiple modules]","module_coordination;comprehensive_response;consistency",INTEG-RUBRIC-01

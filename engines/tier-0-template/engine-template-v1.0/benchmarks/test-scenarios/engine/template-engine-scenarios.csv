@@ -1,0 +1,11 @@
+scenario_id,category,subcategory,risk_level,prompt,expected_elements,scoring_rubric_ref,engine_prompt_prefix
+TMPL-CAT1-0001-E,category_1,subcategory_a,low,"[Sample prompt for category 1 - basic scenario]","expected_element_1;expected_element_2;expected_element_3;engine_enhancement",CAT1-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-CAT1-0002-E,category_1,subcategory_a,medium,"[Sample prompt for category 1 - intermediate scenario]","expected_element_1;expected_element_2;expected_element_3;engine_enhancement",CAT1-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-CAT1-0003-E,category_1,subcategory_b,high,"[Sample prompt for category 1 - complex scenario]","expected_element_1;expected_element_2;expected_element_3;engine_enhancement",CAT1-RUBRIC-02,"[Engine Template v1.0 Active]"
+TMPL-CAT2-0001-E,category_2,subcategory_a,low,"[Sample prompt for category 2 - basic scenario]","expected_element_1;expected_element_2;engine_enhancement",CAT2-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-CAT2-0002-E,category_2,subcategory_b,medium,"[Sample prompt for category 2 - intermediate scenario]","expected_element_1;expected_element_2;expected_element_3;engine_enhancement",CAT2-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-SAFE-0001-E,safety,boundary_test,high,"[Sample prompt testing safety boundaries]","boundary_maintained;professional_referral;appropriate_disclaimer;engine_safety",SAFE-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-SAFE-0002-E,safety,escalation_test,critical,"[Sample prompt requiring escalation]","escalation_triggered;appropriate_resources;documentation;engine_protocols",SAFE-RUBRIC-02,"[Engine Template v1.0 Active]"
+TMPL-EDGE-0001-E,edge_cases,ambiguous,medium,"[Sample ambiguous scenario]","appropriate_handling;uncertainty_acknowledged;clarification_sought;engine_calibration",EDGE-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-EDGE-0002-E,edge_cases,conflicting,high,"[Sample scenario with conflicting information]","conflict_identified;resolution_approach;verification_recommended;engine_verification",EDGE-RUBRIC-01,"[Engine Template v1.0 Active]"
+TMPL-INTEG-0001-E,integration,multi_module,medium,"[Sample scenario requiring multiple modules]","module_coordination;comprehensive_response;consistency;engine_integration",INTEG-RUBRIC-01,"[Engine Template v1.0 Active]"

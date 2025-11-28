@@ -1,0 +1,104 @@
+cff-version: 1.2.0
+title: "AION-BRAIN"
+message: "If you use AION-BRAIN in your research, please cite it as below."
+type: software
+authors:
+  - family-names: "Salmon"
+    given-names: "Sheldon K."
+    alias: "Mr. AION"
+    email: "AIONSYSTEM@outlook.com"
+repository-code: "https://github.com/AION-BRAIN"
+url: "https://github.com/AION-BRAIN"
+abstract: >-
+  AION-BRAIN is an open-source collection of systematic 
+  frameworks for human-AI collaboration. The engines provide contamination-free 
+  analysis, epistemic humility enforcement, and ethical guardrails for 
+  decision-making, strategy, medical analysis, legal reasoning, and more.
+  Designed to work with any large language model (ChatGPT, Claude, Gemini),
+  AION engines help humans think systematically in the age of AI.
+keywords:
+  - cognitive-engines
+  - ai-safety
+  - epistemic-humility
+  - decision-making
+  - systematic-thinking
+  - human-ai-collaboration
+  - prompt-engineering
+  - cognitive-frameworks
+  - bias-reduction
+  - hallucination-prevention
+license: MIT
+version: "1.1.0"
+date-released: "2025-11-26"
+
+# Individual Engine Citations
+
+references:
+  - type: software
+    title: "Oracle Layer v2.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "2.1"
+    abstract: "Zero-hallucination verification engine with PROMETHEUS protocol"
+    
+  - type: software
+    title: "Epistemic Humility Validator v3.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "3.1"
+    abstract: "Gödel-Turing constraint layer with 14 mathematical checks"
+    
+  - type: software
+    title: "Strategy Engine v1.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.1"
+    abstract: "5-framework strategic analysis with Competitive Response Simulator and Moat Durability Index"
+    
+  - type: software
+    title: "Meta-Ethical Engine v2.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "2.1"
+    abstract: "Ethical decision-making infrastructure with Stakeholder Weighting Protocol"
+    
+  - type: software
+    title: "Medical Engine v2.5"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "2.5"
+    abstract: "Medical analysis with UpToDate, FDA, and CMS integration"
+    
+  - type: software
+    title: "Legal Engine v2.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "2.1"
+    abstract: "Legal analysis with Black's Law Dictionary and Bluebook integration"
+    
+  - type: software
+    title: "Decision Engine v1.0 (DECIDERE)"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.0"
+    abstract: "7-step contamination-free decision protocol"
+
+# Preferred Citation Format
+
+preferred-citation:
+  type: software
+  title: "AION-BRAIN: Systematic Frameworks for Human-AI Collaboration"
+  authors:
+    - family-names: "Salmon"
+      given-names: "Sheldon K."
+  year: 2025
+  version: "1.1.0"
+  url: "https://github.com/AION-BRAIN"
+  license: MIT
