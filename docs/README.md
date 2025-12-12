@@ -370,10 +370,19 @@ tools/
 
 ## Contact
 
-- **Email**: AIONSYSTEM@outlook.com
-- **X/Twitter**: [@AIONSYSTEM](https://twitter.com/AIONSYSTEM)
-- **Medium**: [Sheldon K Salmon](https://medium.com/@sheldonksalmon)
+## Get In Touch
 
+**For collaboration inquiries**:  
+📧 [AIONSYSTEM@outlook.com](mailto:AIONSYSTEM@outlook.com)  
+
+📝 [Medium Articles](https://medium.com/@sheldonksalmon)  
+
+**For technical questions**:  
+💬 [GitHub Discussions](discussions) (recommended)  
+🐛 [Report Issues](issues)  
+
+**For partnerships**:  
+🤝 See [legal/AGREEMENTS/](legal/AGREEMENTS/) for contract templates
 ---
 
 ## Important Notice
