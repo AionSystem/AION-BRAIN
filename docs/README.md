@@ -7,6 +7,14 @@ As the Stargate Project and other AI companies globally mobilizes for AI infrast
 
 30+ open-source cognitive engines that make AI safer, smarter, and more reliable across high-stakes domains.
 
+AION-BRAIN is an independent open-source cognitive architecture framework created by Sheldon K Salmon.
+
+**Not affiliated with**: Aion Labs (biotech company), Aion Therapeutics, or other "Aion" branded entities.
+
+**Project Status**: Independent open-source project  
+**License**: Apache 2.0  
+**Legal Framework**: See `/legal/` for comprehensive documentation
+
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Engines](https://img.shields.io/badge/Engines-30+-purple.svg)]()
 [![Python Engines](https://img.shields.io/badge/Python%20Engines-7%20Working-brightgreen.svg)]()
