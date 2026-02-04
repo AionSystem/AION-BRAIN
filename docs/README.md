@@ -383,6 +383,23 @@ tools/
 
 **For partnerships**:  
 🤝 See [legal/AGREEMENTS/](legal/AGREEMENTS/) for contract templates
+
+## Consulting Services
+
+I offer specialized AI safety consulting:
+
+**AI Safety Architecture Review** - $2,500
+- 48-hour turnaround
+- Comprehensive safety audit
+- Actionable recommendations
+
+**Enterprise GitHub Structure** - $3,000
+- AION-BRAIN structure implementation
+- Best practices for large AI projects
+- Documentation templates
+
+**Contact:** AIONSYSTEM@outlook.com
+
 ---
 
 ## Important Notice
