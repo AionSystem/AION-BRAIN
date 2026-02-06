@@ -23,6 +23,7 @@
 ## 📋 Validation Status Legend
 
 Symbol Meaning Implication
+
 ✅ Implemented & Code-Available Python reference implementation exists, reviewable
 
 🧪 Designed, Not Yet Executed Specification complete, validation pending
