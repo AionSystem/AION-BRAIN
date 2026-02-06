@@ -1,5 +1,7 @@
 🔬 AION-BRAIN: Research-Grade Cognitive Architecture for AI Safety
 
+> **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#executive-summary)
+
 ## 🎯 For Reviewers & Collaborators: Start Here
 
 **Research Status**: Architecture complete, validation pending funding  
