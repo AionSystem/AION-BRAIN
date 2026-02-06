@@ -1,10 +1,26 @@
 🔬 AION-BRAIN: Research-Grade Cognitive Architecture for AI Safety
 
-Independent Open-Source Framework | 30-Engine Design | Validation-Seeking
+## 🎯 For Reviewers & Collaborators: Start Here
+
+**Research Status**: Architecture complete, validation pending funding  
+**Core Question**: Can structured confidence calibration improve AI safety?  
+**Current Assets**: 30 engines specified, 7 implemented, 394 test scenarios designed  
+**Immediate Need**: Modular validation funding ($25/unit) for empirical testing  
+**Critical Constraint**: Not production software - Professional oversight required
+
+| Quick Path | What You'll Find | Time |
+|------------|-----------------|------|
+| **[Reviewer Summary](#executive-summary)** | Full context for evaluation | 2 min |
+| **[Research Methodology](#research-methodology)** | Falsifiable hypotheses & protocols | 3 min |
+| **[What This Is NOT](#what-this-is-not)** | Critical limitations upfront | 1 min |
+| **[Funding Model](#validation-funding)** | Modular validation units | 2 min |
+| **[Implemented Code](#implemented-engines)** | 7 reference implementations | 4 min |
+
+**Transparency Notice**: All performance claims are hypotheses requiring validation. Negative results will be published.
 
 ---
 
-⚠️ Validation Status Legend
+## 📋 Validation Status Legend
 
 Symbol Meaning Implication
 ✅ Implemented & Code-Available Python reference implementation exists, reviewable
