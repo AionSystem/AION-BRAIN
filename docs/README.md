@@ -495,7 +495,7 @@ See [LICENSE](AION-BRAIN/LICENSE) and [NOTICE](AION-BRAIN/NOTICE) for full terms
 This research needs funding for validation and API access.
 
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-Research-blue.svg)](your-sponsor-link)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg)](your-coffee-link)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg)](buymeacoffee.com/sheldonksalmon)
 
 Even $5/month helps test 100 additional safety scenarios.
 ```
