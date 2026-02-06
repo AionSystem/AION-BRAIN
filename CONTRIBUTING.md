@@ -1,6 +1,6 @@
-Contributing to AION-BRAIN: Growing Cognitive Infrastructure Together
+###Contributing to AION-BRAIN: Growing Cognitive Infrastructure Together###
 
-Welcome to AION-BRAIN—where we build systematic thinking tools for everyone.
+*Welcome to AION-BRAIN—where we build systematic thinking tools for everyone.*
 
 We're seeking curious minds, pattern thinkers, and system builders who want to improve how humanity thinks with AI. Whether you're a seasoned researcher or just discovering systematic thinking, there's a place for you here.
 
