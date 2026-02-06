@@ -262,7 +262,7 @@ Frontier capabilities under active development:
 
 Seven flagship engines have full Python implementations with comprehensive test suites:
 
-| Engine | Codename | Tests | Key Feature |
+| Engine | Codename | Tests Scenerios | Key Feature |
 |--------|----------|-------|-------------|
 | Oracle Layer v2.1 | PROMETHEUS | 33 | LLM provider integrations (OpenAI, Anthropic, Gemini) |
 | Benchmark Engine v2.0 | METIS-II | 95 | Trinity Scoring + Benchmark Freshness + Audience Reports |
