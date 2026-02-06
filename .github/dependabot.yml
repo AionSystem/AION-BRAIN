@@ -11,7 +11,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/benchmarks/datasets/"
     schedule:
-      interval: "never" # Frozen for research reproducibility
+      interval: "never"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch", 
@@ -24,9 +24,9 @@ updates:
   - package-ecosystem: "pip"
     directory: "/engines/tier-3-domain-specific/medical-engine/"
     schedule:
-      interval: "monthly" # Slow, careful updates
+      interval: "monthly"
     allow:
-      - dependency-type: "security" # Only security fixes
+      - dependency-type: "security"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor",
@@ -57,13 +57,13 @@ updates:
   # ============================================
   # ZONE 2: FOUNDATION ENGINES
   # ============================================
-  - package-ecystem: "pip"
+  - package-ecosystem: "pip"
     directory: "/engines/tier-1-foundation/"
     schedule:
       interval: "weekly"
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-major"] # No major without review
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "pip"
     directory: "/engines/tier-2-cognitive-architecture/"
@@ -82,7 +82,7 @@ updates:
       interval: "weekly"
 
   # ============================================
-  # GITHUB ACTIONS - KEEP CURRENT
+  # GITHUB ACTIONS
   # ============================================
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -90,12 +90,12 @@ updates:
       interval: "weekly"
 
   # ============================================
-  # ROOT REQUIREMENTS (if any)
+  # ROOT LEVEL (Conservative)
   # ============================================
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "monthly" # Conservative for root
+      interval: "monthly"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
