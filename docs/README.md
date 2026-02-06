@@ -47,7 +47,8 @@ I commit to publishing monthly reports showing:
 
 [View Funding Transparency Reports](/FUNDING-TRANSPARENCY.md)
 
-AION-BRAIN
+
+### AION-BRAIN
 
 American built Pre-AGI processing for AI Leadership,
 As the Stargate Project & other AI companies globally mobilizes for AI infrastructure, frameworks like AION-BRAIN demonstrate what's possible when builders move fast. This repository represents 9 months of intensive AI systems development - the kind of rapid innovation America needs to maintain AI leadership.
