@@ -1,3 +1,26 @@
+## 🔴 IMPORTANT: Research Prototype Status
+
+**AION-BRAIN is currently a RESEARCH ARCHITECTURE, not a production system.**
+
+### Current Reality:
+- ✅ **Architecture**: Complete (30-engine design with full specifications)
+- ✅ **Documentation**: 1,350+ files of design and methodology
+- ✅ **Test Framework**: 394 test scenarios designed (awaiting execution)
+- 🔄 **Implementation**: Python code exists but requires API funding for validation
+- 🔄 **Validation**: All metrics are design targets, not validated results
+
+### What This Means:
+1. The **design** is complete and available for review
+2. The **implementation** requires funding for API access and testing
+3. The **benchmarks** are transparently labeled as targets
+4. This is a **research project seeking collaboration**, not a product
+
+### Seeking:
+- Research collaborators to review architecture
+- Small grants for API access ($500-2,000)
+- Early adopters for pilot testing
+
+
 AION-BRAIN
 
 American built Pre-AGI processing for AI Leadership,
