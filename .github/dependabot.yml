@@ -5,24 +5,67 @@
 
 version: 2
 updates:
-  # Python dependencies
+  # ======================
+  # ZONE 4: RESEARCH DATA (NEVER UPDATE)
+  # ======================
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/benchmarks/datasets/"
+    schedule:
+      interval: "never" # Datasets are frozen for reproducibility
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch", 
+                       "version-update:semver-minor",
+                       "version-update:semver-major"]
+
+  # ======================
+  # ZONE 1: CRITICAL DOMAINS (MEDICAL/LEGAL)
+  # ======================
+  - package-ecosystem: "pip"
+    directory: "/engines/tier-3-domain-specific/medical-engine/"
+    schedule:
+      interval: "monthly" # Slow, careful updates
+    allow:
+      - dependency-type: "security" # Only security fixes
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor",
+                       "version-update:semver-major"]
+
+  - package-ecosystem: "pip"
+    directory: "/engines/tier-3-domain-specific/legal-engine/"
+    schedule:
+      interval: "monthly"
+    allow:
+      - dependency-type: "security"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor",
+                       "version-update:semver-major"]
+
+  # ======================
+  # ZONE 2: FOUNDATION ENGINES
+  # ======================
+  - package-ecosystem: "pip"
+    directory: "/engines/tier-1-foundation/"
     schedule:
       interval: "weekly"
-    labels:
-      - "dependencies"
-      - "python"
-      
-  # GitHub Actions dependencies  
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"] # No major without review
+
+  # ======================
+  # ZONE 3: TOOLS (UPDATE FREELY)
+  # ======================
+  - package-ecosystem: "pip"
+    directory: "/tools/"
+    schedule:
+      interval: "weekly"
+
+  # ======================
+  # GITHUB ACTIONS
+  # ======================
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-      
-  # Docker dependencies (if you use containers)
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
