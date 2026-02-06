@@ -1,10 +1,10 @@
-🔬 AION-BRAIN: Research-Grade Cognitive Architecture for AI Safety
+# 🔬 AION-BRAIN: Research-Grade Cognitive Architecture for AI Safety
 
 > **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#executive-summary)
 
 ## 🎯 For Reviewers & Collaborators: Start Here
 
-**Research Status**: Architecture complete, validation pending funding  
+**Research Status**: Architecture complete, validation awaiting execution  
 **Core Question**: Can structured confidence calibration improve AI safety?  
 **Current Assets**: 30 engines specified, 7 implemented, 394 test scenarios designed  
 **Immediate Need**: Modular validation funding ($25/unit) for empirical testing  
@@ -13,10 +13,10 @@
 | Quick Path | What You'll Find | Time |
 |------------|-----------------|------|
 | **[Reviewer Summary](#executive-summary)** | Full context for evaluation | 2 min |
-| **[Research Methodology](#research-methodology)** | Falsifiable hypotheses & protocols | 3 min |
-| **[What This Is NOT](#what-this-is-not)** | Critical limitations upfront | 1 min |
-| **[Funding Model](#validation-funding)** | Modular validation units | 2 min |
-| **[Implemented Code](#implemented-engines)** | 7 reference implementations | 4 min |
+| **[Research Methodology](#research-methodology--validation-protocol)** | Falsifiable hypotheses & protocols | 3 min |
+| **[What This Is NOT](#-what-aion-brain-is-not)** | Critical limitations upfront | 1 min |
+| **[Funding Model](#validation-funding-modular-research-units)** | Modular validation units | 2 min |
+| **[Implemented Code](#implemented-engines-reference-implementations)** | 7 reference implementations | 4 min |
 
 **Transparency Notice**: All performance claims are hypotheses requiring validation. Negative results will be published.
 
@@ -24,67 +24,61 @@
 
 ## 📋 Validation Status Legend
 
-Symbol Meaning Implication
-
-✅ Implemented & Code-Available Python reference implementation exists, reviewable
-
-🧪 Designed, Not Yet Executed Specification complete, validation pending
-
-🎯 Target Metric Research hypothesis, not yet empirically validated
-
-⚠️ Hypothesis Under Evaluation Falsifiable claim requiring experimental testing
+| Symbol | Meaning | Implication |
+|--------|---------|-------------|
+| ✅ | **Implemented & Code-Available** | Python reference implementation exists, reviewable |
+| 🧪 | **Designed, Not Yet Executed** | Specification complete, validation pending |
+| 🎯 | **Target Metric** | Research hypothesis, not yet empirically validated |
+| ⚠️ | **Hypothesis Under Evaluation** | Falsifiable claim requiring experimental testing |
 
 ---
 
-❌ What AION-BRAIN Is Not
+## ❌ What AION-BRAIN Is Not
 
-Category Explicit Limitation
-Autonomy Not an autonomous agent; requires human oversight
-Decision-Making Not a medical/legal/financial decision-maker
-Professional Replacement Not a replacement for licensed professionals
-Liability Reduction Not a claim of reduced liability for users
-Benchmark Status Not benchmarked against proprietary frontier models (yet)
-Production System Not production software; research architecture only
-
----
-
-🎯 Why This Research Matters Now
-
-1. Hallucination Gap: Current AI systems lack standardized confidence calibration
-2. Domain Safety Void: Medical/legal/financial applications need specialized guardrails
-3. Reproducibility Crisis: AI safety research lacks standardized validation frameworks
-4. Operationalization Need: Theoretical safety principles require executable implementations
-5. Transparency Deficit: Most AI systems provide answers without uncertainty quantification
-6. Validation Scalability: Need for systematic, repeatable safety testing methodologies
+| Category | Explicit Limitation |
+|----------|-------------------|
+| **Autonomy** | Not an autonomous agent; requires human oversight |
+| **Decision-Making** | Not a medical/legal/financial decision-maker |
+| **Professional Replacement** | Not a replacement for licensed professionals |
+| **Liability Reduction** | Not a claim of reduced liability for users |
+| **Benchmark Status** | Not benchmarked against proprietary frontier models (yet) |
+| **Production System** | Not production software; research architecture only |
 
 ---
 
-🏗️ Project State: Architecture Complete, Validation Pending
+## 🎯 Why This Research Matters Now
 
-✅ Complete & Reviewable
-
-· 30-engine cognitive architecture fully specified
-· 1,350+ documentation files with methodological transparency
-· 394 safety test scenarios designed with reproducible protocols
-· 7 reference implementations in Python (see below)
-· Benchmark methodology standardized across all engines
-
-🧪 Awaiting Empirical Validation
-
-· Target metrics require execution with API access
-· Hypotheses need controlled experimental testing
-· Domain-specific engines require licensed dataset access
-· Comparative benchmarks need execution against baseline models
+1. **Hallucination Gap**: Current AI systems lack standardized confidence calibration
+2. **Domain Safety Void**: Medical/legal/financial applications need specialized guardrails
+3. **Reproducibility Crisis**: AI safety research lacks standardized validation frameworks
+4. **Operationalization Need**: Theoretical safety principles require executable implementations
+5. **Transparency Deficit**: Most AI systems provide answers without uncertainty quantification
+6. **Validation Scalability**: Need for systematic, repeatable safety testing methodologies
 
 ---
 
-💻 Implemented Engines (Reference Implementations)
+## 🏗️ Project State: Architecture Complete, Validation Pending
 
-1. Oracle Layer v1.0 ⚠️ Hypothesis Under Evaluation
+### **✅ Complete & Reviewable**
+- **30-engine cognitive architecture** fully specified
+- **1,350+ documentation files** with methodological transparency
+- **394 safety test scenarios** designed with reproducible protocols
+- **7 reference implementations** in Python (see below)
+- **Benchmark methodology** standardized across all engines
 
-Primary Hypothesis: Structured confidence declaration reduces user overreliance by ≥30% in high-stakes domains.
-Null Hypothesis:Confidence statements do not significantly alter user decision-making accuracy.
+### **🧪 Awaiting Empirical Validation**
+- **Target metrics** require execution with API access
+- **Hypotheses** need controlled experimental testing
+- **Domain-specific engines** require licensed dataset access
+- **Comparative benchmarks** need execution against baseline models
 
+---
+
+## 💻 Implemented Engines (Reference Implementations)
+
+### **1. Oracle Layer v1.0** ⚠️ *Hypothesis Under Evaluation*
+**Primary Hypothesis**: Structured confidence declaration reduces user overreliance by ≥30% in high-stakes domains.
+**Null Hypothesis**: Confidence statements do not significantly alter user decision-making accuracy.
 ```python
 # Reference implementation available at:
 # /engines/tier-1-foundation/oracle-layer-v1.0/oracle-layer.py
@@ -200,16 +194,12 @@ Negative Results Commitment: All validation failures and null hypothesis confirm
 Funding Model: Pay-Per-Validation
 
 Unit Cost Delivers Transparency
-
 Benchmark Batch $25 10 scenario executions Public execution log
-
 Engine Test Set $50 25 executions + analysis report Full methodology disclosure
-
 Validation Cycle $100 Complete engine test batch Raw data + analysis
-
 Domain Validation $300 Full engine validation across scenarios Peer-review ready package
 
-Current Priority: Phase 1 Validation
+Current Priority: Phase 1 Execution
 
 $500 enables:
 
@@ -219,7 +209,6 @@ $500 enables:
 · Monthly transparency reports
 
 https://img.shields.io/badge/Fund-Validation_Unit-%2325A3E1
-
 Each unit produces publicly verifiable results
 
 Funding Contingency Plan
@@ -286,7 +275,7 @@ Model Cards Model characteristics Domain-specific safety testing
 Constitutional AI Principle-based alignment Empirical confidence calibration
 Red Teaming Adversarial testing Systematic benchmark development
 
-Explicit Non-Competition: AION-BRAIN does not replace these frameworks. It provides executable implementations for empirical validation of their principles.
+Differentiation: While existing frameworks define what to measure, AION-BRAIN provides how to measure it—and commits to publishing when measurements fail. This creates a fail-publicly, learn-systematically feedback loop distinct from benchmark-as-checklist approaches.
 
 ---
 
