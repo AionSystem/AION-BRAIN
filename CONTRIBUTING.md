@@ -219,28 +219,6 @@ Take the test! Or simply ask yourself: Do you naturally see connections between 
 ### **"I have a busy schedule. Can I still contribute meaningfully?"**
 Yes! Consistent small contributions often matter more than occasional large ones. Even 30 minutes a week of thoughtful engagement helps.
 
----
-
-## When You're Ready to Go Deeper
-
-### **The Cognitive Pattern Recognition Test**
-Located at: `/tests/cognitive-pattern-test.md`
-
-**What to expect:**
-- 5 questions that explore how you think
-- No "right answers"—only thoughtful approaches
-- Designed to be completed with AI assistance
-- Focused on process, not knowledge
-
-**Submission:** Email your responses to `AIONSYSTEM@outlook.com` with subject: `[Pattern Test] [Your Name/GitHub Handle]`
-
-**What happens next:**
-1. We review within 7 days
-2. You receive personalized feedback
-3. If your thinking shows strong pattern recognition, we invite you to deeper collaboration
-4. If not yet, we suggest areas to develop and welcome you to try again later
-
-**Important:** This test isn't about filtering people out. It's about **finding different kinds of thinkers** who might not have traditional credentials but have valuable cognitive approaches.
 
 ---
 
