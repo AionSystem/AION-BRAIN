@@ -17,7 +17,7 @@ AION-BRAIN is an independent open-source cognitive architecture framework create
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Engines](https://img.shields.io/badge/Engines-30+-purple.svg)]()
-[![Python Engines](https://img.shields.io/badge/Python%20Engines-7%20Working-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/Engines-7%20Designed%20|%20Funding%20Needed-yellow)]()
 [![Tests](https://img.shields.io/badge/Tests-394%20Passing-green.svg)]()
 [![Benchmarks](https://img.shields.io/badge/Benchmarks-Transparent-orange.svg)]()
 [![Domains](https://img.shields.io/badge/Domains-Medical%20%7C%20Legal%20%7C%20Financial%20%7C%20Security-green.svg)]()
