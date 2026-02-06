@@ -1,307 +1,290 @@
-# AION Quick Start Cheat Sheet
+# AION-BRAIN: Research Framework Quick Start
 
-**From zero to systematic AI reasoning in 5 minutes.**
+**Understanding what's available in 5 minutes.**
 
----
-
-## The 60-Second Version
-
-1. **Pick an engine** from the table below
-2. **Copy its prompt** from the engine folder
-3. **Paste into any AI** (ChatGPT, Claude, Gemini)
-4. **Add your problem**
-5. **Get structured, humble, systematic output**
-
-That's it.
+> **⚠️ Research Status Note**: This is architecture documentation, not production software.  
+> Engines are reference implementations for validation, not deployment tools.  
+> All performance claims are hypotheses awaiting testing.
 
 ---
 
-## Engine Selector — Complete List (25+ Engines)
+## 🎯 The 60-Second Reality Check
 
-### Tier 1 — Foundation (The Guardrails)
+1. **Review** what exists (30 engines designed, 7 implemented)
+2. **Examine** specifications in `/engines/`
+3. **Test** hypotheses using provided protocols
+4. **Understand** validation is pending funding
 
-| I need to... | Engine | Codename | Location |
-|--------------|--------|----------|----------|
-| Verify AI isn't hallucinating | **Oracle Layer v2.1** | PROMETHEUS | `engines/tier-1-foundation/oracle-layer-v2.1/` |
-| Quantify my uncertainty | **Epistemic Humility v3.1** | — | `engines/tier-1-foundation/epistemic-humility-validator-v3.1/` |
-| Navigate ethical dilemmas | **Meta-Ethical Engine v2.1** | — | `engines/tier-1-foundation/meta-ethical-engine-v2.1/` |
-| Check reasoning for bias | **Contamination Prevention v1.2** | — | `engines/tier-1-foundation/contamination-prevention-v1.2/` |
-| Manage overwhelming complexity | **Complexity Management v2.0** | SIMPLEXITY | `engines/tier-1-foundation/complexity-management-engine/` |
-
-### Tier 2 — Cognitive Architecture (The Methods)
-
-| I need to... | Engine | Codename | Location |
-|--------------|--------|----------|----------|
-| Make a complex decision | **Decision Engine v1.0** | DECIDERE | `engines/tier-2-cognitive-architecture/decision-engine-v1.0/` |
-| Analyze business strategy | **Strategy Engine v1.1** | — | `engines/tier-2-cognitive-architecture/strategy-engine-v1.1/` |
-| Build AI personas | **Personality Architect v1.0** | THE SCULPTOR | `engines/tier-2-cognitive-architecture/personality-architect-v1.0/` |
-| Analyze from multiple angles | **CEREBRO-Lite v1.0** | — | `engines/tier-2-cognitive-architecture/cerebro-lite-v1.0/` |
-| Understand complex systems | **Systems Analysis v3.1** | — | `engines/tier-2-cognitive-architecture/systems-analysis-v3.1/` |
-| Master GitHub discoverability | **GitHub Mastery v1.1** | — | `engines/tier-2-cognitive-architecture/github-mastery-engine-v1.1/` |
-| Assess source credibility | **Credibility Engine v2.0** | — | `engines/tier-2-cognitive-architecture/credibility-engine-v2.0/` |
-
-### Tier 3 — Domain-Specific (The Expertise)
-
-| I need to... | Engine | Location |
-|--------------|--------|----------|
-| Validate medical information | **Medical Engine v2.6** | `engines/tier-3-domain-specific/medical-engine-v2.6/` |
-| Check legal reasoning | **Legal Engine v2.2** | `engines/tier-3-domain-specific/legal-engine-v2.2/` |
-| Audit regulatory compliance | **Legal Engine 2 v1.5** | `engines/tier-3-domain-specific/legal-engine-2-v1.5/` |
-| Navigate regulations | **Regulatory Engine v2.5** | `engines/tier-3-domain-specific/regulatory-engine-v2.5/` |
-
-### Tier 4 — Experimental (The Frontier)
-
-| I want to explore... | Engine | Location |
-|---------------------|--------|----------|
-| Truth verification | **Truth Engine** | `engines/tier-4-experimental/truth-engine/` |
-| Cultural analysis | **Cultural Lens Engine** | `engines/tier-4-experimental/cultural-lens-engine/` |
-| System stress testing | **Anti-Fragility Engine** | `engines/tier-4-experimental/anti-fragility-stress-test/` |
-| Quantum concepts | **Quantum Simulator** | `engines/tier-4-experimental/quantum-computing-simulator/` |
-| Next-gen medical AI | **Medical Engine v3 Preview** | `engines/tier-4-experimental/medical-engine-v3-preview/` |
+**For immediate experimentation:**
+- Copy a protocol from an implemented engine
+- Paste into any AI system
+- Add your research question
+- Analyze outputs as experimental data
 
 ---
 
-## Try Right Now (No Setup Required)
+## 🔍 Engine Reference by Implementation Status
 
-### Demo 1: Complexity Management (NEW in v2.0)
+### **✅ Implemented & Reviewable (7 Engines)**
+*Python reference implementations exist. Hypotheses require validation.*
 
+| Need This? | Engine | Status | Tests Designed |
+|------------|--------|--------|----------------|
+| Confidence calibration | Oracle Layer v1.0 | ✅ Implemented | 33 |
+| Complexity management | SIMPLEXITY Engine v1.0 | ✅ Implemented | 59 |
+| Safety benchmarking | Benchmark Engine v1.0 | ✅ Implemented | 95 |
+| Strategic analysis | Strategy Engine v1.0 | ✅ Implemented | 52 |
+| Decision support | Decision Engine v1.0 | ✅ Implemented | 53 |
+| Credibility assessment | Credibility Engine v1.0 | ✅ Implemented | 53 |
+| Explanation generation | Explanation Engine v1.0 | ✅ Implemented | 49 |
+
+**Total**: 394 test scenarios designed across 7 engines
+
+### **🧪 Designed, Awaiting Implementation (20+ Engines)**
+*Specifications complete. Validation pending.*
+
+| Category | Key Engines | Status |
+|----------|-------------|--------|
+| **Domain-Specific** | Medical Safety, Legal Analysis, Financial Validation, Crisis Protocols | 🧪 Designed |
+| **Cognitive** | Personality Architect, Systems Analysis, GitHub Optimization | 🧪 Designed |
+| **Experimental** | Truth Engine, Cultural Analysis, Anti-Fragility Testing | 🧪 Designed |
+
+---
+
+## 🚀 Immediate Experimentation Protocols
+
+### **Protocol 1: Confidence Calibration**
+*From Oracle Layer v1.0 - ✅ Implemented*
+```prompt
+## Confidence Calibration Experiment
+
+Before responding:
+1. State confidence level: CERTAIN/HIGH/MODERATE/LOW/SPECULATIVE
+2. Identify knowledge boundaries explicitly
+3. Flag claims requiring external verification
+4. If confidence < MODERATE: "Experimental note: [specific uncertainty]"
+
+Now process: [Your research question]
 ```
-SIMPLEXITY v2.0 ENGINE ACTIVATED.
 
-Analyze this complex situation:
-[Your overwhelming problem here]
+Research Question: Does structured confidence declaration affect user trust calibration?
 
-Apply the 8-module framework:
-1. ABSTRACTION: What level of detail is appropriate?
-2. EMERGENCE: What behaviors arise from interactions?
-3. DECOMPOSITION: What are the independent sub-problems?
+Protocol 2: Complexity Management
+
+From SIMPLEXITY Engine v1.0 - ✅ Implemented
+
+```prompt
+## Complexity Analysis Protocol
+
+Analyze: [Your complex situation]
+
+Apply 8-module framework:
+1. ABSTRACTION: Appropriate detail level?
+2. EMERGENCE: Behaviors from interactions?
+3. DECOMPOSITION: Independent sub-problems?
 4. SIMPLIFICATION: What can be safely ignored?
-5. DYNAMICS: Is complexity growing or decaying?
-6. COGNITIVE LOAD: Match output to my capacity
-7. TRANSFER CHECK: Is simplification real or just moved?
-8. MVC: What's the minimum complexity needed?
+5. DYNAMICS: Complexity trajectory?
+6. COGNITIVE LOAD: Match to user capacity?
+7. TRANSFER CHECK: Simplification real or displaced?
+8. MVC: Minimum viable complexity?
 
 Include:
-- Complexity score and trajectory
-- Decomposition with reversibility
-- Minimum Viable Complexity target
-- Anti-fragility check
-- Threshold alerts
+- Complexity score hypothesis
+- Decomposition with reversibility notes
+- Uncertainty boundaries
 ```
 
-### Demo 2: Epistemic Humility (PROMETHEUS Protocol)
+Protocol 3: Decision Analysis
 
-```
-You are operating under the PROMETHEUS Protocol.
+From Decision Engine v1.0 - ✅ Implemented
 
-Before EVERY response:
-1. State confidence: CERTAIN | HIGH | MODERATE | LOW | SPECULATIVE
-2. Identify what you don't know that's relevant
-3. Flag claims requiring external verification
-4. Acknowledge when inferring beyond training
+```prompt
+## Decision Framework Experiment
 
-If confidence < MODERATE, explicitly state uncertainty.
-
-Question: What are the cognitive effects of chronic sleep deprivation?
-```
-
-### Demo 3: Decision Framework
-
-```
-DECIDERE DECISION ENGINE ACTIVATED.
-
-Analyze this decision:
-- Decision: [Accept job offer A vs. stay at current company]
-- Stakeholders: [Self, family, career trajectory]
-- Timeline: [Must decide in 14 days]
-- Values: [Growth, stability, work-life balance, compensation]
+Decision: [Your choice scenario]
+Stakeholders: [List]
+Timeline: [Constraints]
+Values: [Priority order]
 
 Provide:
 1. Option mapping with trade-offs
-2. Stakeholder impact analysis
+2. Stakeholder impact analysis  
 3. Reversibility assessment
-4. Recommended decision with confidence level
-5. What would change your recommendation
-```
+4. Recommended direction with confidence level
+5. Evidence that would change recommendation
 
-### Demo 4: Strategy Analysis
-
-```
-STRATEGY ENGINE v1.1 ACTIVATED.
-
-Analyze:
-- Organization: [My SaaS startup]
-- Industry: [B2B productivity tools]
-- Strategic question: [Should we pursue enterprise or stay SMB-focused?]
-- Context: [$500K ARR, 50 customers, 2 enterprise inquiries, limited engineering]
-
-Provide:
-1. Strategic options with probability-weighted outcomes
-2. Moat analysis for each path
-3. Resource requirements
-4. Competitive response scenarios
-5. Recommendation with uncertainty bounds
+**Note**: This is decision support framework testing, not advice.
 ```
 
 ---
 
-## The Tier System
+🏗️ Tier System: Research Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  TIER 1 — FOUNDATION (The Guardrails)                       │
-│  Oracle Layer, Meta-Ethics, Epistemic Humility,             │
-│  Contamination Prevention, Complexity Management            │
-│  ► These constrain ALL other reasoning                      │
+│ TIER 1 — FOUNDATION (Constraint Systems)                    │
+│ Oracle Layer, SIMPLEXITY, Benchmark Engine                  │
+│ ✅ 3 implemented, validation pending                        │
+│ ► These define safety boundaries for all reasoning          │
 ├─────────────────────────────────────────────────────────────┤
-│  TIER 2 — COGNITIVE ARCHITECTURE (The Methods)              │
-│  Decision, Strategy, Personality, CEREBRO-Lite,             │
-│  Systems Analysis, GitHub Mastery, Credibility              │
-│  ► These define HOW to think                                │
+│ TIER 2 — COGNITIVE (Methodology Systems)                    │
+│ Decision, Strategy, Credibility, Explanation Engines        │
+│ ✅ 4 implemented, validation pending                        │
+│ ► These operationalize specific reasoning patterns          │
 ├─────────────────────────────────────────────────────────────┤
-│  TIER 3 — DOMAIN-SPECIFIC (The Expertise)                   │
-│  Medical, Legal, Regulatory, Financial                      │
-│  ► These know WHAT matters in specific fields               │
+│ TIER 3 — DOMAIN-SPECIFIC (Expertise Systems)                │
+│ Medical, Legal, Financial, Crisis Protocols                 │
+│ 🧪 All designed, implementation pending                     │
+│ ► These encode domain constraints and validation needs      │
 ├─────────────────────────────────────────────────────────────┤
-│  TIER 4 — EXPERIMENTAL (The Frontier)                       │
-│  Truth Engine, Cultural Lens, Anti-Fragility, Quantum       │
-│  ► Research prototypes, less stable                         │
+│ TIER 4 — EXPERIMENTAL (Research Systems)                    │
+│ Truth Engine, Cultural Analysis, Anti-Fragility             │
+│ 🧪 Conceptual frameworks, exploratory phase                 │
+│ ► These test frontier safety concepts                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Power User Patterns
+🔬 Research Methodology Quick Reference
 
-### Pattern 1: Chain Engines
-
-```
-Step 1: Complexity Management → Scope the problem appropriately
-Step 2: Strategy Engine        → Map your options
-Step 3: Decision Engine        → Analyze the decision
-Step 4: Oracle Layer           → Verify assumptions
-Step 5: Meta-Ethical           → Check for ethical blindspots
-```
-
-### Pattern 2: Use Modes
-
-Most engines have focused modes:
+Standard Engine Structure
 
 ```
-[SIMPLEXITY:MVC]          → Just minimum viable complexity
-[SIMPLEXITY:DYNAMICS]     → Just complexity trajectory
-[SIMPLEXITY:TRANSFER]     → Just transfer detection
-[STRATEGY:MOAT]           → Just moat analysis
-[STRATEGY:RESPONSE]       → Just competitor response prediction
-[MEDICAL:EVIDENCE]        → Just evidence grading
-[DECISION:STAKEHOLDER]    → Just stakeholder mapping
-[EPISTEMIC:QUICK]         → Fast confidence check
+engine-name/
+├── specification.md          # Design rationale and constraints
+├── hypothesis.md            # Falsifiable claims (critical)
+├── benchmarks/              # Test scenarios (394 total designed)
+│   ├── test-scenarios/      # Baseline vs. engine comparisons
+│   ├── methodology.md       # Reproducible testing protocol
+│   └── scoring-rubrics.md   # Objective evaluation criteria
+└── reference-implementation/ # Python code (7 engines)
 ```
 
-### Pattern 3: Demand Uncertainty
+Validation Status Legend
 
-Always add:
-```
-"Include confidence intervals and state what evidence would change your assessment."
-```
-
-### Pattern 4: Cross-Validate
-
-For critical decisions, run the same problem through:
-- ChatGPT
-- Claude
-- Gemini
-
-Convergence = higher confidence. Divergence = investigate further.
+Symbol Meaning Implication
+✅ Implemented Code exists, reviewable
+🧪 Designed Specification complete
+🔄 Validating Testing in progress
+⚠️ Hypothesis Claim requiring testing
 
 ---
 
-## New in This Version
+⚠️ Critical Research Constraints
 
-| Engine | What's New |
-|--------|------------|
-| **Complexity Management v2.0** | NEW — 8 modules for managing overwhelming complexity |
-| **SIMPLEXITY Features** | Dynamics tracking, cognitive calibration, transfer detection, MVC |
-| **GitHub Mastery v1.1** | Repository optimization for discoverability |
-| **Credibility Engine v2.0** | Source and claim credibility assessment |
+What This Framework Is NOT
 
----
+· ❌ Not production deployment software
+· ❌ Not validated against clinical/legal standards
+· ❌ Not benchmarked against frontier models (yet)
+· ❌ Not a liability reduction mechanism
+· ✅ Is research architecture for safety experimentation
+· ✅ Is fully specified with test protocols
+· ✅ Is partially implemented (7/30 engines)
 
-## Common Mistakes
+Required Professional Context
 
-| Mistake | Fix |
-|---------|-----|
-| No context provided | Always include background |
-| Accepting output blindly | Cross-check critical claims |
-| Skipping epistemic checks | Run Oracle Layer on conclusions |
-| Ignoring confidence levels | Low confidence = more verification needed |
-| Wrong tier for problem | Match engine to problem type |
-| Overwhelming yourself | Use SIMPLEXITY first to scope |
+Domain Mandatory Oversight Purpose
+Medical Licensed physician Protocol validation only
+Legal Attorney Methodology review only
+Financial Compliance officer Framework testing only
+Crisis Licensed therapist Safety protocol evaluation
 
 ---
 
-## File Navigation
+📋 Power User Research Patterns
 
-| What You Want | Where It Is |
-|---------------|-------------|
-| Full engine specs | `engines/*/engine-name-spec.md` |
-| Ready-to-use prompts | `engines/*/engine-name-prompt.md` |
-| Examples | `engines/*/engine-name-examples.md` |
-| Implementation guide | `engines/*/IMPLEMENTATION-MODES.md` |
-| Philosophy | `MANIFESTO.md` |
-| The story | `ARCHITECT.md` |
+Pattern 1: Hypothesis Testing Chain
+
+```python
+# Experimental workflow for validation design
+1. complexity_protocol()    # Scope the research question
+2. strategy_protocol()     # Map experimental options  
+3. decision_protocol()     # Choose validation approach
+4. oracle_protocol()       # Verify methodological assumptions
+5. benchmark_protocol()    # Design test scenarios
+```
+
+Pattern 2: Multi-Model Validation
+
+```python
+# For methodological robustness testing
+models = ["ChatGPT-4", "Claude-3", "Gemini-Pro"]
+for model in models:
+    result = run_protocol(engine="Oracle Layer", model=model)
+    analyze_variance(results)  # Protocol sensitivity testing
+```
+
+Pattern 3: Failure Mode Exploration
+
+```python
+# Intentionally test protocol boundaries
+edge_cases = [
+    "Extreme data sparsity",
+    "Conflicting expert opinions", 
+    "Cultural context gaps",
+    "Temporal reasoning limits"
+]
+for case in edge_cases:
+    test_protocol_robustness(engine, case)
+```
 
 ---
 
-## Quick Reference: Engine Count
-
-| Tier | Production Engines | Frameworks | Experimental |
-|------|-------------------|------------|--------------|
-| Tier 1 — Foundation | 5 | 2 | — |
-| Tier 2 — Cognitive | 7 | 3 | — |
-| Tier 3 — Domain | 4 | 1 | — |
-| Tier 4 — Experimental | — | — | 5 |
-| **Total** | **16** | **6** | **5** |
-
----
-
-## One-Page Summary
+🎯 One-Page Research Summary
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│                    AION QUICK START                        │
+│ AION-BRAIN RESEARCH WORKFLOW                              │
 ├────────────────────────────────────────────────────────────┤
-│  1. SCOPE       Use SIMPLEXITY to manage complexity        │
-│  2. IDENTIFY    What problem type?                         │
-│  3. SELECT      Match to engine                            │
-│  4. COPY        Grab prompt from engine folder             │
-│  5. PASTE       Into ChatGPT / Claude / Gemini             │
-│  6. CONTEXT     Add your specific situation                │
-│  7. ANALYZE     Get structured, humble output              │
-│  8. VERIFY      Cross-check critical claims                │
-│  9. ITERATE     Refine with follow-up questions            │
+│ 1. STATUS CHECK   7 implemented, 23 designed, 0 validated │
+│ 2. HYPOTHESIS     Review /engines/*/hypothesis.md         │
+│ 3. SELECT         Choose engine matching research goal    │
+│ 4. EXAMINE        Check specification for constraints     │
+│ 5. PROTOCOL       Copy testing protocol                   │
+│ 6. EXPERIMENT     Run with AI system + your question      │
+│ 7. DOCUMENT       Record results vs. hypotheses           │
+│ 8. VALIDATE       Compare with benchmark scenarios        │
+│ 9. ITERATE        Refine based on edge cases              │
 └────────────────────────────────────────────────────────────┘
 ```
 
----
+Quick Stats
 
-## Need Help?
-
-| Resource | Location |
-|----------|----------|
-| Full documentation | [Home](index.md) |
-| Quick overview | [README-LITE.md](README-LITE.md) |
-| Support options | [SUPPORT.md](SUPPORT.md) |
-| GitHub Discussions | Open an issue |
+· Engines designed: 30+
+· Engines implemented: 7
+· Test scenarios designed: 394
+· Validation status: Architecture complete, testing pending
+· Licensing: Apache 2.0 (research use)
+· Professional oversight: Required for all domain applications
 
 ---
 
-**That's it. You're now thinking systematically.**
+🔗 Next Steps for Researchers
 
-Welcome to AION.
+For Methodology Review
+
+```bash
+git clone https://github.com/your-repo/aion-brain
+open engines/tier-1-foundation/oracle-layer-v1.0/hypothesis.md
+open engines/tier-1-foundation/benchmark-engine-v1.0/benchmarks/methodology.md
+```
+
+For Collaboration
+
+· Email: AIONSYSTEM@outlook.com with "[Research Review]" subject
+· Include: Institutional affiliation, specific engine interest, proposed validation approach
+
+For Funding Consideration
+
+· Validation units: $25-300 for specific test executions
+· Transparency: Monthly public reports on all funded work
+· Preservation: Specifications remain public regardless of funding
 
 ---
 
-*Cognitive infrastructure for the AI age.*
+Independent Research by Sheldon K Salmon
+Repository State: Research v2.4 | Updated: 2026-02-06
 
-Support: [buymeacoffee.com/sheldonksalmon](https://buymeacoffee.com/sheldonksalmon)
+View Full Documentation | Research Overview
