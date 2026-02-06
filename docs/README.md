@@ -15,11 +15,37 @@
 3. The **benchmarks** are transparently labeled as targets
 4. This is a **research project seeking collaboration**, not a product
 
-### Seeking:
-- Research collaborators to review architecture
-- Small grants for API access ($500-2,000)
-- Early adopters for pilot testing
+## Research Funding Goal
 
+**Current Goal: $500/month for validation**
+
+This enables:
+- 1,000+ safety scenario tests monthly
+- Medical/legal dataset licensing  
+- Peer-reviewed paper publication
+- Open dataset creation for community
+
+**Progress:** 0% ($0/$500 monthly)
+
+[![Sponsor Research](https://img.shields.io/badge/Sponsor-Research-blue.svg)](your-sponsor-link)
+[![Goal Progress](https://img.shields.io/badge/Goal-0%25%20($0%2F$500)-yellow.svg)]()
+
+### How Funds Are Used:
+| Purpose | Amount | What It Buys |
+|---------|--------|--------------|
+| API Credits | $300/month | 1,000+ safety scenario tests |
+| Dataset Licensing | $100/month | Medical/legal validation data |
+| Research Time | $100/month | Implementation & paper writing |
+| **Total** | **$500/month** | **Full research validation** |
+
+### Monthly Transparency:
+I commit to publishing monthly reports showing:
+- Exactly how funds were used
+- Validation results (successes & failures)
+- Research challenges & lessons
+- Next month's research plan
+
+[View Funding Transparency Reports](/FUNDING-TRANSPARENCY.md)
 
 AION-BRAIN
 
