@@ -5,22 +5,22 @@
 
 version: 2
 updates:
-  # ======================
-  # ZONE 4: RESEARCH DATA (NEVER UPDATE)
-  # ======================
+  # ============================================
+  # ZONE 4: RESEARCH DATA - NEVER AUTO-UPDATE
+  # ============================================
   - package-ecosystem: "pip"
     directory: "/benchmarks/datasets/"
     schedule:
-      interval: "never" # Datasets are frozen for reproducibility
+      interval: "never" # Frozen for research reproducibility
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch", 
                        "version-update:semver-minor",
                        "version-update:semver-major"]
 
-  # ======================
-  # ZONE 1: CRITICAL DOMAINS (MEDICAL/LEGAL)
-  # ======================
+  # ============================================
+  # ZONE 1: CRITICAL DOMAINS - SECURITY ONLY
+  # ============================================
   - package-ecosystem: "pip"
     directory: "/engines/tier-3-domain-specific/medical-engine/"
     schedule:
@@ -43,10 +43,21 @@ updates:
         update-types: ["version-update:semver-minor",
                        "version-update:semver-major"]
 
-  # ======================
-  # ZONE 2: FOUNDATION ENGINES
-  # ======================
   - package-ecosystem: "pip"
+    directory: "/engines/tier-3-domain-specific/financial-engine/"
+    schedule:
+      interval: "monthly"
+    allow:
+      - dependency-type: "security"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor",
+                       "version-update:semver-major"]
+
+  # ============================================
+  # ZONE 2: FOUNDATION ENGINES
+  # ============================================
+  - package-ecystem: "pip"
     directory: "/engines/tier-1-foundation/"
     schedule:
       interval: "weekly"
@@ -54,18 +65,37 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"] # No major without review
 
-  # ======================
-  # ZONE 3: TOOLS (UPDATE FREELY)
-  # ======================
+  - package-ecosystem: "pip"
+    directory: "/engines/tier-2-cognitive-architecture/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  # ============================================
+  # ZONE 3: TOOLS - UPDATE FREELY
+  # ============================================
   - package-ecosystem: "pip"
     directory: "/tools/"
     schedule:
       interval: "weekly"
 
-  # ======================
-  # GITHUB ACTIONS
-  # ======================
+  # ============================================
+  # GITHUB ACTIONS - KEEP CURRENT
+  # ============================================
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+
+  # ============================================
+  # ROOT REQUIREMENTS (if any)
+  # ============================================
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly" # Conservative for root
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
