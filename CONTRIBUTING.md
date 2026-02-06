@@ -1,4 +1,4 @@
-###Contributing to AION-BRAIN: Growing Cognitive Infrastructure Together###
+### Contributing to AION-BRAIN: Growing Cognitive Infrastructure Together
 
 *Welcome to AION-BRAIN—where we build systematic thinking tools for everyone.*
 
