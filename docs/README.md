@@ -198,9 +198,13 @@ Negative Results Commitment: All validation failures and null hypothesis confirm
 Funding Model: Pay-Per-Validation
 
 Unit Cost Delivers Transparency
+
 Benchmark Batch $25 10 scenario executions Public execution log
+
 Engine Test Set $50 25 executions + analysis report Full methodology disclosure
+
 Validation Cycle $100 Complete engine test batch Raw data + analysis
+
 Domain Validation $300 Full engine validation across scenarios Peer-review ready package
 
 Current Priority: Phase 1 Validation
@@ -213,6 +217,7 @@ $500 enables:
 · Monthly transparency reports
 
 https://img.shields.io/badge/Fund-Validation_Unit-%2325A3E1
+
 Each unit produces publicly verifiable results
 
 Funding Contingency Plan
