@@ -1,104 +1,265 @@
-cff-version: 1.2.0
-title: "AION-BRAIN"
-message: "If you use AION-BRAIN in your research, please cite it as below."
-type: software
+# Citation File Format v1.2.0
+# For software citation and academic attribution
+# See: https://citation-file-format.github.io/
+
+cff-version: "1.2.0"
+title: "AION-BRAIN: Cognitive Infrastructure for Human-AI Collaboration"
+message: "If you use or reference AION-BRAIN in research, teaching, or development, please cite as below."
+type: "software"
+date-released: "2026-02-06"
+
+# Primary Author and Contact
 authors:
   - family-names: "Salmon"
     given-names: "Sheldon K."
     alias: "Mr. AION"
     email: "AIONSYSTEM@outlook.com"
+    orcid: "" # Recommended to add if you have one
+    affiliation: "Independent Researcher"
+
+# Project Metadata
 repository-code: "https://github.com/AION-BRAIN"
 url: "https://github.com/AION-BRAIN"
+license: "Apache-2.0" # Changed from MIT to match your LICENSE
+license-url: "https://www.apache.org/licenses/LICENSE-2.0"
+version: "1.0.0" # Reset to reflect current research phase
+doi: "" # Recommended: Get when paper is published
 abstract: >-
-  AION-BRAIN is an open-source collection of systematic 
-  frameworks for human-AI collaboration. The engines provide contamination-free 
-  analysis, epistemic humility enforcement, and ethical guardrails for 
-  decision-making, strategy, medical analysis, legal reasoning, and more.
-  Designed to work with any large language model (ChatGPT, Claude, Gemini),
-  AION engines help humans think systematically in the age of AI.
+  AION-BRAIN is a research-grade cognitive architecture providing systematic
+  frameworks for human-AI collaboration. The project offers 30+ designed
+  cognitive engines with 7 reference implementations, focusing on epistemic
+  humility, contamination prevention, and systematic reasoning across medical,
+  legal, financial, and strategic domains. Unlike prompt collections,
+  AION-BRAIN provides falsifiable hypotheses, standardized test scenarios,
+  and reproducible validation protocols. The architecture is designed to work
+  with any large language model (ChatGPT, Claude, Gemini, etc.) while
+  maintaining human cognitive sovereignty through systematic thinking protocols.
+
+# Keywords for Discovery
 keywords:
-  - cognitive-engines
-  - ai-safety
-  - epistemic-humility
-  - decision-making
-  - systematic-thinking
-  - human-ai-collaboration
-  - prompt-engineering
-  - cognitive-frameworks
-  - bias-reduction
-  - hallucination-prevention
-license: MIT
-version: "1.1.0"
-date-released: "2025-11-26"
+  - "cognitive-architecture"
+  - "ai-safety"
+  - "systematic-thinking"
+  - "epistemic-humility"
+  - "contamination-prevention"
+  - "human-ai-collaboration"
+  - "decision-support-systems"
+  - "cognitive-frameworks"
+  - "prompt-engineering"
+  - "ai-alignment"
+  - "research-software"
+  - "open-science"
+
+# Funding Acknowledgments (Update when applicable)
+#funding:
+#  - "No current external funding"
+#  - "Seeking research validation funding"
+
+# Project Status
+status: "active"
+#development-status: "3 - Alpha" # Alpha, Beta, Production
+development-status: "2 - Pre-Alpha (Research Prototype)"
+
+# Technical Requirements (For software citation context)
+#requires:
+#  - "Python >=3.8"
+#  - "Access to LLM API (OpenAI, Anthropic, Google, etc.)"
+
+# Research Context
+# (Uncomment when you have associated publications)
+#related:
+#  - type: "doi"
+#    value: "10.xxxx/xxxxxx" # Your paper DOI when published
+#  - type: "arXiv"
+#    value: "arXiv:xxxx.xxxxx" # Your arXiv ID when submitted
 
 # Individual Engine Citations
+# Differentiated by implementation status
 
 references:
-  - type: software
-    title: "Oracle Layer v2.1"
+  # ✅ Implemented Engines (Reference Implementations Available)
+  - type: "software"
+    title: "Oracle Layer v1.0"
     authors:
       - family-names: "Salmon"
         given-names: "Sheldon K."
-    version: "2.1"
-    abstract: "Zero-hallucination verification engine with PROMETHEUS protocol"
+    version: "1.0"
+    abstract: "Confidence calibration engine implementing structured uncertainty declaration protocols"
+    status: "implemented"
+    date-released: "2025-11-01"
     
-  - type: software
-    title: "Epistemic Humility Validator v3.1"
-    authors:
-      - family-names: "Salmon"
-        given-names: "Sheldon K."
-    version: "3.1"
-    abstract: "Gödel-Turing constraint layer with 14 mathematical checks"
-    
-  - type: software
-    title: "Strategy Engine v1.1"
-    authors:
-      - family-names: "Salmon"
-        given-names: "Sheldon K."
-    version: "1.1"
-    abstract: "5-framework strategic analysis with Competitive Response Simulator and Moat Durability Index"
-    
-  - type: software
-    title: "Meta-Ethical Engine v2.1"
-    authors:
-      - family-names: "Salmon"
-        given-names: "Sheldon K."
-    version: "2.1"
-    abstract: "Ethical decision-making infrastructure with Stakeholder Weighting Protocol"
-    
-  - type: software
-    title: "Medical Engine v2.5"
-    authors:
-      - family-names: "Salmon"
-        given-names: "Sheldon K."
-    version: "2.5"
-    abstract: "Medical analysis with UpToDate, FDA, and CMS integration"
-    
-  - type: software
-    title: "Legal Engine v2.1"
-    authors:
-      - family-names: "Salmon"
-        given-names: "Sheldon K."
-    version: "2.1"
-    abstract: "Legal analysis with Black's Law Dictionary and Bluebook integration"
-    
-  - type: software
+  - type: "software"
     title: "Decision Engine v1.0 (DECIDERE)"
     authors:
       - family-names: "Salmon"
         given-names: "Sheldon K."
     version: "1.0"
-    abstract: "7-step contamination-free decision protocol"
+    abstract: "Multi-framework decision support system with bias mitigation protocols"
+    status: "implemented"
+    date-released: "2025-10-15"
+    
+  - type: "software"
+    title: "Strategy Engine v1.0"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.0"
+    abstract: "Strategic analysis framework integrating competitive dynamics and risk assessment"
+    status: "implemented"
+    date-released: "2025-10-20"
+    
+  - type: "software"
+    title: "Credibility Engine v1.0"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.0"
+    abstract: "Source verification and information credibility assessment system"
+    status: "implemented"
+    date-released: "2025-11-10"
+    
+  - type: "software"
+    title: "Explanation Engine v1.0"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.0"
+    abstract: "Audience-adapted explanation generation with complexity management"
+    status: "implemented"
+    date-released: "2025-11-05"
+    
+  - type: "software"
+    title: "Benchmark Engine v1.0"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.0"
+    abstract: "Standardized testing framework for cognitive engine validation"
+    status: "implemented"
+    date-released: "2025-11-15"
+    
+  - type: "software"
+    title: "SIMPLEXITY Engine v1.0"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "1.0"
+    abstract: "Complexity management system with 8-module analysis framework"
+    status: "implemented"
+    date-released: "2025-10-25"
 
-# Preferred Citation Format
+  # 🧪 Designed Engines (Specifications Complete, Implementation Pending)
+  - type: "software"
+    title: "Medical Safety Engine v0.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "0.1"
+    abstract: "Clinical reasoning protocols with safety constraints (designed specification)"
+    status: "designed"
+    date-released: "2025-11-20"
+    
+  - type: "software"
+    title: "Legal Analysis Engine v0.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "0.1"
+    abstract: "Legal reasoning framework with citation verification (designed specification)"
+    status: "designed"
+    date-released: "2025-11-18"
+    
+  - type: "software"
+    title: "Financial Validation Engine v0.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "0.1"
+    abstract: "Financial assumption transparency and validation system (designed specification)"
+    status: "designed"
+    date-released: "2025-11-22"
+    
+  - type: "software"
+    title: "Crisis Protocol Engine v0.1"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+    version: "0.1"
+    abstract: "Emergency response and counseling safety protocols (designed specification)"
+    status: "designed"
+    date-released: "2025-11-25"
 
+  # 📚 Methodology Papers (When published, add here)
+  # - type: "article"
+  #   authors:
+  #     - family-names: "Salmon"
+  #       given-names: "Sheldon K."
+  #   title: "Systematic Thinking Protocols for Human-AI Collaboration"
+  #   journal: "Journal of Artificial Intelligence Research"
+  #   year: "2026"
+  #   doi: "10.xxxx/xxxxxx"
+
+# Version History (For transparency)
+# changelog:
+#   - version: "1.0.0"
+#     date-released: "2026-02-06"
+#     changes:
+#       - "Initial public release of research architecture"
+#       - "7 reference implementations with test scenarios"
+#       - "30+ engine specifications with validation protocols"
+
+# Citation Instructions
 preferred-citation:
-  type: software
-  title: "AION-BRAIN: Systematic Frameworks for Human-AI Collaboration"
-  authors:
-    - family-names: "Salmon"
-      given-names: "Sheldon K."
-  year: 2025
-  version: "1.1.0"
-  url: "https://github.com/AION-BRAIN"
-  license: MIT
+  - type: "software"
+    title: "AION-BRAIN: Cognitive Infrastructure for Human-AI Collaboration"
+    authors:
+      - family-names: "Salmon"
+        given-names: "Sheldon K."
+        alias: "Mr. AION"
+    year: "2026"
+    version: "1.0.0"
+    url: "https://github.com/AION-BRAIN"
+    doi: "" # Add when available
+    note: "Research software - Architecture complete, validation pending"
+
+# Alternative Citation Formats
+citation-format:
+  apa: >-
+    Salmon, S. K. (2026). AION-BRAIN: Cognitive Infrastructure for Human-AI 
+    Collaboration (Version 1.0.0) [Computer software]. Retrieved from 
+    https://github.com/AION-BRAIN
+  bibtex: >-
+    @software{Salmon_AION-BRAIN_2026,
+      author = {Salmon, Sheldon K.},
+      license = {Apache-2.0},
+      month = {2},
+      title = {{AION-BRAIN: Cognitive Infrastructure for Human-AI Collaboration}},
+      url = {https://github.com/AION-BRAIN},
+      version = {1.0.0},
+      year = {2026}
+    }
+  mla: >-
+    Salmon, Sheldon K. AION-BRAIN: Cognitive Infrastructure for Human-AI 
+    Collaboration. Version 1.0.0, 2026, https://github.com/AION-BRAIN.
+
+# Usage Notes
+notes: >-
+  This is research software, not production code. All performance claims are 
+  hypotheses requiring empirical validation. Medical, legal, and financial 
+  applications require professional oversight. The architecture is designed 
+  for systematic evaluation of cognitive augmentation approaches.
+
+# Acknowledgments
+acknowledgements: >-
+  The AION-BRAIN project acknowledges the cognitive science, AI safety, and 
+  systems thinking communities whose work informs this architecture. Special 
+  thanks to early collaborators and contributors who help refine these 
+  systematic thinking tools.
+
+# Contact for Citation Updates
+contact:
+  - email: "AIONSYSTEM@outlook.com"
+    name: "Sheldon K. Salmon"
+    orcid: "" # Add when available
+
+# End of CITATION.cff
