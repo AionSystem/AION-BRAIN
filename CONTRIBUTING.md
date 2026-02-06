@@ -293,85 +293,121 @@ Welcome to AION-BRAIN. Let's build cognitive infrastructure—together.
 
 📁 Bonus: Cognitive Pattern Recognition Test (draft for /tests/cognitive-pattern-test.md)
 
-```markdown
-# AION-BRAIN Cognitive Pattern Recognition Test
 
-**Purpose:** Identify thinkers who approach problems systematically, recognize patterns across domains, and think with epistemic humility.
+## 🧠 The Paradox Strategic Assessment: Finding Pattern Thinkers
 
-**Instructions:**
-1. Complete this test with any AI assistant
-2. Record your questions, the AI's responses, and your analysis
-3. Submit your complete process (not just answers) to `AIONSYSTEM@outlook.com`
-4. Use subject: `[Pattern Test] [Your GitHub Handle]`
+### **Why We Use This Test**
+Traditional credentials don't measure **how you think systematically**. This assessment evaluates:
+- Pattern recognition across domains
+- Systems thinking under uncertainty
+- Ethical reasoning in paradoxes
+- Strategic foresight with long-term vision
+- Meta-cognitive awareness
 
-**Note:** There are no "right answers." We're evaluating **how you think**, not what you know.
+### **AI Policy: Thoughtful Collaboration, Not Replacement**
+**You may use AI, but with understanding:**
+
+1. **AI as thinking partner, not answer generator:**
+   - Ask it to challenge your assumptions
+   - Use it to clarify questions
+   - Ask for alternative perspectives
+
+2. **What we're looking for:**
+   - **Your thinking voice** (not AI's polished phrasing)
+   - **Authentic struggle** with paradoxes (AI smooths over contradictions)
+   - **Personal value consistency** (AI gives balanced, generic answers)
+   - **Idiosyncratic reasoning** (AI converges on conventional wisdom)
+
+3. **Warning: Our rubric detects AI-over-reliance:**
+   - Generic "on one hand, on the other" hedging without depth
+   - Perfect structure with no personality
+   - Absence of personal experience or unique perspective
+   - Inability to handle follow-up questions about your reasoning
+
+### **The Test Format**
+**10 paradox-based questions** that measure strategic intelligence:
+1. Identity under pressure
+2. Systems design from chaos
+3. Hypothesis testing reality
+4. Ethical trade-off navigation
+5. Multi-horizon temporal strategy
+6. Meta-cognitive system design
+7. Foundational value selection
+8. Identity in competition
+9. Future self dialogue
+10. Essence transmission
+
+### **How It Works**
+1. **Take the test** (60-90 minutes, with or without AI assistance)
+2. **Submit to Poe.com bot** for preliminary analysis
+3. **Receive detailed feedback** on 6 strategic dimensions
+4. **Human review** for final verification
+5. **Get your strategic title** (Strategic Mastermind, Systems Architect, etc.)
+
+### **Scoring Tiers & Opportunities**
+- **90-100%:** Strategic Mastermind → Direct collaboration invites
+- **80-89%:** Systems Architect → Contributor access + mentoring
+- **70-79%:** Tactical Strategist → Welcome to contribute
+- **60-69%:** Emerging Analyst → Learning pathway + retake encouragement
+- **Below 60%:** Developing Thinker → Resources for growth
+
+### **What Happens After the Test**
+**For scores 70%+:**
+- Invitation to contribute to AION-BRAIN
+- Recognition as PSA-certified thinker
+- Potential founding contributor status
+- Direct collaboration opportunities
+
+**For all test-takers:**
+- Personalized feedback on thinking patterns
+- Certificate of completion (60%+)
+- Suggested areas for cognitive development
+- Invitation to join learning community
+
+### **The AI Collaboration Philosophy**
+We recognize that:
+1. **AI is a tool** that skilled thinkers use well
+2. **Poor thinkers** will copy AI answers (and we'll detect it)
+3. **Great thinkers** use AI to enhance, not replace, their cognition
+4. **Our rubric** distinguishes between these patterns
+
+### **Taking the Test Authentically**
+**Questions to ask yourself:**
+- "Is this answer truly how I think, or how AI thinks I should think?"
+- "Does this reflect my actual values, or 'smart-sounding' values?"
+- "Can I defend this reasoning in conversation tomorrow?"
+
+**Remember:** We're not testing your ability to use AI. We're testing **your cognitive patterns**. AI can help clarify questions, but your unique thinking should shine through.
+
+### **Ready to Take the Assessment?**
+1. Review the full test at: `/assessments/paradox-strategic-assessment.md`
+2. Complete all 10 questions (60-90 minutes)
+3. Submit to: [Poe.com PSA Bot Link]
+4. Email results to: `AIONSYSTEM@outlook.com`
+
+**Time to completion:** 7-14 days for human review
+**Retake policy:** After 30 days with significantly different approach
 
 ---
 
-## Section 1: Pattern Recognition Across Domains
 
-**Scenario:** You notice that three different systems—a coral reef ecosystem, a city's transportation network, and a large software codebase—all seem to follow similar patterns of growth, stress, and collapse.
+## 🤖 ABOUT AI ASSISTANCE
 
-**Question 1:** What common patterns might connect these three systems? List at least three and explain why they might be universal.
+This assessment measures how you think, not just what you know. 
+You may use AI, but understand:
 
-**Question 2:** If you discovered a stress signal in one system, how would you check for similar signals in the other two? Design a simple verification protocol.
+**What we reward:**
+- Using AI to challenge your assumptions
+- Asking for alternative perspectives
+- Clarifying complex questions
 
----
+**What we detect and penalize:**
+- Copying AI's phrasing without integration
+- Generic "balanced" answers without personal conviction
+- Inability to defend your reasoning in conversation
+- Absence of authentic struggle with paradoxes
 
-## Section 2: Epistemic Humility in Action
-
-**Scenario:** You're designing a medical decision-support engine. The engine suggests a diagnosis with "85% confidence."
-
-**Question 3:** What are at least three different things that "85% confidence" could mean? (Think about uncertainty sources, data limitations, expert disagreement, etc.)
-
-**Question 4:** How would you design the engine's output to communicate these different uncertainties to a doctor who has 30 seconds to make a decision?
-
----
-
-## Section 3: System Failure Anticipation
-
-**Scenario:** You're observing a new AI system that helps teachers customize learning plans for students. It's working well in initial tests.
-
-**Question 5:** What are three non-obvious ways this system could fail or cause harm 6 months from now? (Think about indirect effects, changing contexts, edge cases.)
-
-**Question 6:** Design one simple "canary in the coal mine" test that teachers could run weekly to detect early signs of these failure modes.
-
----
-
-## Section 4: Meta-Cognition
-
-**Question 7:** Looking back at your answers to questions 1-6, what patterns do you see in your own thinking process? What assumptions did you make? What did you overlook?
-
-**Question 8:** If you could improve one aspect of how you approached these questions, what would it be and why?
-
----
-
-## Submission Guidelines
-
-**Please include:**
-1. Your answers to all questions
-2. The AI's responses (if you used AI)
-3. Your analysis of the AI's responses
-4. Any notes about your thinking process
-5. What you found challenging or interesting
-
-**Evaluation criteria:**
-- Pattern recognition across seemingly unrelated domains
-- Consideration of uncertainty and multiple perspectives
-- Anticipation of system failures and indirect effects
-- Self-awareness about your own thinking process
-- Clarity and thoughtfulness in explanations
-
-**Remember:** We're not testing knowledge. We're exploring how you think. Take your time. Be thoughtful. Show your work.
-
----
-
-**Time to complete:** Approximately 60-90 minutes  
-**Submission deadline:** None—submit when ready  
-**Feedback provided:** Within 7 days of submission  
-**Retake policy:** You may retake after 30 days with significantly different approach
-
----
+**The best test-takers:** Use AI as a thinking partner while maintaining their unique cognitive voice.
 
 *This test evolves as we learn about different thinking styles.*  
 *Last updated: February 2026*
