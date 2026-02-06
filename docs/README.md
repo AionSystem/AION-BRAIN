@@ -381,7 +381,7 @@ For Technical Engagement:
 
 Independent Research by Sheldon K Salmon
 Not affiliated with any "Aion"-branded commercial entities
-Repository Version:Research v2.4 | Updated: 2025-11-28
+Repository Version:Research v2.4 | Updated: 2026-02-06
 
 ---
 
