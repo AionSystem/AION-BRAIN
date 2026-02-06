@@ -489,7 +489,7 @@ See [LICENSE](AION-BRAIN/LICENSE) and [NOTICE](AION-BRAIN/NOTICE) for full terms
 ---
 
 
-```
+
 ## Support This Research
 
 This research needs funding for validation and API access.
@@ -498,7 +498,7 @@ This research needs funding for validation and API access.
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg)](buymeacoffee.com/sheldonksalmon)
 
 Even $5/month helps test 100 additional safety scenarios.
-```
+
 
 
 *AION-BRAIN — Cognitive infrastructure for the AI age.*
