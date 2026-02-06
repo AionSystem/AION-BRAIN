@@ -69,6 +69,12 @@ A: Yes. Email `AIONSYSTEM@outlook.com` with subject "Data Deletion Request".
 ### **Q: Will my answers be used to train AI?**
 A: No. Your responses are used solely for assessment and community building purposes.
 
+### Q: Can I see the grading rubric?
+**A:** The assessment uses a proprietary 6-dimensional scoring system that evaluates thinking patterns, not just answers. The exact criteria are not published to maintain assessment integrity and prevent gaming. You'll receive personalized feedback on your performance across the six dimensions.
+
+### Q: How do I know what you're looking for?
+**A:** We're looking for authentic systematic thinking. The best preparation is to approach each paradox thoughtfully, show your reasoning, and be true to how you think—not what you think we want to hear.
+
 ---
 
 *Have a question not answered here?*  
