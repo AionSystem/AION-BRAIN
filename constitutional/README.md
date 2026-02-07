@@ -1,5 +1,21 @@
 # 🧾 Constitutional Layer
 
+## 📚 Constitutional Documents
+
+### Core Laws & Principles
+- [Three Laws of Robotics](laws/three-laws-of-robotics.md)
+- [Non-Delegation Principle](laws/non-delegation-principle.md)
+- [Extended Laws v1](laws/extended-laws-v1-aion.md)
+- [Extended Laws v2](laws/extended-laws-v2-aion.md)
+- [Fourth Law Analysis](laws/fourth-law-analysis.md) *(External proposal analysis)*
+
+### Implementation Protocols
+- [AION Protection Protocol](boundaries/protection-protocol.md) *(Harm prevention framework)*
+- [Autonomy Red Lines](boundaries/autonomy-red-lines.md)
+- [Forbidden Capabilities](boundaries/forbidden-capabilities.md)
+- [Human-in-the-loop Requirements](boundaries/human-in-the-loop-requirements.md)
+
+
 ## Purpose
 
 This directory defines the **constitutional foundation** of the AION-BRAIN project.
