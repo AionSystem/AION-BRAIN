@@ -1,1 +1,45 @@
+title: "AION-BRAIN Research Portal"
+description: "Cognitive Infrastructure for Human-AI Collaboration"
+baseurl: ""
+url: "https://aionsystem.app"  # Your custom domain!
+email: "AIONSYSTEM@outlook.com"
 
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Custom domain settings
+github:
+  username: "AION-BRAIN"
+  repository: "AION-BRAIN"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Architecture"
+    url: "/architecture/"
+  - title: "Engines"
+    url: "/engines/"
+  - title: "Research"
+    url: "/research/"
+  - title: "Contribute"
+    url: "/contribute/"
+  - title: "Funding"
+    url: "/funding/"
+  - title: "Contact"
+    url: "/contact/"
+
+# SEO
+twitter:
+  card: "summary_large_image"
+  username: ""  # Add if you get Twitter
+og:
+  image: "/assets/og-image.png"  # Create later
+
+# Analytics (optional - add later)
+# google_analytics: "G-XXXXXXXXXX"
