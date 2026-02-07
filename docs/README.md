@@ -214,7 +214,8 @@ $500 enables:
 · Negative results publication
 · Monthly transparency reports
 
-https://img.shields.io/badge/Fund-Validation_Unit-%2325A3E1
+![Validation Funding](https://img.shields.io/badge/🔬_Fund_Validation_Research-%2325A3E1?style=for-the-badge)
+
 Each unit produces publicly verifiable results
 
 Funding Contingency Plan
