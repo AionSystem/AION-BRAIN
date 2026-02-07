@@ -148,6 +148,8 @@ International Layer (Treaty Framework):
 
 The Fifth Law creates the foundation for all other boundaries:
 
+```
+   mermaid
  graph TD
     A[Fifth Law: No Biological Merger] --> B[Cognitive Autonomy]
     A --> C[Decision Autonomy] 
@@ -161,7 +163,7 @@ The Fifth Law creates the foundation for all other boundaries:
     
     D --> D1[Body free from AI integration]
     D --> D2[Biology free from AI alteration]
-
+```
 
 5.6 Special Cases and Edge Conditions
 
