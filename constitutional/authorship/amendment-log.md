@@ -1,5 +1,12 @@
 ## Amendment Log
 
+### February 2026 (Continued)
+- **Fifth Law Adopted**: Anti-Merger Directive becomes constitutional principle
+  - File: `/constitutional/laws/fifth-law-analysis.md`
+  - Status: Active constitutional article
+  - Implementation: Immediate integration into AION systems
+  - Significance: First proactive species integrity protection framework
+
 ### February 2026
 - **Fourth Law Analysis Completed**: Critical examination of proposed "inaction as harm" principle
   - File: `/constitutional/laws/fourth-law-analysis.md`
