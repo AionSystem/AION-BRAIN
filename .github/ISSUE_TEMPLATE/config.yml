@@ -1,1 +1,14 @@
-
+blank_issues_enabled: false
+contact_links:
+  - name: "📚 Questions & Discussions"
+    url: https://github.com/AION-BRAIN/.github/discussions
+    about: "Use GitHub Discussions for questions, ideas, and community conversation"
+  - name: "🧠 Paradox Strategic Assessment"
+    url: https://github.com/AION-BRAIN/blob/main/assessments/paradox-strategic-assessment.md
+    about: "Take our assessment to demonstrate systematic thinking ability"
+  - name: "🤝 Contribution Guidelines"
+    url: https://github.com/AION-BRAIN/blob/main/CONTRIBUTING.md
+    about: "Read how to contribute meaningfully to AION-BRAIN"
+  - name: "📧 Research Collaboration"
+    url: mailto:AIONSYSTEM@outlook.com
+    about: "For formal research partnership inquiries"
