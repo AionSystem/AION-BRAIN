@@ -1,3 +1,4 @@
+---
 layout: default
 title: "Fifth Law Analysis"
 description: "The Anti-Merger Directive - Protecting Biological Sovereignty"
