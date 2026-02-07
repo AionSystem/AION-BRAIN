@@ -550,3 +550,16 @@ Review Cycle:
   - Quadrennial democratic review  
   - Decadal constitutional review
 ```
+
+<footer class="constitutional-capstone">
+  <p><strong>Sixth Law Status:</strong> Constitutional Capstone (Adopted)</p>
+  <p><strong>Framework Complete:</strong> Six Laws sovereignty protection stack established</p>
+  <p><strong>Effective Date:</strong> February 2026</p>
+  <p><strong>Review Cycle:</strong> Decadal (First review 2036)</p>
+  <p><strong>Integration Level:</strong> Reality sovereignty protection layer added</p>
+  <p><strong>Linked Framework:</strong> 
+    <a href="/constitutional/laws/fifth-law-analysis.md">Fifth Law Analysis</a> | 
+    <a href="/constitutional/invariants/system-invariants.md">System Invariants</a> |
+    <a href="/constitutional/boundaries/forbidden-capabilities.md">Forbidden Capabilities</a>
+  </p>
+</footer>
