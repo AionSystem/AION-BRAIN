@@ -1,4 +1,4 @@
-## 3. Fourth Law of Robotics (External Proposal)
+## Fourth Law of Robotics (External Proposal)
 
 ### 3.1 Original Formulation
 > "A robot must not, through inaction, allow a human being to come to harm."
