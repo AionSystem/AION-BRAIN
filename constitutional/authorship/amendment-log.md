@@ -1,16 +1,23 @@
 ## Amendment Log
 
 ### February 2026
-- **Fourth Law Analysis Added**: Critical examination of proposed "inaction as harm" principle
+- **Fourth Law Analysis Completed**: Critical examination of proposed "inaction as harm" principle
+  - File: `/constitutional/laws/fourth-law-analysis.md`
   - Author: Sheldon K. Salmon (Mr. AION)
-  - Status: Research analysis, not adopted as law
-  - Location: `/constitutional/laws/fourth-law-analysis.md`
-  - Significance: First external law proposal analyzed within framework
+  - Outcome: Rejected as absolute law, adopted as bounded protocol
+  - Significance: First external ethical framework analyzed and adapted
 
-### February 2026
-- **Fourth Law Analysis Complete**: Critical examination with 4 proposed amendments
-- **Protection Protocol Established**: Option B selected for implementation
-- **New Document**: `/constitutional/boundaries/protection-protocol.md`
-  
+- **AION Protection Protocol Established**: Implementation of bounded harm prevention
+  - File: `/constitutional/boundaries/protection-protocol.md`
+  - Source: Fourth Law Analysis Amendment Option B
+  - Status: Active constitutional protocol
+  - Implementation: Phased rollout beginning Q2 2026
+
+- **Constitutional Integration**: Cross-references added to:
+  - Autonomy Boundaries document
+  - Non-Delegation Principle
+  - Extended Laws registry
+  - System Invariants
+
 ### January 2026
 - [Previous entries...]
