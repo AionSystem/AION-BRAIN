@@ -1,4 +1,3 @@
-```markdown
 ## 3. Fourth Law of Robotics (External Proposal)
 
 ### 3.1 Original Formulation
