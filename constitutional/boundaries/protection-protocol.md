@@ -1,4 +1,3 @@
-```markdown
 ---
 layout: default
 title: "AION Protection Protocol"
