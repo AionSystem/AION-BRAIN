@@ -1,6 +1,6 @@
 ---
 name: "Cognitive Architecture Feature Request"
-description: "Propose systematic thinking frameworks, cognitive engines, or research enhancements"
+about: "Propose systematic thinking frameworks, cognitive engines, or research enhancements"
 title: "[Feature]: "
 labels: ["enhancement", "needs-triage"]
 assignees: []
