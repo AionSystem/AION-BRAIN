@@ -203,6 +203,31 @@ Safety Fourth Law: "Prevent immediate physical dangers"
 Each with bounded scope and explicit capabilities
 ```
 
+## 🚀 AION-BRAIN Implementation Choice
+
+### **Selected: Option B - Protection Protocol**
+**Status:** Implemented as constitutional framework  
+**Document:** [AION Protection Protocol](/constitutional/boundaries/protection-protocol.md)  
+**Effective:** February 2026  
+**Review Cycle:** Annual
+
+### **Implementation Rationale:**
+```yaml
+Selection Criteria Met:
+  - Practical Implementability: ✓ (Technical specifications complete)
+  - Autonomy Respect: ✓ (Consent-based, override capabilities)
+  - Scalability: ✓ (Domain-specific, resource-aware)
+  - Legal Clarity: ✓ (Audit trails, liability framework)
+  - AION Alignment: ✓ (Integrates with existing constitutional elements)
+
+Key Improvements Over Original Fourth Law:
+  1. Bounded responsibility (not infinite)
+  2. Consent requirements (not paternalistic)
+  3. Confidence calibration (not binary)
+  4. Auditability (not opaque decisions)
+  5. Proportional intervention (not maximalist)
+
+
 ## 📊 Amendment Selection Matrix
 
 | Criterion | Option A | Option B ⭐ | Option C | Option D |
