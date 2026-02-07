@@ -1,6 +1,6 @@
 # 🔬 AION-BRAIN: Research-Grade Cognitive Architecture for AI Safety
 
-> **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#-executive-summary-for-reviewers--funders)
+> **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#reviewer-summary)
 
 ## 🎯 For Reviewers & Collaborators: Start Here
 
@@ -12,11 +12,11 @@
 
 | Quick Path | What You'll Find | Time |
 |------------|-----------------|------|
-| **[Reviewer Summary](#-executive-summary-for-reviewers--funders)** | Full context for evaluation | 2 min |
-| **[Research Methodology](#-research-methodology--validation-protocol)** | Falsifiable hypotheses & protocols | 3 min |
-| **[What This Is NOT](#-what-aion-brain-is-not)** | Critical limitations upfront | 1 min |
-| **[Funding Model](#-validation-funding-modular-research-units)** | Modular validation units | 2 min |
-| **[Implemented Code](#-implemented-engines-reference-implementations)** | 7 reference implementations | 4 min |
+| **[Reviewer Summary](#reviewer-summary)** | Full context for evaluation | 2 min |
+| **[Research Methodology](#research-methodology)** | Falsifiable hypotheses & protocols | 3 min |
+| **[What This Is NOT](#what-this-is-not)** | Critical limitations upfront | 1 min |
+| **[Funding Model](#funding-model)** | Modular validation units | 2 min |
+| **[Implemented Code](#implemented-code)** | 7 reference implementations | 4 min |
 
 **Transparency Notice**: All performance claims are hypotheses requiring validation. Negative results will be published.
 
@@ -34,6 +34,7 @@
 ---
 
 ## ❌ What AION-BRAIN Is Not
+<a id="what-this-is-not"></a>
 
 | Category | Explicit Limitation |
 |----------|-------------------|
@@ -75,6 +76,7 @@
 ---
 
 ## 💻 Implemented Engines (Reference Implementations)
+<a id="implemented-code"></a>
 
 ### **1. Oracle Layer v1.0** ⚠️ *Hypothesis Under Evaluation*
 **Primary Hypothesis**: Structured confidence declaration reduces user overreliance by ≥30% in high-stakes domains.
@@ -161,6 +163,8 @@ Cognitive Architecture Engines 🧪 Designed, Validation Needed
 
 🔬 Research Methodology & Validation Protocol
 
+<a id="research-methodology"></a>
+
 Standardized Testing Framework
 
 Each engine includes:
@@ -190,6 +194,8 @@ Negative Results Commitment: All validation failures and null hypothesis confirm
 ---
 
 💰 Validation Funding: Modular Research Units
+
+<a id="funding-model"></a>
 
 Funding Model: Pay-Per-Validation
 
@@ -324,6 +330,8 @@ Path D: Domain Expertise
 ---
 
 📊 Executive Summary (For Reviewers & Funders)
+
+<a id="reviewer-summary"></a>
 
 Project: AION-BRAIN - 30-engine cognitive architecture for AI safety validation
 
