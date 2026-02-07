@@ -1,1 +1,29 @@
+/* Custom styles for AION-BRAIN */
+:root {
+  --primary-blue: #2563eb;
+  --research-purple: #7c3aed;
+  --safety-green: #059669;
+  --warning-amber: #d97706;
+}
 
+.research-badge {
+  background: linear-gradient(135deg, var(--primary-blue), var(--research-purple));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.engine-card {
+  border-left: 4px solid var(--primary-blue);
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+.funding-tier {
+  border: 2px solid var(--safety-green);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
