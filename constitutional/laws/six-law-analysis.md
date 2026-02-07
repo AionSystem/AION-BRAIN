@@ -1,3 +1,4 @@
+---
 layout: default
 title: "Sixth Law Analysis"
 description: "Anti-Weaponization Directive - Protecting Reality Integrity"
