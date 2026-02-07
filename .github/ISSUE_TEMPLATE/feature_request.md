@@ -1,174 +1,190 @@
 ---
-name: 🚀 Feature Request
-description: Propose a new cognitive engine, framework, or systematic thinking enhancement
+name: "Cognitive Architecture Feature Request"
+description: "Propose systematic thinking frameworks, cognitive engines, or research enhancements"
 title: "[Feature]: "
 labels: ["enhancement", "needs-triage"]
 assignees: []
 ---
 
-# Systematic Feature Proposal
+# 🚀 AION-BRAIN Feature Request
 
-**Before submitting:** Have you taken the [Paradox Strategic Assessment](https://github.com/AION-BRAIN/blob/main/assessments/paradox-strategic-assessment.md)? High scorers receive prioritized review.
+## 🔍 Before You Begin
 
-This template helps us evaluate proposals systematically. Thoughtful completion demonstrates the systematic thinking we value.
+**Important:** AION-BRAIN is **research software**, not production code. We prioritize:
+- Systematic thinking research advancement
+- Testable hypotheses with validation protocols
+- Cognitive infrastructure development
+- Contributions from systematic thinkers
 
----
-
-## ✅ Prerequisites
-Please confirm **all** of the following:
-
-- [ ] I've read [ARCHITECT.md](https://github.com/AION-BRAIN/blob/main/ARCHITECT.md) to understand project philosophy
-- [ ] I've tried existing engines to understand the architecture
-- [ ] This feature aligns with AION's non-negotiables (epistemic humility, contamination prevention, ethical design, accessibility)
-- [ ] I understand AION-BRAIN is research software, not production code
+**Have you taken the [Paradox Strategic Assessment](https://github.com/AION-BRAIN/blob/main/assessments/paradox-strategic-assessment.md)?** High scorers receive prioritized review.
 
 ---
 
-## 🧠 Systematic Problem Statement
-*What cognitive gap or systematic failure does this address?*
+## 📋 Prerequisites Checklist
 
-**Example:** Current AI systems fail to [specific cognitive failure] when [context], leading to [negative outcome]. This matters because [systemic impact].
+*Confirm you've done the following:*
+
+- [ ] Read [ARCHITECT.md](https://github.com/AION-BRAIN/blob/main/ARCHITECT.md) (project philosophy)
+- [ ] Read [CONTRIBUTING.md](https://github.com/AION-BRAIN/blob/main/CONTRIBUTING.md) (contribution pathways)
+- [ ] Tried at least one existing engine
+- [ ] Feature aligns with AION principles:
+  - Epistemic humility (acknowledging uncertainty)
+  - Contamination prevention (independent verification)
+  - Ethical design (misuse prevention)
+  - Accessibility (clear, teachable frameworks)
+
+---
+
+## 1️⃣ Problem Statement
+*What specific cognitive gap or systematic failure does this address?*
+
+**Example format:** "Current AI systems fail to [specific cognitive failure] when [context], leading to [negative outcome]."
 
 **Your answer:**
 
 ---
 
-## 🔬 Testable Hypothesis  
-*What falsifiable claim does this feature test?*
+## 2️⃣ Testable Hypothesis
+*What falsifiable claim would this feature test?*
 
-**Example:** By implementing [mechanism], we hypothesize that [metric] will improve by [amount] in [context], falsifiable by [test].
-
-**Your answer:**
-
----
-
-## 🌊 Second-Order Effects Analysis
-*What are the potential unintended consequences or ripple effects?*
-
-**Consider:**
-- Primary effect: [direct outcome]
-- Second-order: [indirect consequence] 
-- Third-order: [systemic impact]
-- Potential failure modes: [how this could make things worse]
+**Example format:** "Implementing [mechanism] will improve [metric] by [amount] in [context], falsifiable by [specific test]."
 
 **Your answer:**
 
 ---
 
-## 🏗️ Feature Category
-*Which tier of the cognitive architecture does this belong to?*
+## 3️⃣ Systems Impact Analysis
+*What are the potential second and third-order effects?*
 
-- [ ] **Tier 1: Foundation** (Constraint Systems - Oracle Layer, Epistemic Humility, etc.)
-- [ ] **Tier 2: Cognitive** (Methodology Systems - Decision, Strategy, Credibility Engines)
-- [ ] **Tier 3: Domain-Specific** (Expertise Systems - Medical, Legal, Financial)
-- [ ] **Tier 4: Experimental** (Research Systems - Truth Engine, Cultural Analysis)
-- [ ] **Cross-Tier Integration**
-- [ ] **Tooling/Infrastructure**
-
----
-
-## ⚙️ Implementation Sketch
-*Brief outline of how this might work (no technical details required)*
-
-**Consider:**
-- Core mechanism: [basic approach]
-- Inputs: [what the engine/system would take]
-- Processing: [key transformations or analyses]
-- Outputs: [what users would receive]
-- Ethical safeguards: [how misuse would be prevented]
+Consider:
+- Direct outcomes
+- Indirect consequences (second-order)
+- Systemic impacts (third-order)
+- Potential failure modes
 
 **Your answer:**
 
 ---
 
-## 🧪 Validation Protocol
-*How would we test if this feature works as intended?*
+## 4️⃣ Architecture Tier
+*Where does this fit in the cognitive architecture?*
 
-**Consider:**
-- Test scenarios: [specific situations to test]
-- Success criteria: [measurable outcomes]
-- Failure conditions: [what would indicate the hypothesis is wrong]
-- Baseline comparison: [how performance compares to current approaches]
+Select one:
+- [ ] **Tier 1: Foundation** (Constraint systems: Confidence calibration, bias prevention, ethical guardrails)
+- [ ] **Tier 2: Cognitive** (Methodology systems: Decision, strategy, explanation frameworks)
+- [ ] **Tier 3: Domain-Specific** (Expertise systems: Medical, legal, financial reasoning)
+- [ ] **Tier 4: Experimental** (Research systems: Frontier concepts, novel approaches)
+- [ ] **Cross-Tier Integration** (Connects multiple architecture levels)
+- [ ] **Tooling/Infrastructure** (Developer tools, testing frameworks)
+
+---
+
+## 5️⃣ Implementation Overview
+*High-level description of how this would work*
+
+Include:
+- Core mechanism or approach
+- Required inputs
+- Processing steps
+- Expected outputs
+- Ethical safeguards
 
 **Your answer:**
 
 ---
 
-## 🔄 Alternative Approaches Considered
-*What other ways could this problem be solved? Why is your approach optimal?*
+## 6️⃣ Validation Approach
+*How would we test if this works?*
 
-**Consider:**
-- Alternative 1: [description] - Rejected because [reason]
-- Alternative 2: [description] - Less optimal because [reason]
-- Why this approach: [advantages over alternatives]
-
-**Your answer:**
-
----
-
-## 📊 Resources & Constraints
-*What would implementing this require?*
-
-**Consider:**
-- Research needed: [knowledge gaps to fill]
-- Data requirements: [what training/validation data]
-- Computational costs: [API, processing needs]
-- Expertise required: [domain knowledge, technical skills]
-- Time estimate: [realistic implementation timeline]
+Include:
+- Specific test scenarios
+- Success criteria (measurable outcomes)
+- Failure conditions
+- Comparison baseline (vs. current approaches)
 
 **Your answer:**
 
 ---
 
-## 🤝 Contribution Pathway
-*How could you contribute to developing this feature? (Optional)*
-
-**Consider:**
-- I can contribute: [specific skills or resources]
-- I need help with: [areas where I lack expertise]
-- Proposed timeline: [when/how development could happen]
-- Collaboration preferences: [how you'd like to work together]
+## 7️⃣ Alternatives Considered
+*What other approaches could solve this problem? Why is your approach better?*
 
 **Your answer:**
 
 ---
 
-## 📝 Additional Context
-*Anything else we should know? (Optional)*
+## 8️⃣ Resource Requirements
+*What would implementation require?*
 
-**Consider:**
-- Personal motivation: [why this matters to you]
-- Related work: [similar systems or research]
-- Potential collaborators: [people/organizations who might help]
-- Questions for the community: [what you'd like feedback on]
+Consider:
+- Research needed
+- Data requirements
+- Computational resources
+- Expertise needed
+- Time estimates
 
 **Your answer:**
 
 ---
 
-## 📋 Review Process
+## 9️⃣ Contribution Pathway (Optional)
+*How could you help develop this?*
 
-### **Stage 1:** Triage (1-2 weeks)
-- Check alignment with AION philosophy
-- Initial feasibility assessment
+Include skills, availability, or specific contributions you could make.
 
-### **Stage 2:** Community Discussion (2-4 weeks)
+**Your answer:**
+
+---
+
+## 🔟 Additional Context (Optional)
+*Anything else we should know?*
+
+**Your answer:**
+
+---
+
+## 📊 Review Process
+
+### **Stage 1: Initial Triage (1-2 weeks)**
+- Alignment with AION philosophy check
+- Feasibility assessment
+- Priority categorization
+
+### **Stage 2: Community Discussion (2-4 weeks)**
 - GitHub Discussions thread
-- Refinement based on feedback
+- Feedback and refinement
+- Community interest assessment
 
-### **Stage 3:** Research Design (if approved)
+### **Stage 3: Research Design (If approved)**
 - Detailed specification
 - Validation protocol design
 - Resource planning
-
-### **Note:** 
-Most feature requests will **NOT** be implemented. We prioritize:
-1. Features advancing systematic thinking research
-2. Well-specified, testable hypotheses  
-3. Proposals from PSA high scorers
-4. Community-supported ideas with validation plans
+- Implementation roadmap
 
 ---
 
-*Thank you for thinking systematically with us.*  
-*AION-BRAIN Cognitive Architecture Division*
+## ⚠️ Important Notes
+
+**Realistic Expectations:**
+- Most feature requests will not be implemented
+- We prioritize research-grade, systematic approaches
+- Implementation depends on funding and community interest
+- All features require validation protocols
+
+**What We Look For:**
+1. Systematic thinking demonstration
+2. Falsifiable hypotheses
+3. Second-order effect consideration
+4. Alignment with cognitive infrastructure goals
+5. Realistic resource awareness
+
+**Next Steps After Submission:**
+1. You'll receive acknowledgement within 1 week
+2. Status updates via issue comments
+3. Potential invitation to Discussion thread
+4. Final decision within 4-6 weeks
+
+---
+
+*Thank you for contributing to systematic thinking infrastructure.*  
+*— AION-BRAIN Cognitive Architecture Team*
