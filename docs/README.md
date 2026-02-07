@@ -12,10 +12,10 @@
 
 | Quick Path | What You'll Find | Time |
 |------------|-----------------|------|
-| **[Reviewer Summary](#executive-summary)** | Full context for evaluation | 2 min |
-| **[Research Methodology](#research-methodology--validation-protocol)** | Falsifiable hypotheses & protocols | 3 min |
+| **[Reviewer Summary](#-Executive-Summary)** | Full context for evaluation | 2 min |
+| **[Research Methodology](#-research-methodology-validation-protocol)** | Falsifiable hypotheses & protocols | 3 min |
 | **[What This Is NOT](#-what-aion-brain-is-not)** | Critical limitations upfront | 1 min |
-| **[Funding Model](#validation-funding-modular-research-units)** | Modular validation units | 2 min |
+| **[Funding Model](#-validation-funding-modular-research-units)** | Modular validation units | 2 min |
 | **[Implemented Code](#implemented-engines-reference-implementations)** | 7 reference implementations | 4 min |
 
 **Transparency Notice**: All performance claims are hypotheses requiring validation. Negative results will be published.
