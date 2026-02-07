@@ -1,1 +1,22 @@
+name: Research Validation Pipeline
 
+on:
+  workflow_dispatch:  # Manual trigger
+    inputs:
+      engine:
+        description: 'Which engine to validate'
+        required: true
+      test_budget:
+        description: 'Budget in dollars'
+        required: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calculate tests
+        run: |
+          TESTS = ${{ inputs.test_budget }} / 0.025
+          echo "Running $TESTS validation tests"
+      # API calls to OpenAI/Anthropic
+      # Results → GitHub Issues with validation report
