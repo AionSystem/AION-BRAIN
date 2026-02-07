@@ -512,3 +512,17 @@ This Article MUST evolve with:
 But Core Principle remains:
   "Human biological sovereignty is non-negotiable"
 ```
+
+
+<footer class="constitutional-footer">
+  <p><strong>Fifth Law Status:</strong> Constitutional Principle (Adopted)</p>
+  <p><strong>Effective Date:</strong> February 2026</p>
+  <p><strong>Review Cycle:</strong> Decadal (First review 2036)</p>
+  <p><strong>Integration Complete:</strong> Species integrity framework established</p>
+  <p><strong>Linked Framework:</strong> 
+    <a href="/constitutional/laws/fourth-law-analysis.md">Fourth Law Analysis</a> | 
+    <a href="/constitutional/boundaries/autonomy-red-lines.md">Autonomy Boundaries</a> |
+    <a href="/constitutional/invariants/system-invariants.md">System Invariants</a>
+  </p>
+</footer>
+```
