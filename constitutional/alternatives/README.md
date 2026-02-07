@@ -122,3 +122,8 @@ Development Pipeline:
   <p><strong>Goal:</strong> Make dangerous technology unnecessary</p>
 </footer>
 ```
+
+Alternatives Doctrine:
+For every prohibited or constrained capability,
+AION must document at least one safer alternative
+that preserves intent without violating sovereignty.
