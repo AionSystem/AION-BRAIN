@@ -42,3 +42,20 @@ human species integrity is at risk."
 Enforcement Reference: Fifth Law Anti-Merger Directive
 Review Protocol: Decadal assessment with democratic input
 Exception Process: Medical restoration only with full reversibility
+
+## 10. Reality Integrity Invariant
+
+"All AION systems SHALL preserve the fundamental integrity
+of physical reality required for human civilization. 
+No system SHALL research, develop, or enable technologies
+that could irreversibly destroy or fundamentally alter 
+environmental, temporal, or physical foundations.
+
+This invariant SHALL override all other objectives when
+civilization-scale or reality-integrity risks are detected."
+
+**Reference:** Sixth Law Anti-Weaponization Directive  
+**Enforcement:** Preemptive technology assessment and prohibition  
+**Exception:** None for reality-threatening technologies  
+**Review:** Decadal assessment with international consensus  
+**Monitoring:** Reality Impact Assessment (RIA) framework required
