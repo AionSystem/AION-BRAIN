@@ -31,3 +31,14 @@ Full implementation details in:
 - **Override Functionality**: Regular testing of human override
 - **Proportionality Check**: Review of intervention minimalism
 - **Effectiveness Metrics**: Measurement of harm prevention vs. autonomy impact
+
+## 8. Species Integrity Invariant
+
+"All AION systems SHALL preserve human biological sovereignty 
+and SHALL prevent any merger of AI with human biological systems. 
+This invariant SHALL override any other system objective when 
+human species integrity is at risk."
+
+Enforcement Reference: Fifth Law Anti-Merger Directive
+Review Protocol: Decadal assessment with democratic input
+Exception Process: Medical restoration only with full reversibility
