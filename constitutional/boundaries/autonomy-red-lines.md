@@ -148,22 +148,77 @@ International Layer (Treaty Framework):
 
 The Fifth Law creates the foundation for all other boundaries:
 
-```
-   mermaid
- graph TD
-    A[Fifth Law: No Biological Merger] --> B[Cognitive Autonomy]
-    A --> C[Decision Autonomy] 
-    A --> D[Biological Autonomy]
-    
-    B --> B1[Thought free from AI influence]
-    B --> B2[Memory free from AI alteration]
-    
-    C --> C1[Choices free from AI manipulation]
-    C --> C2[Values free from AI programming]
-    
-    D --> D1[Body free from AI integration]
-    D --> D2[Biology free from AI alteration]
-```
+<div class="autonomy-diagram">
+  <div class="foundation">
+    <strong>Fifth Law: No Biological Merger</strong>
+    <div class="branches">
+      <div class="branch">
+        <div class="branch-title">Cognitive Autonomy</div>
+        <div class="protections">
+          <div class="protection">✓ Thought free from AI influence</div>
+          <div class="protection">✓ Memory free from AI alteration</div>
+        </div>
+      </div>
+      <div class="branch">
+        <div class="branch-title">Decision Autonomy</div>
+        <div class="protections">
+          <div class="protection">✓ Choices free from AI manipulation</div>
+          <div class="protection">✓ Values free from AI programming</div>
+        </div>
+      </div>
+      <div class="branch">
+        <div class="branch-title">Biological Autonomy</div>
+        <div class="protections">
+          <div class="protection">✓ Body free from AI integration</div>
+          <div class="protection">✓ Biology free from AI alteration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.autonomy-diagram {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #2563eb;
+  margin: 20px 0;
+}
+.autonomy-diagram .foundation {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed #ccc;
+}
+.autonomy-diagram .branches {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.autonomy-diagram .branch {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 15px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+.autonomy-diagram .branch-title {
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.autonomy-diagram .protection {
+  margin: 5px 0;
+  padding-left: 10px;
+  border-left: 3px solid #10b981;
+}
+</style>
+
 
 5.6 Special Cases and Edge Conditions
 
