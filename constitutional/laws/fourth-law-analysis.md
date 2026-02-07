@@ -203,6 +203,19 @@ Safety Fourth Law: "Prevent immediate physical dangers"
 Each with bounded scope and explicit capabilities
 ```
 
+## 📊 Amendment Selection Matrix
+
+| Criterion | Option A | Option B ⭐ | Option C | Option D |
+|-----------|----------|------------|----------|----------|
+| **Implementability** | Low | High | Medium | Medium |
+| **Autonomy Respect** | Medium | High | High | Medium |
+| **Legal Clarity** | Low | Medium | High | High |
+| **Asimovian Spirit** | High | Medium | Low | Medium |
+| **Scalability** | Low | High | Medium | Medium |
+| **AION Alignment** | Medium | High | Medium | Medium |
+
+**Winner:** Option B - Best balance of principle and practice
+
 
 ## 🚀 AION-BRAIN Implementation Choice
 
@@ -228,17 +241,3 @@ Key Improvements Over Original Fourth Law:
   4. Auditability (not opaque decisions)
   5. Proportional intervention (not maximalist)
 
-
-
-## 📊 Amendment Selection Matrix
-
-| Criterion | Option A | Option B ⭐ | Option C | Option D |
-|-----------|----------|------------|----------|----------|
-| **Implementability** | Low | High | Medium | Medium |
-| **Autonomy Respect** | Medium | High | High | Medium |
-| **Legal Clarity** | Low | Medium | High | High |
-| **Asimovian Spirit** | High | Medium | Low | Medium |
-| **Scalability** | Low | High | Medium | Medium |
-| **AION Alignment** | Medium | High | Medium | Medium |
-
-**Winner:** Option B - Best balance of principle and practice
