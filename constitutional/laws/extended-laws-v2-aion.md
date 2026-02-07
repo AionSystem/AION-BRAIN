@@ -1,4 +1,4 @@
-## 4. Fifth Law: Anti-Merger Directive
+## Fifth Law: Anti-Merger Directive
 
 **Status:** Constitutional Principle (Adopted February 2026)  
 **Source:** Sheldon Salmon, October 28, 2025  
