@@ -1,4 +1,4 @@
-## 5. Sixth Law: Anti-Weaponization Directive
+## Sixth Law: Anti-Weaponization Directive
 
 **Status:** Constitutional Capstone (Adopted February 2026)  
 **Source:** Sheldon Salmon, Framework Completion 2025  
