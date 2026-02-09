@@ -1,4 +1,4 @@
-name: Research Validation Pipeline
+name: Research Validation
 
 on:
   workflow_dispatch:  # Manual trigger
