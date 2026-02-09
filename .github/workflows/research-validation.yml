@@ -68,7 +68,7 @@ jobs:
           REPORT_BODY=$(cat <<EOF
   ### ✅ Research Validation Report
   
-    **Workflow Run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+  **Workflow Run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
   **Validated Engine:** \`${{ steps.calculate.outputs.engine }}\`
   **Budget Used:** $${{ steps.calculate.outputs.budget }}
   **Tests Simulated:** ${{ steps.calculate.outputs.tests }}
@@ -81,7 +81,7 @@ jobs:
   3. Parse and score API responses.
   
   *This is a mock report. Enable real API calls by adding secrets and uncommenting the API step.*
-  EOF
+EOF
           )
           
           # Use GitHub CLI to create an issue
