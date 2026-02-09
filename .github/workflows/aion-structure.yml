@@ -1,371 +1,139 @@
-name: AION Structure Scanner
-on:
-  push:
-    branches: [ main, master ]
-    paths:
-      - '**'  # Trigger on any file change
-  pull_request:
-    branches: [ main, master ]
-  workflow_dispatch:  # Manual trigger
-  schedule:
-    # Run daily at midnight UTC to keep structure updated
-    - cron: '0 0 * * *'
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
+    with:
+      fetch-depth: 0
+      token: ${{ secrets.GITHUB_TOKEN }}
+      persist-credentials: true  # Important for push
 
-jobs:
-  scan-structure:
-    name: 📁 Scan Repository Structure
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Needed to commit the structure file
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+  - name: Set up Python
+    uses: actions/setup-python@v5
+    with:
+      python-version: '3.11'
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Create structure scanner script
-        run: |
-          cat > scan_structure.py << 'EOF'
-          #!/usr/bin/env python3
-          """
-          AION-BRAIN Structure Scanner
-          Scans repository and generates structured documentation.
-          """
-          
-          import os
-          import json
-          from pathlib import Path
-          from datetime import datetime
-          from typing import Dict, List, Any
-          
-          # Configuration
-          IGNORE_DIRS = {
-              '.git', '.github', '__pycache__', '.pytest_cache',
-              'node_modules', 'venv', 'env', '.vscode', '.idea',
-              'dist', 'build', '*.egg-info', '.aions-structure-list'
-          }
-          
-          IGNORE_FILES = {
-              '.DS_Store', 'thumbs.db', '.gitignore', '.gitmodules',
-              '*.pyc', '*.pyo', '*.pyd', '.coverage', '.env', '.env.local'
-          }
-          
-          FILE_ICONS = {
-              '.py': '🐍',
-              '.md': '📄',
-              '.yml': '⚙️',
-              '.yaml': '⚙️',
-              '.json': '🗂️',
-              '.txt': '📝',
-              '.js': '📜',
-              '.ts': '📜',
-              '.html': '🌐',
-              '.css': '🎨',
-              '.jpg': '🖼️',
-              '.jpeg': '🖼️',
-              '.png': '🖼️',
-              '.gitignore': '👁️',
-              '.env': '🔐',
-              'requirements': '📦',
-              'dockerfile': '🐳',
-              'readme': '📖'
-          }
-          
-          def get_icon(filename: str) -> str:
-              """Get appropriate icon for file type."""
-              name_lower = filename.lower()
-              for key, icon in FILE_ICONS.items():
-                  if key.startswith('.') and filename.endswith(key):
-                      return icon
-                  elif key in name_lower:
-                      return icon
-              return '📄'
-          
-          def should_ignore(path: str) -> bool:
-              """Check if path should be ignored."""
-              path_parts = Path(path).parts
-              
-              # Check directories to ignore
-              for part in path_parts:
-                  if part in IGNORE_DIRS:
-                      return True
-                  for ignore_pattern in IGNORE_DIRS:
-                      if ignore_pattern.startswith('*') and part.endswith(ignore_pattern[1:]):
-                          return True
-              
-              # Check files to ignore
-              filename = Path(path).name
-              if filename in IGNORE_FILES:
-                  return True
-              for ignore_pattern in IGNORE_FILES:
-                  if ignore_pattern.startswith('*') and filename.endswith(ignore_pattern[1:]):
-                      return True
-              
-              return False
-          
-          def analyze_file(filepath: str) -> Dict[str, Any]:
-              """Analyze a file and extract metadata."""
-              path = Path(filepath)
-              stats = path.stat()
-              
-              analysis = {
-                  'name': path.name,
-                  'path': str(path),
-                  'size': stats.st_size,
-                  'modified': datetime.fromtimestamp(stats.st_mtime).isoformat(),
-                  'icon': get_icon(path.name),
-                  'lines': 0,
-                  'type': 'file'
-              }
-              
-              # Count lines for text files
-              if path.suffix in ['.py', '.md', '.txt', '.yml', '.yaml', '.json', '.js', '.ts']:
-                  try:
-                      with open(filepath, 'r', encoding='utf-8') as f:
-                          analysis['lines'] = sum(1 for _ in f)
-                  except:
-                      analysis['lines'] = 0
-              
-              return analysis
-          
-          def analyze_directory(dirpath: str) -> Dict[str, Any]:
-              """Analyze a directory and its contents."""
-              path = Path(dirpath)
-              
-              analysis = {
-                  'name': path.name,
-                  'path': str(path),
-                  'type': 'directory',
-                  'files': [],
-                  'subdirs': [],
-                  'total_files': 0,
-                  'total_lines': 0
-              }
-              
-              try:
-                  items = list(path.iterdir())
-                  items.sort(key=lambda x: (not x.is_dir(), x.name.lower()))
-                  
-                  for item in items:
-                      if should_ignore(str(item)):
-                          continue
-                          
-                      if item.is_dir():
-                          subdir_analysis = analyze_directory(str(item))
-                          analysis['subdirs'].append(subdir_analysis)
-                          analysis['total_files'] += subdir_analysis['total_files']
-                          analysis['total_lines'] += subdir_analysis['total_lines']
-                      else:
-                          file_analysis = analyze_file(str(item))
-                          analysis['files'].append(file_analysis)
-                          analysis['total_files'] += 1
-                          analysis['total_lines'] += file_analysis['lines']
-              except (PermissionError, OSError):
-                  pass
-              
-              return analysis
-          
-          def generate_markdown(structure: Dict[str, Any], depth: int = 0) -> str:
-              """Generate markdown from structure analysis."""
-              indent = '  ' * depth
-              markdown = []
-              
-              if depth == 0:
-                  # Root directory
-                  name = structure['name'] or 'AION-BRAIN Repository'
-                  markdown.append(f"# 📁 {name} Structure\n")
-                  markdown.append(f"**Last Updated:** {datetime.now().isoformat()}")
-                  markdown.append(f"**Total Files:** {structure['total_files']:,}")
-                  markdown.append(f"**Total Lines of Code:** {structure['total_lines']:,}")
-                  markdown.append("\n---\n")
-                  
-                  # Summary table
-                  markdown.append("## 📊 Repository Summary\n")
-                  markdown.append("| Type | Count |")
-                  markdown.append("|------|-------|")
-                  
-                  # Count file types
-                  file_counts = {}
-                  def count_files(node):
-                      for file in node.get('files', []):
-                          ext = Path(file['name']).suffix
-                          file_counts[ext] = file_counts.get(ext, 0) + 1
-                      for subdir in node.get('subdirs', []):
-                          count_files(subdir)
-                  
-                  count_files(structure)
-                  for ext, count in sorted(file_counts.items()):
-                      ext_display = ext if ext else 'no extension'
-                      markdown.append(f"| `{ext_display}` | {count:,} |")
-                  
-                  markdown.append("")
-              
-              # Directory contents
-              if structure['files']:
-                  markdown.append(f"\n{indent}### 📂 {structure['name']}/\n")
-                  
-                  # Files table
-                  markdown.append(f"{indent}| Icon | File | Size | Lines | Modified |")
-                  markdown.append(f"{indent}|------|------|------|-------|----------|")
-                  
-                  for file in sorted(structure['files'], key=lambda x: x['name'].lower()):
-                      size_kb = f"{file['size'] / 1024:.1f} KB" if file['size'] > 1024 else f"{file['size']} B"
-                      lines = file['lines'] if file['lines'] > 0 else '—'
-                      modified = file['modified'][:10]  # Just date
-                      
-                      # Create clickable link for GitHub
-                      rel_path = file['path'].replace('./', '')
-                      file_link = f"[`{file['name']}`](./{rel_path})"
-                      
-                      markdown.append(f"{indent}| {file['icon']} | {file_link} | {size_kb} | {lines} | {modified} |")
-                  
-                  markdown.append("")
-              
-              # Recursively process subdirectories
-              for subdir in sorted(structure['subdirs'], key=lambda x: x['name'].lower()):
-                  if subdir['total_files'] > 0:  # Only show non-empty directories
-                      subdir_md = generate_markdown(subdir, depth + 1)
-                      markdown.append(subdir_md)
-              
-              return '\n'.join(markdown)
-          
-          def main():
-              """Main function."""
-              print("🚀 Scanning AION-BRAIN repository structure...")
-              
-              # Start scanning from root
-              root_structure = analyze_directory('.')
-              
-              # Generate markdown
-              markdown_content = generate_markdown(root_structure)
-              
-              # Ensure output directory exists
-              output_dir = Path('.aions-structure-list')
-              output_dir.mkdir(exist_ok=True)
-              
-              # Write structure file
-              output_file = output_dir / 'STRUCTURE.MD'
-              output_file.write_text(markdown_content, encoding='utf-8')
-              
-              # Also create a JSON version for programmatic use
-              json_output = output_dir / 'structure.json'
-              json_output.write_text(
-                  json.dumps(root_structure, indent=2, default=str),
-                  encoding='utf-8'
-              )
-              
-              # Generate summary
-              print(f"\n✅ Structure scan complete!")
-              print(f"📊 Files found: {root_structure['total_files']:,}")
-              print(f"📝 Total lines: {root_structure['total_lines']:,}")
-              print(f"💾 Output saved to: {output_file}")
-              
-              # Print interesting findings
-              print("\n🔍 Interesting findings:")
-              python_files = []
-              
-              def find_python_files(node):
-                  for file in node.get('files', []):
-                      if file['name'].endswith('.py'):
-                          python_files.append(file['path'])
-                  for subdir in node.get('subdirs', []):
-                      find_python_files(subdir)
-              
-              find_python_files(root_structure)
-              if python_files:
-                  print(f"🐍 Python files: {len(python_files)}")
-                  for py_file in sorted(python_files)[:10]:  # Show first 10
-                      print(f"   - {py_file}")
-                  if len(python_files) > 10:
-                      print(f"   ... and {len(python_files) - 10} more")
-          
-          if __name__ == '__main__':
-              main()
-          EOF
-          
-          # Make script executable
-          chmod +x scan_structure.py
-
-      - name: Run structure scanner
-        run: |
-          python scan_structure.py
-
-      - name: Verify structure file was created
-        run: |
-          echo "Generated structure file:"
-          echo "---"
-          head -50 .aions-structure-list/STRUCTURE.MD
-          echo "---"
-          echo ""
-          echo "JSON structure file:"
-          ls -la .aions-structure-list/
-
-      - name: Commit and push structure updates
-        run: |
-          # Configure git
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          # Check if there are changes to commit
-          if git diff --quiet HEAD .aions-structure-list/; then
-            echo "No changes to structure files"
-          else
-            echo "Committing updated structure files..."
-            git add .aions-structure-list/
-            git commit -m "🤖 Auto-update: Repository structure scan [skip ci]"
-            git push
-          fi
-
-      - name: Upload structure report as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: aion-structure-report
-          path: |
-            .aions-structure-list/
-            scan_structure.py
-          retention-days: 7
-
-  structure-summary:
-    name: 📋 Structure Summary
-    runs-on: ubuntu-latest
-    needs: scan-structure
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  - name: Create SIMPLE structure scanner
+    run: |
+      cat > simple_scan.py << 'EOF'
+      #!/usr/bin/env python3
+      print("📁 Scanning AION-BRAIN repository...")
       
-      - name: Display structure summary
-        run: |
-          echo "🎯 AION-BRAIN Structure Summary"
-          echo "================================"
-          echo ""
+      import os
+      from pathlib import Path
+      import json
+      
+      # Count everything
+      total_files = 0
+      total_dirs = 0
+      python_files = 0
+      md_files = 0
+      
+      file_list = []
+      
+      # Walk through all files
+      for root, dirs, files in os.walk('.'):
+          # Skip hidden directories
+          dirs[:] = [d for d in dirs if not d.startswith('.')]
           
-          if [ -f ".aions-structure-list/STRUCTURE.MD" ]; then
-            echo "📁 Repository Structure Overview:"
-            echo ""
-            # Extract key metrics
-            grep -E "Total Files:|Total Lines:|Last Updated:" .aions-structure-list/STRUCTURE.MD | head -3
-            echo ""
-            
-            echo "📊 File Type Distribution:"
-            echo ""
-            # Extract file type table
-            sed -n '/Repository Summary/,/^$/p' .aions-structure-list/STRUCTURE.MD | grep -E "\|.*\|" | head -10
-            echo ""
-            
-            echo "🔍 Top Directories:"
-            # Count Python files by directory
-            find . -name "*.py" ! -path "./.*" ! -path "*/__pycache__/*" | \
-              xargs dirname | sort | uniq -c | sort -rn | head -5 | \
-              while read count dir; do
-                echo "  $dir: $count Python files"
-              done
-          else
-            echo "⚠️ Structure file not found"
-          fi
+          # Skip specific directories
+          skip_dirs = ['.git', '.github', '__pycache__', 'node_modules', 'venv']
+          dirs[:] = [d for d in dirs if d not in skip_dirs]
+          
+          total_dirs += 1
+          
+          for file in files:
+              if file.startswith('.'):
+                  continue
+                  
+              total_files += 1
+              filepath = os.path.join(root, file)
+              
+              if file.endswith('.py'):
+                  python_files += 1
+              elif file.endswith('.md'):
+                  md_files += 1
+              
+              file_list.append(filepath)
+      
+      # Create output
+      stats = {
+          "total_files": total_files,
+          "total_directories": total_dirs,
+          "python_files": python_files,
+          "markdown_files": md_files,
+          "scan_time": "2024-01-01"  # Will be updated
+      }
+      
+      # Create directory
+      output_dir = Path('.aions-structure-list')
+      output_dir.mkdir(exist_ok=True)
+      
+      # Save stats
+      with open(output_dir / 'stats.json', 'w') as f:
+          json.dump(stats, f, indent=2)
+      
+      # Create simple markdown
+      with open(output_dir / 'STRUCTURE.MD', 'w') as f:
+          f.write(f"# 📊 AION-BRAIN Repository Stats\n\n")
+          f.write(f"- **Total Files:** {total_files}\n")
+          f.write(f"- **Total Directories:** {total_dirs}\n")
+          f.write(f"- **Python Files:** {python_files}\n")
+          f.write(f"- **Markdown Files:** {md_files}\n\n")
+          f.write("## Recent Files (first 20):\n```\n")
+          for file in sorted(file_list)[:20]:
+              f.write(f"{file}\n")
+          f.write("```\n")
+      
+      print(f"✅ Scan complete!")
+      print(f"📁 Directories: {total_dirs}")
+      print(f"📄 Files: {total_files}")
+      print(f"🐍 Python: {python_files}")
+      print(f"📚 Markdown: {md_files}")
+      EOF
+      
+      python simple_scan.py
+
+  - name: Create badge snippet for README
+    run: |
+      # Read stats
+      if [ -f ".aions-structure-list/stats.json" ]; then
+        TOTAL_FILES=$(python -c "import json; print(json.load(open('.aions-structure-list/stats.json'))['total_files'])")
+        TOTAL_DIRS=$(python -c "import json; print(json.load(open('.aions-structure-list/stats.json'))['total_directories'])")
+        PY_FILES=$(python -c "import json; print(json.load(open('.aions-structure-list/stats.json'))['python_files'])")
+        
+        # Create badge markdown
+        cat > .aions-structure-list/BADGE-SNIPPET.md << EOF
+      ## 📊 Repository Stats
+      
+      ![Files](https://img.shields.io/badge/Files-${TOTAL_FILES}-blue)
+      ![Directories](https://img.shields.io/badge/Directories-${TOTAL_DIRS}-green)
+      ![Python](https://img.shields.io/badge/Python-${PY_FILES}-yellow)
+      
+      *Updated automatically*
+      EOF
+        
+        echo "Badge snippet created!"
+        cat .aions-structure-list/BADGE-SNIPPET.md
+      else
+        echo "No stats file found"
+      fi
+
+  - name: Commit and push updates
+    run: |
+      git config --local user.email "github-actions[bot]@users.noreply.github.com"
+      git config --local user.name "github-actions[bot]"
+      
+      git add .aions-structure-list/
+      
+      if git diff --cached --quiet; then
+        echo "No changes to commit"
+      else
+        git commit -m "🤖 Auto-update: Repository structure scan [skip ci]"
+        git push
+        echo "✅ Changes pushed!"
+      fi
+
+  - name: Upload results
+    uses: actions/upload-artifact@v4
+    with:
+      name: structure-scan-results
+      path: .aions-structure-list/
