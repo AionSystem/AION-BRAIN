@@ -18,109 +18,128 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: Install validation tools
+      - name: Install Python packages
         run: |
-          echo "🔧 Installing Python packages..."
-          pip install jsonschema pyyaml
+          echo "🔧 Installing required packages..."
+          pip install PyYAML jsonschema
           echo "✅ Packages installed"
-          python -c "import jsonschema, yaml; print(f'jsonschema version: {jsonschema.__version__}')"
       
-      - name: Debug - List workflow files
+      - name: Validate YAML workflows
         run: |
-          echo "📁 Workflow files found:"
-          find .github/workflows -name "*.yml" -type f | while read file; do
-            echo "  - $file"
-          done
-          echo "📁 Schema file check:"
-          ls -la .github/schemas/ || echo "No schemas directory"
-      
-      - name: Validate YAML workflows (with debug)
-        run: |
-          echo "🔍 Starting validation..."
+          echo "🔍 Starting workflow validation..."
           
-          # Create a simpler Python script that's easier to debug
-          cat > validate.py << 'EOF'
-import os, json, yaml, sys
-from pathlib import Path
-
-print("=== DEBUG INFO ===")
-print(f"Current directory: {os.getcwd()}")
-print(f"Python version: {sys.version}")
-
-# Check if schema file exists
-schema_path = Path('.github/schemas/workflow-schema.json')
-print(f"Schema path: {schema_path}")
-print(f"Schema exists: {schema_path.exists()}")
-
-if schema_path.exists():
-    try:
-        with open(schema_path) as f:
-            schema_content = f.read()
-            print(f"Schema size: {len(schema_content)} chars")
-            print(f"First 100 chars: {schema_content[:100]}")
-            
-            # Try to parse JSON
-            workflow_schema = json.loads(schema_content)
-            print("✅ Schema JSON parsed successfully")
-    except json.JSONDecodeError as e:
-        print(f"❌ Schema JSON error: {e}")
-        sys.exit(1)
-else:
-    print("❌ Schema file not found")
-    sys.exit(1)
-
-print("\n=== VALIDATING WORKFLOWS ===")
-
-errors = []
-validated = 0
-
-# Only validate workflow files in .github/workflows/
-workflow_dir = Path('.github/workflows')
-print(f"Workflow directory: {workflow_dir}")
-print(f"Workflow dir exists: {workflow_dir.exists()}")
-
-if workflow_dir.exists():
-    for yaml_file in workflow_dir.rglob('*.yml'):
-        print(f"\nChecking: {yaml_file}")
-        
-        try:
-            with open(yaml_file) as f:
-                content = yaml.safe_load(f)
-            print(f"  ✅ YAML parsed, type: {type(content)}")
-            
-            # Simple validation instead of jsonschema for now
-            if not isinstance(content, dict):
-                errors.append(f"{yaml_file}: Not a valid YAML dictionary")
-            elif 'name' not in content:
-                errors.append(f"{yaml_file}: Missing 'name' field")
-            elif 'jobs' not in content:
-                errors.append(f"{yaml_file}: Missing 'jobs' field")
-            else:
-                print(f"  ✅ Basic validation passed")
-                validated += 1
-                
-        except yaml.YAMLError as e:
-            errors.append(f"{yaml_file}: YAML syntax error - {e}")
-            print(f"  ❌ YAML error: {e}")
-        except Exception as e:
-            errors.append(f"{yaml_file}: Unexpected error - {e}")
-            print(f"  ❌ Unexpected error: {e}")
-else:
-    print("❌ No .github/workflows directory found")
-
-# Report results
-print(f"\n=== RESULTS ===")
-print(f"Validated files: {validated}")
-print(f"Errors found: {len(errors)}")
-
-if errors:
-    print("\n❌ ERRORS:")
-    for error in errors:
-        print(f"  - {error}")
-    sys.exit(1)
-else:
-    print("\n✅ All workflow files passed basic validation")
-EOF
-
-          # Run the debug script
-          python validate.py
+          python3 << 'EOF'
+          import os
+          import json
+          import yaml
+          import sys
+          from jsonschema import validate, ValidationError
+          from pathlib import Path
+          
+          print("=== AION-BRAIN Workflow Validator ===")
+          
+          # 1. Check if schema file exists
+          schema_path = Path('.github/schemas/workflow-schema.json')
+          if not schema_path.exists():
+              print(f"❌ ERROR: Schema file not found at: {schema_path}")
+              print("Create .github/schemas/workflow-schema.json with:")
+              print('''
+              {
+                "$schema": "http://json-schema.org/draft-07/schema#",
+                "title": "GitHub Actions Workflow",
+                "type": "object",
+                "required": ["name", "on", "jobs"],
+                "properties": {
+                  "name": {"type": "string", "minLength": 1},
+                  "on": {"type": ["object", "string", "array"]},
+                  "jobs": {"type": "object", "minProperties": 1}
+                }
+              }
+              ''')
+              sys.exit(1)
+          
+          # 2. Load the schema
+          try:
+              with open(schema_path) as f:
+                  workflow_schema = json.load(f)
+              print("✅ Schema loaded successfully")
+          except json.JSONDecodeError as e:
+              print(f"❌ ERROR: Invalid JSON in schema file: {e}")
+              sys.exit(1)
+          
+          # 3. Check if workflows directory exists
+          workflows_dir = Path('.github/workflows')
+          if not workflows_dir.exists():
+              print(f"❌ ERROR: No .github/workflows directory found")
+              sys.exit(1)
+          
+          # 4. Find all YAML workflow files
+          yaml_files = list(workflows_dir.rglob('*.yml'))
+          if not yaml_files:
+              print("❌ ERROR: No .yml files found in .github/workflows/")
+              sys.exit(1)
+          
+          print(f"📁 Found {len(yaml_files)} workflow file(s)")
+          
+          # 5. Validate each file
+          errors = []
+          validated_count = 0
+          
+          for yaml_file in sorted(yaml_files):
+              file_path = str(yaml_file)
+              print(f"\nChecking: {file_path}")
+              
+              try:
+                  # Parse YAML
+                  with open(yaml_file) as f:
+                      content = yaml.safe_load(f)
+                  
+                  if content is None:
+                      errors.append(f"{file_path}: File is empty")
+                      print("  ❌ File is empty")
+                      continue
+                  
+                  # Validate against schema
+                  validate(instance=content, schema=workflow_schema)
+                  validated_count += 1
+                  print(f"  ✅ Valid")
+                  
+              except yaml.YAMLError as e:
+                  error_msg = f"{file_path}: YAML syntax error - {str(e).split(':')[-1].strip()}"
+                  errors.append(error_msg)
+                  print(f"  ❌ YAML error: {e}")
+              except ValidationError as e:
+                  error_msg = f"{file_path}: Missing required field - {e.message.split(':')[-1].strip()}"
+                  errors.append(error_msg)
+                  print(f"  ❌ Schema error: {e.message}")
+              except Exception as e:
+                  error_msg = f"{file_path}: Unexpected error - {type(e).__name__}: {e}"
+                  errors.append(error_msg)
+                  print(f"  ❌ Unexpected error: {e}")
+          
+          # 6. Print results
+          print(f"\n{'='*50}")
+          print("VALIDATION RESULTS:")
+          print(f"{'='*50}")
+          
+          if errors:
+              print(f"❌ FAILED: {len(errors)} error(s) found")
+              print("\nErrors:")
+              for i, error in enumerate(errors, 1):
+                  print(f"  {i}. {error}")
+              sys.exit(1)
+          else:
+              print(f"✅ SUCCESS: All {validated_count} workflow file(s) are valid")
+              print("\nValidated files:")
+              for yaml_file in sorted(yaml_files):
+                  print(f"  • {yaml_file}")
+          EOF
+      
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-validation-report
+          path: |
+            .github/schemas/workflow-schema.json
+          retention-days: 7
