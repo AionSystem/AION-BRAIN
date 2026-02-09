@@ -4,7 +4,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch: true
+  workflow_dispatch: 'true'
   schedule:
     - cron: '0 0 * * *'
 
@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true
+          persist-credentials: 'true'
 
       - name: Set up Python
         uses: actions/setup-python@v5
