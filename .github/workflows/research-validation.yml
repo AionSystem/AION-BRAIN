@@ -68,7 +68,7 @@ jobs:
           REPORT_BODY=$(cat <<EOF
   ### ✅ Research Validation Report
   
-  **Workflow Run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+    **Workflow Run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
   **Validated Engine:** \`${{ steps.calculate.outputs.engine }}\`
   **Budget Used:** $${{ steps.calculate.outputs.budget }}
   **Tests Simulated:** ${{ steps.calculate.outputs.tests }}
