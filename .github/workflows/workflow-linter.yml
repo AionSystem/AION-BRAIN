@@ -138,31 +138,69 @@ jobs:
         continue-on-error: true
         run: |
           echo "🔍 Validating workflows against schema..."
+          
+          # Check if schema exists first
+          SCHEMA_FOUND=false
+          if [ -f ".github/schemas/workflow-schema.json" ]; then
+            SCHEMA_PATH=".github/schemas/workflow-schema.json"
+            SCHEMA_FOUND=true
+          elif [ -f ".github/schema/workflow-schema.json" ]; then
+            SCHEMA_PATH=".github/schema/workflow-schema.json"
+            SCHEMA_FOUND=true
+          fi
+          
+          if [ "$SCHEMA_FOUND" = false ]; then
+            echo "⚠️  No schema file found at .github/schema/ or .github/schemas/"
+            echo "   Creating minimal schema for validation..."
+            mkdir -p .github/schemas
+            cat > .github/schemas/workflow-schema.json <<'EOF'
+          {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "GitHub Actions Workflow",
+            "type": "object",
+            "required": ["name", "on", "jobs"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "on": {"type": ["object", "string", "array"]},
+              "jobs": {"type": "object", "minProperties": 1}
+            }
+          }
+          EOF
+            SCHEMA_PATH=".github/schemas/workflow-schema.json"
+            echo "✅ Created minimal schema file at $SCHEMA_PATH"
+          fi
+          
           python3 <<'PYEOF'
           import os
           import sys
           import yaml
           import json
-          from jsonschema import validate, ValidationError, SchemaError
+          from jsonschema import validate, ValidationError
+
+          SCHEMA_PATH = sys.argv[1]
 
           try:
-              with open('.github/schema/workflow-schema.json', 'r') as f:
+              with open(SCHEMA_PATH, 'r') as f:
                   schema = json.load(f)
-              print("✅ Schema loaded from .github/schema/workflow-schema.json")
+              print(f"✅ Schema loaded from {SCHEMA_PATH}")
           except FileNotFoundError:
-              print("⚠️  Schema file not found at .github/schema/workflow-schema.json")
-              print("   Skipping schema validation")
+              print(f"❌ Schema file not found at {SCHEMA_PATH}")
               sys.exit(0)
           except json.JSONDecodeError as e:
-              print(f"❌ Invalid JSON schema: {e}")
+              print(f"❌ Invalid JSON in schema: {e}")
               sys.exit(1)
 
           ERRORS = []
           VALIDATED = 0
 
-          for file in os.listdir('.github/workflows'):
+          workflow_dir = '.github/workflows'
+          if not os.path.exists(workflow_dir):
+              print(f"⚠️  No {workflow_dir} directory")
+              sys.exit(0)
+
+          for file in os.listdir(workflow_dir):
               if file.endswith(('.yml', '.yaml')):
-                  path = os.path.join('.github/workflows', file)
+                  path = os.path.join(workflow_dir, file)
 
                   try:
                       with open(path, 'r') as f:
@@ -195,7 +233,7 @@ jobs:
               sys.exit(1)
           else:
               print("\n✅ All workflow files pass schema validation")
-          PYEOF
+          PYEOF "$SCHEMA_PATH"
 
       - name: Validate workflow structure
         id: structure_validation
@@ -206,15 +244,19 @@ jobs:
           import os
           import sys
           import yaml
-          import json
 
           REQUIRED_FIELDS = ['name', 'on', 'jobs']
           ERRORS = []
           WARNINGS = []
 
-          for file in os.listdir('.github/workflows'):
+          workflow_dir = '.github/workflows'
+          if not os.path.exists(workflow_dir):
+              print("⚠️  No .github/workflows directory")
+              sys.exit(0)
+
+          for file in os.listdir(workflow_dir):
               if file.endswith(('.yml', '.yaml')):
-                  path = os.path.join('.github/workflows', file)
+                  path = os.path.join(workflow_dir, file)
 
                   try:
                       with open(path, 'r') as f:
@@ -433,7 +475,7 @@ jobs:
           ```
 
           ## 🔍 Schema Validation
-          Your workflows are validated against .github/schema/workflow-schema.json.
+          Your workflows are validated against .github/schema/workflow-schema.json or .github/schemas/workflow-schema.json.
 
           ## 📚 Resources
           - [GitHub Actions Syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
