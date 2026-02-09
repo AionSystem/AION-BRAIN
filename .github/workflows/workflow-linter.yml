@@ -62,7 +62,7 @@ jobs:
             comments:
               min-spaces-from-content: 1
           EOF
-          echo "✅ yamllint config created"
+           echo "✅ yamllint config created"
       
       - name: Run yamllint with auto-fix
         id: yamllint
