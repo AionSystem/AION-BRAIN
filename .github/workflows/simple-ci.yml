@@ -1,0 +1,41 @@
+name: Simple AION CI
+on: [push]
+
+jobs:
+  # JOB 1: BASIC PYTHON CHECK
+  check-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Look for Python files
+        run: |
+          echo "📁 Looking for Python files..."
+          find . -name "*.py" | head -20
+          echo "---"
+          count=$(find . -name "*.py" | wc -l)
+          echo "Found $count Python files total."
+
+  # JOB 2: BASIC DOCUMENTATION CHECK
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check README exists
+        run: |
+          echo "📄 Checking for documentation..."
+          if [ -f "README.md" ]; then
+            echo "✅ README.md exists"
+            echo "First few lines:"
+            head -5 README.md
+          else
+            echo "⚠️  No README.md found"
+          fi
