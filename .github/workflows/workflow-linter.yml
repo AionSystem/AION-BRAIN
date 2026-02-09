@@ -1,4 +1,5 @@
 name: Workflow Linter & Auto-Fixer
+
 on:
   pull_request:
     paths: ['**/*.yml', '**/*.yaml']
@@ -39,49 +40,28 @@ jobs:
           pip install --quiet yamllint pyyaml jsonschema
           echo "✅ Installed: yamllint, PyYAML, jsonschema"
 
-      - name: Debug - List files and check schema
-        run: |
-          echo "🔍 DEBUG INFO:"
-          echo "Current directory: $(pwd)"
-          echo ""
-          echo "Schema directories:"
-          ls -la .github/schema/ .github/schemas/ 2>/dev/null || echo "No schema directories found"
-          echo ""
-          echo "Workflow files:"
-          ls -la .github/workflows/*.yml 2>/dev/null || echo "No workflow files found"
-          echo ""
-          echo "Checking if schema exists:"
-          if [ -f ".github/schemas/workflow-schema.json" ]; then
-            echo "✅ Schema exists at .github/schemas/workflow-schema.json"
-            python3 -c "import json; json.load(open('.github/schemas/workflow-schema.json')); print('Schema is valid JSON')"
-          elif [ -f ".github/schema/workflow-schema.json" ]; then
-            echo "✅ Schema exists at .github/schema/workflow-schema.json"
-            python3 -c "import json; json.load(open('.github/schema/workflow-schema.json')); print('Schema is valid JSON')"
-          else
-            echo "⚠️  No schema file found"
-          fi
-
       - name: Create yamllint config
         run: |
           cat > .yamllint.yml <<'EOF'
-extends: default
-rules:
-  document-start: disable
-  line-length:
-    max: 120
-    allow-non-breakable-words: true
-    allow-non-breakable-inline-mappings: true
-  truthy:
-    check-keys: false
-  braces:
-    min-spaces-inside: 0
-    max-spaces-inside: 0
-  brackets:
-    min-spaces-inside: 0
-    max-spaces-inside: 0
-  comments:
-    min-spaces-from-content: 1
-EOF
+          extends: default
+
+          rules:
+            document-start: disable
+            line-length:
+              max: 120
+              allow-non-breakable-words: true
+              allow-non-breakable-inline-mappings: true
+            truthy:
+              check-keys: false
+            braces:
+              min-spaces-inside: 0
+              max-spaces-inside: 0
+            brackets:
+              min-spaces-inside: 0
+              max-spaces-inside: 0
+            comments:
+              min-spaces-from-content: 1
+          EOF
           echo "✅ yamllint config created"
 
       - name: Lint this workflow file first
@@ -111,35 +91,38 @@ EOF
               EXIT_CODE=1
               cp "$file" "$file.backup"
               echo "  💾 Backup created: $file.backup"
+              python3 <<'PYEOF' "$file"
+          import os
+          import sys
+          import yaml
 
-              python3 "$file" <<'PYEOF'
-import os
-import sys
-import yaml
+          file_path = sys.argv[1]
 
-file_path = sys.argv[1]
-try:
-    with open(file_path, 'r') as f:
-        content = yaml.safe_load(f)
-    if content:
-        if 'name' not in content:
-            basename = os.path.basename(file_path)
-            filename = (basename.replace('.yml', '')
-                               .replace('.yaml', '')
-                               .replace('-', ' ')
-                               .replace('_', ' ')
-                               .title())
-            content['name'] = filename
-            print(f"  ✅ Added missing 'name' field: {filename}")
-        with open(file_path, 'w') as f:
-            yaml.dump(content, f, default_flow_style=False,
-                      sort_keys=False, width=120, allow_unicode=True)
-        print(f"  ✅ Auto-formatted: {file_path}")
-except Exception as e:
-    print(f"  ❌ Could not auto-fix: {e}", file=sys.stderr)
-    sys.exit(1)
-PYEOF
+          try:
+              with open(file_path, 'r') as f:
+                  content = yaml.safe_load(f)
 
+              if content:
+                  if 'name' not in content:
+                      basename = os.path.basename(file_path)
+                      filename = (basename.replace('.yml', '')
+                                         .replace('.yaml', '')
+                                         .replace('-', ' ')
+                                         .replace('_', ' ')
+                                         .title())
+                      content['name'] = filename
+                      print(f"  ✅ Added missing 'name' field: {filename}")
+
+                  with open(file_path, 'w') as f:
+                      yaml.dump(content, f, default_flow_style=False,
+                                sort_keys=False, width=120, allow_unicode=True)
+
+                  print(f"  ✅ Auto-formatted: {file_path}")
+
+          except Exception as e:
+              print(f"  ❌ Could not auto-fix: {e}", file=sys.stderr)
+              sys.exit(1)
+          PYEOF
               if [ $? -ne 0 ]; then
                 echo "  ⚠️  Auto-fix failed, restoring backup"
                 mv "$file.backup" "$file"
@@ -155,69 +138,342 @@ PYEOF
         continue-on-error: true
         run: |
           echo "🔍 Validating workflows against schema..."
-          SCHEMA_FOUND=false
-          if [ -f ".github/schemas/workflow-schema.json" ]; then
-            SCHEMA_PATH=".github/schemas/workflow-schema.json"
-            SCHEMA_FOUND=true
-          elif [ -f ".github/schema/workflow-schema.json" ]; then
-            SCHEMA_PATH=".github/schema/workflow-schema.json"
-            SCHEMA_FOUND=true
+          python3 <<'PYEOF'
+          import os
+          import sys
+          import yaml
+          import json
+          from jsonschema import validate, ValidationError, SchemaError
+
+          try:
+              with open('.github/schema/workflow-schema.json', 'r') as f:
+                  schema = json.load(f)
+              print("✅ Schema loaded from .github/schema/workflow-schema.json")
+          except FileNotFoundError:
+              print("⚠️  Schema file not found at .github/schema/workflow-schema.json")
+              print("   Skipping schema validation")
+              sys.exit(0)
+          except json.JSONDecodeError as e:
+              print(f"❌ Invalid JSON schema: {e}")
+              sys.exit(1)
+
+          ERRORS = []
+          VALIDATED = 0
+
+          for file in os.listdir('.github/workflows'):
+              if file.endswith(('.yml', '.yaml')):
+                  path = os.path.join('.github/workflows', file)
+
+                  try:
+                      with open(path, 'r') as f:
+                          content = yaml.safe_load(f)
+
+                      if not content:
+                          ERRORS.append(f"{file}: Empty or invalid YAML file")
+                          continue
+
+                      try:
+                          validate(instance=content, schema=schema)
+                          VALIDATED += 1
+                          print(f"  ✅ {file}")
+                      except ValidationError as e:
+                          error_path = ('.'.join(str(p) for p in e.path)
+                                       if e.path else 'root')
+                          ERRORS.append(f"{file}: {e.message} (at: {error_path})")
+
+                  except yaml.YAMLError as e:
+                      ERRORS.append(f"{file}: YAML parsing error - {e}")
+                  except Exception as e:
+                      ERRORS.append(f"{file}: Unexpected error - {e}")
+
+          print(f"\n📊 Validation Summary: {VALIDATED} passed, {len(ERRORS)} failed")
+
+          if ERRORS:
+              print("\n❌ SCHEMA VALIDATION ERRORS:")
+              for error in ERRORS:
+                  print(f"  • {error}")
+              sys.exit(1)
+          else:
+              print("\n✅ All workflow files pass schema validation")
+          PYEOF
+
+      - name: Validate workflow structure
+        id: structure_validation
+        continue-on-error: true
+        run: |
+          echo "🔍 Validating workflow structure..."
+          python3 <<'PYEOF'
+          import os
+          import sys
+          import yaml
+          import json
+
+          REQUIRED_FIELDS = ['name', 'on', 'jobs']
+          ERRORS = []
+          WARNINGS = []
+
+          for file in os.listdir('.github/workflows'):
+              if file.endswith(('.yml', '.yaml')):
+                  path = os.path.join('.github/workflows', file)
+
+                  try:
+                      with open(path, 'r') as f:
+                          content = yaml.safe_load(f)
+
+                      if not content:
+                          ERRORS.append(f"{file}: Empty file")
+                          continue
+
+                      for field in REQUIRED_FIELDS:
+                          if field not in content:
+                              msg = f"{file}: Missing required field '{field}'"
+                              ERRORS.append(msg)
+
+                      if 'jobs' in content:
+                          jobs = content['jobs']
+                          if not isinstance(jobs, dict) or len(jobs) == 0:
+                              msg = f"{file}: 'jobs' must be a non-empty dictionary"
+                              ERRORS.append(msg)
+                          else:
+                              for job_name, job_config in jobs.items():
+                                  if not isinstance(job_config, dict):
+                                      msg = f"{file}: Job '{job_name}' must be a dict"
+                                      ERRORS.append(msg)
+                                      continue
+
+                                  if 'runs-on' not in job_config:
+                                      msg = f"{file}: Job '{job_name}' missing 'runs-on'"
+                                      ERRORS.append(msg)
+
+                                  if 'steps' not in job_config:
+                                      msg = f"{file}: Job '{job_name}' has no steps"
+                                      WARNINGS.append(msg)
+
+                      if 'on' in content:
+                          on_value = content['on']
+                          if isinstance(on_value, dict) and len(on_value) == 0:
+                              ERRORS.append(f"{file}: 'on' triggers cannot be empty")
+
+                  except yaml.YAMLError as e:
+                      ERRORS.append(f"{file}: YAML syntax error - {e}")
+
+          if WARNINGS:
+              print("⚠️  WARNINGS:")
+              for warning in WARNINGS:
+                  print(f"  • {warning}")
+
+          if ERRORS:
+              print("\n❌ VALIDATION ERRORS:")
+              for error in ERRORS:
+                  print(f"  • {error}")
+              print("\n💡 SUGGESTED FIXES:")
+              for error in ERRORS:
+                  if "Missing required field 'name'" in error:
+                      fix = f"  • {error}: Add 'name: \"Workflow Name\"' at the top"
+                      print(fix)
+                  elif "Missing required field 'on'" in error:
+                      fix = f"  • {error}: Add triggers like 'on: [push]'"
+                      print(fix)
+                  elif "Missing required field 'jobs'" in error:
+                      fix = f"  • {error}: Add 'jobs:' section with at least one job"
+                      print(fix)
+                  elif "missing 'runs-on'" in error:
+                      fix = f"  • {error}: Add 'runs-on: ubuntu-latest' to the job"
+                      print(fix)
+
+              sys.exit(1)
+          else:
+              print("✅ All workflow files have valid structure")
+          PYEOF
+
+      - name: Validate fixes before committing
+        if: |
+          steps.yamllint.outcome == 'failure' ||
+          steps.schema_validation.outcome == 'failure' ||
+          steps.structure_validation.outcome == 'failure'
+        run: |
+          echo "🔄 Re-validating after auto-fixes..."
+          shopt -s nullglob
+          REVALIDATION_FAILED=false
+          for file in .github/workflows/*.yml .github/workflows/*.yaml; do
+            [ -f "$file" ] || continue
+            if ! yamllint "$file" > /dev/null 2>&1; then
+              echo "❌ $file still has yamllint issues after auto-fix"
+              REVALIDATION_FAILED=true
+            fi
+          done
+          if [ "$REVALIDATION_FAILED" = true ]; then
+            echo "⚠️  Some files failed re-validation. Rolling back..."
+            for backup in .github/workflows/*.backup; do
+              [ -f "$backup" ] || continue
+              original="${backup%.backup}"
+              mv "$backup" "$original"
+              echo "  ↩️  Restored: $original"
+            done
+            echo "❌ Auto-fixes were not safe - changes rolled back"
+            exit 1
+          else
+            echo "✅ All auto-fixes validated successfully"
           fi
-          if [ "$SCHEMA_FOUND" = false ]; then
-            echo "⚠️  No schema file found at .github/schema/ or .github/schemas/"
-            mkdir -p .github/schemas
-            cat > .github/schemas/workflow-schema.json <<'EOF'
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "GitHub Actions Workflow",
-  "type": "object",
-  "required": ["name", "on", "jobs"],
-  "properties": {
-    "name": {"type": "string", "minLength": 1},
-    "on": {"type": ["object", "string", "array"]},
-    "jobs": {"type": "object", "minProperties": 1}
-  }
-}
-EOF
-            SCHEMA_PATH=".github/schemas/workflow-schema.json"
+
+      - name: Cleanup backup files
+        if: always()
+        run: |
+          shopt -s nullglob
+          for backup in .github/workflows/*.backup; do
+            [ -f "$backup" ] && rm "$backup" && echo "🗑️  Removed: $backup"
+          done
+
+      - name: Determine if auto-commit is allowed
+        id: auto_commit_check
+        run: |
+          IS_FORK="false"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+              IS_FORK="true"
+            fi
+          fi
+          AUTO_COMMIT_ENABLED="${{ github.event.inputs.auto_commit }}"
+          if [ "$AUTO_COMMIT_ENABLED" != "true" ] && [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            AUTO_COMMIT_ENABLED="false"
+          fi
+          if [ "${{ github.event_name }}" = "push" ]; then
+            AUTO_COMMIT_ENABLED="true"
+          fi
+          echo "is_fork=$IS_FORK" >> $GITHUB_OUTPUT
+          echo "auto_commit_enabled=$AUTO_COMMIT_ENABLED" >> $GITHUB_OUTPUT
+          echo "🔍 Auto-commit check:"
+          echo "  Fork PR: $IS_FORK"
+          echo "  Auto-commit enabled: $AUTO_COMMIT_ENABLED"
+
+      - name: Commit auto-fixes
+        if: |
+          steps.auto_commit_check.outputs.is_fork == 'false' &&
+          steps.auto_commit_check.outputs.auto_commit_enabled == 'true' &&
+          (steps.yamllint.outcome == 'failure' ||
+          steps.schema_validation.outcome == 'failure' ||
+          steps.structure_validation.outcome == 'failure')
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if git diff --quiet .github/workflows/; then
+            echo "✅ No fixes needed"
+          else
+            git add .github/workflows/
+            git commit -m "🔧 Auto-fix: Workflow linting improvements
+
+          - Applied yamllint auto-formatting
+          - Fixed structural issues
+          - Validated against schema
+
+          [skip ci]"
+            git push
+            echo "✅ Auto-fixes committed and pushed"
           fi
 
-          python3 "$SCHEMA_PATH" <<'PYEOF'
-import os
-import sys
-import yaml
-import json
-from jsonschema import validate, ValidationError
+      - name: Create fix suggestions document
+        if: failure()
+        run: |
+          echo "📝 Creating fix suggestions..."
+          cat > fix_suggestions.md <<'EOF'
+          # 🔧 Workflow Fix Suggestions
 
-SCHEMA_PATH = sys.argv[1]
-ERRORS = []
-VALIDATED = 0
+          Your workflow files have validation issues. Here's how to fix them:
 
-with open(SCHEMA_PATH, 'r') as f:
-    schema = json.load(f)
+          ## ❌ Common Issues & Solutions
 
-workflow_dir = '.github/workflows'
-if not os.path.exists(workflow_dir):
-    sys.exit(0)
+          ### 1. Missing 'name' field
+          ```yaml
+          # Add this at the very top of your workflow file
+          name: "Descriptive Workflow Name"
+          ```
 
-for file in os.listdir(workflow_dir):
-    if file.endswith(('.yml', '.yaml')):
-        path = os.path.join(workflow_dir, file)
-        with open(path, 'r') as f:
-            content = yaml.safe_load(f)
-        try:
-            validate(instance=content, schema=schema)
-            VALIDATED += 1
-        except ValidationError as e:
-            ERRORS.append(f"{file}: {e.message}")
+          ### 2. Missing or invalid 'on' triggers
+          ```yaml
+          # Simple triggers
+          on: [push, pull_request]
 
-if ERRORS:
-    for error in ERRORS:
-        print(error)
-    sys.exit(1)
-else:
-    print(f"✅ {VALIDATED} workflows validated successfully")
-PYEOF
+          # Or more specific:
+          on:
+            push:
+              branches: [main, master]
+            pull_request:
+              paths: ['src/**']
+            workflow_dispatch:  # Manual trigger
+          ```
+
+          ### 3. Missing 'jobs' section
+          ```yaml
+          jobs:
+            build:
+              runs-on: ubuntu-latest
+              steps:
+                - uses: actions/checkout@v4
+                - run: echo "Hello World"
+          ```
+
+          ### 4. Job missing 'runs-on'
+          ```yaml
+          jobs:
+            my-job:
+              runs-on: ubuntu-latest  # ← Required!
+              steps:
+                - run: echo "test"
+          ```
+
+          ### 5. Heredoc indentation rules
+          ```yaml
+          # Heredoc closers (EOF, PYEOF) must have ZERO indentation
+          run: |
+            cat > file.txt <<'EOF'
+          line 1
+          line 2
+          EOF
+            # ↑ NO spaces before EOF
+          ```
+
+          ## 🔍 Schema Validation
+          Your workflows are validated against .github/schema/workflow-schema.json.
+
+          ## 📚 Resources
+          - [GitHub Actions Syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
+          - [yamllint Documentation](https://yamllint.readthedocs.io/)
+          EOF
+          echo "✅ Fix suggestions created"
+
+      - name: Upload fix suggestions
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fix-suggestions
+          path: fix_suggestions.md
+          retention-days: 30
+
+      - name: Comment on PR with suggestions
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let suggestions = '## ⚠️ Workflow Validation Failed\n\n';
+            suggestions += '**Auto-fixes are not enabled for fork PRs for ';
+            suggestions += 'security reasons.**\n\n';
+            try {
+              const fixContent = fs.readFileSync('fix_suggestions.md', 'utf8');
+              suggestions += fixContent;
+            } catch (e) {
+              suggestions += 'Some workflow files have validation issues. ';
+              suggestions += 'Check the workflow run for details.\n';
+            }
+            suggestions += '\n\n---\n';
+            suggestions += '💡 **Tip**: Download the `fix-suggestions` artifact ';
+            suggestions += 'from the workflow run for detailed guidance.';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: suggestions
+            });
 
       - name: Set final status
         if: always()
@@ -226,9 +482,11 @@ PYEOF
           echo "=========================="
           echo "yamllint: ${{ steps.yamllint.outcome }}"
           echo "Schema validation: ${{ steps.schema_validation.outcome }}"
+          echo "Structure validation: ${{ steps.structure_validation.outcome }}"
           echo ""
           if [ "${{ steps.yamllint.outcome }}" = "success" ] && \
-             [ "${{ steps.schema_validation.outcome }}" = "success" ]; then
+             [ "${{ steps.schema_validation.outcome }}" = "success" ] && \
+             [ "${{ steps.structure_validation.outcome }}" = "success" ]; then
             echo "✅ All validations passed!"
             exit 0
           else
