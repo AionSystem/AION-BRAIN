@@ -49,9 +49,14 @@ jobs:
           name: python-lint-artifact
           path: pylint_output.txt
 
-  # JOB 2: LINT DOCS (REUSES YOUR WORKING WORKFLOW)
+  # JOB 2: LINT DOCS (REUSES YOUR WORKING WORKFLOW) - *** CORRECTED ***
   lint-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     uses: ./.github/workflows/lint-docs.yml
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
 
   # JOB 3: TEST PYTHON (SMART DISCOVERY)
   test-python:
