@@ -287,7 +287,10 @@ jobs:
           PYEOF
 
       - name: Validate fixes before committing
-        if: steps.yamllint.outcome == 'failure' || steps.schema_validation.outcome == 'failure' || steps.structure_validation.outcome == 'failure'
+        if: | 
+          steps.yamllint.outcome == 'failure' || 
+          steps.schema_validation.outcome == 'failure' || 
+          steps.structure_validation.outcome == 'failure'
         run: |
           echo "🔄 Re-validating after auto-fixes..."
           shopt -s nullglob
@@ -347,7 +350,9 @@ jobs:
         if: |
           steps.auto_commit_check.outputs.is_fork == 'false' &&
           steps.auto_commit_check.outputs.auto_commit_enabled == 'true' &&
-          (steps.yamllint.outcome == 'failure' || steps.schema_validation.outcome == 'failure' || steps.structure_validation.outcome == 'failure')
+          (steps.yamllint.outcome == 'failure' || 
+          steps.schema_validation.outcome == 'failure' || 
+          steps.structure_validation.outcome == 'failure')
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
