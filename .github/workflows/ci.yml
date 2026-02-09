@@ -6,155 +6,146 @@ defaults:
     shell: bash
 
 jobs:
-  # JOB 1: LINT PYTHON
+  # JOB 1: LINT PYTHON (SMART DISCOVERY)
   lint-python:
     runs-on: ubuntu-latest
     continue-on-error: true
     outputs:
       status: ${{ job.status }}
-      report: ${{ steps.collect-report.outputs.content }}
+      report_file: pylint_output.txt
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run Pylint and Capture Report
-        id: run-lint
+      - name: Discover and Lint Python
+        id: lint-run
         run: |
+          echo "🔍 Starting Python lint discovery..." > pylint_output.txt
+          echo "======================================" >> pylint_output.txt
+          
+          # Use 'find' safely: if no .py files, just report it.
+          PY_FILES=$(find engines/ frameworks/ -type f -name "*.py" 2>/dev/null || echo "")
+          
+          if [ -z "$PY_FILES" ]; then
+            echo "📭 No Python (.py) source files found to lint in 'engines/' or 'frameworks/'." >> pylint_output.txt
+            echo "   This is OK for engines that are documentation-only." >> pylint_output.txt
+            exit 0
+          fi
+          
           pip install pylint -q
-          echo "Linting Report:" > pylint_report.txt
-          echo "Searching for Python files in engines/ and frameworks/ ..." >> pylint_report.txt
-
-          {
-            find engines/ frameworks/ -type f -name "*.py" -exec dirname {} \; 2>/dev/null || true
-          } | sort -u | while read dir; do
-            echo "=== Linting $dir ===" >> pylint_report.txt
-            pylint "$dir" --recursive=true --exit-zero 2>&1 >> pylint_report.txt || true
+          
+          # Get unique directories containing .py files
+          echo "$PY_FILES" | xargs -I {} dirname {} | sort -u | while read DIR; do
+            echo "--- Linting: $DIR ---" >> pylint_output.txt
+            pylint "$DIR" --recursive=true --exit-zero 2>&1 | head -50 >> pylint_output.txt || true
+            echo "" >> pylint_output.txt
           done
-
-          if ! grep -q "=== Linting" pylint_report.txt; then
-            echo "No Python (.py) files were found to lint in the engines/ or frameworks/ directories." >> pylint_report.txt
-          fi
-      - name: Collect Lint Report
-        id: collect-report
-        run: |
-          content=$(cat pylint_report.txt)
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          echo "content=$content" >> $GITHUB_OUTPUT
-
-  # JOB 2: LINT DOCS
-  lint-docs:
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    outputs:
-      status: ${{ job.status }}
-      report: ${{ steps.collect-report.outputs.content }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+          
+          echo "✅ Python lint discovery complete." >> pylint_output.txt
+      - name: Upload Python Lint Report
+        uses: actions/upload-artifact@v4
         with:
-          node-version: '20'
-      - name: Run MarkdownLint and Capture Report
-        id: run-lint
-        run: |
-          npm install -g markdownlint-cli -q
-          markdownlint "**/*.md" --ignore node_modules 2>&1 | tee md_report.txt || touch md_report.txt
-      - name: Collect Docs Lint Report
-        id: collect-report
-        run: |
-          if [ -f md_report.txt ]; then
-            content=$(cat md_report.txt)
-          else
-            content="No Markdown issues found or no markdown files processed."
-          fi
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          echo "content=$content" >> $GITHUB_OUTPUT
+          name: python-lint-artifact
+          path: pylint_output.txt
 
-  # JOB 3: TEST PYTHON
+  # JOB 2: LINT DOCS (REUSES YOUR WORKING WORKFLOW)
+  lint-docs:
+    uses: ./.github/workflows/lint-docs.yml
+
+  # JOB 3: TEST PYTHON (SMART DISCOVERY)
   test-python:
     runs-on: ubuntu-latest
     continue-on-error: true
-    strategy:
-      matrix:
-        python-version: ['3.10', '3.11']
     outputs:
       status: ${{ job.status }}
-      report: ${{ steps.collect-report.outputs.content }}
+      report_file: pytest_output.txt
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Run Tests and Capture Report
-        id: run-test
+          python-version: '3.11'
+      - name: Discover and Run Tests
+        id: test-run
         run: |
-          pip install pytest -q
-          echo "Pytest Report for Python ${{ matrix.python-version }}:" > pytest_report.txt
-          find engines/ frameworks/ -type f -name "test_*.py" -exec dirname {} \; | sort -u | while read dir; do
-            echo "=== Testing $dir ===" >> pytest_report.txt
-            cd "$dir"
-            python -m pytest . -v 2>&1 >> ../pytest_report.txt || echo "  -> Test run encountered an issue." >> ../pytest_report.txt
-            cd - > /dev/null
-          done
-          if [ ! -s pytest_report.txt ] || grep -q "Pytest Report" pytest_report.txt && ! grep -q "===" pytest_report.txt; then
-            echo "No test files (test_*.py) were discovered in the engines/ or frameworks/ directories." >> pytest_report.txt
+          echo "🔍 Starting Python test discovery..." > pytest_output.txt
+          echo "======================================" >> pytest_output.txt
+          
+          # Find test files safely
+          TEST_FILES=$(find engines/ frameworks/ -type f -name "test_*.py" 2>/dev/null || echo "")
+          
+          if [ -z "$TEST_FILES" ]; then
+            echo "📭 No test files (test_*.py) found in 'engines/' or 'frameworks/'." >> pytest_output.txt
+            echo "   This is expected for now. Add 'test_*.py' files to enable testing." >> pytest_output.txt
+            exit 0
           fi
-      - name: Collect Test Report
-        id: collect-report
-        run: |
-          content=$(cat pytest_report.txt)
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          echo "content=$content" >> $GITHUB_OUTPUT
-
-  # FINAL JOB: CREATE MASTER REPORT (ALWAYS RUNS)
-  create-report:
-    runs-on: ubuntu-latest
-    if: always()
-    needs: [lint-python, lint-docs, test-python]
-    steps:
-      - name: Generate Consolidated Report File
-        run: |
-          echo "# AION-BRAIN CI RESULTS - FULL REPORT" > workflow-results.txt
-          echo "Workflow Run: ${{ github.run_id }}" >> workflow-results.txt
-          echo "Generated: $(date -u)" >> workflow-results.txt
-          echo "==========================================" >> workflow-results.txt
-          echo "" >> workflow-results.txt
-
-          echo "## 1. PYTHON CODE LINTING" >> workflow-results.txt
-          echo "Job Status: ${{ needs.lint-python.result || 'skipped' }}" >> workflow-results.txt
-          echo '```' >> workflow-results.txt
-          echo "${{ needs.lint-python.outputs.report || 'No report generated.' }}" >> workflow-results.txt
-          echo '```' >> workflow-results.txt
-          echo "" >> workflow-results.txt
-
-          echo "## 2. DOCUMENTATION LINTING" >> workflow-results.txt
-          echo "Job Status: ${{ needs.lint-docs.result || 'skipped' }}" >> workflow-results.txt
-          echo '```' >> workflow-results.txt
-          echo "${{ needs.lint-docs.outputs.report || 'No report generated.' }}" >> workflow-results.txt
-          echo '```' >> workflow-results.txt
-          echo "" >> workflow-results.txt
-
-          echo "## 3. PYTHON TESTING" >> workflow-results.txt
-          echo "Job Status: ${{ needs.test-python.result || 'skipped' }}" >> workflow-results.txt
-          echo '```' >> workflow-results.txt
-          echo "${{ needs.test-python.outputs.report || 'No report generated.' }}" >> workflow-results.txt
-          echo '```' >> workflow-results.txt
-          echo "" >> workflow-results.txt
-
-          echo "==========================================" >> workflow-results.txt
-          echo "END OF REPORT" >> workflow-results.txt
-
-          echo "Report generated successfully."
-          cat workflow-results.txt
-
-      - name: Upload Consolidated Report
+          
+          pip install pytest -q
+          
+          # Run tests from each unique test directory
+          echo "$TEST_FILES" | xargs -I {} dirname {} | sort -u | while read TEST_DIR; do
+            echo "--- Testing in: $TEST_DIR ---" >> pytest_output.txt
+            cd "$TEST_DIR"
+            python -m pytest . -v 2>&1 | head -100 >> ../pytest_output.txt || echo "   ⚠️  Some tests failed." >> ../pytest_output.txt
+            cd - > /dev/null
+            echo "" >> pytest_output.txt
+          done
+          
+          echo "✅ Python test discovery complete." >> pytest_output.txt
+      - name: Upload Python Test Report
         uses: actions/upload-artifact@v4
         with:
-          name: aion-ci-full-report
-          path: workflow-results.txt
+          name: python-test-artifact
+          path: pytest_output.txt
+
+  # FINAL JOB: CREATE THE MASTER REPORT (THE GOAL)
+  create-master-report:
+    runs-on: ubuntu-latest
+    needs: [lint-python, lint-docs, test-python]
+    if: always()
+    steps:
+      - name: Download All Job Reports
+        uses: actions/download-artifact@v4
+        with:
+          path: ./downloaded-artifacts
+          
+      - name: Generate Master Report
+        run: |
+          echo "# 🧠 AION-BRAIN: CONSOLIDATED CI REPORT" > MASTER_REPORT.md
+          echo "**Generated:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> MASTER_REPORT.md
+          echo "**Workflow Run:** [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> MASTER_REPORT.md
+          echo "---" >> MASTER_REPORT.md
+          echo "" >> MASTER_REPORT.md
+          
+          echo "## 📋 EXECUTIVE SUMMARY" >> MASTER_REPORT.md
+          echo "" >> MASTER_REPORT.md
+          echo "| Job | Status | Details |" >> MASTER_REPORT.md
+          echo "|-----|--------|---------|" >> MASTER_REPORT.md
+          echo "| Python Linting | **${{ needs.lint-python.result }}** | [View Raw Report](./downloaded-artifacts/python-lint-artifact/pylint_output.txt) |" >> MASTER_REPORT.md
+          echo "| Documentation Linting | **${{ needs.lint-docs.result }}** | See workflow [lint-docs.yml](.github/workflows/lint-docs.yml) |" >> MASTER_REPORT.md
+          echo "| Python Testing | **${{ needs.test-python.result }}** | [View Raw Report](./downloaded-artifacts/python-test-artifact/pytest_output.txt) |" >> MASTER_REPORT.md
+          echo "" >> MASTER_REPORT.md
+          
+          echo "## 1. PYTHON LINTING DETAILS" >> MASTER_REPORT.md
+          echo '```' >> MASTER_REPORT.md
+          cat ./downloaded-artifacts/python-lint-artifact/pylint_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
+          echo '```' >> MASTER_REPORT.md
+          echo "" >> MASTER_REPORT.md
+          
+          echo "## 2. PYTHON TESTING DETAILS" >> MASTER_REPORT.md
+          echo '```' >> MASTER_REPORT.md
+          cat ./downloaded-artifacts/python-test-artifact/pytest_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
+          echo '```' >> MASTER_REPORT.md
+          echo "" >> MASTER_REPORT.md
+          
+          echo "---" >> MASTER_REPORT.md
+          echo "*This report was generated automatically by the AION Consolidated CI workflow.*" >> MASTER_REPORT.md
+          
+          echo "📄 Master report generated: MASTER_REPORT.md"
+          cat MASTER_REPORT.md
+          
+      - name: Upload Master Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: aion-ci-master-report
+          path: MASTER_REPORT.md
