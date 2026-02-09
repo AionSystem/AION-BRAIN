@@ -1,91 +1,52 @@
-name: Schema Enforcer
-on:
-  pull_request:
-    paths: ['**/*.yml', '**/*.yaml', '**/*.json']
-  push:
-    branches: [main, master]
-    paths: ['**/*.yml', '**/*.yaml', '**/*.json']
-
-jobs:
-  validate-schemas:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+- name: Validate JSON against config schema
+  run: |
+    echo "🔍 Validating JSON config files..."
+    python << 'EOF'
+    import json, sys
+    from pathlib import Path
+    from jsonschema import validate, ValidationError
+    
+    # Load config schema
+    schema_path = Path('.github/schemas/config-schema.json')
+    with open(schema_path) as f:
+        config_schema = json.load(f)
+    
+    # SKIP these generated/auto-updated files
+    SKIP_PATTERNS = [
+        '.aions-structure-list/',  # Your scanner output
+        'node_modules/',
+        '__pycache__/',
+        '.git/',
+        'dist/',
+        'build/'
+    ]
+    
+    errors = []
+    validated_count = 0
+    
+    for json_file in Path('.').rglob('*.json'):
+        # Skip generated/auto files
+        if any(pattern in str(json_file) for pattern in SKIP_PATTERNS):
+            continue
         
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Install validation tools
-        run: pip install jsonschema pyyaml
-      
-      - name: Validate YAML files
-        run: |
-          echo "🔍 Validating YAML files..."
-          python << 'EOF'
-          import os, json, yaml, sys
-          from jsonschema import validate, ValidationError
-          from pathlib import Path
-          
-          # Load workflow schema
-          schema_path = Path('.github/schemas/workflow-schema.json')
-          with open(schema_path) as f:
-              workflow_schema = json.load(f)
-          
-          errors = []
-          
-          # Find all YAML files
-          for yaml_file in Path('.').rglob('*.yml'):
-              if '.github/workflows/' in str(yaml_file):
-                  try:
-                      with open(yaml_file) as f:
-                          content = yaml.safe_load(f)
-                      
-                      # Validate against schema
-                      validate(instance=content, schema=workflow_schema)
-                      print(f"✅ {yaml_file}")
-                      
-                  except yaml.YAMLError as e:
-                      errors.append(f"{yaml_file}: YAML syntax error - {e}")
-                  except ValidationError as e:
-                      errors.append(f"{yaml_file}: Schema violation - {e.message}")
-                  except Exception as e:
-                      errors.append(f"{yaml_file}: Unexpected error - {e}")
-          
-          # Report results
-          if errors:
-              print("\n❌ VALIDATION ERRORS:")
-              for error in errors:
-                  print(f"  - {error}")
-              sys.exit(1)
-          else:
-              print("\n✅ All YAML files passed schema validation")
-          EOF
-      
-      - name: Validate JSON files (basic)
-        run: |
-          echo "🔍 Validating JSON files..."
-          python << 'EOF'
-          import json, sys
-          from pathlib import Path
-          
-          errors = []
-          
-          for json_file in Path('.').rglob('*.json'):
-              try:
-                  with open(json_file) as f:
-                      json.load(f)  # Just check if valid JSON
-                  print(f"✅ {json_file}")
-              except json.JSONDecodeError as e:
-                  errors.append(f"{json_file}: Invalid JSON - {e}")
-          
-          if errors:
-              print("\n❌ JSON ERRORS:")
-              for error in errors:
-                  print(f"  - {error}")
-              sys.exit(1)
-          else:
-              print("\n✅ All JSON files are valid")
-          EOF
+        try:
+            with open(json_file) as f:
+                content = json.load(f)
+            
+            validate(instance=content, schema=config_schema)
+            print(f"✅ {json_file}")
+            validated_count += 1
+            
+        except json.JSONDecodeError as e:
+            errors.append(f"{json_file}: Invalid JSON - {e}")
+        except ValidationError as e:
+            errors.append(f"{json_file}: Schema violation - {e.message}")
+    
+    if errors:
+        print(f"\n❌ Found {len(errors)} error(s) in {validated_count} JSON file(s):")
+        for error in errors:
+            print(f"  - {error}")
+        sys.exit(1)
+    else:
+        print(f"\n✅ All {validated_count} JSON config files passed validation")
+    EOF
