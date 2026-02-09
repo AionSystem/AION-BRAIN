@@ -118,7 +118,6 @@ except Exception as e:
     print(f"  ❌ Could not auto-fix: {e}", file=sys.stderr)
     sys.exit(1)
 PYEOF "$file"
-              
               if [ $? -ne 0 ]; then
                 echo "  ⚠️  Auto-fix failed, restoring backup"
                 mv "$file.backup" "$file"
