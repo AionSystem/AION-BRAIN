@@ -49,7 +49,7 @@ jobs:
           name: python-lint-artifact
           path: pylint_output.txt
 
-  # JOB 2: LINT DOCS (FIXED - SIMPLE DIRECT VERSION)
+  # JOB 2: LINT DOCS (FIXED WITH OUTPUTS)
   lint-docs:
     runs-on: ubuntu-latest
     outputs:
@@ -127,7 +127,7 @@ jobs:
           name: python-test-artifact
           path: pytest_output.txt
 
-  # FINAL JOB: CREATE THE MASTER REPORT (THE GOAL)
+  # FINAL JOB: CREATE THE MASTER REPORT (FIXED)
   create-master-report:
     runs-on: ubuntu-latest
     needs: [lint-python, lint-docs, test-python]
@@ -150,26 +150,41 @@ jobs:
           echo "" >> MASTER_REPORT.md
           echo "| Job | Status | Details |" >> MASTER_REPORT.md
           echo "|-----|--------|---------|" >> MASTER_REPORT.md
-          echo "| Python Linting | **${{ needs.lint-python.result }}** | [View Raw Report](./downloaded-artifacts/python-lint-artifact/pylint_output.txt) |" >> MASTER_REPORT.md
-          echo "| Documentation Linting | **${{ needs.lint-docs.result }}** | [View Raw Report](./downloaded-artifacts/markdown-lint-artifact/markdownlint_output.txt) |" >> MASTER_REPORT.md
-          echo "| Python Testing | **${{ needs.test-python.result }}** | [View Raw Report](./downloaded-artifacts/python-test-artifact/pytest_output.txt) |" >> MASTER_REPORT.md
+          echo "| Python Linting | **${{ needs.lint-python.result }}** | [View Report](#1-python-linting-details) |" >> MASTER_REPORT.md
+          echo "| Documentation Linting | **${{ needs.lint-docs.result }}** | [View Report](#2-markdown-linting-details) |" >> MASTER_REPORT.md
+          echo "| Python Testing | **${{ needs.test-python.result }}** | [View Report](#3-python-testing-details) |" >> MASTER_REPORT.md
           echo "" >> MASTER_REPORT.md
           
+          # Python Linting
           echo "## 1. PYTHON LINTING DETAILS" >> MASTER_REPORT.md
           echo '```' >> MASTER_REPORT.md
-          cat ./downloaded-artifacts/python-lint-artifact/pylint_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
+          if [ -f "./downloaded-artifacts/python-lint-artifact/pylint_output.txt" ]; then
+            cat ./downloaded-artifacts/python-lint-artifact/pylint_output.txt >> MASTER_REPORT.md
+          else
+            echo "No Python linting report available." >> MASTER_REPORT.md
+          fi
           echo '```' >> MASTER_REPORT.md
           echo "" >> MASTER_REPORT.md
           
+          # Markdown Linting
           echo "## 2. MARKDOWN LINTING DETAILS" >> MASTER_REPORT.md
           echo '```' >> MASTER_REPORT.md
-          cat ./downloaded-artifacts/markdown-lint-artifact/markdownlint_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
+          if [ -f "./downloaded-artifacts/markdown-lint-artifact/markdownlint_output.txt" ]; then
+            cat ./downloaded-artifacts/markdown-lint-artifact/markdownlint_output.txt >> MASTER_REPORT.md
+          else
+            echo "No markdown linting report available." >> MASTER_REPORT.md
+          fi
           echo '```' >> MASTER_REPORT.md
           echo "" >> MASTER_REPORT.md
           
+          # Python Testing
           echo "## 3. PYTHON TESTING DETAILS" >> MASTER_REPORT.md
           echo '```' >> MASTER_REPORT.md
-          cat ./downloaded-artifacts/python-test-artifact/pytest_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
+          if [ -f "./downloaded-artifacts/python-test-artifact/pytest_output.txt" ]; then
+            cat ./downloaded-artifacts/python-test-artifact/pytest_output.txt >> MASTER_REPORT.md
+          else
+            echo "No Python testing report available." >> MASTER_REPORT.md
+          fi
           echo '```' >> MASTER_REPORT.md
           echo "" >> MASTER_REPORT.md
           
@@ -177,7 +192,6 @@ jobs:
           echo "*This report was generated automatically by the AION Consolidated CI workflow.*" >> MASTER_REPORT.md
           
           echo "📄 Master report generated: MASTER_REPORT.md"
-          cat MASTER_REPORT.md
           
       - name: Upload Master Report
         uses: actions/upload-artifact@v4
