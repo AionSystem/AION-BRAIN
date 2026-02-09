@@ -42,26 +42,26 @@ jobs:
       
       - name: Create yamllint config
         run: |
-          cat > .yamllint.yml << 'EOF'
-extends: default
+          cat > .yamllint.yml <<'EOF'
+          extends: default
 
-rules:
-  document-start: disable
-  line-length:
-    max: 120
-    allow-non-breakable-words: true
-    allow-non-breakable-inline-mappings: true
-  truthy:
-    check-keys: false
-  braces:
-    min-spaces-inside: 0
-    max-spaces-inside: 0
-  brackets:
-    min-spaces-inside: 0
-    max-spaces-inside: 0
-  comments:
-    min-spaces-from-content: 1
-EOF
+          rules:
+            document-start: disable
+            line-length:
+              max: 120
+              allow-non-breakable-words: true
+              allow-non-breakable-inline-mappings: true
+            truthy:
+              check-keys: false
+            braces:
+              min-spaces-inside: 0
+              max-spaces-inside: 0
+            brackets:
+              min-spaces-inside: 0
+              max-spaces-inside: 0
+            comments:
+              min-spaces-from-content: 1
+           EOF
           echo "✅ yamllint config created"
       
       - name: Lint this workflow file first
