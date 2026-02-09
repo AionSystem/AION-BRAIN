@@ -63,7 +63,6 @@ rules:
     min-spaces-from-content: 1
 EOF
           echo "✅ yamllint config created"
-      
       - name: Lint this workflow file first
         run: |
           echo "🔍 Self-check: Validating this linter workflow..."
@@ -73,8 +72,7 @@ EOF
             echo "❌ This workflow file has linting issues!"
             exit 1
           fi
-      
-      - name: Run yamllint with auto-fix
+ - name: Run yamllint with auto-fix
         id: yamllint
         continue-on-error: true
         run: |
@@ -452,7 +450,7 @@ echo "✅ Fix suggestions created"
       echo "❌ Some validations failed - review the logs above"
       exit 1
     fi
----
+
 
 ## ✅ WHAT I FIXED
 
@@ -462,7 +460,7 @@ echo "✅ Fix suggestions created"
 4. **No tabs** - only spaces
 5. **Proper heredoc syntax** - `<<'EOF'` with no space
 
----
+
 
 ## 🎯 NEXT TIME YOU BUILD WORKFLOWS
 
