@@ -5,3 +5,10 @@
 [![Check Dependabot](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml)
 [![AION Consolidated CI](https://github.com/AionSystem/AION-BRAIN/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/ci.yml)
 [![.github/workflows/aion-structure.yml](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml)
+## 📊 Repository Stats
+
+![Files](https://img.shields.io/badge/Files-1795-blue)
+![Directories](https://img.shields.io/badge/Directories-540-green)
+![Python](https://img.shields.io/badge/Python-254-yellow)
+
+*Updated automatically*
