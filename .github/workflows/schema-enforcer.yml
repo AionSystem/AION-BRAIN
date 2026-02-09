@@ -23,131 +23,126 @@ jobs:
           pip install PyYAML jsonschema
           echo "✅ Packages installed"
       
-      - name: Check if schema exists
-        id: check_schema
+      - name: Create and run validation
         run: |
-          if [ -f ".github/schemas/workflow-schema.json" ]; then
-            echo "✅ Schema file exists"
-            echo "schema_exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "❌ Schema file not found"
-            echo "Create: .github/schemas/workflow-schema.json"
-            echo "schema_exists=false" >> $GITHUB_OUTPUT
-            exit 1
-          fi
-      
-      - name: Check if workflows exist
-        id: check_workflows
-        run: |
-          if [ ! -d ".github/workflows" ]; then
-            echo "⚠️ No workflows directory"
-            echo "workflow_count=0" >> $GITHUB_OUTPUT
-          else
-            COUNT=$(find .github/workflows -name "*.yml" | wc -l)
-            echo "Found $COUNT workflow files"
-            echo "workflow_count=$COUNT" >> $GITHUB_OUTPUT
-          fi
-      
-      - name: Create validation script
-        if: steps.check_schema.outputs.schema_exists == 'true' && steps.check_workflows.outputs.workflow_count != '0'
-        run: |
-          # Write simple Python script to file
-          cat > validate_simple.py << 'EOF'
-import os, sys, json, yaml
+          # Create the complete validation script
+          cat > validate_work.py << 'EOF_VALIDATE'
+import os
+import sys
+import json
+import yaml
 from jsonschema import validate, ValidationError
 
-print("🔍 Starting workflow validation...")
-
-# 1. Load schema
-try:
-    with open(".github/schemas/workflow-schema.json", "r") as f:
-        schema = json.load(f)
-    print("✅ Schema loaded")
-except Exception as e:
-    print(f"❌ Failed to load schema: {e}")
-    sys.exit(1)
-
-# 2. Find workflow files
-workflow_files = []
-for root, dirs, files in os.walk(".github/workflows"):
-    for file in files:
-        if file.endswith(".yml"):
-            workflow_files.append(os.path.join(root, file))
-
-if not workflow_files:
-    print("⚠️ No workflow files found")
-    sys.exit(0)
-
-print(f"Found {len(workflow_files)} workflow files")
-
-# 3. Validate each file
-errors = []
-success_count = 0
-
-for file_path in sorted(workflow_files):
-    print(f"\nChecking: {file_path}")
+def main():
+    print("🔍 AION-BRAIN Workflow Validator")
+    print("=" * 50)
     
+    # 1. Check if schema exists
+    schema_path = ".github/schemas/workflow-schema.json"
+    if not os.path.exists(schema_path):
+        print(f"❌ ERROR: Schema file not found at: {schema_path}")
+        print("\nCreate this file with:")
+        print('''
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GitHub Actions Workflow",
+  "type": "object",
+  "required": ["name", "on", "jobs"],
+  "properties": {
+    "name": {"type": "string", "minLength": 1},
+    "on": {"type": ["object", "string", "array"]},
+    "jobs": {"type": "object", "minProperties": 1}
+  }
+}
+        ''')
+        return 1
+    
+    # 2. Load schema
     try:
-        # Load YAML
-        with open(file_path, "r") as f:
-            data = yaml.safe_load(f)
+        with open(schema_path, "r") as f:
+            schema = json.load(f)
+        print("✅ Schema loaded successfully")
+    except json.JSONDecodeError as e:
+        print(f"❌ ERROR: Invalid JSON in schema: {e}")
+        return 1
+    
+    # 3. Check for workflows directory
+    if not os.path.exists(".github/workflows"):
+        print("⚠️  No .github/workflows directory found")
+        return 0
+    
+    # 4. Find all workflow files
+    workflow_files = []
+    for root, dirs, files in os.walk(".github/workflows"):
+        for file in files:
+            if file.endswith(".yml"):
+                full_path = os.path.join(root, file)
+                workflow_files.append(full_path)
+    
+    if not workflow_files:
+        print("⚠️  No .yml files found in .github/workflows/")
+        return 0
+    
+    print(f"📁 Found {len(workflow_files)} workflow file(s)")
+    print("-" * 50)
+    
+    # 5. Validate each file
+    errors = []
+    success_count = 0
+    
+    for file_path in sorted(workflow_files):
+        print(f"\nChecking: {file_path}")
         
-        if data is None:
-            errors.append(f"{file_path}: File is empty")
-            print("  ❌ Empty file")
-            continue
-        
-        # Validate
-        validate(instance=data, schema=schema)
-        success_count += 1
-        print("  ✅ Valid")
-        
-    except yaml.YAMLError as e:
-        error_msg = f"{file_path}: YAML error - {str(e)}"
-        errors.append(error_msg)
-        print(f"  ❌ YAML error: {e}")
-    except ValidationError as e:
-        error_msg = f"{file_path}: Schema error - {e.message}"
-        errors.append(error_msg)
-        print(f"  ❌ Schema error: {e.message}")
-    except Exception as e:
-        error_msg = f"{file_path}: Unexpected error - {type(e).__name__}: {str(e)[:100]}"
-        errors.append(error_msg)
-        print(f"  ❌ Unexpected: {e}")
+        try:
+            # Load YAML content
+            with open(file_path, "r") as f:
+                content = yaml.safe_load(f)
+            
+            if content is None:
+                errors.append(f"{file_path}: File is empty or contains only comments")
+                print("  ❌ Empty file")
+                continue
+            
+            # Validate against schema
+            validate(instance=content, schema=schema)
+            success_count += 1
+            print("  ✅ Valid")
+            
+        except yaml.YAMLError as e:
+            error_msg = f"{file_path}: YAML syntax error"
+            if hasattr(e, 'problem'):
+                error_msg += f" - {e.problem}"
+            errors.append(error_msg)
+            print(f"  ❌ YAML error: {e}")
+        except ValidationError as e:
+            # Extract the meaningful part of the error
+            error_parts = str(e).split('\n')
+            error_msg = f"{file_path}: {error_parts[0]}"
+            errors.append(error_msg)
+            print(f"  ❌ Schema error: {error_parts[0]}")
+        except Exception as e:
+            errors.append(f"{file_path}: Unexpected error - {type(e).__name__}")
+            print(f"  ❌ Unexpected: {type(e).__name__}")
+    
+    # 6. Print final results
+    print(f"\n{'='*50}")
+    print("VALIDATION RESULTS:")
+    print(f"{'='*50}")
+    
+    if errors:
+        print(f"❌ FAILED: {len(errors)} error(s) found")
+        print("\nDetailed errors:")
+        for i, error in enumerate(errors, 1):
+            print(f"  {i}. {error}")
+        print(f"\n✅ Valid files: {success_count}")
+        return 1
+    else:
+        print(f"✅ SUCCESS: All {success_count} workflow file(s) are valid")
+        return 0
 
-# 4. Print results
-print(f"\n{'='*50}")
-print("VALIDATION RESULTS:")
-print(f"{'='*50}")
-
-if errors:
-    print(f"❌ Found {len(errors)} error(s):")
-    for error in errors:
-        print(f"  • {error}")
-    sys.exit(1)
-else:
-    print(f"✅ SUCCESS: All {success_count} workflow file(s) are valid")
-    sys.exit(0)
-EOF
-          echo "✅ Validation script created"
-      
-      - name: Run validation
-        if: steps.check_schema.outputs.schema_exists == 'true' && steps.check_workflows.outputs.workflow_count != '0'
-        run: |
-          python3 validate_simple.py
-      
-      - name: Create summary report
-        if: always()
-        run: |
-          echo ""
-          echo "📋 SCHEMA ENFORCER SUMMARY"
-          echo "=========================="
+if __name__ == "__main__":
+    sys.exit(main())
+EOF_VALIDATE
           
-          if [ "${{ steps.check_schema.outputs.schema_exists }}" = "false" ]; then
-            echo "❌ BLOCKING: Schema file missing"
-            echo "   Create: .github/schemas/workflow-schema.json"
-          elif [ "${{ steps.check_workflows.outputs.workflow_count }}" = "0" ]; then
-            echo "⚠️  No workflow files to validate"
-          else
-            echo "✅ Validation completed"
-          fi
+          # Run the validation
+          python3 validate_work.py
