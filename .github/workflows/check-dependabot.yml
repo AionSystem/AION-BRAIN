@@ -1,0 +1,19 @@
+name: Check Dependabot
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly on Monday at 9am
+  workflow_dispatch:
+
+permissions:
+  actions: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Dependabot failures
+        id: check
+        uses: case/dependabot-error-alerts@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          lookback_days: '7'
