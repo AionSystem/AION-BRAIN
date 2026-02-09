@@ -2,6 +2,8 @@
 
 > **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#reviewer-summary)
 
+[![Lint Markdown Documentation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
+
 ## 🎯 For Reviewers & Collaborators: Start Here
 
 **Research Status**: Architecture complete, validation awaiting execution  
