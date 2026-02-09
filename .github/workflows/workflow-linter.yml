@@ -475,8 +475,8 @@ jobs:
           ```
 
           ## 🔍 Schema Validation
-          Your workflows are validated against 
-          .github/schema/workflow-schema.json or 
+          Your workflows are validated against
+          .github/schema/workflow-schema.json or
           .github/schemas/workflow-schema.json.
 
           ## 📚 Resources
