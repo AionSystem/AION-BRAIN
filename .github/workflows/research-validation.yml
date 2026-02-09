@@ -1,94 +1,127 @@
-name: Research Validation
+name: "[MOCK] Research Validation - PLACEHOLDER"
 
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
     inputs:
       engine:
-        description: 'Which engine to validate (e.g., "neural-core", "reasoning-module")'
+        description: 'Engine to validate'
         required: true
         type: choice
-        options:
-        - neural-core
-        - reasoning-module
-        - symbolic-engine
+        options: [neural-core, reasoning-module, symbolic-engine]
         default: 'neural-core'
       test_budget:
-        description: 'Budget in dollars (e.g., 10.0)'
+        description: 'Max $100 - Mock Only'
         required: true
         type: string
         default: '10.0'
 
 permissions:
   contents: read
-  issues: write  # Allows creating GitHub Issues
+  issues: write
 
 jobs:
   validate-research:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Log Inputs & Calculate Tests
-        id: calculate
+      - name: ⚠️ WARNING - MOCK WORKFLOW
         run: |
-          # Access workflow_dispatch inputs correctly
+          echo "::error::THIS IS A MOCK/PROTOTYPE WORKFLOW"
+          echo "::error::Performs NO real validation - Placeholder only"
+          echo "::error::Requires LLM API integration for real use"
+          sleep 5  # Force pause to read warning
+
+      - name: Check Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc jq
+          command -v gh || { echo "::error::GitHub CLI required"; exit 1; }
+
+      - name: Validate & Sanitize Inputs
+        id: validate
+        run: |
           ENGINE="${{ github.event.inputs.engine }}"
           BUDGET="${{ github.event.inputs.test_budget }}"
           
-          # Basic input validation
-          echo "🔧 Validation Parameters:"
-          echo "Engine: $ENGINE"
-          echo "Budget: $$BUDGET"
+          # Mask sensitive values
+          echo "::add-mask::$BUDGET"
+          echo "::add-mask::$ENGINE"
           
-          # Calculate tests (simple example: $0.025 per test)
-          # Using 'bc' for floating-point arithmetic
-          TESTS=$(echo "$BUDGET / 0.025" | bc)
-          echo "Number of tests to run: $TESTS"
+          # Input validation
+          if ! [[ "$BUDGET" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "::error::Budget must be numeric"
+            exit 1
+          fi
           
-          # Set outputs for later steps
-          echo "engine=$ENGINE" >> $GITHUB_OUTPUT
-          echo "tests=$TESTS" >> $GITHUB_OUTPUT
+          # Cap budget
+          if (( $(echo "$BUDGET > 100" | bc -l) )); then
+            echo "::error::Budget capped at $100"
+            exit 1
+          fi
+          
+          if (( $(echo "$BUDGET <= 0" | bc -l) )); then
+            echo "::error::Budget must be > 0"
+            exit 1
+          fi
+          
+          # Sanitize engine name
+          SANITIZED_ENGINE=$(echo "$ENGINE" | sed 's/[^a-zA-Z0-9_-]//g')
+          echo "engine=$SANITIZED_ENGINE" >> $GITHUB_OUTPUT
           echo "budget=$BUDGET" >> $GITHUB_OUTPUT
+          
+          # Calculate tests
+          TESTS=$(echo "$BUDGET / 0.025" | bc)
+          echo "tests=$TESTS" >> $GITHUB_OUTPUT
 
-      - name: Simulate API Validation (Mock)
+      - name: Check for Recent Duplicates
+        id: check_duplicate
         run: |
-          echo "🧪 Running MOCK validation for engine: ${{ steps.calculate.outputs.engine }}"
-          echo "📊 Mock Result: ${{ steps.calculate.outputs.tests }} tests completed successfully under budget $${{ steps.calculate.outputs.budget }}."
-          echo "✅ All mock validation checks passed."
-          # In the future, replace this with:
-          # - curl to OpenAI/Anthropic/Claude API
-          # - python script to process results
+          DAYS_AGO=$(date -d "7 days ago" +%Y-%m-%d)
+          DUPLICATES=$(gh issue list --search "label:validation-mock \"${{ steps.validate.outputs.engine }}\" created:>=$DAYS_AGO" --json number | jq length)
+          
+          if [ "$DUPLICATES" -gt 2 ]; then
+            echo "::warning::Multiple mock issues exist for this engine"
+            echo "duplicate=true" >> $GITHUB_OUTPUT
+          else
+            echo "duplicate=false" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Create Validation Report Issue
+      - name: Create Mock Report Issue
+        if: steps.check_duplicate.outputs.duplicate == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Create a markdown report
-          REPORT_BODY=$(cat <<EOF
-  ### ✅ Research Validation Report
-  
-  **Workflow Run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-  **Validated Engine:** \`${{ steps.calculate.outputs.engine }}\`
-  **Budget Used:** $${{ steps.calculate.outputs.budget }}
-  **Tests Simulated:** ${{ steps.calculate.outputs.tests }}
-  
-  **Status:** Validation simulation completed successfully.
-  
-  **Next Steps:**
-  1. Integrate with actual LLM API (OpenAI, Anthropic, etc.)
-  2. Implement real test prompts for the engine.
-  3. Parse and score API responses.
-  
-  *This is a mock report. Enable real API calls by adding secrets and uncommenting the API step.*
-EOF
-          )
-          
-          # Use GitHub CLI to create an issue
-          echo "$REPORT_BODY" | gh issue create \
-            --title "[Research Validation] Results for ${{ steps.calculate.outputs.engine }} - Run #${{ github.run_number }}" \
+          cat << 'EOF' | gh issue create \
+            --title "[MOCK] Validation Placeholder: ${{ steps.validate.outputs.engine }}" \
             --body-file - \
-            --label "validation,automated-report"
+            --label "validation-mock,placeholder,automated"
+          # ⚠️ MOCK VALIDATION REPORT
+
+          **This workflow is a PROTOTYPE and performs NO real validation.**
           
-          echo "📝 Validation report issue created."
-        # The GitHub CLI (gh) is pre-installed on GitHub runners
+          **Purpose:** Reserve CI/CD slot for future AI-powered validation.
+          
+          **Parameters:**
+          - Engine: `${{ steps.validate.outputs.engine }}`
+          - Budget Parameter: ${{ steps.validate.outputs.budget }}
+          - Simulated Tests: ${{ steps.validate.outputs.tests }}
+          
+          **Required for Real Validation:**
+          1. LLM API key (OpenAI/Anthropic/etc.)
+          2. API key stored as GitHub Secret
+          3. Actual validation logic implementation
+          
+          **Security Notes:**
+          - Inputs are sanitized and masked
+          - Budget is capped at $100
+          - Duplicate detection prevents spam
+          
+          *Last updated: $(date)*
+          EOF
+          
+          echo "📝 Mock placeholder issue created."
+
+      - name: Skip Due to Duplicates
+        if: steps.check_duplicate.outputs.duplicate == 'true'
+        run: |
+          echo "⏭️ Skipping issue creation - similar mock issues exist"
+          echo "Check existing issues with: gh issue list --label validation-mock"
