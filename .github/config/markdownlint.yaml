@@ -1,3 +1,4 @@
-# Example rule: All headings must increment by one level only
-MD001: false
-MD013: false # Allow long lines if you prefer
+- name: Lint Markdown files
+  uses: actionshub/markdownlint@main
+  with:
+    args: '**/*.md --ignore node_modules'
