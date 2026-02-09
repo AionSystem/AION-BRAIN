@@ -1,26 +1,38 @@
-name: CI
+name: Continuous Integration (CI)
 
-permissions:
-  contents: read
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
-  lint:
+  # JOB 1: Lint Python Code
+  lint-python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      
-      - name: Check Markdown files
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pylint
+      - run: pylint engines/ --recursive=true # Adjust path to your code
+
+  # JOB 2: Lint Documentation (Your Existing Workflow)
+  lint-docs:
+    uses: ./.github/workflows/lint-docs.yml # Reuses your existing workflow
+
+  # JOB 3: Run Python Tests
+  test-python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11'] # Test multiple versions
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
         run: |
-          echo "Checking documentation structure..."
-          find . -name "*.md" -type f | wc -l
-          
-      - name: Check Python structure
-        run: |
-          echo "Python files found:"
-          find . -name "*.py" -type f | wc -l
+          pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run Tests
+        run: pytest engines/ --verbose # Adjust path to your code
