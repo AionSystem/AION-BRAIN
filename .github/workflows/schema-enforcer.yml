@@ -65,7 +65,7 @@ jobs:
               
               # Try to auto-fix (yamllint doesn't auto-fix, but we can with Python)
               python3 << 'EOF'
-import sys, yaml
+import sys yaml
 file_path = sys.argv[1]
 
 try:
@@ -101,7 +101,7 @@ EOF "$file"
           echo "🔍 Validating workflow structure..."
           
           python3 << 'EOF'
-import os, sys, yaml, json
+import os sys yaml json
 
 # Define the minimum required structure
 REQUIRED_FIELDS = ['name', 'on', 'jobs']
