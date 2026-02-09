@@ -1,0 +1,36 @@
+name: Schema Enforcer
+on:
+  push:
+    branches: [main, master]
+    paths: ['**/*.yml', '**/*.yaml', '**/*.json']
+  pull_request:
+    paths: ['**/*.yml', '**/*.yaml', '**/*.json']
+
+jobs:
+  validate-schemas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install jsonschema pyyaml
+      
+      - name: Validate configuration files
+        run: |
+          # Implementation mechanism:
+          # 1. Load schemas from .github/schemas/
+          # 2. Match files to schemas by path patterns
+          # 3. Validate each file
+          # 4. Report violations (continue on error)
+          # 5. Exit non-zero only if critical violations
+          python .github/scripts/validate_schemas.py
+      
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: schema-validation-report
+          path: validation_report.json
