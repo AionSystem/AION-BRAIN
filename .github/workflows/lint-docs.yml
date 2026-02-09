@@ -1,17 +1,13 @@
-name: Lint Documentation
-on: [push, pull_request]  # Runs when you push code or create a PR
+name: Lint Markdown
+on: [push, pull_request]
 
 jobs:
-  markdown-lint:
+  markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Lint Markdown files
-        uses: actionshub/markdownlint@main
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          # This config matches the search results suggestion
-          config_file: .github/config/markdownlint.yaml
-          # Ignore the node_modules folder
-          args: '**/*.md --ignore node_modules'
+          node-version: '18'
+      - run: npm install --global markdownlint-cli2
+      - run: npx markdownlint-cli2 '**/*.md' '!node_modules'
