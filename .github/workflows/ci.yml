@@ -1,7 +1,6 @@
 name: AION Consolidated CI
 on: [push, pull_request]
 
-# This key ensures that even if a job fails, others continue and the workflow finishes
 defaults:
   run:
     shell: bash
@@ -10,7 +9,6 @@ jobs:
   # JOB 1: LINT PYTHON
   lint-python:
     runs-on: ubuntu-latest
-    # This ensures the job always completes (pass or fail) so its outputs are saved
     continue-on-error: true
     outputs:
       status: ${{ job.status }}
@@ -24,17 +22,23 @@ jobs:
         id: run-lint
         run: |
           pip install pylint -q
-          find engines/ frameworks/ -type f -name "*.py" -exec dirname {} \; | sort -u > py_dirs.txt || echo "No Python dirs found" > py_dirs.txt
           echo "Linting Report:" > pylint_report.txt
-          cat py_dirs.txt | while read dir; do
+          echo "Searching for Python files in engines/ and frameworks/ ..." >> pylint_report.txt
+
+          {
+            find engines/ frameworks/ -type f -name "*.py" -exec dirname {} \; 2>/dev/null || true
+          } | sort -u | while read dir; do
             echo "=== Linting $dir ===" >> pylint_report.txt
             pylint "$dir" --recursive=true --exit-zero 2>&1 >> pylint_report.txt || true
           done
+
+          if ! grep -q "=== Linting" pylint_report.txt; then
+            echo "No Python (.py) files were found to lint in the engines/ or frameworks/ directories." >> pylint_report.txt
+          fi
       - name: Collect Lint Report
         id: collect-report
         run: |
           content=$(cat pylint_report.txt)
-          # Format the content for safe YAML output
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
           content="${content//$'\r'/'%0D'}"
@@ -96,7 +100,6 @@ jobs:
             python -m pytest . -v 2>&1 >> ../pytest_report.txt || echo "  -> Test run encountered an issue." >> ../pytest_report.txt
             cd - > /dev/null
           done
-          # If no test files were found, note that
           if [ ! -s pytest_report.txt ] || grep -q "Pytest Report" pytest_report.txt && ! grep -q "===" pytest_report.txt; then
             echo "No test files (test_*.py) were discovered in the engines/ or frameworks/ directories." >> pytest_report.txt
           fi
@@ -112,7 +115,6 @@ jobs:
   # FINAL JOB: CREATE MASTER REPORT (ALWAYS RUNS)
   create-report:
     runs-on: ubuntu-latest
-    # This job runs even if previous jobs are skipped or fail
     if: always()
     needs: [lint-python, lint-docs, test-python]
     steps:
