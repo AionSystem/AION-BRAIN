@@ -1,72 +1,114 @@
-name: Continuous Integration (CI)
+name: AION Consolidated CI
 on: [push, pull_request]
 
 jobs:
-  # JOB 1: Lint Python Code (Only in folders with Python files)
+  # JOB 1: LINT PYTHON (Runs in parallel)
   lint-python:
     runs-on: ubuntu-latest
+    outputs: # This makes the result available to the final job
+      status: ${{ steps.lint.outcome }}
+      report: ${{ steps.lint.outputs.report }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install Pylint
-        run: pip install pylint
-
-      - name: Discover and Lint Python Projects
+      - name: Install & Run Pylint
+        id: lint # This ID is important for capturing output
         run: |
-          # This script finds directories containing .py files and runs pylint on them.
-          echo "🔍 Searching for Python projects in engines/ and frameworks/ ..."
-          find engines/ frameworks/ -type f -name "*.py" | while read py_file; do
-            project_dir=$(dirname "$py_file")
-            # Use a marker to avoid linting the same directory multiple times
-            if [ ! -f "$project_dir/.linted" ]; then
-              echo "--- Linting Python project in: $project_dir ---"
-              pylint "$project_dir" --recursive=true --exit-zero || true
-              touch "$project_dir/.linted"
-            fi
+          pip install pylint
+          # Find .py files, run pylint, capture ALL output to a file
+          find engines/ frameworks/ -type f -name "*.py" -exec dirname {} \; | sort -u | while read dir; do
+            echo "===== LINTING: $dir =====" >> pylint_report.txt
+            pylint "$dir" --recursive=true --exit-zero >> pylint_report.txt 2>&1 || true
+            echo "" >> pylint_report.txt
           done
-          echo "✅ Python linting discovery complete."
+          # Save the report to use later
+          echo "report<<EOF" >> $GITHUB_OUTPUT
+          cat pylint_report.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
-  # JOB 2: Lint Documentation (Your existing, working workflow)
+  # JOB 2: LINT DOCS (Runs in parallel)
   lint-docs:
-    uses: ./.github/workflows/lint-docs.yml
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.lint-docs.outcome }}
+      report: ${{ steps.lint-docs.outputs.report }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Lint Markdown
+        id: lint-docs
+        run: |
+          npm install -g markdownlint-cli
+          # Run, capture ALL output
+          markdownlint "**/*.md" --ignore node_modules 2>&1 | tee md_report.txt
+          echo "report<<EOF" >> $GITHUB_OUTPUT
+          cat md_report.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
-  # JOB 3: Run Python Tests (Only in projects that have tests)
+  # JOB 3: TEST PYTHON (Runs in parallel)
   test-python:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ['3.10', '3.11']
+    outputs:
+      status: ${{ steps.test.outcome }}
+      report: ${{ steps.test.outputs.report }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Install Dependencies
+      - name: Install & Run Tests
+        id: test
         run: |
-          pip install --upgrade pip
           pip install pytest
-          # Install any global project dependencies if you have a root requirements.txt
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - name: Discover and Run Tests
-        run: |
-          # This script finds test files and runs pytest in their parent directories.
-          echo "🔍 Searching for test files (test_*.py) in engines/ and frameworks/ ..."
-          find engines/ frameworks/ -type f -name "test_*.py" | while read test_file; do
-            test_dir=$(dirname "$test_file")
-            echo "--- Running tests in: $test_dir ---"
-            cd "$test_dir"
-            python -m pytest . --verbose -q || echo "⚠️  Tests failed or no tests collected in $test_dir"
+          # Find and run tests, capture ALL output
+          echo "===== PYTEST OUTPUT (Python ${{ matrix.python-version }}) =====" > pytest_report.txt
+          find engines/ frameworks/ -type f -name "test_*.py" -exec dirname {} \; | sort -u | while read dir; do
+            echo "--- TESTING in: $dir ---" >> pytest_report.txt
+            cd "$dir"
+            python -m pytest . -v 2>&1 | tee -a ../pytest_report.txt
             cd - > /dev/null
+            echo "" >> pytest_report.txt
           done
-          echo "✅ Test discovery complete."
+          # Save the report
+          echo "report<<EOF" >> $GITHUB_OUTPUT
+          cat pytest_report.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+  # FINAL JOB: CREATE MASTER ERROR REPORT (Runs after all others)
+  create-report:
+    runs-on: ubuntu-latest
+    needs: [lint-python, lint-docs, test-python] # Waits for all jobs
+    steps:
+      - name: Generate Consolidated Report
+        run: |
+          echo "# AION-BRAIN WORKFLOW RESULTS" > workflow-results.txt
+          echo "Generated: $(date)" >> workflow-results.txt
+          echo "==========================================" >> workflow-results.txt
+
+          echo "## 1. PYTHON LINTING RESULTS" >> workflow-results.txt
+          echo "${{ needs.lint-python.outputs.report }}" >> workflow-results.txt
+
+          echo "## 2. DOCUMENTATION LINTING RESULTS" >> workflow-results.txt
+          echo "${{ needs.lint-docs.outputs.report }}" >> workflow-results.txt
+
+          echo "## 3. PYTHON TESTING RESULTS" >> workflow-results.txt
+          echo "${{ needs.test-python.outputs.report }}" >> workflow-results.txt
+
+          echo "==========================================" >> workflow-results.txt
+          echo "END OF REPORT" >> workflow-results.txt
+
+          # Show a preview in the log
+          cat workflow-results.txt
+
+      - name: Upload Error Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-error-report
+          path: workflow-results.txt
