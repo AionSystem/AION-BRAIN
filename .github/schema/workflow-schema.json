@@ -1,1 +1,338 @@
-
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/aion-brain/workflow-schema",
+  "title": "GitHub Actions Workflow",
+  "description": "Comprehensive validation for AION-BRAIN GitHub Actions workflow files",
+  "type": "object",
+  "required": ["name", "on", "jobs"],
+  
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "pattern": "^[^\\n]+$",
+      "description": "Workflow name displayed in GitHub UI (no newlines)"
+    },
+    
+    "on": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["push", "pull_request", "workflow_dispatch", "schedule"]
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": true
+        }
+      ],
+      "description": "Events that trigger the workflow"
+    },
+    
+    "env": {
+      "type": "object",
+      "description": "Global environment variables",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean"]
+      }
+    },
+    
+    "permissions": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["read-all", "write-all"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "actions": {"$ref": "#/definitions/permission"},
+            "checks": {"$ref": "#/definitions/permission"},
+            "contents": {"$ref": "#/definitions/permission"},
+            "deployments": {"$ref": "#/definitions/permission"},
+            "id-token": {"$ref": "#/definitions/permission"},
+            "issues": {"$ref": "#/definitions/permission"},
+            "discussions": {"$ref": "#/definitions/permission"},
+            "packages": {"$ref": "#/definitions/permission"},
+            "pages": {"$ref": "#/definitions/permission"},
+            "pull-requests": {"$ref": "#/definitions/permission"},
+            "repository-projects": {"$ref": "#/definitions/permission"},
+            "security-events": {"$ref": "#/definitions/permission"},
+            "statuses": {"$ref": "#/definitions/permission"}
+          }
+        }
+      ]
+    },
+    
+    "jobs": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "Jobs to execute in this workflow",
+      "additionalProperties": {
+        "$ref": "#/definitions/job"
+      }
+    },
+    
+    "concurrency": {
+      "oneOf": [
+        {"type": "string"},
+        {
+          "type": "object",
+          "required": ["group"],
+          "properties": {
+            "group": {"type": "string"},
+            "cancel-in-progress": {"type": "boolean"}
+          }
+        }
+      ]
+    }
+  },
+  
+  "definitions": {
+    "permission": {
+      "type": "string",
+      "enum": ["read", "write", "none"]
+    },
+    
+    "job": {
+      "type": "object",
+      "required": ["runs-on"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name for the job"
+        },
+        
+        "runs-on": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ubuntu-latest", "ubuntu-22.04", "ubuntu-20.04",
+                "macos-latest", "macos-13", "macos-12",
+                "windows-latest", "windows-2022", "windows-2019"
+              ]
+            },
+            {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          ],
+          "description": "Runner environment"
+        },
+        
+        "needs": {
+          "oneOf": [
+            {"type": "string"},
+            {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          ],
+          "description": "Jobs that must complete before this job"
+        },
+        
+        "if": {
+          "type": "string",
+          "description": "Conditional expression to determine if job runs"
+        },
+        
+        "permissions": {
+          "$ref": "#/properties/permissions"
+        },
+        
+        "environment": {
+          "oneOf": [
+            {"type": "string"},
+            {
+              "type": "object",
+              "required": ["name"],
+              "properties": {
+                "name": {"type": "string"},
+                "url": {"type": "string"}
+              }
+            }
+          ]
+        },
+        
+        "concurrency": {
+          "$ref": "#/properties/concurrency"
+        },
+        
+        "outputs": {
+          "type": "object",
+          "additionalProperties": {"type": "string"}
+        },
+        
+        "env": {
+          "type": "object",
+          "additionalProperties": {"type": ["string", "number", "boolean"]}
+        },
+        
+        "defaults": {
+          "type": "object",
+          "properties": {
+            "run": {
+              "type": "object",
+              "properties": {
+                "shell": {"type": "string"},
+                "working-directory": {"type": "string"}
+              }
+            }
+          }
+        },
+        
+        "steps": {
+          "type": "array",
+          "description": "Steps to execute in this job",
+          "items": {
+            "$ref": "#/definitions/step"
+          }
+        },
+        
+        "timeout-minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 360
+        },
+        
+        "strategy": {
+          "type": "object",
+          "properties": {
+            "matrix": {
+              "type": "object",
+              "minProperties": 1
+            },
+            "fail-fast": {"type": "boolean"},
+            "max-parallel": {"type": "integer", "minimum": 1}
+          }
+        },
+        
+        "continue-on-error": {
+          "type": "boolean"
+        },
+        
+        "container": {
+          "oneOf": [
+            {"type": "string"},
+            {
+              "type": "object",
+              "required": ["image"],
+              "properties": {
+                "image": {"type": "string"},
+                "credentials": {
+                  "type": "object",
+                  "properties": {
+                    "username": {"type": "string"},
+                    "password": {"type": "string"}
+                  }
+                },
+                "env": {"type": "object"},
+                "ports": {
+                  "type": "array",
+                  "items": {"type": "integer"}
+                },
+                "volumes": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                },
+                "options": {"type": "string"}
+              }
+            }
+          ]
+        },
+        
+        "services": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["image"],
+            "properties": {
+              "image": {"type": "string"},
+              "credentials": {"type": "object"},
+              "env": {"type": "object"},
+              "ports": {"type": "array"},
+              "volumes": {"type": "array"},
+              "options": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    
+    "step": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_-]*$",
+          "description": "Unique identifier for the step"
+        },
+        
+        "name": {
+          "type": "string",
+          "description": "Display name for the step"
+        },
+        
+        "if": {
+          "type": "string",
+          "description": "Conditional expression"
+        },
+        
+        "uses": {
+          "type": "string",
+          "pattern": "^[^@]+@[^@]+$|^\\./.*$",
+          "description": "Action to run (format: owner/repo@ref or ./path)"
+        },
+        
+        "run": {
+          "type": "string",
+          "description": "Shell command(s) to execute"
+        },
+        
+        "with": {
+          "type": "object",
+          "description": "Input parameters for the action",
+          "additionalProperties": true
+        },
+        
+        "env": {
+          "type": "object",
+          "additionalProperties": {"type": ["string", "number", "boolean"]}
+        },
+        
+        "continue-on-error": {
+          "type": "boolean"
+        },
+        
+        "timeout-minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        
+        "shell": {
+          "type": "string",
+          "enum": ["bash", "pwsh", "python", "sh", "cmd", "powershell"]
+        },
+        
+        "working-directory": {
+          "type": "string"
+        }
+      },
+      "oneOf": [
+        {"required": ["uses"]},
+        {"required": ["run"]}
+      ]
+    }
+  },
+  
+  "additionalProperties": false
+}
