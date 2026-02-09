@@ -16,7 +16,7 @@
 
 ## 📊 Repository Stats
 
-![Files](https://img.shields.io/badge/Files-1795-blue)
+![Files](https://img.shields.io/badge/Files-1795-purple)
 ![Directories](https://img.shields.io/badge/Directories-540-blue)
 ![Python](https://img.shields.io/badge/Python-254-blue)
 
