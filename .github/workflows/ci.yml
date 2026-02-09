@@ -49,12 +49,38 @@ jobs:
           name: python-lint-artifact
           path: pylint_output.txt
 
-  # JOB 2: LINT DOCS (REUSES YOUR WORKING WORKFLOW) - FIXED SYNTAX
+  # JOB 2: LINT DOCS (FIXED - SIMPLE DIRECT VERSION)
   lint-docs:
-    uses: ./.github/workflows/lint-docs.yml
-    with:
-      token: ${{ secrets.GITHUB_TOKEN }}
-    secrets: inherit  # Add this line
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
+      report_file: markdownlint_output.txt
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Markdown Linter
+        run: npm install -g markdownlint-cli@0.36.0
+
+      - name: Run markdownlint
+        id: lint-run
+        run: |
+          echo "🔍 Starting Markdown linting..." > markdownlint_output.txt
+          echo "======================================" >> markdownlint_output.txt
+          
+          # Run markdownlint on all .md files
+          find . -name "*.md" -not -path "./.*" | while read -r file; do
+            echo "--- Checking: $file ---" >> markdownlint_output.txt
+            markdownlint "$file" 2>&1 | head -30 >> markdownlint_output.txt || true
+            echo "" >> markdownlint_output.txt
+          done
+          
+          echo "✅ Markdown linting complete." >> markdownlint_output.txt
+          
+      - name: Upload Markdown Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-lint-artifact
+          path: markdownlint_output.txt
 
   # JOB 3: TEST PYTHON (SMART DISCOVERY)
   test-python:
@@ -125,7 +151,7 @@ jobs:
           echo "| Job | Status | Details |" >> MASTER_REPORT.md
           echo "|-----|--------|---------|" >> MASTER_REPORT.md
           echo "| Python Linting | **${{ needs.lint-python.result }}** | [View Raw Report](./downloaded-artifacts/python-lint-artifact/pylint_output.txt) |" >> MASTER_REPORT.md
-          echo "| Documentation Linting | **${{ needs.lint-docs.result }}** | See workflow [lint-docs.yml](.github/workflows/lint-docs.yml) |" >> MASTER_REPORT.md
+          echo "| Documentation Linting | **${{ needs.lint-docs.result }}** | [View Raw Report](./downloaded-artifacts/markdown-lint-artifact/markdownlint_output.txt) |" >> MASTER_REPORT.md
           echo "| Python Testing | **${{ needs.test-python.result }}** | [View Raw Report](./downloaded-artifacts/python-test-artifact/pytest_output.txt) |" >> MASTER_REPORT.md
           echo "" >> MASTER_REPORT.md
           
@@ -135,7 +161,13 @@ jobs:
           echo '```' >> MASTER_REPORT.md
           echo "" >> MASTER_REPORT.md
           
-          echo "## 2. PYTHON TESTING DETAILS" >> MASTER_REPORT.md
+          echo "## 2. MARKDOWN LINTING DETAILS" >> MASTER_REPORT.md
+          echo '```' >> MASTER_REPORT.md
+          cat ./downloaded-artifacts/markdown-lint-artifact/markdownlint_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
+          echo '```' >> MASTER_REPORT.md
+          echo "" >> MASTER_REPORT.md
+          
+          echo "## 3. PYTHON TESTING DETAILS" >> MASTER_REPORT.md
           echo '```' >> MASTER_REPORT.md
           cat ./downloaded-artifacts/python-test-artifact/pytest_output.txt >> MASTER_REPORT.md 2>/dev/null || echo "Report not available." >> MASTER_REPORT.md
           echo '```' >> MASTER_REPORT.md
