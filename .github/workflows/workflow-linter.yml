@@ -62,18 +62,19 @@ rules:
   comments:
     min-spaces-from-content: 1
 EOF
-echo "✅ yamllint config created"
-          
-    - name: Lint this workflow file first
+          echo "✅ yamllint config created"
+      
+      - name: Lint this workflow file first
         run: |
           echo "🔍 Self-check: Validating this linter workflow..."
           if yamllint .github/workflows/workflow-linter.yml; then
-          echo "✅ This workflow file passes yamllint"
+            echo "✅ This workflow file passes yamllint"
           else
-          echo "❌ This workflow file has linting issues!"
+            echo "❌ This workflow file has linting issues!"
             exit 1
           fi
-    - name: Run yamllint with auto-fix
+      
+      - name: Run yamllint with auto-fix
         id: yamllint
         continue-on-error: true
         run: |
@@ -82,15 +83,15 @@ echo "✅ yamllint config created"
           EXIT_CODE=0
           for file in .github/workflows/*.yml .github/workflows/*.yaml; do
             [ -f "$file" ] || continue
-          echo ""
-          echo "📄 Linting: $file"
+            echo ""
+            echo "📄 Linting: $file"
             if ! yamllint_output=$(yamllint -f parsable "$file" 2>&1); then
-          echo "  ⚠️  Found linting issues:"
+              echo "  ⚠️  Found linting issues:"
               echo "$yamllint_output" | sed 's/^/    /'
               EXIT_CODE=1
               cp "$file" "$file.backup"
-          echo "  💾 Backup created: $file.backup"
-              python3 <<'PYEOF'
+              echo "  💾 Backup created: $file.backup"
+              python3 <<'PYEOF' "$file"
 import os
 import sys
 import yaml
@@ -115,7 +116,7 @@ try:
 except Exception as e:
     print(f"  ❌ Could not auto-fix: {e}", file=sys.stderr)
     sys.exit(1)
-PYEOF "$file"
+PYEOF
               if [ $? -ne 0 ]; then
                 echo "  ⚠️  Auto-fix failed, restoring backup"
                 mv "$file.backup" "$file"
@@ -126,7 +127,7 @@ PYEOF "$file"
           done
           exit $EXIT_CODE
       
-       - name: Validate against JSON schema
+      - name: Validate against JSON schema
         id: schema_validation
         continue-on-error: true
         run: |
@@ -451,5 +452,3 @@ echo "✅ Fix suggestions created"
       echo "❌ Some validations failed - review the logs above"
       exit 1
     fi
-
-
