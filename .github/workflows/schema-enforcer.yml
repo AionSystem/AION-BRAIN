@@ -1,36 +1,91 @@
 name: Schema Enforcer
 on:
+  pull_request:
+    paths: ['**/*.yml', '**/*.yaml', '**/*.json']
   push:
     branches: [main, master]
-    paths: ['**/*.yml', '**/*.yaml', '**/*.json']
-  pull_request:
     paths: ['**/*.yml', '**/*.yaml', '**/*.json']
 
 jobs:
   validate-schemas:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       
-      - name: Install dependencies
+      - name: Install validation tools
         run: pip install jsonschema pyyaml
       
-      - name: Validate configuration files
+      - name: Validate YAML files
         run: |
-          # Implementation mechanism:
-          # 1. Load schemas from .github/schemas/
-          # 2. Match files to schemas by path patterns
-          # 3. Validate each file
-          # 4. Report violations (continue on error)
-          # 5. Exit non-zero only if critical violations
-          python .github/scripts/validate_schemas.py
+          echo "🔍 Validating YAML files..."
+          python << 'EOF'
+          import os, json, yaml, sys
+          from jsonschema import validate, ValidationError
+          from pathlib import Path
+          
+          # Load workflow schema
+          schema_path = Path('.github/schemas/workflow-schema.json')
+          with open(schema_path) as f:
+              workflow_schema = json.load(f)
+          
+          errors = []
+          
+          # Find all YAML files
+          for yaml_file in Path('.').rglob('*.yml'):
+              if '.github/workflows/' in str(yaml_file):
+                  try:
+                      with open(yaml_file) as f:
+                          content = yaml.safe_load(f)
+                      
+                      # Validate against schema
+                      validate(instance=content, schema=workflow_schema)
+                      print(f"✅ {yaml_file}")
+                      
+                  except yaml.YAMLError as e:
+                      errors.append(f"{yaml_file}: YAML syntax error - {e}")
+                  except ValidationError as e:
+                      errors.append(f"{yaml_file}: Schema violation - {e.message}")
+                  except Exception as e:
+                      errors.append(f"{yaml_file}: Unexpected error - {e}")
+          
+          # Report results
+          if errors:
+              print("\n❌ VALIDATION ERRORS:")
+              for error in errors:
+                  print(f"  - {error}")
+              sys.exit(1)
+          else:
+              print("\n✅ All YAML files passed schema validation")
+          EOF
       
-      - name: Upload validation report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: schema-validation-report
-          path: validation_report.json
+      - name: Validate JSON files (basic)
+        run: |
+          echo "🔍 Validating JSON files..."
+          python << 'EOF'
+          import json, sys
+          from pathlib import Path
+          
+          errors = []
+          
+          for json_file in Path('.').rglob('*.json'):
+              try:
+                  with open(json_file) as f:
+                      json.load(f)  # Just check if valid JSON
+                  print(f"✅ {json_file}")
+              except json.JSONDecodeError as e:
+                  errors.append(f"{json_file}: Invalid JSON - {e}")
+          
+          if errors:
+              print("\n❌ JSON ERRORS:")
+              for error in errors:
+                  print(f"  - {error}")
+              sys.exit(1)
+          else:
+              print("\n✅ All JSON files are valid")
+          EOF
