@@ -3,99 +3,79 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
+
+ # AION-BRAIN DEPENDABOT CONFIGURATION
+# Simplified to avoid directory conflicts
 version: 2
 updates:
-  # ============================================
-  # ZONE 4: RESEARCH DATA - NEVER AUTO-UPDATE
-  # ============================================
-  - package-ecosystem: "pip"
-    directory: "/benchmarks/datasets/"
+  
+  # -------------------------------------------------
+  # ZONE 0: GITHUB ACTIONS (Root-level only)
+  # -------------------------------------------------
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: "never"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch", 
-                       "version-update:semver-minor",
-                       "version-update:semver-major"]
+      interval: "weekly"
+    open-pull-requests-limit: 5
 
-  # ============================================
-  # ZONE 1: CRITICAL DOMAINS - SECURITY ONLY
-  # ============================================
-  - package-ecosystem: "pip"
-    directory: "/engines/tier-3-domain-specific/medical-engine/"
-    schedule:
-      interval: "monthly"
-    allow:
-      - dependency-type: "security"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor",
-                       "version-update:semver-major"]
-
-  - package-ecosystem: "pip"
-    directory: "/engines/tier-3-domain-specific/legal-engine/"
-    schedule:
-      interval: "monthly"
-    allow:
-      - dependency-type: "security"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor",
-                       "version-update:semver-major"]
-
-  - package-ecosystem: "pip"
-    directory: "/engines/tier-3-domain-specific/financial-engine/"
-    schedule:
-      interval: "monthly"
-    allow:
-      - dependency-type: "security"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor",
-                       "version-update:semver-major"]
-
-  # ============================================
-  # ZONE 2: FOUNDATION ENGINES
-  # ============================================
+  # -------------------------------------------------
+  # ZONE 1: FOUNDATION ENGINES (HIGH PRIORITY)
+  # -------------------------------------------------
   - package-ecosystem: "pip"
     directory: "/engines/tier-1-foundation/"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 10
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+    # Optional: Group related dependencies
+    groups:
+      ai-ml-deps:
+        patterns: ["numpy", "pandas", "scikit-learn", "tensorflow", "torch"]
+      utils-deps:
+        patterns: ["requests", "loguru", "python-dotenv"]
 
   - package-ecosystem: "pip"
     directory: "/engines/tier-2-cognitive-architecture/"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 10
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  # ============================================
-  # ZONE 3: TOOLS - UPDATE FREELY
-  # ============================================
+  # -------------------------------------------------
+  # ZONE 2: TOOLS (MEDIUM PRIORITY)
+  # -------------------------------------------------
   - package-ecosystem: "pip"
     directory: "/tools/"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 5
 
-  # ============================================
-  # GITHUB ACTIONS
-  # ============================================
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
-  # ============================================
-  # ROOT LEVEL (Conservative)
-  # ============================================
+  # -------------------------------------------------
+  # ZONE 3: CRITICAL DOMAINS (SECURITY ONLY)
+  # -------------------------------------------------
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/engines/tier-3-domain-specific/"
     schedule:
       interval: "monthly"
+    open-pull-requests-limit: 3
+    allow:
+      - dependency-type: "security"
+    # Only security updates for these critical engines
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+        update-types: ["version-update:semver-minor",
+                       "version-update:semver-major"]
+
+  # -------------------------------------------------
+  # ZONE 4: RESEARCH DATA (MANUAL ONLY - NO AUTO UPDATES)
+  # -------------------------------------------------
+  - package-ecosystem: "pip"
+    directory: "/benchmarks/datasets/"
+    schedule:
+      interval: "never"
+    # No updates - research datasets should be version-locked    
+     
