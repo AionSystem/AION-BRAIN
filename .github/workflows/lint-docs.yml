@@ -1,22 +1,53 @@
 name: Lint Markdown Documentation
-on: [push, pull_request]
+on:
+  workflow_call:
+    inputs:
+      token:
+        required: true
+        type: string
+    outputs:
+      status:
+        value: ${{ jobs.markdown-lint.result }}
+      report:
+        value: ${{ jobs.markdown-lint.outputs.report_file }}
 
 jobs:
-  lint:
+  markdown-lint:
     runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
+      report_file: markdownlint_output.txt
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          fetch-depth: 0
 
-      - name: Install markdownlint-cli
-        run: npm install -g markdownlint-cli
+      - name: Install Markdown Linter
+        run: npm install -g markdownlint-cli@0.36.0
 
       - name: Run markdownlint
+        id: lint-run
         run: |
-          markdownlint "**/*.md" --ignore node_modules || echo "Linting found issues"
-        continue-on-error: true
+          echo "🔍 Starting Markdown linting..." > markdownlint_output.txt
+          echo "======================================" >> markdownlint_output.txt
+          
+          # Run markdownlint on all .md files
+          find . -name "*.md" -not -path "./.*" | while read -r file; do
+            echo "--- Checking: $file ---" >> markdownlint_output.txt
+            markdownlint "$file" --config .markdownlint.json 2>&1 | head -30 >> markdownlint_output.txt || true
+            echo "" >> markdownlint_output.txt
+          done
+          
+          # Check if any errors were found
+          if grep -q "MD" markdownlint_output.txt; then
+            echo "✅ Markdown linting complete (issues found)." >> markdownlint_output.txt
+          else
+            echo "✅ Markdown linting complete (no issues)." >> markdownlint_output.txt
+          fi
+
+      - name: Upload Markdown Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-lint-artifact
+          path: markdownlint_output.txt
