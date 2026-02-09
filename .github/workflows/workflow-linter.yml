@@ -89,7 +89,7 @@ jobs:
               cp "$file" "$file.backup"
               echo "  💾 Backup created: $file.backup"
               
-       # Auto-fix with Python
+        # Auto-fix with Python
               python3 << 'PYEOF'
 import os
 import sys
