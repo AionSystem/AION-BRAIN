@@ -8,15 +8,14 @@ on:
     branches: [ main, master ]
   workflow_dispatch:  # Manual trigger
   schedule:
-    # Run daily at midnight UTC to keep structure updated
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'  # Daily at midnight UTC
 
 jobs:
   scan-structure:
     name: 📁 Scan Repository Structure
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Needed to commit the structure file
+      contents: write
     
     steps:
       - name: Checkout repository
@@ -24,123 +23,107 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true  # Important for push
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Create SIMPLE structure scanner
+      - name: Run structure scanner
         run: |
-          cat > simple_scan.py << 'EOF'
-          #!/usr/bin/env python3
-          print("📁 Scanning AION-BRAIN repository...")
-          
-          import os
-          from pathlib import Path
-          import json
-          from datetime import datetime
-          
-          # Count everything
-          total_files = 0
-          total_dirs = 0
-          python_files = 0
-          md_files = 0
-          yaml_files = 0
-          
-          file_list = []
-          
-          # Walk through all files
-          for root, dirs, files in os.walk('.'):
-              # Skip hidden directories
-              dirs[:] = [d for d in dirs if not d.startswith('.')]
-              
-              # Skip specific directories
-              skip_dirs = ['.git', '.github', '__pycache__', 'node_modules', 'venv', '.aions-structure-list']
-              dirs[:] = [d for d in dirs if d not in skip_dirs]
-              
-              total_dirs += 1
-              
-              for file in files:
-                  if file.startswith('.'):
-                      continue
-                      
-                  total_files += 1
-                  filepath = os.path.join(root, file)
-                  
-                  if file.endswith('.py'):
-                      python_files += 1
-                  elif file.endswith('.md'):
-                      md_files += 1
-                  elif file.endswith('.yml') or file.endswith('.yaml'):
-                      yaml_files += 1
-                  
-                  file_list.append(filepath)
-          
-          # Create output
-          stats = {
-              "total_files": total_files,
-              "total_directories": total_dirs,
-              "python_files": python_files,
-              "markdown_files": md_files,
-              "yaml_files": yaml_files,
-              "scan_time": datetime.now().isoformat()
-          }
-          
-          # Create directory
-          output_dir = Path('.aions-structure-list')
-          output_dir.mkdir(exist_ok=True)
-          
-          # Save stats
-          with open(output_dir / 'stats.json', 'w') as f:
-              json.dump(stats, f, indent=2)
-          
-          # Create simple markdown
-          with open(output_dir / 'STRUCTURE.MD', 'w') as f:
-              f.write(f"# 📊 AION-BRAIN Repository Stats\n\n")
-              f.write(f"**Last Scan:** {stats['scan_time']}\n\n")
-              f.write(f"- **Total Files:** {total_files}\n")
-              f.write(f"- **Total Directories:** {total_dirs}\n")
-              f.write(f"- **Python Files:** {python_files}\n")
-              f.write(f"- **Markdown Files:** {md_files}\n")
-              f.write(f"- **YAML Files:** {yaml_files}\n\n")
-              f.write("## Recent Files (first 20):\n```\n")
-              for file in sorted(file_list)[:20]:
-                  f.write(f"{file}\n")
-              f.write("```\n")
-          
-          print(f"✅ Scan complete!")
-          print(f"📁 Directories: {total_dirs}")
-          print(f"📄 Files: {total_files}")
-          print(f"🐍 Python: {python_files}")
-          print(f"📚 Markdown: {md_files}")
-          print(f"⚙️  YAML: {yaml_files}")
-          EOF
-          
-          python simple_scan.py
+          python3 << 'EOF'
+import os
+import json
+from pathlib import Path
+from datetime import datetime
 
-      - name: Create badge snippet for README
+print("📁 Scanning AION-BRAIN repository...")
+
+total_files = total_dirs = python_files = md_files = yaml_files = 0
+file_list = []
+
+for root, dirs, files in os.walk('.'):
+    dirs[:] = [d for d in dirs if not d.startswith('.')]
+    skip_dirs = {'.git', '.github', '__pycache__', 'node_modules', 'venv', '.aions-structure-list'}
+    dirs[:] = [d for d in dirs if d not in skip_dirs]
+    
+    total_dirs += 1
+    
+    for file in files:
+        if file.startswith('.'):
+            continue
+            
+        total_files += 1
+        filepath = os.path.join(root, file)
+        
+        if file.endswith('.py'):
+            python_files += 1
+        elif file.endswith('.md'):
+            md_files += 1
+        elif file.endswith('.yml') or file.endswith('.yaml'):
+            yaml_files += 1
+        
+        file_list.append(filepath)
+
+stats = {
+    "total_files": total_files,
+    "total_directories": total_dirs,
+    "python_files": python_files,
+    "markdown_files": md_files,
+    "yaml_files": yaml_files,
+    "scan_time": datetime.now().isoformat()
+}
+
+output_dir = Path('.aions-structure-list')
+output_dir.mkdir(exist_ok=True)
+
+with open(output_dir / 'stats.json', 'w') as f:
+    json.dump(stats, f, indent=2)
+
+with open(output_dir / 'STRUCTURE.MD', 'w') as f:
+    f.write(f"# 📊 AION-BRAIN Repository Stats\\n\\n")
+    f.write(f"**Last Scan:** {stats['scan_time']}\\n\\n")
+    f.write(f"- **Total Files:** {total_files}\\n")
+    f.write(f"- **Total Directories:** {total_dirs}\\n")
+    f.write(f"- **Python Files:** {python_files}\\n")
+    f.write(f"- **Markdown Files:** {md_files}\\n")
+    f.write(f"- **YAML Files:** {yaml_files}\\n\\n")
+    f.write("## Recent Files (first 20):\\n```\\n")
+    for file in sorted(file_list)[:20]:
+        f.write(f"{file}\\n")
+    f.write("```\\n")
+
+print(f"✅ Scan complete!")
+print(f"📁 Directories: {total_dirs}")
+print(f"📄 Files: {total_files}")
+print(f"🐍 Python: {python_files}")
+print(f"📚 Markdown: {md_files}")
+print(f"⚙️  YAML: {yaml_files}")
+EOF
+
+      - name: Create badge snippet
         run: |
-          # Read stats
           if [ -f ".aions-structure-list/stats.json" ]; then
-            TOTAL_FILES=$(python -c "import json; print(json.load(open('.aions-structure-list/stats.json'))['total_files'])")
-            TOTAL_DIRS=$(python -c "import json; print(json.load(open('.aions-structure-list/stats.json'))['total_directories'])")
-            PY_FILES=$(python -c "import json; print(json.load(open('.aions-structure-list/stats.json'))['python_files'])")
-            
-            # Create badge markdown
-            cat > .aions-structure-list/BADGE-SNIPPET.md << EOF
-          ## 📊 Repository Stats
-          
-          ![Files](https://img.shields.io/badge/Files-${TOTAL_FILES}-blue)
-          ![Directories](https://img.shields.io/badge/Directories-${TOTAL_DIRS}-green)
-          ![Python](https://img.shields.io/badge/Python-${PY_FILES}-yellow)
-          
-          *Updated automatically*
-          EOF
-            
-            echo "Badge snippet created!"
-            cat .aions-structure-list/BADGE-SNIPPET.md
+            python3 << 'EOF'
+import json
+with open('.aions-structure-list/stats.json') as f:
+    stats = json.load(f)
+
+badge_md = f"""## 📊 Repository Stats
+
+![Files](https://img.shields.io/badge/Files-{stats['total_files']}-blue)
+![Directories](https://img.shields.io/badge/Directories-{stats['total_directories']}-green)
+![Python](https://img.shields.io/badge/Python-{stats['python_files']}-yellow)
+
+*Updated automatically*"""
+
+with open('.aions-structure-list/BADGE-SNIPPET.md', 'w') as f:
+    f.write(badge_md)
+
+print("Badge snippet created!")
+print(badge_md)
+EOF
           else
             echo "No stats file found"
           fi
@@ -165,43 +148,3 @@ jobs:
         with:
           name: structure-scan-results
           path: .aions-structure-list/
-
-  structure-summary:
-    name: 📋 Structure Summary
-    runs-on: ubuntu-latest
-    needs: scan-structure
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Display structure summary
-        run: |
-          echo "🎯 AION-BRAIN Structure Summary"
-          echo "================================"
-          echo ""
-          
-          if [ -f ".aions-structure-list/STRUCTURE.MD" ]; then
-            echo "📁 Repository Structure Overview:"
-            echo ""
-            # Extract key metrics
-            grep -E "Total Files:|Total Directories:|Python Files:|Markdown Files:" .aions-structure-list/STRUCTURE.MD | head -4
-            echo ""
-            
-            echo "📊 File Type Distribution:"
-            echo ""
-            echo "| File Type | Count |"
-            echo "|-----------|-------|"
-            if [ -f ".aions-structure-list/stats.json" ]; then
-              python3 -c "
-import json
-with open('.aions-structure-list/stats.json') as f:
-    stats = json.load(f)
-print(f'| Python (.py) | {stats[\"python_files\"]} |')
-print(f'| Markdown (.md) | {stats[\"markdown_files\"]} |')
-print(f'| YAML (.yml/.yaml) | {stats[\"yaml_files\"]} |')
-print(f'| Other Files | {stats[\"total_files\"] - stats[\"python_files\"] - stats[\"markdown_files\"] - stats[\"yaml_files\"]} |')
-              "
-            fi
-          else
-            echo "⚠️ Structure file not found"
-          fi
