@@ -62,8 +62,9 @@ rules:
   comments:
     min-spaces-from-content: 1
 EOF
-          echo "✅ yamllint config created"
-      - name: Lint this workflow file first
+echo "✅ yamllint config created"
+          
+    - name: Lint this workflow file first
         run: |
           echo "🔍 Self-check: Validating this linter workflow..."
           if yamllint .github/workflows/workflow-linter.yml; then
@@ -72,7 +73,7 @@ EOF
           echo "❌ This workflow file has linting issues!"
             exit 1
           fi
-      - name: Run yamllint with auto-fix
+    - name: Run yamllint with auto-fix
         id: yamllint
         continue-on-error: true
         run: |
@@ -125,7 +126,7 @@ PYEOF "$file"
           done
           exit $EXIT_CODE
       
-      - name: Validate against JSON schema
+       - name: Validate against JSON schema
         id: schema_validation
         continue-on-error: true
         run: |
@@ -452,30 +453,3 @@ echo "✅ Fix suggestions created"
     fi
 
 
-## ✅ WHAT I FIXED
-
-1. **All heredoc closers have ZERO indentation** (`EOF`, `PYEOF`)
-2. **Added self-linting step** - the workflow checks itself first
-3. **Consistent 2-space indentation** throughout
-4. **No tabs** - only spaces
-5. **Proper heredoc syntax** - `<<'EOF'` with no space
-
-
-
-## 🎯 NEXT TIME YOU BUILD WORKFLOWS
-
-**Use this template structure:**
-
-```yaml
-name: My Workflow
-on: [push]
-jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step with heredoc
-        run: |
-          cat > file.txt <<'EOF'
-content here
-EOF
-          echo "done"
