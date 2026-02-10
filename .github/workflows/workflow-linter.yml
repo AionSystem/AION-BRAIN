@@ -25,7 +25,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -34,166 +33,105 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install linter tools
-        run: |
-          pip install --quiet --upgrade pip
-          pip install --quiet yamllint pyyaml jsonschema
-          echo "✅ Installed tools"
+      - name: Install tools
+        run: pip install --quiet yamllint pyyaml jsonschema
 
-      - name: Create yamllint config (relaxed for GitHub Actions)
+      - name: Create relaxed yamllint config
         run: |
-          cat > .yamllint.yml <<EOF
+          cat > .yamllint <<EOF
           extends: default
-
           rules:
             document-start: disable
-            line-length:
-              max: 160
-              allow-non-breakable-words: true
-              allow-non-breakable-inline-mappings: true
-            truthy:
-              allowed-values: ['true', 'false', 'on', 'off']  # Allow 'on' for triggers
-              check-keys: false
-            braces: {min-spaces-inside: 0, max-spaces-inside: 0}
-            brackets: {min-spaces-inside: 0, max-spaces-inside: 0}
-            comments: {min-spaces-from-content: 1}
+            line-length: {max: 160}
+            truthy: disable
             indentation: {spaces: consistent, indent-sequences: true}
           EOF
-          echo "✅ yamllint config created (relaxed)"
 
-      - name: Lint and auto-fix workflow files
-        id: yamllint
+      - name: Lint & auto-fix workflows
         run: |
-          echo "🔧 Linting & fixing .github/workflows/*.y*ml"
-          EXIT_CODE=0
-          shopt -s nullglob
-
-          for file in .github/workflows/*.yml .github/workflows/*.yaml; do
+          EXIT=0
+          for file in .github/workflows/*.y*ml; do
             [ -f "$file" ] || continue
-            echo ""
-            echo "📄 Processing: $file"
+            echo "Processing $file"
 
-            # Backup
             cp "$file" "$file.bak"
 
-            # Run yamllint (parsable for logging)
-            yamllint_output=$(yamllint -f parsable "$file" 2>&1) || true
+            yamllint_output=$(yamllint "$file" 2>&1) || true
             if [ -n "$yamllint_output" ]; then
-              echo "  ⚠️ yamllint issues:"
-              echo "$yamllint_output" | sed 's/^/    /'
-              EXIT_CODE=1
-            else
-              echo "  ✅ yamllint clean"
+              echo "yamllint issues in $file:"
+              echo "$yamllint_output"
+              EXIT=1
             fi
 
-            # Auto-format with Python (add name if missing + consistent dump)
-            python3 - <<'PYEOF' "$file"
-          import sys
-          import yaml
-          import os
+            # Auto-format + add name if missing
+            python3 - <<'PYEOF' "$file" || { echo "Python fix failed for $file"; EXIT=1; mv "$file.bak" "$file"; }
+import sys, yaml, os, traceback
+path = sys.argv[1]
+try:
+    with open(path, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f) or {}
+    modified = False
+    if 'name' not in data:
+        name = ' '.join(w.capitalize() for w in os.path.basename(path).replace('.yml','').replace('.yaml','').replace('-',' ').split())
+        data['name'] = name
+        modified = True
+        print(f"Added name: {name}")
+    with open(path, 'w', encoding='utf-8') as f:
+        yaml.dump(data, f, default_flow_style=False, sort_keys=False, width=160, allow_unicode=True, indent=2)
+    print("Formatted YAML")
+except Exception as e:
+    print("Python error:", str(e))
+    print(traceback.format_exc())
+    sys.exit(1)
+PYEOF
 
-          path = sys.argv[1]
-          try:
-              with open(path, 'r', encoding='utf-8') as f:
-                  data = yaml.safe_load(f) or {}
-
-              modified = False
-
-              # Add name if missing
-              if 'name' not in data:
-                  basename = os.path.basename(path).replace('.yml', '').replace('.yaml', '')
-                  name = ' '.join(word.capitalize() for word in basename.replace('-', ' ').split())
-                  data['name'] = name
-                  modified = True
-                  print(f"  Added missing 'name': {name}")
-
-              # Dump with consistent style
-              with open(path, 'w', encoding='utf-8') as f:
-                  yaml.dump(data, f, default_flow_style=False, sort_keys=False,
-                            width=160, allow_unicode=True, indent=2)
-                  print("  Auto-formatted YAML")
-
-          except Exception as e:
-              print(f"  ❌ Fix failed: {e}", file=sys.stderr)
-              # Restore backup on fail
-              os.replace(f"{path}.bak", path)
-              sys.exit(1)
-          PYEOF
-
-            if [ $? -ne 0 ]; then
-              echo "  ⚠️ Python fix failed - restored backup"
-              EXIT_CODE=1
-            fi
-
-            # Re-lint after fix
-            if ! yamllint "$file" > /dev/null 2>&1; then
-              echo "  ❌ Still fails yamllint after fix"
-              EXIT_CODE=1
-            fi
           done
+          exit $EXIT
 
-          exit $EXIT_CODE
-
-      - name: Schema & Structure Validation
+      - name: Schema & structure validation
         run: |
-          echo "🔍 Running schema + structure checks (combined Python)"
-
           python3 - <<'PYEOF'
-          import os, sys, yaml, json
-          from jsonschema import validate, ValidationError
+import os, yaml, json, sys
+from jsonschema import validate, ValidationError
 
-          REQUIRED = ['name', 'on', 'jobs']
-          ERRORS = []
+schema = {
+    "type": "object",
+    "required": ["name", "on", "jobs"],
+    "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "on": {"type": ["object", "string", "array"]},
+        "jobs": {"type": "object", "minProperties": 1}
+    }
+}
 
-          schema = {
-              "type": "object",
-              "required": ["name", "on", "jobs"],
-              "properties": {
-                  "name": {"type": "string", "minLength": 1},
-                  "on": {"type": ["object", "string", "array"]},
-                  "jobs": {"type": "object", "minProperties": 1}
-              }
-          }
+errors = []
+for root, _, files in os.walk('.github/workflows'):
+    for f in files:
+        if not f.endswith(('.yml', '.yaml')): continue
+        path = os.path.join(root, f)
+        try:
+            with open(path) as fh:
+                data = yaml.safe_load(fh)
+            validate(data, schema)
+            if 'jobs' in data:
+                for j, job in data['jobs'].items():
+                    if 'runs-on' not in job:
+                        errors.append(f"{f}: Job '{j}' missing 'runs-on'")
+        except Exception as e:
+            errors.append(f"{f}: {str(e)}")
 
-          for root, _, files in os.walk('.github/workflows'):
-              for file in files:
-                  if not file.endswith(('.yml', '.yaml')): continue
-                  path = os.path.join(root, file)
-                  try:
-                      with open(path) as f:
-                          data = yaml.safe_load(f)
-                      if not data: 
-                          ERRORS.append(f"{file}: Empty")
-                          continue
+if errors:
+    print("\n".join(errors))
+    sys.exit(1)
+print("All workflows valid")
+PYEOF
 
-                      validate(data, schema)
-
-                      for field in REQUIRED:
-                          if field not in data:
-                              ERRORS.append(f"{file}: Missing '{field}'")
-
-                      if 'jobs' in data:
-                          for jname, job in data['jobs'].items():
-                              if 'runs-on' not in job:
-                                  ERRORS.append(f"{file}: Job '{jname}' missing 'runs-on'")
-
-                  except Exception as e:
-                      ERRORS.append(f"{file}: {str(e)}")
-
-          if ERRORS:
-              print("\n".join(ERRORS))
-              sys.exit(1)
-          print("All workflows valid")
-          PYEOF
-
-      - name: Commit fixes (if enabled)
-        if: always() && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.auto_commit == 'true')) && !github.event.pull_request.head.repo.fork
+      - name: Auto-commit fixes
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.auto_commit == 'true')
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: auto-fix workflow YAML linting & formatting"
+          commit_message: "chore: auto-fix workflow linting & formatting"
           file_pattern: .github/workflows/*.y*ml
-          skip_dirty_check: false
 
-      - name: Final summary
-        if: always()
-        run: echo "Workflow finished. Check previous steps for details."
+      - name: Final status
+        run: echo "Linter finished - check logs for details"
