@@ -12,7 +12,6 @@
 
 [![.github/workflows/aion-structure.yml](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml)
 
-[![Workflow Linter & Auto-Fixer](https://github.com/AionSystem/AION-BRAIN/actions/workflows/workflow-linter.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/workflow-linter.yml)
 
 ## 📊 Repository Stats
 
