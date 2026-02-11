@@ -435,10 +435,10 @@ and start building them to hold the weight of the world.**
 
 ## Resources
 
-- **Aion-Brain Repository:** [Coming Soon - Whitepaper Blueprint v1.1]
+- **Aion-Brain Repository:** github.com/aionsystem/aion-brain
 - **NOMOS Framework:** CRP v7.0-CHARLIE (Legal Reasoning Engine)
 - **FSVE Core:** Foundational Scoring & Validation Engine specification
-- **Contact:** [Your contact information]
+- **Contact:** aionsystem@outlook.com
 
 ---
 
