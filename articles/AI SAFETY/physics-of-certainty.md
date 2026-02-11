@@ -1,3 +1,5 @@
+![1000007129](https://github.com/user-attachments/assets/b7c109b6-e5f4-4ee5-8420-01b4fa5f2802)
+
 # The End of the "Chatbot" Era: Why We Need a Physics of Certainty
 
 **By Sheldon K. Salmon (AionSystem)**  
