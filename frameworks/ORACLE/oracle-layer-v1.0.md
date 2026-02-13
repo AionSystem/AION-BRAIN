@@ -1,6 +1,7 @@
 ORACLE LAYER v1.0
 Official Name: Oracle Layer (Embedded Intelligence Protocol)
 Codename: The Self-Aware Prompt
+by:Sheldon K Salmon + AI assisted
 Purpose: Embedded instructions that make ANY AI self-correct, self-explain, and self-document during execution
 A. WHAT IT ACTUALLY IS
 ORACLE LAYER = A SET OF META-INSTRUCTIONS EMBEDDED IN THE PROMPT ITSELF
