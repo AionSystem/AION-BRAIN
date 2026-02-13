@@ -1,4 +1,4 @@
-FSVE v1.0 — Foundational Scoring & Validation Engine
+FSVE v1.4 — Foundational Scoring & Validation Engine
 by sheldon k salmon
 
 A physics layer for certainty, confidence, and decision legitimacy
