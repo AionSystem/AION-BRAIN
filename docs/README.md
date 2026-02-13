@@ -4,6 +4,14 @@
 
 [![Lint Markdown Documentation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
 
+## 📊 Repository Stats
+
+![Files](https://img.shields.io/badge/Files-1878-blue)
+![Directories](https://img.shields.io/badge/Directories-564-green)
+![Python](https://img.shields.io/badge/Python-254-yellow)
+
+*Updated automatically*
+
 ## 🎯 For Reviewers & Collaborators: Start Here
 
 **Research Status**: Architecture complete, validation awaiting execution  
