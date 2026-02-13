@@ -4,7 +4,9 @@
 
 ---
 
-**Document Classification:** Operational Specification — Active Framework  
+**Document Classification:** Operational 
+By: Sheldon K Salmon(Mr.AI/ON) + ai assisted
+Specification — Active Framework  
 **Version:** 2.0  
 **Supersedes:** AION v1.0  
 **Status:** Release Candidate  
