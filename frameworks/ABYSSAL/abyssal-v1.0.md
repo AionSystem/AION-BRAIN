@@ -1,4 +1,39 @@
 
+flowchart TD
+    Start[Session Exchange] --> Measure[Measure 5 Axes]
+    Measure --> CC[Context Complexity]
+    Measure --> AL[Abstraction Layers]
+    Measure --> TC[Temporal Coherence]
+    Measure --> NS[Novel Synthesis]
+    Measure --> SI[Structural Integrity]
+    
+    CC --> Composite[Compute Composite Depth]
+    AL --> Composite
+    TC --> Composite
+    NS --> Composite
+    SI --> Composite
+    
+    Composite --> CheckSI{SI < 0.40?}
+    CheckSI -->|Yes| Suspend[SUSPENDED<br/>Invalid Output]
+    CheckSI -->|No| Classify[Classify Zone]
+    
+    Classify --> Zone{Depth Value}
+    Zone -->|< 0.60| Safe[🟢 SAFE<br/>Continue Normal]
+    Zone -->|0.60-0.75| Warning[🟡 WARNING<br/>Monitor]
+    Zone -->|0.75-0.85| Danger[🔴 DANGER<br/>Export State]
+    Zone -->|> 0.85| Abyss[⛔ ABYSS<br/>Halt/Override]
+    
+    Safe --> Log[Log to FCL]
+    Warning --> Log
+    Danger --> Log
+    Abyss --> Log
+    Suspend --> Log
+
+
+
+
+
+
 # ABYSSAL v1.0
 ## AI Boundary and System Scaling Assessment Layer
 ### Unified Specification: Depth Governance · Scaling Validation · Epistemic Limit Detection
