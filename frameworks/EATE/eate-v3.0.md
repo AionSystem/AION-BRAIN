@@ -4,7 +4,7 @@
 
 ---
 
-**By:** Sheldon K. Salmon (Mr. AI/ON)  
+**By:** Sheldon K. Salmon (Mr. AI/ON)+ AI-Assisted  
 **Date:** February 13, 2026  
 **Document Classification:** Operational Specification — First Release  
 **Version:** 3.0 (Supersedes v2.1)  
