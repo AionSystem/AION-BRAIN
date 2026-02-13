@@ -4,7 +4,6 @@ A physics layer for certainty, confidence, and decision legitimacy
 by: Sheldon K Salmon 
 date:12/19/2025
 
-
 ---
 
 0. Purpose (Why This Exists)
