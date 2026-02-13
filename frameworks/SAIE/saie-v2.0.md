@@ -4,7 +4,8 @@
 
 ---
 
-**Document Classification:** Operational Specification — Release Candidate
+**Document Classification:** Operational
+by: Sheldon K Salmon(Mr.AI/ON) + Ai assisted Specification — Release Candidate
 **Version:** 2.0
 **Supersedes:** SAIE v1.2
 **Status:** Release Candidate
