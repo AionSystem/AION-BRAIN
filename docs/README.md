@@ -1,5 +1,4 @@
-# 🔬 AION-BRAIN: 
-Research-Grade Cognitive Architecture for AI Safety
+# 🔬 AION-BRAIN: Research-Grade Cognitive Architecture for AI Safety
 
 > **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#reviewer-summary)
 
