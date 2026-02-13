@@ -4,7 +4,9 @@
 
 ---
 
-**Document Classification:** Operational Specification — Release Candidate  
+**Document Classification:** Operational 
+By: Sheldon K Salmon(Mr.AI/ON) + ai assisted
+Specification — Release Candidate  
 **Version:** 3.0  
 **Supersedes:** FSVE v1.0 through v2.0  
 **AION v2.0 Compliance:** Verified under UVK §1.1–§1.5  
