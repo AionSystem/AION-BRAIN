@@ -13,14 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tools (latest Pandoc + markdownlint)
+      - name: Install tools (Pandoc 3.9 latest + markdownlint)
         run: |
-          # Install Pandoc 3.9 (latest as of Feb 2026) via official deb
+          # Install Pandoc 3.9 (released Feb 4, 2026) via official amd64 deb
           PANDOC_VERSION="3.9"
-          wget "https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/pandoc- \){PANDOC_VERSION}-1-amd64.deb"
-          sudo dpkg -i "pandoc-${PANDOC_VERSION}-1-amd64.deb" || sudo apt-get install -f -y
-          rm "pandoc-${PANDOC_VERSION}-1-amd64.deb"
-          pandoc --version  # Debug: confirm 3.9.x installed
+          DEB_FILE="pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          wget "https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/ \){DEB_FILE}"
+          sudo dpkg -i "${DEB_FILE}" || sudo apt-get install -f -y  # Auto-fix deps if needed
+          rm "${DEB_FILE}"
+          pandoc --version  # Debug: should output pandoc 3.9
 
           # Install latest markdownlint-cli
           npm install -g markdownlint-cli
@@ -30,7 +31,7 @@ jobs:
         run: |
           echo "Starting conversion and linting in frameworks/..."
 
-          # Convert PDFs to MD (only matching .pdf files)
+          # Convert PDFs to MD (only .pdf files)
           find frameworks -type f ! -name ".*" | while read -r file; do
             if [[ "\( file" =\~ \.pdf \) ]]; then
               output="${file%.pdf}.md"
@@ -40,11 +41,11 @@ jobs:
                 continue
               }
               echo "Conversion successful: $output"
-              # rm "$file"  # Uncomment to remove original PDF after success
+              # rm "$file"  # Uncomment to delete original PDF after success
             fi
           done
 
-          # Lint & auto-fix all MD files
+          # Lint & auto-fix all MD files in frameworks/
           echo "Linting Markdown files..."
           find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \;
           echo "Markdown linting & auto-fixing complete."
