@@ -1,4 +1,4 @@
-name: Framework Integrity and README Sync
+name: Framework Integrity and README Sync (No PDF Conversion)
 
 on:
   push:
@@ -13,67 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tools (Pandoc 3.9 + markdownlint)
+      - name: Install markdownlint
         run: |
-          set -euo pipefail
-
-          echo "=== Installing Pandoc 3.9 (Feb 2026 release) ==="
-          PANDOC_VERSION="3.9"
-          DEB_FILE="pandoc-3.9-1-amd64.deb"  # EXACT filename from release
-          DEB_URL="https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/ \){DEB_FILE}"
-
-          echo "Downloading from: ${DEB_URL}"
-          if ! wget --no-verbose "${DEB_URL}"; then
-            echo "wget failed — likely 404 or network issue. Check filename/URL."
-            exit 1
-          fi
-
-          echo "Installing deb package..."
-          sudo dpkg -i "${DEB_FILE}" || {
-            echo "dpkg failed — fixing dependencies..."
-            sudo apt-get update
-            sudo apt-get install -f -y
-          }
-          rm -f "${DEB_FILE}"
-
-          # Verify
-          if ! command -v pandoc &> /dev/null; then
-            echo "ERROR: pandoc command not found after install!"
-            exit 1
-          fi
-          pandoc --version | head -n 3 || echo "pandoc --version failed"
-
-          echo "=== Installing markdownlint ==="
           npm install -g markdownlint-cli
-          markdownlint --version || echo "markdownlint install issue"
+          markdownlint --version  # Debug
 
-      - name: Convert non-MD to Markdown & Lint
+      - name: Lint & auto-fix MD files
         run: |
-          set -euo pipefail
-
-          echo "Scanning for PDFs in frameworks/..."
-
-          CONVERTED=false
-          find frameworks -type f ! -name ".*" | while read -r file; do
-            if [[ "\( file" =\~ \.pdf \) ]]; then
-              output="${file%.pdf}.md"
-              echo "Converting: $file → $output"
-              if pandoc "$file" -o "$output" --wrap=preserve --markdown-headings=atx --standalone; then
-                echo "Success: $output"
-                CONVERTED=true
-                # rm "$file"  # Uncomment ONLY after testing (backs up originals!)
-              else
-                echo "Conversion failed for $file — skipping removal"
-              fi
-            fi
-          done
-
-          if ! $CONVERTED; then
-            echo "No PDFs converted — proceeding to lint existing MD."
-          fi
-
-          echo "Linting & fixing MD files..."
-          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Lint fixes had issues (non-fatal)"
+          echo "Linting and fixing Markdown files in frameworks/..."
+          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Some lint fixes had non-fatal issues"
+          echo "Linting complete."
 
       - name: Scan Frameworks and Update README
         run: |
@@ -124,5 +73,5 @@ jobs:
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Ensured Markdown structure in frameworks/ & synced README [ci skip]"
+          commit_message: "Auto-lint MD files & synced README [ci skip]"
           file_pattern: "frameworks/**/*.md README.md"
