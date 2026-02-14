@@ -1,4 +1,5 @@
 name: Lint Markdown Documentation
+
 on:
   workflow_call:
     inputs:
@@ -23,27 +24,53 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Markdown Linter
-        run: npm install -g markdownlint-cli@0.36.0
+      - name: Install latest Markdown Linter
+        run: npm install -g markdownlint-cli  # Remove @0.36.0 pin → use latest (v0.41+ as of 2026)
 
-      - name: Run markdownlint
+      - name: Run markdownlint with relaxed config for specs
         id: lint-run
         run: |
-          echo "🔍 Starting Markdown linting..." > markdownlint_output.txt
+          echo "🔍 Starting Markdown linting for technical specs..." > markdownlint_output.txt
           echo "======================================" >> markdownlint_output.txt
           
-          # Run markdownlint on all .md files
-          find . -name "*.md" -not -path "./.*" | while read -r file; do
+          # If .markdownlint.json exists, use it; otherwise fall back to inline relaxed config
+          CONFIG_ARG=""
+          if [ -f .markdownlint.json ]; then
+            CONFIG_ARG="--config .markdownlint.json"
+            echo "Using project .markdownlint.json" >> markdownlint_output.txt
+          else
+            echo "No .markdownlint.json found → using relaxed inline config for specs/whitepapers" >> markdownlint_output.txt
+            CONFIG_ARG="--config"
+            cat <<EOF > temp-relaxed.json
+          {
+            "default": true,
+            "MD013": { "line_length": 120, "code_blocks": false, "tables": false },
+            "MD041": false,
+            "MD046": { "style": "fenced" },
+            "MD022": false,
+            "MD007": { "indent": 2 },
+            "MD047": true,
+            "MD009": true,
+            "MD033": false,
+            "MD024": false
+          }
+          EOF
+            CONFIG_ARG="--config temp-relaxed.json"
+          fi
+          
+          # Run on all .md files
+          find . -type f -name "*.md" -not -path "./.*" -not -path "./node_modules/*" | sort | while read -r file; do
             echo "--- Checking: $file ---" >> markdownlint_output.txt
-            markdownlint "$file" --config .markdownlint.json 2>&1 | head -30 >> markdownlint_output.txt || true
+            markdownlint "$file" $CONFIG_ARG 2>&1 >> markdownlint_output.txt || true
             echo "" >> markdownlint_output.txt
           done
           
-          # Check if any errors were found
-          if grep -q "MD" markdownlint_output.txt; then
-            echo "✅ Markdown linting complete (issues found)." >> markdownlint_output.txt
+          # Summary: count real errors (ignore if only warnings or no MDxxx)
+          ERROR_COUNT=$(grep -c "MD[0-9]\{3\}" markdownlint_output.txt || echo 0)
+          if [ "$ERROR_COUNT" -gt 0 ]; then
+            echo "⚠️ Markdown linting complete — $ERROR_COUNT potential issues found." >> markdownlint_output.txt
           else
-            echo "✅ Markdown linting complete (no issues)." >> markdownlint_output.txt
+            echo "✅ Markdown linting complete — no issues detected." >> markdownlint_output.txt
           fi
 
       - name: Upload Markdown Lint Report
@@ -51,3 +78,4 @@ jobs:
         with:
           name: markdown-lint-artifact
           path: markdownlint_output.txt
+          if-no-files-found: warn  # Don't fail if no report (edge case)
