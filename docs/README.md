@@ -3,6 +3,7 @@
 > **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#reviewer-summary)
 
 [![Lint Markdown Documentation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
+[![Epistemic Validation Auditor](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
 
 ## 📊 Repository Stats
 
