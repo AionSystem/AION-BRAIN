@@ -2,9 +2,9 @@ name: Framework Integrity and README Sync
 
 on:
   push:
-    paths: ['frameworks/**']
+    paths: ['frameworks/**', 'README.md']
   schedule:
-    - cron: '0 0 * * *'  # Daily
+    - cron: '0 0 * * *'  # Daily at midnight UTC
   workflow_dispatch:
 
 jobs:
@@ -15,44 +15,66 @@ jobs:
 
       - name: Install tools
         run: |
+          sudo apt update
           sudo apt install pandoc -y
-          npm install markdownlint-cli
+          npm install -g markdownlint-cli
 
-      - name: Convert and Lint Frameworks
+      - name: Convert non-MD to Markdown & Lint
         run: |
-          # Bash script for processing
-          for file in $(find frameworks -type f); do
-            if [[ ! "\( file" =\~ \.md \) ]]; then
-              pandoc "\( file" -o " \){file%.pdf}.md"  # Convert PDF to MD (or other formats)
-              rm "$file"  # Optional: remove original if converted
+          find frameworks -type f ! -name "*.md" | while read -r file; do
+            if [[ "\( file" =\~ \.pdf \) ]]; then
+              output="${file%.pdf}.md"
+              pandoc "$file" -o "$output" --wrap=none
+              echo "Converted $file → $output"
+              rm "$file"  # Optional: remove original PDF after conversion
             fi
-            markdownlint -f "$file" || echo "Lint failed for $file - fixing..." && markdownlint --fix "$file"
           done
 
-      - name: Scan and Update README
+          # Lint all MD files in frameworks/
+          find frameworks -name "*.md" -exec markdownlint --fix {} \;
+          echo "Markdown linting & auto-fixing complete."
+
+      - name: Scan Frameworks and Update README
         run: |
-          # Python to generate TOC/summary
-          python -c "
+          python - <<EOF
           import os
-          summary = '## Frameworks Overview\n\n'
+          import re
+
+          summary_lines = ["## Frameworks Overview (Auto-generated)\n"]
           for root, dirs, files in os.walk('frameworks'):
-              for file in files:
+              level = root.replace('frameworks', '').count(os.sep)
+              indent = '  ' * level
+              if level > 0:
+                  folder_name = os.path.basename(root)
+                  summary_lines.append(f"{indent}- **{folder_name}/**\n")
+              for file in sorted(files):
                   if file.endswith('.md'):
-                      with open(os.path.join(root, file), 'r') as f:
-                          lines = f.readlines()
-                          version = next((l for l in lines if 'Version:' in l), 'Version: Unknown')
-                          summary += f'- [{file}]({os.path.join(root, file)}) - {version.strip()}\n'
-          with open('README.md', 'r') as f:
-              content = f.read()
-          if '## Frameworks Overview' in content:
-              content = content.split('## Frameworks Overview')[0] + summary
-          else:
-              content += '\n' + summary
-          with open('README.md', 'w') as f:
-              f.write(content)
-          "
+                      path = os.path.join(root, file)
+                      rel_path = os.path.relpath(path, '.')
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          version_match = re.search(r'(?i)version:\s*([\d\.]+)', content)
+                          version = version_match.group(1) if version_match else 'Unknown'
+                      summary_lines.append(f"{indent}  - [{file}]({rel_path}) — Version {version}\n")
+
+          summary = ''.join(summary_lines)
+
+          readme_path = 'README.md'
+          if os.path.exists(readme_path):
+              with open(readme_path, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              if '## Frameworks Overview (Auto-generated)' in content:
+                  parts = content.split('## Frameworks Overview (Auto-generated)')
+                  new_content = parts[0] + summary + (parts[1].split('\n', 1)[1] if len(parts) > 1 else '')
+              else:
+                  new_content = content.rstrip() + '\n\n' + summary
+              with open(readme_path, 'w', encoding='utf-8') as f:
+                  f.write(new_content)
+              print("README updated with frameworks summary.")
+          EOF
 
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Ensured MD structure in frameworks/ and updated README"
+          commit_message: "Ensured Markdown structure in frameworks/ & synced README [ci skip]"
+          file_pattern: "frameworks/**/*.md README.md"
