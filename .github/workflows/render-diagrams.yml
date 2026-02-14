@@ -1,0 +1,37 @@
+name: Render Diagrams and Charts
+
+on:
+  push:
+    paths:
+      - '**.md'
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Render Mermaid Diagrams
+        uses: nielsvaneck/render-md-mermaid@v1  # Latest version; check repo for updates
+        # No extra inputs needed—it scans all .md, renders to paths in your placeholders
+
+      - name: Set up Python for Matplotlib Rendering
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install matplotlib numpy  # Add more if your plots need (e.g., pandas)
+
+      - name: Render Matplotlib Plots from Markdown
+        run: |
+          # Find all .md files (including README.md in folders) and process them
+          find . -name "*.md" -exec python render_matplotlib.py {} \;
+
+      - name: Commit Rendered Images and Updated Markdown
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automatically rendered diagrams, charts, and updated READMEs"
+          file_pattern: "diagrams/*.png **/*.md"  # Commit new images and modified MD
