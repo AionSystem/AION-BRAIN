@@ -1,0 +1,58 @@
+name: Framework Integrity and README Sync
+
+on:
+  push:
+    paths: ['frameworks/**']
+  schedule:
+    - cron: '0 0 * * *'  # Daily
+  workflow_dispatch:
+
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt install pandoc -y
+          npm install markdownlint-cli
+
+      - name: Convert and Lint Frameworks
+        run: |
+          # Bash script for processing
+          for file in $(find frameworks -type f); do
+            if [[ ! "\( file" =\~ \.md \) ]]; then
+              pandoc "\( file" -o " \){file%.pdf}.md"  # Convert PDF to MD (or other formats)
+              rm "$file"  # Optional: remove original if converted
+            fi
+            markdownlint -f "$file" || echo "Lint failed for $file - fixing..." && markdownlint --fix "$file"
+          done
+
+      - name: Scan and Update README
+        run: |
+          # Python to generate TOC/summary
+          python -c "
+          import os
+          summary = '## Frameworks Overview\n\n'
+          for root, dirs, files in os.walk('frameworks'):
+              for file in files:
+                  if file.endswith('.md'):
+                      with open(os.path.join(root, file), 'r') as f:
+                          lines = f.readlines()
+                          version = next((l for l in lines if 'Version:' in l), 'Version: Unknown')
+                          summary += f'- [{file}]({os.path.join(root, file)}) - {version.strip()}\n'
+          with open('README.md', 'r') as f:
+              content = f.read()
+          if '## Frameworks Overview' in content:
+              content = content.split('## Frameworks Overview')[0] + summary
+          else:
+              content += '\n' + summary
+          with open('README.md', 'w') as f:
+              f.write(content)
+          "
+
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Ensured MD structure in frameworks/ and updated README"
