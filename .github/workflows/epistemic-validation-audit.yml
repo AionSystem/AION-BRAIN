@@ -1,0 +1,50 @@
+name: Epistemic Validation Auditor
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  audit-patterns:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup AI Agent
+        uses: github/gemini-cli-action@v1  # Example from search; or claude/copilot equivalent
+
+      - name: Run Epistemic Audit
+        run: |
+          # Use agent to process changes
+          gemini-cli --prompt "Analyze changed files against FSVE v3.0: Compute PLS using 7 axes (M,R,B,T,P,C,F). Check uncertainty conservation. Output: JSON with score and report." --files $(git diff --name-only HEAD^) > audit_report.json
+
+      - name: Validate and Report
+        run: |
+          score=$(jq '.pls' audit_report.json)
+          if (( $(echo "$score < 0.40" | bc -l) )); then
+            echo "Low legitimacy score: $score - Blocking." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          else
+            echo "VALID: PLS=$score" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: epistemic-audit
+          path: audit_report.json
+
+      - name: Notify on High Uncertainty
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Epistemic audit failed: Review for uncertainty issues.'
+            })
