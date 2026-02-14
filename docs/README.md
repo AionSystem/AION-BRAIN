@@ -6,6 +6,8 @@
 [![Lint Markdown Documentation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
 
 [![Research Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml)
+[![Render Diagrams and Charts](https://github.com/AionSystem/AION-BRAIN/actions/workflows/render-diagrams.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/render-diagrams.yml)
+
 [![Dependabot Updates](https://github.com/AionSystem/AION-BRAIN/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/dependabot/dependabot-updates)
 
 [![CodeQL Advanced](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml)
