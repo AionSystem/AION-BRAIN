@@ -1152,5 +1152,5 @@ FSVE v3.0 is a **major** release relative to v2.0. All v2.0 scores must be treat
 *All equations dimensionally consistent within stated domains.*  
 *All variables have corresponding ODR entries in §13.*  
 *VK Self-Application Certificate produced and attached at §15.*  
-*Current convergence tag: M-MODERATE. Promotion to M-STRONG requires ≥ 5 FCL entries.*
+*Current convergence tag: M-MODERATE. Promotion to M-STRONG requires ≥ 5 FCL entries.* 
 
