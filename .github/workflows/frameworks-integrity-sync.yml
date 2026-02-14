@@ -16,7 +16,7 @@ jobs:
       - name: Install markdownlint
         run: |
           npm install -g markdownlint-cli
-          markdownlint --version
+          markdownlint --version  # Quick check
 
       - name: Lint and auto-fix MD files in frameworks/
         run: |
@@ -24,13 +24,11 @@ jobs:
           find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Lint had non-fatal issues"
           echo "Linting complete."
 
-      - name: Scan frameworks/ and update README summary
+      - name: Update README with frameworks summary
         run: |
           python3 - <<EOF
           import os
           import re
-
-          print("Scanning frameworks/ for MD files...")
 
           summary_lines = ["## Frameworks Overview (Auto-generated)\n"]
           for root, dirs, files in os.walk('frameworks'):
@@ -50,7 +48,7 @@ jobs:
                           version = version_match.group(1) if version_match else 'Unknown'
                           summary_lines.append(f"{indent}  - [{file}]({rel_path}) — Version {version}\n")
                       except Exception as e:
-                          print(f"Warning: Failed to read {path}: {e}")
+                          print(f"Warning reading {path}: {e}")
 
           summary = ''.join(summary_lines)
 
@@ -65,13 +63,11 @@ jobs:
                   new_content = content.rstrip() + '\n\n' + summary
               with open(readme_path, 'w', encoding='utf-8') as f:
                   f.write(new_content)
-              print("README.md updated with summary.")
-          else:
-              print("README.md not found — skipping update.")
+              print("README.md updated.")
           EOF
 
-      - name: Commit any changes
+      - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-lint & README sync for frameworks/ [ci skip]"
+          commit_message: "Auto-lint MD files & synced README [ci skip]"
           file_pattern: "frameworks/**/*.md README.md"
