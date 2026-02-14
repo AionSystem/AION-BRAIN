@@ -17,11 +17,11 @@ jobs:
         run: |
           # Install Pandoc 3.9 (released Feb 4, 2026) via official amd64 deb
           PANDOC_VERSION="3.9"
-          DEB_FILE="pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          DEB_FILE="pandoc-${PANDOC_VERSION}-1-amd64.deb"  # Correct filename with -1 revision
           wget "https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/ \){DEB_FILE}"
-          sudo dpkg -i "${DEB_FILE}" || sudo apt-get install -f -y  # Auto-fix deps if needed
+          sudo dpkg -i "${DEB_FILE}" || sudo apt-get install -f -y  # Fix deps if needed
           rm "${DEB_FILE}"
-          pandoc --version  # Debug: should output pandoc 3.9
+          pandoc --version  # Debug: expect "pandoc 3.9"
 
           # Install latest markdownlint-cli
           npm install -g markdownlint-cli
