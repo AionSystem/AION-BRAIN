@@ -23,8 +23,9 @@ jobs:
 
       - name: Generate Mermaid for Markdown Files
         run: |
-          set -euo pipefail  # Fail fast
+          set -euo pipefail
 
+          # Write script to file (avoids heredoc indent issues)
           cat > generate_mermaid.py <<'END_SCRIPT'
           import os
           from markdown_it import MarkdownIt
@@ -38,7 +39,7 @@ jobs:
                       content = f.read()
 
                   if has_mermaid_already(content):
-                      print(f"SKIP: {file_path} already has Mermaid")
+                      print(f"SKIP (already has Mermaid): {file_path}")
                       return
 
                   md = MarkdownIt()
@@ -62,10 +63,11 @@ jobs:
 
                   with open(file_path, 'a', encoding='utf-8') as f:
                       f.write(citation)
-                  print(f"ADDED to {file_path}")
+                  print(f"ADDED Mermaid + citation: {file_path}")
 
               except Exception as e:
-                  print(f"ERROR {file_path}: {type(e).__name__} - {str(e)}")
+                  print(f"ERROR on {file_path}: {type(e).__name__} - {str(e)}")
+                  # Continue — don't crash whole workflow
 
           processed = 0
           for root, _, files in os.walk('.'):
@@ -74,7 +76,14 @@ jobs:
                       full_path = os.path.join(root, file)
                       add_mermaid(full_path)
                       processed += 1
-          print(f"Processed {processed} .md files")
+          print(f"Finished processing {processed} .md files")
           END_SCRIPT
 
           python3 generate_mermaid.py
+          rm generate_mermaid.py  # Cleanup
+
+      - name: Commit Visual Updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-added Mermaid visuals & citations to MD [ci skip]"
+          file_pattern: "*.md"
