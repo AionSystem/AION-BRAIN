@@ -13,48 +13,74 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tools (Pandoc 3.9 latest + markdownlint)
+      - name: Install tools (robust Pandoc 3.9 + markdownlint)
         run: |
-          # Install Pandoc 3.9 (released Feb 4, 2026) via official amd64 deb
-          PANDOC_VERSION="3.9"
-          DEB_FILE="pandoc-${PANDOC_VERSION}-1-amd64.deb"  # Correct filename with -1 revision
-          wget "https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/ \){DEB_FILE}"
-          sudo dpkg -i "${DEB_FILE}" || sudo apt-get install -f -y  # Fix deps if needed
-          rm "${DEB_FILE}"
-          pandoc --version  # Debug: expect "pandoc 3.9"
+          set -euo pipefail  # Fail fast on errors
 
-          # Install latest markdownlint-cli
+          echo "=== Installing Pandoc 3.9 (latest as of Feb 2026) ==="
+          PANDOC_VERSION="3.9"
+          DEB_FILE="pandoc-${PANDOC_VERSION}-1-amd64.deb"  # Exact name from https://github.com/jgm/pandoc/releases/tag/3.9
+          DEB_URL="https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/ \){DEB_FILE}"
+
+          echo "Downloading: ${DEB_URL}"
+          wget --no-verbose "${DEB_URL}" || { echo "wget failed (404 or network?)"; exit 1; }
+
+          echo "Installing deb..."
+          sudo dpkg -i "${DEB_FILE}" || {
+            echo "dpkg failed — attempting to fix dependencies..."
+            sudo apt-get update
+            sudo apt-get install -f -y
+          }
+          rm -f "${DEB_FILE}"
+
+          # Verify install
+          if ! command -v pandoc >/dev/null 2>&1; then
+            echo "ERROR: pandoc not found after install!"
+            exit 1
+          fi
+          pandoc --version | head -n 1 || echo "pandoc --version failed"
+
+          echo "=== Installing markdownlint-cli ==="
           npm install -g markdownlint-cli
-          markdownlint --version  # Debug
+          markdownlint --version || echo "markdownlint install failed"
 
       - name: Convert non-MD to Markdown & Lint
         run: |
-          echo "Starting conversion and linting in frameworks/..."
+          set -euo pipefail
 
-          # Convert PDFs to MD (only .pdf files)
+          echo "Scanning frameworks/ for PDFs to convert..."
+
+          CONVERTED=false
           find frameworks -type f ! -name ".*" | while read -r file; do
             if [[ "\( file" =\~ \.pdf \) ]]; then
               output="${file%.pdf}.md"
-              echo "Converting PDF: $file → $output"
-              pandoc "$file" -o "$output" --wrap=preserve --markdown-headings=atx || {
-                echo "Pandoc failed for $file (skipping removal)"
-                continue
-              }
-              echo "Conversion successful: $output"
-              # rm "$file"  # Uncomment to delete original PDF after success
+              echo "Converting: $file → $output"
+              if pandoc "$file" -o "$output" --wrap=preserve --markdown-headings=atx --standalone; then
+                echo "Success: $output created"
+                CONVERTED=true
+                # rm "$file"  # Uncomment ONLY if you want to delete originals (backup first!)
+              else
+                echo "ERROR: pandoc failed on $file — skipping removal"
+              fi
             fi
           done
 
-          # Lint & auto-fix all MD files in frameworks/
-          echo "Linting Markdown files..."
-          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \;
-          echo "Markdown linting & auto-fixing complete."
+          if ! $CONVERTED; then
+            echo "No PDFs found or all skipped — continuing to lint existing MD."
+          fi
+
+          echo "Linting & auto-fixing all MD files in frameworks/..."
+          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Some lint fixes failed (non-fatal)"
+
+          echo "Conversion & linting complete."
 
       - name: Scan Frameworks and Update README
         run: |
-          python - <<EOF
+          python3 - <<EOF
           import os
           import re
+
+          print("Scanning frameworks/ for MD files and versions...")
 
           summary_lines = ["## Frameworks Overview (Auto-generated)\n"]
           for root, dirs, files in os.walk('frameworks'):
@@ -67,11 +93,14 @@ jobs:
                   if file.endswith('.md'):
                       path = os.path.join(root, file)
                       rel_path = os.path.relpath(path, '.')
-                      with open(path, 'r', encoding='utf-8') as f:
-                          content = f.read()
+                      try:
+                          with open(path, 'r', encoding='utf-8') as f:
+                              content = f.read()
                           version_match = re.search(r'(?i)version:\s*([\d\.]+)', content)
                           version = version_match.group(1) if version_match else 'Unknown'
-                      summary_lines.append(f"{indent}  - [{file}]({rel_path}) — Version {version}\n")
+                          summary_lines.append(f"{indent}  - [{file}]({rel_path}) — Version {version}\n")
+                      except Exception as e:
+                          print(f"Warning: Could not read {path}: {e}")
 
           summary = ''.join(summary_lines)
 
@@ -80,13 +109,15 @@ jobs:
               with open(readme_path, 'r', encoding='utf-8') as f:
                   content = f.read()
               if '## Frameworks Overview (Auto-generated)' in content:
-                  parts = content.split('## Frameworks Overview (Auto-generated)')
+                  parts = content.split('## Frameworks Overview (Auto-generated)', 1)
                   new_content = parts[0] + summary + (parts[1].split('\n', 1)[1] if len(parts) > 1 else '')
               else:
                   new_content = content.rstrip() + '\n\n' + summary
               with open(readme_path, 'w', encoding='utf-8') as f:
                   f.write(new_content)
-              print("README updated with frameworks summary.")
+              print("README.md updated successfully.")
+          else:
+              print("README.md not found — skipping update.")
           EOF
 
       - name: Commit Changes
