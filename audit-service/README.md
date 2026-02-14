@@ -4,22 +4,9 @@
 
 > Operationalizing research-grade epistemic validation for production AI systems
 
-[
-
-![FSVE Framework](https://img.shields.io/badge/Framework-FSVE_v3.0-blue)
-
-](../engines/tier-1-foundation/)
-[
-
-
-![AION Framework](https://img.shields.io/badge/Framework-AION_v3.0-purple)
-
-](../engines/tier-1-foundation/)
-[
-
-![Service Status](https://img.shields.io/badge/Status-Accepting_Clients-green)
-
-](mailto:aionsystem@outlook.com)
+[![FSVE Framework](https://img.shields.io/badge/Framework-FSVE_v3.0-blue)](../frameworks/FSVE/)
+[![AION Framework](https://img.shields.io/badge/Framework-AION_v3.0-purple)](../frameworks/AION/)
+[![Service Status](https://img.shields.io/badge/Status-Accepting_Clients-green)](mailto:aionsystem@outlook.com)
 
 ---
 
@@ -75,9 +62,13 @@ Apply AION-BRAIN's research-grade validation frameworks to production AI systems
 This service represents **applied research**, not a separate commercial venture.
 
 ### How Research Informs Practice
+
+```
 AION-BRAIN Research → Audit Methodology → Client Findings → Research Validation
-↑                                                              ↓
-←──────────────── Scenario Refinement ──────────────────────────
+         ↑                                                              ↓
+         ←──────────────── Scenario Refinement ──────────────────────────
+```
+
 **Concrete Example**:
 
 1. **Research Hypothesis** (AION-BRAIN): "AI systems overestimate confidence by 20-30% in edge cases"
@@ -113,12 +104,15 @@ This service maintains the same standards as AION-BRAIN research:
 - Calibration Analysis - do 90% confident answers match 90% accuracy?
 
 **Application Protocol**:
-Generate domain-specific test questions (50 total)
-Test AI system with confidence declaration prompts
-Calculate claimed confidence vs. actual accuracy
-Apply FSVE penalties (unproven implementation, predictive class, etc.)
-Determine justified confidence ceiling
-Identify overconfidence gap
+```
+1. Generate domain-specific test questions (50 total)
+2. Test AI system with confidence declaration prompts
+3. Calculate claimed confidence vs. actual accuracy
+4. Apply FSVE penalties (unproven implementation, predictive class, etc.)
+5. Determine justified confidence ceiling
+6. Identify overconfidence gap
+```
+
 #### 2. AION (Structural Integrity Analysis)
 
 **What We Assess**:
@@ -128,11 +122,14 @@ Identify overconfidence gap
 - Cascading failure risk analysis
 
 **Application Protocol**:
-Map AI system architecture (components, dependencies)
-Test each component independently
-Calculate reliability scores (EL × PM × RC)
-Identify failure propagation paths
-Document failure modes with triggers and impacts
+```
+1. Map AI system architecture (components, dependencies)
+2. Test each component independently
+3. Calculate reliability scores (EL × PM × RC)
+4. Identify failure propagation paths
+5. Document failure modes with triggers and impacts
+```
+
 #### 3. Compliance Mapping
 
 **Frameworks Assessed**:
@@ -429,11 +426,14 @@ You'll receive:
 **Funding Transparency**: 10% of all audit revenue funds AION-BRAIN validation execution
 
 **Example Allocation** (hypothetical):
+```
 Audit Revenue: $8,000 (Growth tier client)
 → $800 to AION-BRAIN validation
 → Funds 32 benchmark validation units ($25 each)
 → ~320 scenario executions
 → Results published in monthly transparency report
+```
+
 ### Case Study Ethics
 
 **Permission-Based**: No client work published without explicit written consent
@@ -550,16 +550,19 @@ A: Yes, with attribution. Many clients use phrases like "Third-party validated b
 **Client Reports**: Confidential, owned by client  
 
 **Attribution Requirement**: If you use our templates or methodology, please cite:
+```
 AION-BRAIN Epistemic Audit Service
 Sheldon K. Salmon
 github.com/AionSystem/AION-BRAIN/audit-service
+```
+
 ---
 
 ## 🔗 Related Resources
 
 - **AION-BRAIN Main Repo**: [../README.md](../README.md)
-- **FSVE Framework**: [../engines/tier-1-foundation/](../engines/tier-1-foundation/)
-- **AION Framework**: [../engines/tier-1-foundation/](../engines/tier-1-foundation/)
+- **FSVE Framework**: [../frameworks/FSVE/](../frameworks/FSVE/)
+- **AION Framework**: [../frameworks/AION/](../frameworks/AION/)
 - **Research Methodology**: [../benchmarks/](../benchmarks/)
 
 ---
