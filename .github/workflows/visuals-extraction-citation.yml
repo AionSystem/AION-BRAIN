@@ -1,4 +1,4 @@
-name: Visual Structure Extraction and Citation
+name: Visual Structure Extraction and Citation (MD Only)
 
 on:
   push:
@@ -21,18 +21,16 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install markdown-it-py  # Only needed for MD parsing (pdfplumber removed)
+          pip install markdown-it-py
 
-      # Removed: npm install -g @mermaid-js/mermaid-cli (not used in script)
-
-      - name: Scan and Generate Mermaid for Markdown Files Only
+      - name: Scan and Generate Mermaid for Markdown Files
         run: |
-          python - <<EOF
+          python3 - <<'EOF'
           import os
           from markdown_it import MarkdownIt
 
           def has_mermaid_already(content):
-              return '```mermaid' in content  # Avoid duplicates
+              return '```mermaid' in content.lower()  # Case-insensitive check
 
           def add_mermaid(file_path):
               try:
@@ -40,23 +38,22 @@ jobs:
                       content = f.read()
 
                   if has_mermaid_already(content):
-                      print(f"Skipping {file_path} — already has Mermaid block")
+                      print(f"Skipping {file_path} — already has Mermaid")
                       return
 
                   md = MarkdownIt()
-                  # Improved table detection: look for markdown table markers
-                  has_table = '|' in content and content.count('|') > 20 and '---' in content
+                  # Better table detection
+                  has_table = '|' in content and '---' in content and content.count('|') > 20
 
                   if has_table:
-                      mermaid = '''pie title Detected Table Data (Placeholder)
+                      mermaid = """pie title Detected Table (Placeholder)
           "Rows" : 60
-          "Columns Avg" : 40
-          "Categories" : 20'''
+          "Columns" : 40"""
                   else:
-                      mermaid = '''graph TD
-          A[File Root] --> B[Headers / Sections]
-          B --> C[Content / Tables]
-          C --> D[Visual Representation]'''
+                      mermaid = """graph TD
+          A[File] --> B[Headers]
+          B --> C[Content]
+          C --> D[Visual]"""
 
                   citation = f"""\n\n```mermaid
           {mermaid}
@@ -66,21 +63,24 @@ jobs:
 
                   with open(file_path, 'a', encoding='utf-8') as f:
                       f.write(citation)
-                  print(f"Added Mermaid + citation to: {file_path}")
+                  print(f"Added to {file_path}")
 
               except Exception as e:
-                  print(f"Error processing {file_path}: {e}")
+                  print(f"Error on {file_path}: {type(e).__name__} - {e}")
 
-          # Process only .md files (skip PDFs entirely)
+          # Process only .md files
+          processed = 0
           for root, _, files in os.walk('.'):
               for file in files:
                   if file.endswith('.md') and not file.startswith('.') and 'visuals/' not in root:
                       full_path = os.path.join(root, file)
                       add_mermaid(full_path)
+                      processed += 1
+          print(f"Processed {processed} .md files")
           EOF
 
       - name: Commit Visual Updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-generated Mermaid visuals & citations for MD files [ci skip]"
+          commit_message: "Auto-added Mermaid visuals & citations to MD [ci skip]"
           file_pattern: "*.md"
