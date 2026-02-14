@@ -13,42 +13,45 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tools (robust Pandoc 3.9 + markdownlint)
+      - name: Install tools (Pandoc 3.9 + markdownlint)
         run: |
-          set -euo pipefail  # Fail fast on errors
+          set -euo pipefail
 
-          echo "=== Installing Pandoc 3.9 (latest as of Feb 2026) ==="
+          echo "=== Installing Pandoc 3.9 (Feb 2026 release) ==="
           PANDOC_VERSION="3.9"
-          DEB_FILE="pandoc-${PANDOC_VERSION}-1-amd64.deb"  # Exact name from https://github.com/jgm/pandoc/releases/tag/3.9
+          DEB_FILE="pandoc-3.9-1-amd64.deb"  # EXACT filename from release
           DEB_URL="https://github.com/jgm/pandoc/releases/download/\( {PANDOC_VERSION}/ \){DEB_FILE}"
 
-          echo "Downloading: ${DEB_URL}"
-          wget --no-verbose "${DEB_URL}" || { echo "wget failed (404 or network?)"; exit 1; }
+          echo "Downloading from: ${DEB_URL}"
+          if ! wget --no-verbose "${DEB_URL}"; then
+            echo "wget failed — likely 404 or network issue. Check filename/URL."
+            exit 1
+          fi
 
-          echo "Installing deb..."
+          echo "Installing deb package..."
           sudo dpkg -i "${DEB_FILE}" || {
-            echo "dpkg failed — attempting to fix dependencies..."
+            echo "dpkg failed — fixing dependencies..."
             sudo apt-get update
             sudo apt-get install -f -y
           }
           rm -f "${DEB_FILE}"
 
-          # Verify install
-          if ! command -v pandoc >/dev/null 2>&1; then
-            echo "ERROR: pandoc not found after install!"
+          # Verify
+          if ! command -v pandoc &> /dev/null; then
+            echo "ERROR: pandoc command not found after install!"
             exit 1
           fi
-          pandoc --version | head -n 1 || echo "pandoc --version failed"
+          pandoc --version | head -n 3 || echo "pandoc --version failed"
 
-          echo "=== Installing markdownlint-cli ==="
+          echo "=== Installing markdownlint ==="
           npm install -g markdownlint-cli
-          markdownlint --version || echo "markdownlint install failed"
+          markdownlint --version || echo "markdownlint install issue"
 
       - name: Convert non-MD to Markdown & Lint
         run: |
           set -euo pipefail
 
-          echo "Scanning frameworks/ for PDFs to convert..."
+          echo "Scanning for PDFs in frameworks/..."
 
           CONVERTED=false
           find frameworks -type f ! -name ".*" | while read -r file; do
@@ -56,23 +59,21 @@ jobs:
               output="${file%.pdf}.md"
               echo "Converting: $file → $output"
               if pandoc "$file" -o "$output" --wrap=preserve --markdown-headings=atx --standalone; then
-                echo "Success: $output created"
+                echo "Success: $output"
                 CONVERTED=true
-                # rm "$file"  # Uncomment ONLY if you want to delete originals (backup first!)
+                # rm "$file"  # Uncomment ONLY after testing (backs up originals!)
               else
-                echo "ERROR: pandoc failed on $file — skipping removal"
+                echo "Conversion failed for $file — skipping removal"
               fi
             fi
           done
 
           if ! $CONVERTED; then
-            echo "No PDFs found or all skipped — continuing to lint existing MD."
+            echo "No PDFs converted — proceeding to lint existing MD."
           fi
 
-          echo "Linting & auto-fixing all MD files in frameworks/..."
-          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Some lint fixes failed (non-fatal)"
-
-          echo "Conversion & linting complete."
+          echo "Linting & fixing MD files..."
+          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Lint fixes had issues (non-fatal)"
 
       - name: Scan Frameworks and Update README
         run: |
@@ -80,7 +81,7 @@ jobs:
           import os
           import re
 
-          print("Scanning frameworks/ for MD files and versions...")
+          print("Building frameworks summary...")
 
           summary_lines = ["## Frameworks Overview (Auto-generated)\n"]
           for root, dirs, files in os.walk('frameworks'):
@@ -100,7 +101,7 @@ jobs:
                           version = version_match.group(1) if version_match else 'Unknown'
                           summary_lines.append(f"{indent}  - [{file}]({rel_path}) — Version {version}\n")
                       except Exception as e:
-                          print(f"Warning: Could not read {path}: {e}")
+                          print(f"Warning reading {path}: {e}")
 
           summary = ''.join(summary_lines)
 
@@ -115,9 +116,9 @@ jobs:
                   new_content = content.rstrip() + '\n\n' + summary
               with open(readme_path, 'w', encoding='utf-8') as f:
                   f.write(new_content)
-              print("README.md updated successfully.")
+              print("README updated.")
           else:
-              print("README.md not found — skipping update.")
+              print("No README.md — skipping.")
           EOF
 
       - name: Commit Changes
