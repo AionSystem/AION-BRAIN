@@ -1,4 +1,4 @@
-name: Framework Integrity and README Sync (No PDF Conversion)
+name: Framework Integrity and README Sync (MD Only)
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  validate-and-sync:
+  sync-md:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,21 +16,21 @@ jobs:
       - name: Install markdownlint
         run: |
           npm install -g markdownlint-cli
-          markdownlint --version  # Debug
+          markdownlint --version
 
-      - name: Lint & auto-fix MD files
+      - name: Lint and auto-fix MD files in frameworks/
         run: |
-          echo "Linting and fixing Markdown files in frameworks/..."
-          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Some lint fixes had non-fatal issues"
+          echo "Linting and fixing Markdown files..."
+          find frameworks -type f -name "*.md" ! -name ".*" -exec markdownlint --fix {} \; || echo "Lint had non-fatal issues"
           echo "Linting complete."
 
-      - name: Scan Frameworks and Update README
+      - name: Scan frameworks/ and update README summary
         run: |
           python3 - <<EOF
           import os
           import re
 
-          print("Building frameworks summary...")
+          print("Scanning frameworks/ for MD files...")
 
           summary_lines = ["## Frameworks Overview (Auto-generated)\n"]
           for root, dirs, files in os.walk('frameworks'):
@@ -50,7 +50,7 @@ jobs:
                           version = version_match.group(1) if version_match else 'Unknown'
                           summary_lines.append(f"{indent}  - [{file}]({rel_path}) — Version {version}\n")
                       except Exception as e:
-                          print(f"Warning reading {path}: {e}")
+                          print(f"Warning: Failed to read {path}: {e}")
 
           summary = ''.join(summary_lines)
 
@@ -65,13 +65,13 @@ jobs:
                   new_content = content.rstrip() + '\n\n' + summary
               with open(readme_path, 'w', encoding='utf-8') as f:
                   f.write(new_content)
-              print("README updated.")
+              print("README.md updated with summary.")
           else:
-              print("No README.md — skipping.")
+              print("README.md not found — skipping update.")
           EOF
 
-      - name: Commit Changes
+      - name: Commit any changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-lint MD files & synced README [ci skip]"
+          commit_message: "Auto-lint & README sync for frameworks/ [ci skip]"
           file_pattern: "frameworks/**/*.md README.md"
