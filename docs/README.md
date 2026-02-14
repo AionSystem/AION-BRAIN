@@ -345,17 +345,22 @@ ls audit-service/templates/
 open audit-service/portfolio/sample-audits/
 Book Audit: aionsystem@outlook.com with subject "[Audit Request] [Company Name]"
 Audit Funding → Research Funding: 10% of audit revenue funds AION-BRAIN validation execution (public reporting).
-🔬 Research ↔ Practice Feedback Loop
+
+# 🔬 Research ↔ Practice Feedback Loop
 AION-BRAIN Research → Audit Methodology → Client Findings → Research Validation
          ↑                                                              ↓
          ←──────────────── Scenario Refinement ──────────────────────────
-Example: A client audit revealed overconfidence patterns in medical AI retrieval. This finding:
+
+Example: A client audit revealed overconfidence patterns in medical AI retrieval. 
+
+This finding:
 Generated 15 new test scenarios for Medical Safety Engine v0.1
 Informed FSVE confidence ceiling penalty adjustments
 Published as anonymized case study (with permission)
 Contributed to benchmark validation design
 Transparency: All anonymized findings published in /audit-service/portfolio/case-studies/
 
+```
 
 
 📚 Comparable Work & Positioning
