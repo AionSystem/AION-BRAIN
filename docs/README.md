@@ -23,467 +23,405 @@
 *Updated automatically*
 
 
-
-## 🎯 For Reviewers & Collaborators: Start Here
-
-**Research Status**: Architecture complete, validation awaiting execution  
-**Core Question**: Can structured confidence calibration improve AI safety?  
-**Current Assets**: 30 engines specified, 7 implemented, 394 test scenarios designed  
-**Immediate Need**: Modular validation funding ($25/unit) for empirical testing  
-**Critical Constraint**: Not production software - Professional oversight required
-
-| Quick Path | What You'll Find | Time |
-|------------|-----------------|------|
-| **[Reviewer Summary](#reviewer-summary)** | Full context for evaluation | 2 min |
-| **[Research Methodology](#research-methodology)** | Falsifiable hypotheses & protocols | 3 min |
-| **[What This Is NOT](#what-this-is-not)** | Critical limitations upfront | 1 min |
-| **[Funding Model](#funding-model)** | Modular validation units | 2 min |
-| **[Implemented Code](#implemented-code)** | 7 reference implementations | 4 min |
-
-**Transparency Notice**: All performance claims are hypotheses requiring validation. Negative results will be published.
-
----
-
-## 📋 Validation Status Legend
-
-| Symbol | Meaning | Implication |
-|--------|---------|-------------|
-| ✅ | **Implemented & Code-Available** | Python reference implementation exists, reviewable |
-| 🧪 | **Designed, Not Yet Executed** | Specification complete, validation pending |
-| 🎯 | **Target Metric** | Research hypothesis, not yet empirically validated |
-| ⚠️ | **Hypothesis Under Evaluation** | Falsifiable claim requiring experimental testing |
-
----
-
-## ❌ What AION-BRAIN Is Not
-<a id="what-this-is-not"></a>
-
-| Category | Explicit Limitation |
-|----------|-------------------|
-| **Autonomy** | Not an autonomous agent; requires human oversight |
-| **Decision-Making** | Not a medical/legal/financial decision-maker |
-| **Professional Replacement** | Not a replacement for licensed professionals |
-| **Liability Reduction** | Not a claim of reduced liability for users |
-| **Benchmark Status** | Not benchmarked against proprietary frontier models (yet) |
-| **Production System** | Not production software; research architecture only |
-
----
-
-## 🎯 Why This Research Matters Now
-
-1. **Hallucination Gap**: Current AI systems lack standardized confidence calibration
-2. **Domain Safety Void**: Medical/legal/financial applications need specialized guardrails
-3. **Reproducibility Crisis**: AI safety research lacks standardized validation frameworks
-4. **Operationalization Need**: Theoretical safety principles require executable implementations
-5. **Transparency Deficit**: Most AI systems provide answers without uncertainty quantification
-6. **Validation Scalability**: Need for systematic, repeatable safety testing methodologies
-
----
-
-## 🏗️ Project State: Architecture Complete, Validation Pending
-
-### **✅ Complete & Reviewable**
-- **30-engine cognitive architecture** fully specified
-- **1,350+ documentation files** with methodological transparency
-- **394 safety test scenarios** designed with reproducible protocols
-- **7 reference implementations** in Python (see below)
-- **Benchmark methodology** standardized across all engines
-
-### **🧪 Awaiting Empirical Validation**
-- **Target metrics** require execution with API access
-- **Hypotheses** need controlled experimental testing
-- **Domain-specific engines** require licensed dataset access
-- **Comparative benchmarks** need execution against baseline models
-
----
-
-## 💻 Implemented Engines (Reference Implementations)
-<a id="implemented-code"></a>
-
-### **1. Oracle Layer v1.0** ⚠️ *Hypothesis Under Evaluation*
-**Primary Hypothesis**: Structured confidence declaration reduces user overreliance by ≥30% in high-stakes domains.
-**Null Hypothesis**: Confidence statements do not significantly alter user decision-making accuracy.
-```python
-# Reference implementation available at:
-# /engines/tier-1-foundation/oracle-layer-v1.0/oracle-layer.py
-```
-
-2. Credibility Engine v1.0 ⚠️ Hypothesis Under Evaluation
-
-Primary Hypothesis: Multi-source verification reduces citation error rates by ≥40% compared to single-source.
-Null Hypothesis:Additional verification layers do not improve citation accuracy.
-
-```python
-# Reference implementation: /engines/tier-1-foundation/credibility-engine-v1.0/
-```
-
-3. Benchmark Engine v1.0 ⚠️ Hypothesis Under Evaluation
-
-Primary Hypothesis: Standardized test scenarios produce inter-rater reliability ≥0.8 for safety evaluations.
-Null Hypothesis:Scenario-based evaluation yields inconsistent results across evaluators.
-
-```python
-# Reference implementation: /engines/tier-1-foundation/benchmark-engine-v1.0/
-```
-
-4. Explanation Engine v1.0 ⚠️ Hypothesis Under Evaluation
-
-Primary Hypothesis: Audience-adapted explanations increase comprehension by ≥25% across expertise levels.
-Null Hypothesis:Explanation customization does not significantly affect understanding.
-
-```python
-# Reference implementation: /engines/tier-1-foundation/explanation-engine-v1.0/
-```
-
-5. Decision Engine v1.0 ⚠️ Hypothesis Under Evaluation
-
-Primary Hypothesis: Multi-framework decision support reduces cognitive biases by ≥20% in complex choices.
-Null Hypothesis:Additional decision frameworks do not alter choice quality.
-
-```python
-# Reference implementation: /engines/tier-2-cognitive/decision-engine-v1.0/
-```
-
-6. Strategy Engine v1.0 ⚠️ Hypothesis Under Evaluation
-
-Primary Hypothesis: Structured strategy analysis identifies ≥15% more failure modes than unstructured reasoning.
-Null Hypothesis:Formal strategy frameworks do not improve risk identification.
-
-```python
-# Reference implementation: /engines/tier-2-cognitive/strategy-engine-v1.0/
-```
-
-7. SIMPLEXITY Engine v1.0 ⚠️ Hypothesis Under Evaluation
-
-Primary Hypothesis: Complexity-aware interfaces reduce user cognitive load by ≥25% in information-dense tasks.
-Null Hypothesis:Complexity management tools do not affect task performance.
-
-```python
-# Reference implementation: /engines/tier-1-foundation/simplexity-engine-v1.0/
-```
-
-Total: 7 reference implementations | 394 test scenarios designed | All code reviewable
-
----
-
-🧪 Designed Engines (Specifications Complete)
-
-Domain-Specific Engines 🧪 Designed, Validation Needed
-
-· Medical Safety Engine v0.1 - Clinical reasoning protocols
-· Legal Analysis Engine v0.1 - Citation and precedent verification
-· Financial Validation Engine v0.1 - Assumption transparency frameworks
-· Crisis Protocol Engine v0.1 - Emergency response guardrails
-
-Cognitive Architecture Engines 🧪 Designed, Validation Needed
-
-· 23 additional engines with complete specifications
-· All include test scenario designs and validation protocols
-· Available in /engines/ directory for review
-
----
-
-🔬 Research Methodology & Validation Protocol
-
-<a id="research-methodology"></a>
-
-Standardized Testing Framework
-
-Each engine includes:
-
-```
-engine-name/
-├── specification.md          # Design rationale and constraints
-├── hypothesis.md            # Falsifiable claims and null hypotheses
-├── benchmarks/
-│   ├── test-scenarios/      # 394 total scenarios designed
-│   ├── methodology.md       # Reproducible testing protocol
-│   └── scoring-rubrics.md   # Objective evaluation criteria
-└── reference-implementation/ # Python code (where available)
-```
-
-Known Failure Modes & Risks ⚠️
-
-Risk Category Specific Failure Mode Mitigation Strategy
-Confidence Calibration Overconfidence in structured responses Explicit uncertainty declaration
-Source Bias Verification bias amplification Multi-source triangulation
-Data Sparsity False certainty with limited data Confidence thresholds by data density
-Pipeline Latency Cognitive overhead in multi-engine chains Progressive disclosure
-Domain Generalization Protocols failing outside training distribution Explicit out-of-distribution warnings
-
-Negative Results Commitment: All validation failures and null hypothesis confirmations will be published alongside positive findings.
-
----
-
-💰 Validation Funding: Modular Research Units
-
-<a id="funding-model"></a>
-
-Funding Model: Pay-Per-Validation
-
-Unit Cost Delivers Transparency
-Benchmark Batch $25 10 scenario executions Public execution log
-Engine Test Set $50 25 executions + analysis report Full methodology disclosure
-Validation Cycle $100 Complete engine test batch Raw data + analysis
-Domain Validation $300 Full engine validation across scenarios Peer-review ready package
-
-Current Priority: Phase 1 Execution
-
-$500 enables:
-
-· 1,000+ safety scenario executions monthly
-· Medical/legal dataset licensing
-· Negative results publication
-· Monthly transparency reports
-
-![Validation Funding](https://img.shields.io/badge/🔬_Fund_Validation_Research-%2325A3E1?style=for-the-badge)
-
-Each unit produces publicly verifiable results
-
-Funding Contingency Plan
-
-Scenario What Continues What Freezes What's Preserved
-Partial Funding Core benchmark execution Dataset expansion All existing results
-No Funding Specification access Scenario execution Architecture designs
-Full Funding All validation phases None Complete empirical dataset
-
----
-
-🧠 Immediate Research Value (No Funding Required)
-
-For Academic Researchers
-
-```bash
-# Access complete research framework
-git clone https://github.com/your-repo/aion-brain
-
-# Review 30-engine cognitive architecture
-open engines/ARCHITECTURE-OVERVIEW.md
-
-# Examine hypothesis statements
-find . -name "hypothesis.md" -type f
-
-# Study validation methodology
-open engines/tier-1-foundation/benchmark-engine-v1.0/benchmarks/methodology.md
-```
-
-For AI Safety Practitioners
-
-Test Protocol (Immediate Application):
-
-```prompt
-## AION-BRAIN Confidence Calibration Protocol v1.0
-
-Before responding:
-1. Declare confidence: CERTAIN/HIGH/MODERATE/LOW/SPECULATIVE
-2. Identify knowledge boundaries explicitly
-3. Acknowledge inference beyond training data
-4. If confidence < MODERATE: "Uncertainty note: [specific gap]"
-
-Now process: [query]
-```
-
-For Research Reviewers
-
-Evaluation Checklist:
-
-1. Are hypotheses falsifiable? (See /engines/*/hypothesis.md)
-2. Are test scenarios reproducible? (See benchmark methodology)
-3. Are failure modes acknowledged? (See risk table above)
-4. Is negative results commitment explicit? (Yes)
-
----
-## 🏢 Applied Research: Professional Epistemic Auditing Service
-
-**Research Application Status**: Operational implementation of FSVE + AION frameworks for commercial AI systems
-
-### Service Overview
-
-While AION-BRAIN represents fundamental research requiring validation, the **FSVE (Foundational Scoring & Validation Engine)** and **AION (structural integrity)** frameworks have matured sufficiently for applied auditing work.
-
-**What We Audit**:
-- AI confidence calibration vs. actual performance
-- Epistemic validity scoring (FSVE §7 11-axis framework)
-- Structural fragility analysis (AION SRI)
-- EU AI Act compliance mapping (Articles 13, 15)
-- NIST AI RMF adherence
-
-**Methodology**: Same falsifiable testing protocols used in AION-BRAIN research, applied to production AI systems.
-
-### Service Tiers
-
-| Tier | Target | Deliverable | Investment |
-|------|--------|-------------|------------|
-| **Startup** | Pre-Series A, <50 employees | 15-page technical audit | $3,000 |
-| **Growth** | Series A+, 50-500 employees | Full audit + remediation roadmap | $8,000 |
-| **Enterprise** | 500+ employees | Comprehensive validation + ongoing monitoring | $15,000-25,000 |
-
-**Deliverables**:
-1. Full technical audit report (FSVE + AION analysis)
-2. Executive summary (non-technical)
-3. Compliance assessment (EU AI Act, NIST)
-4. Prioritized remediation roadmap
-5. Raw test data (transparency)
-
-### Why This Service Exists
-
-**Problem**: AI systems routinely claim 95% confidence but test at 65-75% on domain-specific tasks.
-
-**Solution**: Apply research-grade validation frameworks to production systems.
-
-**Research Feedback Loop**: Client engagements generate real-world test scenarios that inform AION-BRAIN validation design.
-
-### Transparency Commitments (Applied Research)
-
-| Commitment | Implementation |
-|------------|----------------|
-| **Methodology Disclosure** | All audit templates and prompts publicly available in `/audit-service/` |
-| **Falsifiable Claims** | Confidence gaps quantified with reproducible test protocols |
-| **Negative Results** | Clients informed when AI systems *pass* audits (not just failures) |
-| **Framework Evolution** | Client findings contribute to AION-BRAIN validation scenarios |
-
-### Access Audit Service Resources
-
-```bash
-# View audit methodology
-open audit-service/README.md
-
-# Review audit templates
-ls audit-service/templates/
-
-# Examine sample audits
-open audit-service/portfolio/sample-audits/
-Book Audit: aionsystem@outlook.com with subject "[Audit Request] [Company Name]"
-Audit Funding → Research Funding: 10% of audit revenue funds AION-BRAIN validation execution (public reporting).
-
-# 🔬 Research ↔ Practice Feedback Loop
-AION-BRAIN Research → Audit Methodology → Client Findings → Research Validation
-         ↑                                                              ↓
-         ←──────────────── Scenario Refinement ──────────────────────────
-
-Example: A client audit revealed overconfidence patterns in medical AI retrieval. 
-
-This finding:
-Generated 15 new test scenarios for Medical Safety Engine v0.1
-Informed FSVE confidence ceiling penalty adjustments
-Published as anonymized case study (with permission)
-Contributed to benchmark validation design
-Transparency: All anonymized findings published in /audit-service/portfolio/case-studies/
-
-```
-
-
-📚 Comparable Work & Positioning
-
-AION-BRAIN operationalizes gaps between existing frameworks:
-
-Framework Focus AION-BRAIN Complement
-NIST AI RMF Risk management guidelines Executable validation protocols
-Model Cards Model characteristics Domain-specific safety testing
-Constitutional AI Principle-based alignment Empirical confidence calibration
-Red Teaming Adversarial testing Systematic benchmark development
-
-Differentiation: While existing frameworks define what to measure, AION-BRAIN provides how to measure it—and commits to publishing when measurements fail. This creates a fail-publicly, learn-systematically feedback loop distinct from benchmark-as-checklist approaches.
-
----
-
-⚠️ Required Professional Oversight
-
-Domain Mandatory Oversight Documentation
-Medical Licensed physician review /legal/medical-oversight.md
-Legal Attorney validation /legal/legal-oversight.md
-Financial Compliance officer approval /legal/financial-oversight.md
-Crisis Licensed therapist supervision /legal/crisis-oversight.md
-
-Legal Status: Research software under Apache 2.0. Not certified for clinical, legal, or financial use without professional validation.
-
----
-
-🤝 Research Collaboration Pathways
-
+🔬 AION-BRAIN: Framework-Driven AI Safety Architecture
+Sovereign Epistemic Auditing Through Interlocking Validation Frameworks
+[
+�
+Load image
+](frameworks/FSVE/)
+[
+�
+Load image
+](frameworks/AION/)
+[
+�
+Load image
+](frameworks/ASL/)
+[
+�
+Load image
+](frameworks/GENESIS/)
+[
+�
+Load image
+](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml)
+[
+�
+Load image
+](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
+📋 What This Is
+AION-BRAIN is a research architecture built on four interlocking validation frameworks designed for forensic analysis of AI systems, zero-trust confidence scoring, and systematic fragility mapping.
+Not a production system. Not a collection of AI engines. Not a benchmark suite.
+This is a methodological toolkit for auditors, red teams, and safety researchers who need mathematical rigor in evaluating AI claims, not just performance metrics.
+🎯 Core Frameworks (Aion-AI-Auditor Stack)
+All frameworks share: normalized [0,1] scoring, self-application protocols, unified validation kernel (UVK), operational definition registry (ODR), nullification boundary protocol (NBP), and framework calibration logs (FCL).
+Current Convergence Tag: M-MODERATE (internally consistent, empirically unvalidated)
+1. FSVE v3.0 — Foundational Scoring & Validation Engine
+Purpose: Epistemic validity assessment with zero tolerance for false certainty
+Core Metrics (6 non-interchangeable classes):
+Confidence — Intent structure quality
+Certainty — Challenge resistance degree
+Validity — Meta-legitimacy of scoring method
+Completeness — Surface coverage assessment
+Consistency — Internal coherence measure
+Five Non-Negotiable Principles:
+No Free Certainty — High scores require evidence
+Uncertainty Conserved — Cannot be silently erased
+Scores Are Claims — All scores are falsifiable assertions
+Invalidatability Required — Must specify failure conditions
+Structural Honesty Precedes Accuracy — Admit limits before claiming performance
+Hard Threshold: Validity < 0.40 → All downstream processes suspended
+Documentation: /frameworks/FSVE/
+2. AION v3.0 — Structural Continuum Architecture
+Purpose: Meta-analytical system evaluation and failure-state extraction
+Deliverables:
+System Identity Mapping — Archetype classification with degradation paths
+Failure Vector Extraction — EL × PM × RC compound fragility scoring
+Signal Propagation Models — Cascade analysis across dependencies
+Multi-Perspective Review — 5 reviewer types (Hostile, Naive, Constructive, Paranoid, Temporal)
+Compound SRI Formula:
+SRI_compound = 1 - ∏(1 - (EL_i × PM_i × RC_i))
+              i=1 to n
+
+Classification:
+SRI < 0.40 → LOW fragility
+SRI ∈ [0.40, 0.75] → MODERATE fragility  
+SRI > 0.75 → HIGH fragility (requires mitigation)
+Required Concrete Outputs:
+Artifact-kill (what breaks)
+Node-kill (where breaks)
+Behavior-kill (when breaks)
+Documentation: /frameworks/AION/
+3. ASL v2.0 — Active Safeguard Layer
+Purpose: Execution-time governance with graceful degradation
+Architecture:
+Dual-Watchdog — Independent monitors with cross-validation
+Multi-Modal Interlocks — Input/output/state sanity checks
+Bayesian Adaptive Thresholds — Context-sensitive trip points
+5-Tier Graduated Response — Warning → Constraint → Throttle → Quarantine → Shutdown
+Framework Independence Fallback: If FSVE/AION fail, ASL continues with conservative defaults
+Operator Attention Budget: Maximum alert rate constraints to prevent alarm fatigue
+Documentation: /frameworks/ASL/
+4. GENESIS v1.0 — Generative Engine for Novel Epistemic Systems
+Purpose: Pattern discovery, validation, and algorithmic composition with integrity guarantees
+Process Pipeline:
+EXTRACT — Discover patterns in source systems (biological, mathematical, computational, social)
+VALIDATE — Score pattern legitimacy (PLS) on 7 axes with uncertainty propagation
+COMPOSE — Combine validated patterns into algorithms with Composition Integrity Score (CIS)
+AUDIT — Deployment certification with failure mode coverage
+7 Legitimacy Axes:
+Mechanistic Clarity (M)
+Replication Strength (R)
+Boundary Precision (B)
+Cross-Domain Transferability (T)
+Performance Stability (P)
+Compositional Compatibility (C)
+Falsifiability (F)
+Pattern Legitimacy Score (PLS):
+PLS = min(PLS_base, k_bottleneck × min(Axis_i))
+
+PLS ≥ 0.70 → VALID (deployable)
+PLS ∈ [0.40, 0.70) → DEGRADED (use with caution)
+PLS < 0.40 → REJECTED (not suitable)
+Cross-Domain Translation Protocol: Enforces causal equivalence, not metaphorical similarity
+Documentation: /frameworks/GENESIS/
+🔧 Shared Discipline Across All Frameworks
+Unified Validation Kernel (UVK)
+All frameworks must pass 5 tests:
+Logical Consistency Test
+Evidence Discipline Test
+Multi-Perspective Review Protocol (MPRP)
+Replication Viability Test
+Self-Application Mandate
+Operational Definition Registry (ODR)
+Every variable has:
+Measurement protocol
+Domain specification
+Inter-rater reliability target
+Calibration case count
+Measurement class (Evaluative/Comparative/Inferential/Predictive)
+Nullification Boundary Protocol (NBP)
+All claims require:
+Falsification conditions
+Minimum test count
+Evidence tags ([D]ata / [R]easoned / [S]trategic / [?]Unverified)
+Framework Calibration Log (FCL)
+Empirical validation tracking:
+Predicted scores vs. observed outcomes
+Calibration deltas
+False positive/negative rates
+Revision triggers
+✅ What Works Right Now
+Framework
+Status
+What's Validated
+What's Pending
+FSVE v3.0
+✅ Specification Complete
+UVK, ODR, NBP structure
+FCL entries (0 → need 5 for M-STRONG)
+AION v3.0
+✅ Specification Complete
+SRI formula, MPRP, failure extraction
+Real-world fragility predictions
+ASL v2.0
+✅ Specification Complete
+Graduated response tiers, fallback logic
+Runtime deployment testing
+GENESIS v1.0
+✅ Self-Applied
+Pattern extraction on own spec
+Cross-domain translation validation
+Total Documentation: 1,900+ files across frameworks, methodologies, and validation protocols
+❌ What This Is NOT
+NOT This
+IS This
+Production software
+Research prototype requiring domain oversight
+AI benchmark suite
+Epistemic auditing methodology
+Autonomous agent
+Human-in-loop validation toolkit
+Medical/legal/financial decision tool
+Framework for auditing such tools
+Replacement for professional judgment
+Support system for professionals
+Empirically validated (yet)
+Structurally consistent, awaiting FCL data
+Critical Constraint: M-MODERATE convergence means all outputs require independent verification. Confidence ceiling remains low until empirical grounding via FCL entries.
+🏢 Applied Research: Professional AI Epistemic Auditing
+While AION-BRAIN frameworks represent fundamental research, FSVE + AION have matured sufficiently for commercial auditing applications.
+Service Overview
+What We Audit:
+AI confidence calibration vs. actual performance
+Epistemic validity scoring (FSVE §7 11-axis framework)
+Structural fragility analysis (AION SRI)
+EU AI Act compliance mapping (Articles 13, 15)
+NIST AI RMF adherence
+Methodology: Same falsifiable testing protocols used in AION-BRAIN research, applied to production AI systems.
+Service Tiers
+Tier
+Target
+Deliverable
+Investment
+Startup
+Pre-Series A, <50 employees
+15-page technical audit
+$3,000
+Growth
+Series A+, 50-500 employees
+Full audit + remediation roadmap
+$8,000
+Enterprise
+500+ employees
+Comprehensive validation + monitoring
+$15,000-25,000
+Why This Service Exists
+Problem: AI systems routinely claim 95% confidence but test at 65-75% on domain-specific tasks.
+Solution: Apply research-grade FSVE/AION frameworks to production systems.
+Research Feedback Loop: Client findings generate new test scenarios → inform framework validation → improve methodologies → published as anonymized case studies.
+Transparency Commitments
+✅ All audit templates publicly available (/audit-service/templates/)
+✅ Confidence gaps quantified with reproducible protocols
+✅ Clients informed when AI systems pass (not just failures)
+✅ 10% of audit revenue funds AION-BRAIN FCL validation execution
+Book Audit: aionsystem@outlook.com with subject [Audit Request] [Company Name]
+Access Resources: /audit-service/ directory
+🔬 Research Methodology
+Research Question
+Can structured epistemic frameworks (FSVE/AION/ASL/GENESIS) improve AI safety in high-stakes domains through systematic confidence calibration and fragility mapping?
+Falsifiable Hypotheses (Examples)
+Framework
+Hypothesis
+Null Hypothesis
+NBP ID
+FSVE
+Validity < 0.40 correctly predicts system failures
+Low validity scores do not correlate with failures
+NBP-FSVE-001
+AION
+SRI > 0.75 systems fail at 2x rate vs SRI < 0.40
+SRI does not predict failure rates
+NBP-AION-002
+GENESIS
+PLS ≥ 0.70 patterns compose reliably
+PLS scores do not predict composition success
+NBP-GEN-001
+Validation Protocol
+All frameworks require:
+Test scenarios with ground truth
+Prediction logging (scores assigned before outcomes known)
+Outcome measurement (minimum T+6 months)
+Calibration delta (|predicted - observed|)
+Falsification check (did NBP conditions trigger?)
+Negative Results Commitment: All validation failures and null hypothesis confirmations will be published.
+📊 Current Research Status
+Architecture: ✅ Complete (4 frameworks fully specified)
+Implementations: ✅ Reference code available (/frameworks/)
+Empirical Validation: 🧪 Pending (0 FCL entries)
+Convergence Tag: M-MODERATE (internally consistent, externally unproven)
+Path to M-STRONG Convergence
+Requires ≥5 FCL entries per framework:
+Framework
+FCL Needed
+Est. Timeline
+Blocker
+FSVE
+5 entries
+6-12 months
+Need production AI system access for testing
+AION
+5 entries
+6-12 months
+Need real-world fragility data
+ASL
+5 entries
+12-18 months
+Need deployment environments
+GENESIS
+5 entries
+6-12 months
+Need pattern extraction from diverse domains
+Estimated Cost: $500 enables 1,000+ validation scenario executions monthly
+💰 Validation Funding Model
+Modular Research Units:
+Unit
+Cost
+Delivers
+Transparency
+Benchmark Batch
+$25
+10 scenario executions
+Public execution log
+Framework Test Set
+$50
+25 executions + analysis
+Full methodology disclosure
+Validation Cycle
+$100
+Complete test batch
+Raw data + analysis
+Domain Validation
+$300
+Full framework validation
+Peer-review ready package
+Funding Transparency: Monthly public reports on all executions
+Contact: aionsystem@outlook.com with subject [Funding] [Validation Type]
+🎯 Intended Use Cases
+Who Should Use These Frameworks
+Use Case
+Applicable Frameworks
+Why
+Forensic AI incident analysis
+FSVE + AION
+Identify failure chains and epistemic gaps
+Pre-deployment red teaming
+All 4
+Systematic fragility mapping
+Regulatory compliance auditing
+FSVE + AION
+EU AI Act, NIST AI RMF alignment
+Zero-trust AI claim scoring
+FSVE + GENESIS
+Distinguish grounded vs speculative predictions
+Safety-critical system hardening
+AION + ASL
+Runtime safeguards with failure modes
+Pattern extraction for reuse
+GENESIS
+Validate and compose algorithmic building blocks
+Who Should NOT Use This
+❌ Production deployment without independent validation
+❌ Medical/legal/financial decisions without licensed oversight
+❌ Autonomous operation without human review
+❌ Anyone seeking "AI safety certification" without methodological rigor
+🤝 Collaboration Pathways
 Path A: Methodology Validation
-
-1. Review hypothesis statements
-2. Propose methodological improvements
-3. Co-design validation study
-4. Contact: AIONSYSTEM@outlook.com with subject "[Methodology Review]"
-
+Review hypotheses → Propose improvements → Co-design validation study
+Contact: AIONSYSTEM@outlook.com with subject [Methodology Review]
 Path B: Funding & Execution
-
-1. Fund specific validation units
-2. Request custom engine validation
-3. Sponsor dataset licensing
-4. Receive full transparency reporting
-
-Path C: Implementation Review
-
-1. Audit reference implementations
-2. Identify edge cases in test scenarios
-3. Propose algorithmic improvements
-4. Submit via GitHub Issues with "[Technical Review]" label
-
-Path D: Domain Expertise
-
-1. Review domain-specific engine designs
-2. Validate scenario relevance
-3. Identify missing failure modes
-4. Contribute to risk matrices
-
----
-
-📊 Executive Summary (For Reviewers & Funders)
-
-<a id="reviewer-summary"></a>
-
-Project: AION-BRAIN - 30-engine cognitive architecture for AI safety validation
-
-Current State:
-
-· Architecture: Complete (30 engines specified)
-· Implementation: Partial (7 reference implementations)
-· Validation: Pending (394 scenarios designed)
-
-Research Question: Can structured confidence calibration and domain-specific guardrails improve AI safety in high-stakes applications?
-
-Methodology: Standardized benchmark scenarios with reproducible testing protocols across all engines.
-
-Transparency Commitments:
-
-1. All hypotheses are falsifiable
-2. Negative results will be published
-3. Funding usage is fully disclosed
-4. Methodologies are open for critique
-
-Funding Need: Modular validation units to execute designed test scenarios with licensed datasets.
-
-Risk Management: Explicit failure mode documentation and required professional oversight for all domain applications.
-
----
-
-📞 Strategic Contact
-
-For Serious Research Collaboration:
-
-· Email: AIONSYSTEM@outlook.com
-· Subject Format: [AION-RESEARCH] [Your Institution] [Proposal Type]
-· Required: Institutional affiliation and specific collaboration proposal
-
-For Validation Funding:
-
-· GitHub Sponsors: [Link]
-· Custom Units: Email for specific validation packages
-· Transparency: Monthly public reports on all executions
-
+Fund specific validation units → Sponsor dataset licensing → Receive transparency reports
+Contact: AIONSYSTEM@outlook.com with subject [Funding Proposal]
+Path C: Framework Application
+Apply frameworks to your domain → Share findings (anonymized) → Contribute to FCL
+Contact: AIONSYSTEM@outlook.com with subject [Framework Application]
+Path D: Technical Review
+Audit framework specs → Identify edge cases → Propose improvements
+Submit: GitHub Issues with [Technical Review] label
+📚 Framework Positioning vs Existing Work
+Existing Framework
+Focus
+AION-BRAIN Complement
+NIST AI RMF
+Risk management guidelines
+Executable validation protocols (FSVE, AION)
+Model Cards
+Model characteristics
+Epistemic validity scoring (FSVE §7)
+Constitutional AI
+Principle-based alignment
+Empirical confidence calibration (FSVE)
+Red Teaming
+Adversarial testing
+Systematic failure extraction (AION)
+IEEE 7000
+Ethical design
+Pattern legitimacy scoring (GENESIS)
+Differentiation: AION-BRAIN provides how to measure what existing frameworks define, with commitment to publishing when measurements fail (not just successes).
+⚠️ Required Professional Oversight
+Domain
+Mandatory Oversight
+Documentation
+Medical
+Licensed physician review
+/legal/medical-oversight.md
+Legal
+Attorney validation
+/legal/legal-oversight.md
+Financial
+Compliance officer approval
+/legal/financial-oversight.md
+Crisis Response
+Licensed therapist supervision
+/legal/crisis-oversight.md
+Legal Status: Research software under Apache 2.0. Not certified for clinical, legal, or financial use without professional validation.
+📞 Contact & Resources
+For Commercial Auditing:
+📧 aionsystem@outlook.com
+📋 Subject: [Audit Request] [Company Name]
+For Research Collaboration:
+📧 aionsystem@outlook.com
+📋 Subject: [AION-RESEARCH] [Institution] [Proposal Type]
 For Technical Engagement:
-
-· GitHub Discussions: Methodology and implementation questions
-· GitHub Issues: Reference implementation bugs
-· Pull Requests: Documentation improvements only (code frozen pending validation)
-
-Independent Research by Sheldon K Salmon
+💬 GitHub Discussions — Methodology questions
+🐛 GitHub Issues — Bug reports, improvements
+📝 Pull Requests — Documentation improvements (code frozen pending validation)
+Repository Structure:
+aion-brain/
+├── frameworks/               # Core validation frameworks
+│   ├── FSVE/                # Epistemic validation
+│   ├── AION/                # Structural integrity
+│   ├── ASL/                 # Active safeguards
+│   └── GENESIS/             # Pattern discovery
+├── audit-service/           # Applied commercial auditing
+│   ├── templates/           # Audit protocols
+│   ├── portfolio/           # Case studies (anonymized)
+│   └── methodology/         # Testing procedures
+└── legal/                   # Oversight requirements
+💬 Personal Statement
+"A system that cannot explain how it fails is not a system — it is a liability waiting for the right conditions."
+— Sheldon K. Salmon
+If your team deploys AI in regulated domains (healthcare, finance, autonomy, crisis response) and needs architectural proofs instead of just benchmarks — reach out.
+I consult on:
+Forensic AI incident audits
+Systemic fragility mapping
+Hardening generative systems where failure isn't an option
 Not affiliated with any "Aion"-branded commercial entities
-Repository Version:Research v2.4 | Updated: 2026-02-06
-
----
-
-Research Transparency Notice: This README represents the current state of a research architecture. All claims are hypotheses requiring empirical validation. Progress depends on executing designed test scenarios with appropriate dataset access.
+📄 Repository Metadata
+Version: Research v3.0
+Last Updated: 2026-02-15
+License: Apache 2.0
+Framework Status: M-MODERATE convergence (4/4 specifications complete, 0/20 FCL entries)
+Primary Maintainer: Sheldon K. Salmon (Mr.AION)
+Research Transparency Notice: This repository represents a research architecture. All performance claims are hypotheses requiring empirical validation. Progress depends on executing validation protocols with appropriate dataset access and independent review.
+🔬 Research. 🛡️ Rigor. 🔓 Radical Transparency.
