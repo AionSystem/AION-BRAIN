@@ -19,18 +19,18 @@ jobs:
           python-version: '3.11'
 
       - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install markdown-it-py
+        run: python -m pip install --upgrade pip markdown-it-py
 
-      - name: Scan and Generate Mermaid for Markdown Files
+      - name: Generate Mermaid for Markdown Files
         run: |
-          python3 - <<'EOF'
+          set -euo pipefail  # Fail fast
+
+          cat > generate_mermaid.py <<'END_SCRIPT'
           import os
           from markdown_it import MarkdownIt
 
           def has_mermaid_already(content):
-              return '```mermaid' in content.lower()  # Case-insensitive check
+              return '```mermaid' in content.lower()
 
           def add_mermaid(file_path):
               try:
@@ -38,11 +38,10 @@ jobs:
                       content = f.read()
 
                   if has_mermaid_already(content):
-                      print(f"Skipping {file_path} — already has Mermaid")
+                      print(f"SKIP: {file_path} already has Mermaid")
                       return
 
                   md = MarkdownIt()
-                  # Better table detection
                   has_table = '|' in content and '---' in content and content.count('|') > 20
 
                   if has_table:
@@ -63,12 +62,11 @@ jobs:
 
                   with open(file_path, 'a', encoding='utf-8') as f:
                       f.write(citation)
-                  print(f"Added to {file_path}")
+                  print(f"ADDED to {file_path}")
 
               except Exception as e:
-                  print(f"Error on {file_path}: {type(e).__name__} - {e}")
+                  print(f"ERROR {file_path}: {type(e).__name__} - {str(e)}")
 
-          # Process only .md files
           processed = 0
           for root, _, files in os.walk('.'):
               for file in files:
@@ -77,10 +75,6 @@ jobs:
                       add_mermaid(full_path)
                       processed += 1
           print(f"Processed {processed} .md files")
-          EOF
+          END_SCRIPT
 
-      - name: Commit Visual Updates
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Auto-added Mermaid visuals & citations to MD [ci skip]"
-          file_pattern: "*.md"
+          python3 generate_mermaid.py
