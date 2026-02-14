@@ -1,0 +1,65 @@
+name: Visual Structure Extraction and Citation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  extract-and-visualize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          npm install markdown-it pdf-parse mermaid.cli
+
+      - name: Scan and Generate Mermaid
+        run: |
+          # Python script to process files (example logic)
+          python -c "
+          import os
+          import pdfplumber  # For PDFs
+          from markdown_it import MarkdownIt
+          
+          def add_mermaid(file_path):
+              if file_path.endswith('.md'):
+                  with open(file_path, 'r') as f:
+                      content = f.read()
+                  md = MarkdownIt().parse(content)
+                  # Extract tables/structures (simplified: find markdown tables)
+                  has_table = '|' in content  # Basic detection
+                  if has_table:
+                      # Convert table to pie chart example
+                      mermaid = 'pie title Example Table Data\n\"Category1\": 40\n\"Category2\": 60'
+                  else:
+                      mermaid = 'graph TD\nA[File Structure] --> B[Headers]\nB --> C[Subsections]'
+                  citation = '\n\n```mermaid\n' + mermaid + '\n```\n\n*By Sheldon K Salmon - Source: https://github.com/AionSystem/AION-BRAIN*'
+                  with open(file_path, 'a') as f:
+                      f.write(citation)
+              elif file_path.endswith('.pdf'):
+                  with pdfplumber.open(file_path) as pdf:
+                      # Extract tables from PDF
+                      for page in pdf.pages:
+                          tables = page.extract_tables()
+                          if tables:
+                              # Convert first table to bar chart
+                              mermaid = 'graph LR\nA[Col1] -->|Value| B(Row1)'
+                              # Append to a new MD file in visuals/
+                              os.makedirs('visuals', exist_ok=True)
+                              with open(f'visuals/{os.path.basename(file_path)}.md', 'w') as f:
+                                  f.write('```mermaid\n' + mermaid + '\n```\n\n*By Sheldon K Salmon - Source: https://github.com/AionSystem/AION-BRAIN*')
+          
+          for root, _, files in os.walk('.'):
+              for file in files:
+                  if file.endswith(('.md', '.pdf')):
+                      add_mermaid(os.path.join(root, file))
+          "
+
+      - name: Commit Visual Updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generated Mermaid visuals with citations"
