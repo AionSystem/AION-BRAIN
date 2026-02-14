@@ -16,14 +16,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # or '3.12' — pdfplumber supports >=3.8
+          python-version: '3.11'
 
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pdfplumber markdown-it-py
 
-      - name: Install Node.js dependencies (for mermaid.cli if needed later)
+      - name: Install Node.js dependencies
         run: npm install -g @mermaid-js/mermaid-cli
 
       - name: Scan and Generate Mermaid
@@ -35,49 +35,64 @@ jobs:
 
           def add_mermaid(file_path):
               if file_path.endswith('.md'):
-                  with open(file_path, 'r', encoding='utf-8') as f:
-                      content = f.read()
-                  md = MarkdownIt()
-                  # Basic table detection (improve as needed)
-                  has_table = '|' in content and content.count('|') > 5
-                  if has_table:
-                      # Simple placeholder conversion — customize per your tables
-                      mermaid = 'graph TD\n    A[Table Detected] --> B[Data]\n    B --> C[Visualized]'
-                  else:
-                      # Basic file structure diagram
-                      mermaid = 'graph TD\n    Root[File] --> Headers[Headers]\n    Headers --> Subsections[Content]'
+                  try:
+                      with open(file_path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                      md = MarkdownIt()
+                      # Basic table detection (can be improved with md parser table plugin)
+                      has_table = '|' in content and content.count('|') > 10  # rough heuristic
+                      if has_table:
+                          mermaid = '''pie title Detected Table Data Example
+          "Category A" : 45
+          "Category B" : 30
+          "Category C" : 25'''
+                      else:
+                          mermaid = '''graph TD
+          A[File Root] --> B[Headers / Sections]
+          B --> C[Content / Tables]
+          C --> D[Visual Representation]'''
 
-                  citation = f"""\n\n```mermaid\n{mermaid}\n```\n\n*By Sheldon K Salmon - Source: https://github.com/AionSystem/AION-BRAIN*"""
-                  with open(file_path, 'a', encoding='utf-8') as f:
-                      f.write(citation)
-                  print(f"Processed MD: {file_path}")
+                      citation = f"""\n\n```mermaid
+          {mermaid}
+          ```
+          
+          *By Sheldon K Salmon - Source: https://github.com/AionSystem/AION-BRAIN*"""
+                      with open(file_path, 'a', encoding='utf-8') as f:
+                          f.write(citation)
+                      print(f"Added Mermaid + citation to: {file_path}")
+                  except Exception as e:
+                      print(f"Error processing MD {file_path}: {e}")
 
               elif file_path.lower().endswith('.pdf'):
                   try:
+                      os.makedirs('visuals', exist_ok=True)
                       with pdfplumber.open(file_path) as pdf:
                           for i, page in enumerate(pdf.pages):
                               tables = page.extract_tables()
-                              if tables:
-                                  # Basic conversion — improve for real table-to-chart
-                                  mermaid = 'graph LR\n    Col1[Column1] --> Val1[Value]'
+                              if tables and len(tables) > 0:
+                                  # Very basic placeholder conversion — enhance later with real data
+                                  mermaid = '''graph LR
+          Table --> Row1[Row 1 Data]
+          Row1 --> Value1[Extracted Value]'''
                                   out_path = f"visuals/{os.path.basename(file_path)}_page{i+1}.md"
-                                  os.makedirs('visuals', exist_ok=True)
                                   with open(out_path, 'w', encoding='utf-8') as f:
                                       f.write(f"```mermaid\n{mermaid}\n```\n\n*By Sheldon K Salmon - Source: https://github.com/AionSystem/AION-BRAIN*")
-                                  print(f"Generated from PDF table: {out_path}")
+                                  print(f"Generated visual from PDF table: {out_path}")
                               else:
-                                  print(f"No tables in PDF page {i+1} of {file_path}")
+                                  print(f"No tables found on page {i+1} of {file_path}")
                   except Exception as e:
-                      print(f"PDF processing error {file_path}: {e}")
+                      print(f"PDF error {file_path}: {e}")
 
+          # Walk repo and process relevant files
           for root, _, files in os.walk('.'):
               for file in files:
-                  if file.endswith(('.md', '.pdf')) and not file.startswith('.'):
-                      add_mermaid(os.path.join(root, file))
+                  if file.endswith(('.md', '.pdf')) and not file.startswith('.') and 'visuals/' not in root:
+                      full_path = os.path.join(root, file)
+                      add_mermaid(full_path)
           EOF
 
       - name: Commit Visual Updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-generated Mermaid visuals with citations [ci skip]"
+          commit_message: "Auto-generated Mermaid visuals & citations [ci skip]"
           file_pattern: "*.md visuals/*.md"
