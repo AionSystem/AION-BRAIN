@@ -8,7 +8,7 @@
 
 [![Check Dependabot](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml)
 
-[![AION Consolidated CI](https://github.com/AionSystem/AION-BRAIN/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/ci.yml)
+[![Epistemic Validation Auditor](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
 
 [![.github/workflows/aion-structure.yml](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml)
 
