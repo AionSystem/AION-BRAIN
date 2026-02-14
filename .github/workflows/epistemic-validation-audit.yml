@@ -2,7 +2,7 @@ name: Epistemic Validation Auditor
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -12,33 +12,72 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for diff
 
-      - name: Setup AI Agent
-        uses: github/gemini-cli-action@v1  # Example from search; or claude/copilot equivalent
-
-      - name: Run Epistemic Audit
+      - name: Get changed files
+        id: changed-files
         run: |
-          # Use agent to process changes
-          gemini-cli --prompt "Analyze changed files against FSVE v3.0: Compute PLS using 7 axes (M,R,B,T,P,C,F). Check uncertainty conservation. Output: JSON with score and report." --files $(git diff --name-only HEAD^) > audit_report.json
-
-      - name: Validate and Report
-        run: |
-          score=$(jq '.pls' audit_report.json)
-          if (( $(echo "$score < 0.40" | bc -l) )); then
-            echo "Low legitimacy score: $score - Blocking." >> $GITHUB_STEP_SUMMARY
-            exit 1
-          else
-            echo "VALID: PLS=$score" >> $GITHUB_STEP_SUMMARY
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.before || 'HEAD^' }} \( {{ github.sha }} | grep -E '\.(md|pdf|yaml|yml|txt) \)' | tr '\n' ' ')
+          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No documentation files changed — skipping deep audit."
           fi
 
-      - name: Upload Report Artifact
+      - name: Install utilities
+        run: |
+          sudo apt update
+          sudo apt install -y pandoc jq grep bc
+
+      - name: Perform Epistemic Audit (FSVE/GENESIS Principle Check)
+        run: |
+          CHANGED="${{ steps.changed-files.outputs.changed_files }}"
+          if [ -z "$CHANGED" ]; then
+            echo "No files to audit."
+            exit 0
+          fi
+
+          echo "Auditing changed files: $CHANGED" > audit_report.txt
+          echo "Date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> audit_report.txt
+          echo "" >> audit_report.txt
+
+          # Core principle presence check (expand with more patterns)
+          echo "## Principle Presence Check" >> audit_report.txt
+          grep -i -l -r -E "Uncertainty Is Conserved|No Free Certainty|Pattern Legitimacy Precedes Performance|Composition Compounds Uncertainty|No Phantom Patterns|Algorithmic Explainability Is Required|Translation Requires Causal Equivalence" . >> audit_report.txt 2>/dev/null || echo "⚠️ No core principle references found in changed files." >> audit_report.txt
+          echo "" >> audit_report.txt
+
+          # Very basic legitimacy score simulation (0-1 scale)
+          PRINCIPLE_COUNT=$(grep -r -i -E "Uncertainty|Legitimacy|Phantom|Explainability|Causal" . | wc -l)
+          FILE_COUNT=$(echo "$CHANGED" | wc -w)
+          if [ $FILE_COUNT -gt 0 ]; then
+            PLS=$(echo "scale=2; $PRINCIPLE_COUNT / ($FILE_COUNT * 5)" | bc)  # Rough heuristic: 5 expected refs per file
+            PLS=$(echo "if($PLS > 1) 1 else $PLS" | bc)
+          else
+            PLS=0.00
+          fi
+
+          echo "## Estimated Pattern Legitimacy Score (PLS)" >> audit_report.txt
+          echo "Basic heuristic PLS: $PLS (0.00–1.00)" >> audit_report.txt
+          if (( $(echo "$PLS < 0.40" | bc -l) )); then
+            echo "::error file=audit_report.txt::Low legitimacy score ($PLS) — potential FSVE/GENESIS violation. Review for uncertainty conservation and structural honesty." >> $GITHUB_STEP_SUMMARY
+            echo "FAIL: PLS too low ($PLS < 0.40)" >> audit_report.txt
+            exit 1
+          else
+            echo "PASS: PLS $PLS ≥ 0.40" >> audit_report.txt
+          fi
+
+          echo "" >> audit_report.txt
+          echo "*Audit based on basic pattern matching. For full LLM-powered scoring, configure API key and expand step.*" >> audit_report.txt
+
+      - name: Upload Audit Report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: epistemic-audit
-          path: audit_report.json
+          name: epistemic-audit-report
+          path: audit_report.txt
 
-      - name: Notify on High Uncertainty
-        if: failure()
+      - name: Comment on PR if Failed
+        if: failure() && github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
@@ -46,5 +85,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Epistemic audit failed: Review for uncertainty issues.'
+              body: '⚠️ Epistemic audit failed: Low PLS or missing core principles (Uncertainty conserved, No free certainty, etc.). Review changed docs for FSVE/GENESIS compliance. See artifact: epistemic-audit-report'
             })
