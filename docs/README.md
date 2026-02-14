@@ -283,6 +283,80 @@ Evaluation Checklist:
 4. Is negative results commitment explicit? (Yes)
 
 ---
+## 🏢 Applied Research: Professional Epistemic Auditing Service
+
+**Research Application Status**: Operational implementation of FSVE + AION frameworks for commercial AI systems
+
+### Service Overview
+
+While AION-BRAIN represents fundamental research requiring validation, the **FSVE (Foundational Scoring & Validation Engine)** and **AION (structural integrity)** frameworks have matured sufficiently for applied auditing work.
+
+**What We Audit**:
+- AI confidence calibration vs. actual performance
+- Epistemic validity scoring (FSVE §7 11-axis framework)
+- Structural fragility analysis (AION SRI)
+- EU AI Act compliance mapping (Articles 13, 15)
+- NIST AI RMF adherence
+
+**Methodology**: Same falsifiable testing protocols used in AION-BRAIN research, applied to production AI systems.
+
+### Service Tiers
+
+| Tier | Target | Deliverable | Investment |
+|------|--------|-------------|------------|
+| **Startup** | Pre-Series A, <50 employees | 15-page technical audit | $3,000 |
+| **Growth** | Series A+, 50-500 employees | Full audit + remediation roadmap | $8,000 |
+| **Enterprise** | 500+ employees | Comprehensive validation + ongoing monitoring | $15,000-25,000 |
+
+**Deliverables**:
+1. Full technical audit report (FSVE + AION analysis)
+2. Executive summary (non-technical)
+3. Compliance assessment (EU AI Act, NIST)
+4. Prioritized remediation roadmap
+5. Raw test data (transparency)
+
+### Why This Service Exists
+
+**Problem**: AI systems routinely claim 95% confidence but test at 65-75% on domain-specific tasks.
+
+**Solution**: Apply research-grade validation frameworks to production systems.
+
+**Research Feedback Loop**: Client engagements generate real-world test scenarios that inform AION-BRAIN validation design.
+
+### Transparency Commitments (Applied Research)
+
+| Commitment | Implementation |
+|------------|----------------|
+| **Methodology Disclosure** | All audit templates and prompts publicly available in `/audit-service/` |
+| **Falsifiable Claims** | Confidence gaps quantified with reproducible test protocols |
+| **Negative Results** | Clients informed when AI systems *pass* audits (not just failures) |
+| **Framework Evolution** | Client findings contribute to AION-BRAIN validation scenarios |
+
+### Access Audit Service Resources
+
+```bash
+# View audit methodology
+open audit-service/README.md
+
+# Review audit templates
+ls audit-service/templates/
+
+# Examine sample audits
+open audit-service/portfolio/sample-audits/
+Book Audit: aionsystem@outlook.com with subject "[Audit Request] [Company Name]"
+Audit Funding → Research Funding: 10% of audit revenue funds AION-BRAIN validation execution (public reporting).
+🔬 Research ↔ Practice Feedback Loop
+AION-BRAIN Research → Audit Methodology → Client Findings → Research Validation
+         ↑                                                              ↓
+         ←──────────────── Scenario Refinement ──────────────────────────
+Example: A client audit revealed overconfidence patterns in medical AI retrieval. This finding:
+Generated 15 new test scenarios for Medical Safety Engine v0.1
+Informed FSVE confidence ceiling penalty adjustments
+Published as anonymized case study (with permission)
+Contributed to benchmark validation design
+Transparency: All anonymized findings published in /audit-service/portfolio/case-studies/
+
+
 
 📚 Comparable Work & Positioning
 
