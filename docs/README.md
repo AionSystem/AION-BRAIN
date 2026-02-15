@@ -9,6 +9,7 @@
 [![Depth Acceleration](https://img.shields.io/badge/AION-v3.0-purple)](frameworks/AION/)
 [![Graduated Safety](https://img.shields.io/badge/ASL-v2.0-orange)](frameworks/ASL/)
 [![Pattern Validation](https://img.shields.io/badge/GENESIS-v1.0-green)](frameworks/GENESIS/)
+[!Temporal Validation](https://img.shields.io/badge/ATP-v1.0-purple)](frameworks/ATP/) 
 
 [![Epistemic Validation Auditor](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
 [![Check Dependabot](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml)
