@@ -5,6 +5,7 @@ From Theoretical Design to Deployable Safety System
 
 Status: Implementation-Ready Framework
 Governance: FSVE-Validated Architecture
+by: Sheldon K Salmon
 Release: December 2025
 Purpose: Bridge theoretical safety to clinical deployment
 
