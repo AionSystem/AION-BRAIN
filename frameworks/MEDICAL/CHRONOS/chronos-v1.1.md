@@ -1,6 +1,7 @@
 CHRONOS v1.0 Engine Specification
 
 Continuity, History & Ontological Reconciliation for Optimal Safety
+by: sheldon k salmon
 
 SEVEN-ENGINE ARCHITECTURE
 
