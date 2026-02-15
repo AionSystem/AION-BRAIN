@@ -1,4 +1,4 @@
-Adaptive World Response Engine (AWRE) v1.0
+Adaptive World Response Engine (AWRE) v1.0 
 
 The World That Watches Back
 
