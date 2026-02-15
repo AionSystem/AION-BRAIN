@@ -1,36 +1,4 @@
 
-# 🔬 AION-BRAIN: Framework-Driven AI Safety Architecture
-
-> **Sovereign Epistemic Auditing Through Interlocking Validation Frameworks**
-
-
-> **📄 One-Page Summary**: [EXECUTIVE-SUMMARY.md](EXECUTIVE-SUMMARY.md) | **⏱️ Quick Path**: [Reviewer Summary](#reviewer-summary)
-
-[![Epistemic Validation](https://img.shields.io/badge/FSVE-v3.0-blue)](frameworks/FSVE/)
-[![Structural Integrity](https://img.shields.io/badge/AION-v3.0-purple)](frameworks/AION/)
-[![Active Safeguards](https://img.shields.io/badge/ASL-v2.0-orange)](frameworks/ASL/)
-[![Pattern Discovery](https://img.shields.io/badge/GENESIS-v1.0-green)](frameworks/GENESIS/)
-
-
-[![Epistemic Validation Auditor](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
-[![Check Dependabot](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml)
-[![Dependabot Updates](https://github.com/AionSystem/AION-BRAIN/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/dependabot/dependabot-updates)
-[![Render Diagrams and Charts](https://github.com/AionSystem/AION-BRAIN/actions/workflows/render-diagrams.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/render-diagrams.yml)
-[![.github/workflows/aion-structure.yml](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml)
-[![Research Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml)
-[![Lint Documentation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
-[![CodeQL Advanced](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml)
-
-
-## 📊 Repository Stats
-
-![Files](https://img.shields.io/badge/Files-1948-purple)
-![Directories](https://img.shields.io/badge/Directories-584-blue)
-![Python](https://img.shields.io/badge/Python-256-gold)
-
-*Updated automatically*
-
-
 # 🛡️ AION-BRAIN: Certainty Infrastructure for Fearless AI Scaling
 
 > **Lightweight Epistemic Armor That Lets You Move Fast Without Breaking Things**
