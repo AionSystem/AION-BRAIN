@@ -1,9 +1,6 @@
 # "Of Course You Should Be Skeptical of AI Validators"
 ## Including me. Here's why — and how to protect yourself.
-
-*7-minute read*
-
----
+![1000007269](https://github.com/user-attachments/assets/c42caeb4-d855-42d1-934a-facf43270a4c)
 
 Last week, someone asked me:
 
