@@ -105,7 +105,7 @@ We propose a unified epistemic validation infrastructure consisting of four inte
 - If 5+ deployments show NO time savings vs. manual review (p > 0.05), hypothesis rejected
 - If deployment failures increase vs. baseline (p < 0.05), framework suspended
 
-📄 **Specification:** [`/frameworks/FSVE/SPECIFICATION.md`](frameworks/FSVE/)
+📄 **Specification:** [`/frameworks/FSVE/`](frameworks/FSVE/)
 
 ---
 
@@ -121,7 +121,7 @@ We propose a unified epistemic validation infrastructure consisting of four inte
 - If 5+ scaling experiments show depth increase <1.5x (p > 0.05), hypothesis rejected
 - If collapse rate increases vs. baseline (p < 0.05), framework suspended
 
-📄 **Specification:** [`/frameworks/AION/SPECIFICATION.md`](frameworks/AION/)
+📄 **Specification:** [`/frameworks/AION/`](frameworks/AION/)
 
 ---
 
@@ -153,7 +153,7 @@ We propose a unified epistemic validation infrastructure consisting of four inte
 - If 5+ composition studies show time savings <3x (p > 0.05), hypothesis rejected
 - If integration failures increase vs. baseline (p < 0.05), framework suspended
 
-📄 **Specification:** [`/frameworks/GENESIS/SPECIFICATION.md`](frameworks/GENESIS/)
+📄 **Specification:** [`/frameworks/GENESIS/`](frameworks/GENESIS/)
 
 ---
 
