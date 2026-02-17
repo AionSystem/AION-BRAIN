@@ -137,7 +137,7 @@ We propose a unified epistemic validation infrastructure consisting of four inte
 - If 5+ stress tests show uptime ≤ binary systems (p > 0.05), hypothesis rejected
 - If false negative rate increases (p < 0.05), framework suspended
 
-📄 **Specification:** [`/frameworks/ASL/SPECIFICATION.md`](frameworks/ASL/)
+📄 **Specification:** [`/frameworks/ASL/`](frameworks/ASL/)
 
 ---
 
