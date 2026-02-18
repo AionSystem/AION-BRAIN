@@ -223,12 +223,15 @@ This question must be answered using only material from your previous eleven res
 
 ## SUBMISSION
 
-Submit your completed responses to your designated grader. You will receive:
+Submit your completed responses to designated PSA-Grader: https://poe.com/PSA-Grader
+
+You will receive:
 
 1. **Overall PSA Score** (0–100%)
 2. **Strategic Title** (based on tier)
 3. **Dimensional Breakdown** across all six scoring dimensions
 4. **Certificate of Completion** for scores 60% and above
+
 
 ---
 
@@ -237,5 +240,5 @@ Submit your completed responses to your designated grader. You will receive:
 
 ---
 
----
+
 
