@@ -293,30 +293,36 @@ NBP-FSVE-001:
 
 ### Framework Calibration Log (FCL)
 
-Empirical validation tracking system:
+The FCL is the empirical validation tracking system. All completed validations will be logged here. **No real validations have been conducted yet (0/20 complete).** The structure below is a hypothetical template showing how a completed entry would be formatted — it does not represent actual data.
 
 ```yaml
-FCL-FSVE-20260217-001:
+# HYPOTHETICAL TEMPLATE — NOT A REAL VALIDATION ENTRY
+# This illustrates the FCL format that will be used when empirical validation begins.
+
+FCL-FSVE-TEMPLATE-001:
   framework: FSVE v3.0
   hypothesis: "30-50% deployment time reduction"
   deployment_environment: [redacted for anonymization]
-  
+  status: TEMPLATE — NO DATA COLLECTED
+
   baseline_metrics:
-    mean_deployment_time: 14.2 days
-    deployment_failure_rate: 0.08
-  
+    mean_deployment_time: [to be measured]
+    deployment_failure_rate: [to be measured]
+
   treatment_metrics:
-    mean_deployment_time: 9.8 days
-    deployment_failure_rate: 0.06
-  
+    mean_deployment_time: [to be measured]
+    deployment_failure_rate: [to be measured]
+
   analysis:
-    time_savings: 31% (95% CI: 18-44%)
-    failure_delta: -2 percentage points (not significant, p=0.23)
-    conclusion: "Hypothesis supported (within predicted range)"
-  
-  publication_status: "Under review at [Journal Name]"
+    time_savings: [to be calculated with 95% CI]
+    failure_delta: [to be calculated]
+    conclusion: [to be determined post-validation]
+
+  publication_status: [to be submitted upon completion]
   data_availability: "/fcl/FSVE-001/anonymized-data.csv"
 ```
+
+**When real validations are completed they will appear here with actual data, timestamps, and publication references. The FCL will be updated transparently regardless of whether results support or contradict framework hypotheses.**
 
 ---
 
