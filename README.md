@@ -76,6 +76,14 @@ We are actively seeking academic collaborators to:
 ![Last Commit](https://img.shields.io/github/last-commit/AionSystem/AION-BRAIN?style=flat-square)
 
 ---
+## 📊 Repository Stats
+
+![Files](https://img.shields.io/badge/Files-2017-blue)
+![Directories](https://img.shields.io/badge/Directories-595-purple)
+![Python](https://img.shields.io/badge/Python-255-purple)
+
+*Updated automatically*
+
 
 ## 🔬 Research Problem
 
