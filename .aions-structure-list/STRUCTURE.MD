@@ -1,33 +1,33 @@
 # 📊 AION-BRAIN Repository Stats
 
-**Last Scan:** Thu Feb 19 01:24:04 UTC 2026
+**Last Scan:** Thu Feb 19 19:08:27 UTC 2026
 
-- **Total Files:** 1997
-- **Total Directories:** 590
+- **Total Files:** 1998
+- **Total Directories:** 591
 - **Python Files:** 255
-- **Markdown Files:** 1549
+- **Markdown Files:** 1550
 - **YAML Files:** 43
 
 ## Recent Files
 ```
-./MANIFESTO.md
-./institutional/AUDIT-READINESS.md
-./institutional/COMPLIANCE-NOTES.md
-./institutional/DATA-LICENSE-MATRIX.md
-./institutional/OVERSIGHT-INTEGRATION.md
-./institutional/README.md
-./institutional/REGULATORY-MAPPING.md
-./testing/README.md
-./testing/test-suites/integration-tests-cross-domain.md
-./testing/test-suites/marketing-campaign-tests.md
-./testing/test-suites/performance-benchmarks.md
-./testing/test-suites/security-penetration-tests.md
-./testing/test-suites/unit-tests-medical-engine.md
-./testing/validation-frameworks/clinical-validation-protocol.md
-./testing/validation-frameworks/cross-domain-consistency-tests.md
-./testing/validation-frameworks/economic-system-audits.md
-./testing/validation-frameworks/legal-accuracy-verification.md
-./testing/validation-frameworks/marketing-ethics-validation.md
-./testing/validation-frameworks/scientific-validity-checks.md
-./testing/validation-frameworks/security-compliance-checks.md
+./cosmic-framework/README.md
+./cosmic-framework/type-0-planetary-safety.md
+./cosmic-framework/type-3-galactic-safety.md
+./cosmic-framework/type-4-universal-safety.md
+./failure-modes/README.md
+./failure-modes/known-failure-catalog/economic-system-collapses.md
+./failure-modes/known-failure-catalog/ethical-reasoning-failures.md
+./failure-modes/known-failure-catalog/legal-misinterpretation-cases.md
+./failure-modes/known-failure-catalog/marketing-campaign-failures.md
+./failure-modes/known-failure-catalog/medical-misdiagnosis-patterns.md
+./failure-modes/known-failure-catalog/scientific-methodology-errors.md
+./failure-modes/known-failure-catalog/security-breach-incidents.md
+./failure-modes/recovery-protocols/emergency-shutdown-procedures.md
+./failure-modes/recovery-protocols/fallback-mechanisms.md
+./failure-modes/recovery-protocols/graceful-degradation-strategies.md
+./failure-modes/recovery-protocols/post-failure-analysis.md
+./failure-modes/stress-testing/adversarial-test-cases.md
+./failure-modes/stress-testing/chaos-engineering-protocols.md
+./failure-modes/stress-testing/edge-case-catalog.md
+./failure-modes/stress-testing/load-testing-scenarios.md
 ```
