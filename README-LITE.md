@@ -1,203 +1,108 @@
-# AION-BRAIN: Cognitive Architecture Research
+# 🛡️ AION-BRAIN
 
-**Research-Grade Framework for AI Safety | 30+ Engine Design | Open Validation**
+> **Epistemic armor for AI systems. Know exactly where you can move fast — and where you can't.**
 
-> **⚠️ Research Status**: Architecture complete. Validation funding needed.  
-> *Not production software. Professional oversight required for all domains.*
-
----
-
-## 🎯 What This Is
-
-**A complete cognitive architecture** for systematic AI safety evaluation:
-
-- **30+ cognitive engines** designed with validation protocols
-- **394 safety test scenarios** ready for execution
-- **7 reference implementations** in Python (reviewable now)
-- **Standardized benchmarks** across medical, legal, financial domains
-
-**Immediate Value**: Even without funding, researchers can:
-```bash
-git clone https://github.com/your-repo/aion-brain
-# Review 1,350+ specification files
-# Examine 30-engine architecture
-# Study validation methodology
-```
+[![License](https://img.shields.io/badge/license-Apache_2.0-blue?style=for-the-badge)](LICENSE)
+[![Contact](https://img.shields.io/badge/contact-aionsystem%40outlook.com-blue?style=for-the-badge)](mailto:aionsystem@outlook.com)
+[![Demo](https://img.shields.io/badge/live_demo-FSVE--Validator_on_Poe-brightgreen?style=for-the-badge)](https://poe.com/FSVE-Validator)
 
 ---
 
-🚀 Try It Now (30 Seconds)
+## What Is This
 
-Paste this into any AI system to apply AION-BRAIN's core principle:
+Five frameworks that tell you, in real time, whether your AI output can be trusted — and exactly how much.
 
-```prompt
-## Confidence Calibration Protocol
-
-Before responding:
-1. State confidence: CERTAIN | HIGH | MODERATE | LOW | SPECULATIVE
-2. Flag knowledge gaps explicitly
-3. Acknowledge inference beyond training data
-4. If confidence < MODERATE: "Uncertainty note: [specific gap]"
-
-Now answer: [Your question]
-```
-
-This is the Oracle Layer in action. There are 30+ more engines.
+**One framework is already proven. Four are being validated now.**
 
 ---
 
-🔍 For Intelligence & OSINT Professionals
+## Framework Status
 
-AION-BRAIN applies intelligence community methodologies to AI safety:
-
-OSINT Principle AION-BRAIN Application Status
-Source Decay Models Credibility quantification over time ✅ Designed
-Early Signal Detection Hallucination anomaly detection ✅ Implemented
-Multi-Source Corroboration Cross-framework validation ✅ Implemented
-Pattern Validation Behavioral consistency checking ✅ Implemented
-
-Key Insight: The same cognitive patterns that distinguish signal from noise in intelligence work also separate valid reasoning from AI hallucinations.
+| Framework | What It Does | FCL Entries | Status |
+|-----------|-------------|-------------|--------|
+| 🔵 **FSVE v3.5** | Certainty scoring — 6 axes, [0–1] | 0 / 5 | M-MODERATE |
+| 🟣 **AION v3.0** | Fragility mapping — where your AI breaks | 0 / 5 | M-MODERATE |
+| 🟠 **ASL v2.0** | Graduated safety — 5 tiers, not binary | 0 / 5 | M-MODERATE |
+| 🟢 **GENESIS v1.0** | Pattern validation — compose AI safely | 0 / 5 | M-MODERATE |
+| ✅ **ECF v0.5** | Lexical precision QA — language that executes correctly | **30 / 30** | **M-STRONG** |
 
 ---
 
-💻 What Exists Today (Reviewable)
+## ECF Is Already Proven
 
-7 Implemented Engines ✅
+![ECF](https://img.shields.io/badge/ECF_v0.5-M--STRONG-brightgreen?style=for-the-badge)
+![Entries](https://img.shields.io/badge/FCL_entries-30_real-brightgreen?style=for-the-badge)
+![Failures](https://img.shields.io/badge/BVL_failures-0-brightgreen?style=for-the-badge)
+![EV](https://img.shields.io/badge/epistemic_validity-0.716-brightgreen?style=for-the-badge)
+![Intent](https://img.shields.io/badge/intent_match-92.0%25-brightgreen?style=for-the-badge)
 
-Engine Purpose Tests Designed
-Oracle Layer v1.0 Confidence calibration 33
-Credibility Engine v1.0 Trust quantification 53
-Benchmark Engine v1.0 Safety evaluation 95
-Explanation Engine v1.0 Audience adaptation 49
-Decision Engine v1.0 Bias reduction 53
-Strategy Engine v1.0 Risk identification 52
-SIMPLEXITY Engine v1.0 Complexity management 59
+30 real validation entries. 6 cycles. 0 failures. All timestamped before outcomes were known.
 
-Total: 394 test scenarios designed | All Python code reviewable
-
-23+ Designed Engines 🧪
-
-· Medical Safety Engine - Clinical reasoning protocols
-· Legal Analysis Engine - Citation verification
-· Financial Validation Engine - Assumption transparency
-· Crisis Protocol Engine - Emergency response guardrails
-· 19+ additional engines - Specifications complete
+**What ECF found that standard review misses:**
+- 🕳️ **JARGON_VOID** — sentences performing the appearance of meaning with nothing underneath
+- 🌐 **WORLDVIEW_CONTAMINATION** — individually valid words assembling a self-sealing epistemic trap
+- 🔒 **TRANSCENDENT_REFERENT** — the boundary where language structurally cannot go
 
 ---
 
-🏗️ Repository Structure
+## Certainty Stack
 
-```
-engines/
-├── tier-1-foundation/      # 3 implemented engines (Oracle, Benchmark, SIMPLEXITY)
-├── tier-2-cognitive/       # 4 implemented engines (Decision, Strategy, Credibility, Explanation)
-├── tier-3-domain/          # Designed engines (Medical, Legal, Financial, Crisis)
-└── tier-4-experimental/    # Frontier concepts
+![Stack](https://img.shields.io/badge/certainty_stack-M--MODERATE-yellow?style=for-the-badge)
+![Validations](https://img.shields.io/badge/validations-0%2F20_pending-orange?style=for-the-badge)
+![Demo](https://img.shields.io/badge/FSVE_demo-live_on_Poe-brightgreen?style=for-the-badge)
 
-Each engine includes:
-├── specification.md        # Design rationale
-├── hypothesis.md          # Falsifiable claims
-├── benchmarks/            # Test scenarios
-└── reference-implementation/  # Python code (where available)
-```
+The four certainty stack frameworks are fully specified and mathematically consistent. Empirical pilot validation is next.
+
+**Hypotheses under test (not yet proven):**
+- FSVE → 30–50% faster deployment cycles
+- AION → 2× deeper reasoning without collapse
+- ASL → higher uptime under stress vs binary systems
+- GENESIS → 5× faster pattern composition
 
 ---
 
-⚠️ Critical Transparency
+## Try It Now
 
-Benchmark Status
-
-All performance metrics are target hypotheses, not validated results.
-
-Every engine includes:
-
-```
-benchmarks/
-├── README.md              # Target metrics, validation status
-├── test-scenarios/        # 394 total scenarios designed
-├── methodology.md         # Reproducible testing protocol
-└── scoring-rubrics.md     # Objective evaluation criteria
-```
-
-What This Is NOT
-
-· ❌ Not production software
-· ❌ Not autonomous decision-making
-· ❌ Not benchmarked against frontier models (yet)
-· ❌ Not a liability reduction claim
-· ✅ Is research architecture seeking validation
-· ✅ Is fully specified with test protocols
-· ✅ Is partially implemented (7 engines)
+[![Live Demo](https://img.shields.io/badge/🤖_FSVE--Validator-Try_on_Poe-brightgreen?style=for-the-badge)](https://poe.com/FSVE-Validator)
 
 ---
 
-🔬 Research Pathways
+## Repo
 
-For Reviewers & Researchers
+![Files](https://img.shields.io/badge/files-2017-purple?style=flat-square)
+![Dirs](https://img.shields.io/badge/directories-595-blue?style=flat-square)
+![Python](https://img.shields.io/badge/python-255_files-gold?style=flat-square)
+![FCL](https://img.shields.io/badge/FCL_Master-v2.6_M--STRONG-brightgreen?style=flat-square)
 
-1. Clone: git clone https://github.com/your-repo/aion-brain
-2. Review: Examine /engines/*/hypothesis.md for falsifiable claims
-3. Evaluate: Check benchmark methodology for reproducibility
-4. Contact: AIONSYSTEM@outlook.com for collaboration
-
-For AI Safety Practitioners
-
-· Immediate use: Apply confidence calibration protocol above
-· Methodology review: Study validation protocols in /benchmarks/
-· Risk assessment: Review failure modes in each engine specification
-
-For Potential Funders
-
-· Modular validation: $25-300 units for specific test executions
-· Transparency: Monthly public reports on all funded work
-· Contingency: Clear plan if funding stops (specifications preserved)
+[![Epistemic Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
+[![CodeQL](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml)
+[![Research Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml)
 
 ---
 
-📋 Quick Reference
+## Go Deeper
 
-Need This? Use This Engine Status
-Confidence calibration Oracle Layer v1.0 ✅ Implemented
-Source credibility Credibility Engine v1.0 ✅ Implemented
-Safety benchmarking Benchmark Engine v1.0 ✅ Implemented
-Medical reasoning Medical Safety Engine v0.1 🧪 Designed
-Legal analysis Legal Analysis Engine v0.1 🧪 Designed
-Financial validation Financial Validation Engine v0.1 🧪 Designed
-Crisis protocols Crisis Protocol Engine v0.1 🧪 Designed
-
----
-
-⚖️ Required Oversight
-
-Domain Mandatory Professional Review
-Medical Licensed physician
-Legal Attorney
-Financial Compliance officer
-Crisis Licensed therapist
-
-License: Apache 2.0 - Open for research review and responsible use.
+| I want to... | Go here |
+|---|---|
+| Read the full commercial overview | [README-commercial.md](README-commercial.md) |
+| Read the technical architecture | [README-technical.md](README-technical.md) |
+| See the academic validation framework | [README-academic.md](README-academic.md) |
+| Read the ECF validation proof | [ECF Moon-View](outputs/ECF-One-Page-Moon-View.md) |
+| Browse framework specs | [frameworks/](frameworks/) |
+| See all 30 ECF validation entries | [ECF Completed Cycles](frameworks/ECF/Completed%20Cycles/) |
+| Collaborate or pilot | `aionsystem@outlook.com` |
 
 ---
 
-🤝 Next Steps
+## Transparency
 
-For Serious Engagement:
+![Negative Results](https://img.shields.io/badge/negative_results-published-brightgreen?style=flat-square)
+![No Cherry Picking](https://img.shields.io/badge/cherry_picking-never-brightgreen?style=flat-square)
+![Open Source](https://img.shields.io/badge/specs-Apache_2.0-blue?style=flat-square)
+![COI](https://img.shields.io/badge/conflict_of_interest-none_declared-brightgreen?style=flat-square)
 
-1. Review specifications in /engines/
-2. Examine hypotheses for methodological soundness
-3. Consider funding a validation unit ($25-300)
-4. Email: AIONSYSTEM@outlook.com with specific proposal
-
-For Casual Exploration:
-
-1. Try the 30-second protocol above
-2. Browse implemented engines in /engines/tier-1-foundation/
-3. Star the repo to support discoverability
+All validation entries are public. All are timestamped before outcomes. Failures would be published the same as successes.
 
 ---
 
-Independent Research by Sheldon K Salmon
-Not affiliated with commercial "Aion" entities
-Status: Research v2.4 | Updated: 2026-02-06
-
-View Full Documentation | Quick Start Guide
+*Sheldon K. Salmon · AI Certainty Engineer · Co-Architect: Claude (Anthropic) · February 2026*
