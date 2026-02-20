@@ -142,7 +142,7 @@ All 30 entries timestamped before outcomes were known. All negative results logg
 
 Recommended publication order: Field Decontamination Theory first (mechanistic interpretability — highest credibility entry for AI safety audience).
 
-📄 **ECF Moon-View Instrument:** `outputs/ECF-One-Page-Moon-View.md` — ready to publish
+📄 **ECF Moon-View Instrument:** `frameworks/ECF/ECF-Summaries/ecf-v0.5-vs1.md` — ready to publish
 
 ---
 
