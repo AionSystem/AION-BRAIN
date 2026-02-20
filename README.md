@@ -1,5 +1,7 @@
 # AION-BRAIN: Epistemic Validation Infrastructure for AI Systems
 
+https://github.com/user-attachments/assets/0c6b1218-9a87-43c8-91d6-cce77a95904c
+
 > **Research Framework for Real-Time Certainty Monitoring in AI Deployments**
 
 ---
