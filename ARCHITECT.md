@@ -1,4 +1,5 @@
 # The Architect: Sheldon K. Salmon (Mr.AION)
+![j7cug1](https://github.com/user-attachments/assets/e6d86129-1f40-4cc3-8e49-e4d49896a875)
 
 "I build systematic thinking tools so humanity can partner with AI without losing cognitive sovereignty."
 
