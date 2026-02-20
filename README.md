@@ -83,8 +83,8 @@ We are actively seeking academic collaborators to:
 
 ## 📊 Repository Stats
 
-![Files](https://img.shields.io/badge/Files-2017-blue)
-![Directories](https://img.shields.io/badge/Directories-595-purple)
+![Files](https://img.shields.io/badge/Files-2026-blue)
+![Directories](https://img.shields.io/badge/Directories-596-purple)
 ![Python](https://img.shields.io/badge/Python-255-purple)
 
 *Updated automatically*
