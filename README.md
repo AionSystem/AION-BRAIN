@@ -1,5 +1,11 @@
 # AION-BRAIN
-## The Research Workspace
+### The Research Workspace
+
+[![Workspace Status](https://img.shields.io/badge/STATUS-RESEARCH_WORKSPACE-1a1a2e?style=for-the-badge&labelColor=16213e&color=0f3460)](https://github.com/AionSystem/AION-BRAIN)
+[![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
+[![Stack](https://img.shields.io/badge/PRODUCT_STACK-PROPRIETARY-gold?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
+
+---
 
 > *"Every framework in here was a shovel. Some hit rock. Some hit sand. Some broke entirely. All of them were necessary to find the bedrock."*
 > — Sheldon K. Salmon, AI Certainty Architect
@@ -8,161 +14,187 @@
 
 ## What This Repository Is
 
-This is the **research workspace** — the laboratory, the workshop, the sketchpad — where the frameworks, ideas, and infrastructure that eventually produced **ANCHOR** and the certainty certification stack were conceived, built, stress-tested, broken, rebuilt, and refined.
+This is the **research workspace** — the laboratory, the sketchpad, the quarry — where the frameworks, ideas, and infrastructure that produced **ANCHOR** and the certainty certification stack were conceived, stress-tested, broken, rebuilt, and refined.
 
-Nothing in this repository is a finished product. Everything in this repository is the work that made finished products possible.
+Nothing here is a finished product. Everything here is the work that made finished products possible.
 
 If ANCHOR is the house, AION-BRAIN is the quarry, the foundry, and the drafting table where the materials were sourced, shaped, and drawn.
 
 ---
 
-## Why This Workspace Exists
+## Validation Status — Live Instrument Readings
 
-AI certainty is not a problem that yields to the first framework you build. Every framework here represented a genuine attempt to solve a real problem — and every limitation that framework revealed sent the work deeper.
+### FSVE v3.5-LAV — Certainty Scoring Engine
 
-The sequence went like this:
+[![FSVE FCL Entries](https://img.shields.io/badge/FCL_ENTRIES-30_REAL-brightgreen?style=for-the-badge&labelColor=0d1117&logo=databricks)](frameworks/FSVE/)
+[![FSVE Convergence](https://img.shields.io/badge/CONVERGENCE-M--STRONG-00b894?style=for-the-badge&labelColor=0d1117)](frameworks/FSVE/)
+[![FSVE EV Score](https://img.shields.io/badge/EV_SCORE-0.813_SOUND-00cec9?style=for-the-badge&labelColor=0d1117)](frameworks/FSVE/)
+[![FSVE Structural Misses](https://img.shields.io/badge/STRUCTURAL_MISSES-0%2F30-27ae60?style=for-the-badge&labelColor=0d1117)](frameworks/FSVE/)
+[![FSVE Cycles](https://img.shields.io/badge/VALIDATION_CYCLES-6%2F6_COMPLETE-2ecc71?style=for-the-badge&labelColor=0d1117)](frameworks/FSVE/)
+[![FSVE Mean Delta](https://img.shields.io/badge/MEAN_SCORE_DELTA-%3C_0.03-1dd1a1?style=for-the-badge&labelColor=0d1117)](frameworks/FSVE/)
 
-**FSVE → AION → ASL → GENESIS** each addressed real problems in AI certainty scoring and deployment safety. But each one rested on assumptions about language, meaning, and epistemic foundations that hadn't been examined. The frameworks were sophisticated. The soil they were planted in hadn't been tested.
+**Summary:** 30 real-world claims scored across 10 domains and 5 independent predictors (Grok, ChatGPT, DeepSeek, Gemini, Claude). Zero primary structural status misses. Started DEGRADED (EV: 0.525). Ended SOUND (EV: 0.813). The scoring system correctly flagged four inviable systems — including a historical fraud — before deployment, and absorbed a documented field incident without status change. The architecture held.
 
-That forced the work deeper.
+| Cycle | Predictor | Accuracy |
+|-------|-----------|---------|
+| 1 | Formula baseline | 90% |
+| 2 | Grok | 60% |
+| 3 | ChatGPT | 70% |
+| 4 | DeepSeek | 100% |
+| 5 | Google Gemini | 100% |
+| 6 | Claude (self-prediction) | 90% |
 
-**ECF / LAV** — the linguistic audit layer — emerged from recognizing that the vocabulary used to describe AI certainty was itself compromised. "Confidence." "Validity." "Trust." These words were doing active damage to the precision of the frameworks above them. You cannot build a certainty architecture on uncertain language.
-
-That forced the work deeper still.
-
-**ECF → LAV → DERU** — the pre-linguistic invariant substrate layer — emerged from recognizing that even linguistic roots needed grounding. What makes a concept genuinely durable? Not just across languages but across civilizations, across millennia, across substrates we cannot currently imagine? DERU maps that territory.
-
-**DERU → MENSCAPE** — the pre-germination layer — is where the work arrived at bedrock. The workshop itself. The operating conditions that make seed-level thinking possible at all.
-
-From bedrock: **ANCHOR** — the first product built upward from a foundation that has been fully examined.
+**One falsifiable prediction on record:** If Cycle 7 achieves ≥70% accuracy, FSVE promotes to M-VERY_STRONG.
 
 ---
 
-## The Framework Inventory — What Was Built Here
+### LAV v1.5 — Linguistic Audit Vector
 
-### Certainty Stack — M-MODERATE
-These frameworks addressed real deployment problems. They remain valid research artifacts. They will be rebuilt on the new foundation when the time is right.
+[![LAV FCL Entries](https://img.shields.io/badge/FCL_ENTRIES-45_REAL-9b59b6?style=for-the-badge&labelColor=0d1117&logo=databricks)](frameworks/LAV/)
+[![LAV Convergence](https://img.shields.io/badge/CONVERGENCE-M--VERY_STRONG_REVIEW-8e44ad?style=for-the-badge&labelColor=0d1117)](frameworks/LAV/)
+[![LAV Running Mean](https://img.shields.io/badge/RUNNING_MEAN-77.5%25-6c3483?style=for-the-badge&labelColor=0d1117)](frameworks/LAV/)
+[![LAV Cycles](https://img.shields.io/badge/CYCLES_COMPLETE-8-a569bd?style=for-the-badge&labelColor=0d1117)](frameworks/LAV/)
+[![LAV Highest DDS](https://img.shields.io/badge/HIGHEST_DDS-0.989_SUSPENDED-7d3c98?style=for-the-badge&labelColor=0d1117)](frameworks/LAV/)
+[![LAV Predictor Lineage](https://img.shields.io/badge/PREDICTORS-Claude_·_Gemini_·_GPT_·_DeepSeek_·_Grok_·_Copilot-5b2c6f?style=for-the-badge&labelColor=0d1117)](frameworks/LAV/)
 
-| Framework | What It Did | Current Status |
-|-----------|------------|----------------|
-| **FSVE v3.5** | Six-dimension epistemic validity scoring engine | M-MODERATE — awaiting foundation rebuild |
-| **AION v3.0** | Structural integrity monitoring for reasoning chains | M-MODERATE — awaiting foundation rebuild |
-| **ASL v2.0** | Graduated five-tier safety response infrastructure | M-MODERATE — awaiting foundation rebuild |
-| **GENESIS v1.0** | Pattern legitimacy scoring for composed AI systems | M-MODERATE — awaiting foundation rebuild |
+**Summary:** 45 real FCL entries across 8 validation cycles. Six independent AI predictors. Running mean 77.5% — M-VERY-STRONG UNDER REVIEW (threshold: 80%). Two strong cycles restore full status. Cycle 8 accuracy: 80% GOOD. Key finding: *"AI is transforming every industry and creating new opportunities for human flourishing"* scored DDS 0.989 DISCOURSE SUSPENDED — the highest linguistic debt score in FCL history. The AI hype template is structurally insolvent.
 
-### Linguistic and Epistemic Infrastructure — Validated
-| Framework | What It Did | Current Status |
-|-----------|------------|----------------|
-| **ECF v0.5** | Emergence Conversion Framework — lexical precision QA | **M-STRONG** — 30 FCL entries, 0 failures, EV: 0.716 |
-| **LAV v1.5** | Linguistic Audit Vector — five-stage vocabulary audit, 10 protocols | Production — carried forward into ANCHOR stack |
-| **ECF (Epistemic Claim Framework)** | [D]/[R]/[S]/[?]/[R+] tagging system | Active cross-cutting discipline in all frameworks |
+| Cycle | Predictor | Accuracy |
+|-------|-----------|---------|
+| 1 | Claude | 100% |
+| 2 | Gemini | 100% |
+| 3 | ChatGPT | 80% |
+| 4 | DeepSeek | 100% |
+| 5 | Grok | 80% |
+| 6 | Copilot | 20% |
+| 7 | Grok | 60% |
+| 8 | ChatGPT | 80% |
 
-### Pre-Linguistic Substrate — The Bedrock Work
-| Framework | What It Did | Current Status |
-|-----------|------------|----------------|
-| **DERU v1.4** | Pre-linguistic invariant substrate — seed identification, five-layer method | Active — foundation of ANCHOR stack |
-| **MENSCAPE v1.1** | Pre-germination layer — unified awareness, workshop conditions, anti-weaponization architecture | Active — foundation of ANCHOR stack |
-| **ATP v2.0** | AI Temporal Protocol — time-stamping and calibration accountability | Active — temporal discipline layer |
+**Restoration path:** 2 cycles at ≥80% restores M-VERY-STRONG. Cycle 9 in design.
+
+---
+
+### ECF v0.2 — Early Linguistic Precision Work *(Pre-Validation Public Stage)*
+
+[![ECF Version](https://img.shields.io/badge/ECF-v0.2_PUBLIC-636e72?style=for-the-badge&labelColor=0d1117)](frameworks/ECF/)
+[![ECF Status](https://img.shields.io/badge/STATUS-EARLY_STAGE-b2bec3?style=for-the-badge&labelColor=0d1117)](frameworks/ECF/)
+[![ECF Note](https://img.shields.io/badge/v0.3%2B-PROPRIETARY_STACK-e17055?style=for-the-badge&labelColor=0d1117)](mailto:aionsystem@outlook.com)
+
+This repository contains ECF up to v0.2 — the early-stage linguistic precision work that preceded the full framework. ECF v0.2 shows the direction of the methodology: the problem being solved, the initial approach, the first tools developed.
+
+**v0.3 and above are proprietary.** The matured ECF methodology was absorbed into the product stack and is not publicly available. What is here is enough to understand where the work began. It is not enough to replicate where it went.
+
+---
+
+### AION v3.0 · ASL v2.0 · GENESIS v1.0 — Certainty Stack *(M-MODERATE)*
+
+[![AION Status](https://img.shields.io/badge/AION_v3.0-M--MODERATE-f39c12?style=for-the-badge&labelColor=0d1117)](frameworks/AION/)
+[![ASL Status](https://img.shields.io/badge/ASL_v2.0-M--MODERATE-e67e22?style=for-the-badge&labelColor=0d1117)](frameworks/ASL/)
+[![GENESIS Status](https://img.shields.io/badge/GENESIS_v1.0-M--MODERATE-d35400?style=for-the-badge&labelColor=0d1117)](frameworks/GENESIS/)
+[![Stack Empirical](https://img.shields.io/badge/EMPIRICAL_VALIDATIONS-0%2F15-e74c3c?style=for-the-badge&labelColor=0d1117)](frameworks/)
+
+Mathematical specifications complete. UVK consistency verified. Empirical validation pending. These frameworks addressed real deployment problems in AI certainty scoring and graduated safety infrastructure. They will be rebuilt on the ANCHOR foundation when the time is right.
+
+---
+
+### Proprietary Stack — ANCHOR Foundation
+
+[![MENSCAPE](https://img.shields.io/badge/MENSCAPE_v1.1-PROPRIETARY-2c3e50?style=for-the-badge&labelColor=0d1117&logo=lock)](mailto:aionsystem@outlook.com)
+[![DERU](https://img.shields.io/badge/DERU_v1.4-PROPRIETARY-2c3e50?style=for-the-badge&labelColor=0d1117&logo=lock)](mailto:aionsystem@outlook.com)
+[![LAV Full](https://img.shields.io/badge/LAV_v1.5_FULL-PROPRIETARY-2c3e50?style=for-the-badge&labelColor=0d1117&logo=lock)](mailto:aionsystem@outlook.com)
+[![ANCHOR](https://img.shields.io/badge/ANCHOR_v1.0-PROPRIETARY-2c3e50?style=for-the-badge&labelColor=0d1117&logo=lock)](mailto:aionsystem@outlook.com)
+[![Certificate](https://img.shields.io/badge/CERTIFICATE_LDS-0.260_CONFIRMED-2c3e50?style=for-the-badge&labelColor=0d1117)](mailto:aionsystem@outlook.com)
+
+MENSCAPE, DERU, the full LAV v1.5, and ANCHOR v1.0 are proprietary. They are mentioned here because they exist, because they emerged from this workspace, and because understanding the public research without knowing where it went would be an incomplete picture.
+
+They will not be in this repository. The methodology that produced them took years to develop and will not be open-sourced. If you are attempting to reverse-engineer the ANCHOR stack from the public frameworks above: you have years of work ahead of you and you are starting from an early stage of a journey that has moved considerably further.
+
+---
+
+## Why This Workspace Exists — The Full Journey
+
+AI certainty is not a problem that yields to the first framework you build. Every framework here represented a genuine attempt to solve a real problem — and every limitation that framework revealed sent the work deeper.
+
+The sequence:
+
+**FSVE → AION → ASL → GENESIS** — each addressed real problems in AI certainty scoring and deployment safety. But each rested on assumptions about language, meaning, and epistemic foundations that hadn't been examined. The frameworks were sophisticated. The soil they were planted in hadn't been tested.
+
+That forced the work deeper.
+
+**ECF → LAV** — the linguistic precision layer — emerged from recognizing that the vocabulary used to describe AI certainty was itself compromised. *Confidence.* *Validity.* *Trust.* These words were doing active damage to the precision of the frameworks above them. You cannot build a certainty architecture on uncertain language.
+
+That forced the work deeper still.
+
+**DERU** — the pre-linguistic invariant substrate — emerged from recognizing that even linguistic roots needed grounding. What makes a concept genuinely durable across civilizations, across millennia, across substrates we cannot currently imagine?
+
+**MENSCAPE** — the pre-germination layer — is where the work arrived at bedrock. The workshop itself. The operating conditions that make seed-level thinking possible at all.
+
+From bedrock: **ANCHOR** — the first product built entirely upward from a foundation that has been fully examined.
+
+---
+
+## The Honest State
+
+### What Is FCL-Validated ✅
+
+| Framework | FCL Entries | Convergence | Key Metric |
+|-----------|------------|-------------|-----------|
+| **FSVE v3.5-LAV** | 30 real | M-STRONG | EV: 0.813 SOUND · 0 structural misses |
+| **LAV v1.5** | 45 real | M-VERY-STRONG UNDER REVIEW | Running mean: 77.5% · Cycle 8: 80% GOOD |
+| **FCL Methodology** | 30 ECF entries proven | M-STRONG | Prediction-before-execution protocol validated |
+
+### What Is M-MODERATE (Specified, Not Yet Empirically Validated)
+
+| Framework | Specification | Empirical |
+|-----------|--------------|-----------|
+| AION v3.0 | ✅ Complete | 0/5 |
+| ASL v2.0 | ✅ Complete | 0/5 |
+| GENESIS v1.0 | ✅ Complete | 0/5 |
+
+### What Is Proprietary (Active, Building Toward Validation Through Client Engagements)
+
+| Framework | Status |
+|-----------|--------|
+| MENSCAPE v1.1 | Active foundation — pre-germination layer |
+| DERU v1.4 | Active foundation — pre-linguistic substrate |
+| LAV v1.5 (full) | Active — deployed in ANCHOR stack |
+| ANCHOR v1.0 | Active — first client engagement generates first FCL entry |
 
 ---
 
 ## What Came Out of This Workspace
 
-### The ANCHOR Stack — Private Repository
+### ANCHOR — Private Repository
 
-**ANCHOR** (AI Certainty Architecture for Operating Businesses) is the first commercial product to emerge from this workspace. It is housed in a separate private repository.
+**ANCHOR** (AI Certainty Architecture for Operating Businesses) is the first commercial product to emerge from this workspace. It is housed in a separate private repository and is not available here.
 
-ANCHOR's foundation stack — in order from bedrock up:
+ANCHOR maps where an AI system's outputs are load-bearing and where reliability degrades. It produces three deliverables — The Map, The Gray Scope, The Certificate — for CEOs and founders whose businesses operate on AI systems they have never formally examined.
 
+The product name *ANCHOR* scored CONFIRMED at LDS 0.260 under LAV v1.5 audit. *\*ank-* — the hook that bends into the ground and holds. The geometry is correct.
+
+**The ANCHOR stack from bedrock up:**
 ```
-MENSCAPE v1.1     ← pre-germination layer (the soil)
-      ↓
-DERU v1.4         ← pre-linguistic invariant substrate (the seeds)
-      ↓
-LAV v1.5          ← linguistic audit layer (cross-cutting)
-ECF               ← epistemic claim tagging (cross-cutting)
-      ↓
-FSVE v3.0         ← certainty scoring engine
-      ↓
-ANCHOR v1.0       ← client-facing product
+MENSCAPE v1.1  →  DERU v1.4  →  LAV v1.5  →  ECF  →  FSVE v3.0  →  ANCHOR v1.0
 ```
 
-Nothing in ANCHOR rests on unexamined assumptions. Every core term has been LAV-audited. Every claim carries an ECF tag. The certificate ANCHOR issues is honest because everything beneath it has been tested.
-
-**The ANCHOR repository is private.** If you are reading this workspace repository, you are seeing the research that preceded the product — not the product itself.
+For ANCHOR engagements: **aionsystem@outlook.com**
 
 ---
 
-## ECF v0.5 — The Validated Proof of Methodology
+## FCL Methodology — Proven Infrastructure
 
-Before building product, the validation methodology itself was proven. ECF v0.5 completed 6 full validation cycles — 30 real FCL entries, 0 BVL failures, mean LGS_effective delta +0.41, EV: 0.716 — achieving **M-STRONG** convergence in February 2026.
+Before building product, the validation methodology itself was proven.
 
-This matters because it proves that the FCL (Framework Calibration Log) methodology works. Prediction-before-execution logging is viable. Falsification conditions are operationally meaningful — 11 framework revisions were triggered by real findings. The validation system is not speculative infrastructure. It has a 30-entry track record.
+The FCL (Framework Calibration Log) is not speculative infrastructure. It has been used to validate two frameworks to M-STRONG and near-M-VERY-STRONG convergence, using six different AI systems as independent predictors, across 8 validation cycles, with prediction-before-execution logging throughout.
 
-When the rebuilt certainty stack (FSVE, AION, ASL, GENESIS) is validated in future versions, the FCL methodology that validates it has already been proven here.
+Key properties proven through validation:
+- Prediction-before-execution logging is viable and produces calibration improvement
+- NBP falsification conditions are operationally meaningful
+- External AI predictors can serve as independent validators with measurable accuracy
+- Discovery events emerge from rigorous testing rather than theoretical speculation
+- Negative results (mismatches, falsifications) are logged with equal prominence
 
-**ECF Moon-View Instrument:** `/frameworks/ECF/ECF-Summaries/ecf-v0.5-vs1.md` — ready to publish
-
----
-
-## What This Workspace Is Not
-
-This is not a product repository. Nothing here is for sale.
-
-This is not a finished research paper. The frameworks here are at various stages of specification and validation.
-
-This is not the authoritative source for the ANCHOR stack. That lives in the private ANCHOR repository, built from these materials but structured for deployment.
-
-This is the quarry. What was cut from it is elsewhere, shaped into something people can use.
-
----
-
-## The Honest State of This Work
-
-### What is validated
-- ECF v0.5 — M-STRONG (30 FCL entries, 0 failures)
-- LAV v1.5 — production specification, active in ANCHOR stack
-- ECF epistemic tagging — active cross-cutting discipline
-- FCL methodology itself — proven through ECF validation arc
-
-### What is M-MODERATE (specified, not yet empirically validated)
-- FSVE v3.5 — mathematical specification complete, 0 empirical validations
-- AION v3.0 — mathematical specification complete, 0 empirical validations
-- ASL v2.0 — mathematical specification complete, 0 empirical validations
-- GENESIS v1.0 — mathematical specification complete, 0 empirical validations
-
-### What is the active foundation (M-NASCENT, building toward validation)
-- DERU v1.4 — 15 seed candidates, 1 enforcement-linked, 0 FCL confirmed
-- MENSCAPE v1.1 — 6 principles, all DERU v1.4 assessed, 0 FCL confirmed
-- ANCHOR v1.0 — first client engagement will generate first FCL entry
-
----
-
-## The Roadmap From Here
-
-**Phase 1 — ANCHOR to first client**
-The private ANCHOR repository is live. The intake form is built. The first engagement generates the first real FCL entry for the product stack. That is the immediate priority.
-
-**Phase 2 — ANCHOR validation arc**
-After 5 client engagements: ANCHOR v1.1. After 15: M-MODERATE. After 30: M-STRONG target. Same FCL methodology proven in ECF validation, applied to the certainty certification product.
-
-**Phase 3 — Rebuild the stack on the foundation**
-When ANCHOR has demonstrated product-market fit and the foundation is FCL-validated, FSVE, AION, ASL, and GENESIS are rebuilt from MENSCAPE up — each inheriting the five-layer DERU standard and LAV-audited vocabulary. They return not as research speculation but as validated commercial infrastructure.
-
-**Phase 4 — ALPHA Engine**
-The orchestration layer that runs the full stack. Named when the stack it orchestrates has earned the right to be orchestrated. Not yet. In time.
-
----
-
-## For Researchers and Collaborators
-
-If you are an academic researcher interested in the epistemological foundations of AI certainty work — the pre-linguistic invariant substrate research (DERU), the linguistic audit methodology (LAV), or the validated ECF framework — this workspace is the right place to start.
-
-If you are a business looking for AI certainty assessment services — that is ANCHOR, and ANCHOR has its own entry point.
-
-These are different conversations. This repository is for the first one.
-
-📧 **Research inquiries:** `aionsystem@outlook.com`
+**FCL Master:** v2.7 — available in `/validation/fcl/`
 
 ---
 
@@ -171,32 +203,67 @@ These are different conversations. This repository is for the first one.
 ```
 aion-brain/
 ├── frameworks/
-│   ├── FSVE/              # Certainty scoring engine (M-MODERATE)
-│   ├── AION/              # Structural integrity governor (M-MODERATE)
-│   ├── ASL/               # Graduated safety layer (M-MODERATE)
-│   ├── GENESIS/           # Pattern validation layer (M-MODERATE)
-│   ├── ECF/               # Emergence conversion framework (M-STRONG ✅)
-│   │   └── FCL-cycles-1-6/ # 30 real validation entries (public)
-│   ├── LAV/               # Linguistic audit vector v1.5 (production)
-│   ├── DERU/              # Pre-linguistic substrate v1.4 (active)
-│   ├── MENSCAPE/          # Pre-germination layer v1.1 (active)
-│   └── ATP/               # Temporal protocol v2.0 (active)
+│   ├── FSVE/          # Certainty scoring engine — M-STRONG validated ✅
+│   ├── AION/          # Structural integrity governor — M-MODERATE
+│   ├── ASL/           # Graduated safety layer — M-MODERATE
+│   ├── GENESIS/       # Pattern validation layer — M-MODERATE
+│   └── ECF/           # Early linguistic precision work — v0.2 public
+│                        # v0.3+ proprietary
 ├── validation/
-│   ├── fcl/               # Framework calibration log v2.6
-│   ├── protocols/         # Preregistered validation designs
-│   └── negative-results/  # Failed validation archive (none deleted)
-├── outputs/
-│   └── ECF-Moon-View.md  # Ready to publish
-└── README.md              # This file
+│   ├── fcl/           # FCL Master v2.7
+│   ├── FSVE-cycles/   # 30 real FSVE entries — public
+│   ├── LAV-cycles/    # 45 real LAV entries — public
+│   └── protocols/     # Preregistered validation designs
+└── README.md
 ```
+
+**Not in this repository:** MENSCAPE, DERU, full LAV v1.5, ANCHOR. These frameworks exist. They are proprietary. Their specifications are not available here.
 
 ---
 
-## License
+## Open Questions This Workspace Has Not Answered
 
-**Apache 2.0** — Open for research use. Attribution required.
+These are published openly because unanswered questions are data, not weakness:
 
-All validation data in FCL is public, timestamped, and immutable. Negative results are logged with equal prominence as positive results. Nothing has been removed.
+- Can AION, ASL, and GENESIS be empirically validated to M-STRONG? (0/15 validations complete)
+- Does the ANCHOR stack achieve M-STRONG through client engagement FCL cycles? (0 engagements complete)
+- Does the FSVE scoring engine achieve M-VERY-STRONG at Cycle 7? (Pending)
+- Does LAV restore M-VERY-STRONG convergence in Cycles 9-10? (77.5% → 80% required)
+
+All validation attempts will be logged. Negative results will be published with equal prominence as positive results.
+
+---
+
+## The Friday Salmon Certainty Reports
+
+Public-facing output of this research. Published on Medium.
+
+**medium.com** → search: *Sheldon Salmon Certainty*
+
+Current publication candidates:
+- The AI hype template — DDS 0.989 DISCOURSE SUSPENDED — the highest linguistic debt score in FCL history
+- "Scalable" — how the scaling era created a 0.617 CORRECTED term at the center of AI strategy
+- "Regulatory compliance" — DDS 0.913 SUSPENDED — what "all safety requirements" actually signals
+- The scoring system that had to prove it could tell the difference before it scored anyone else
+
+---
+
+## Contact
+
+📧 `aionsystem@outlook.com`
+
+**For research collaboration:** Subject line `[Research — {Framework} — {Institution}]`
+**For ANCHOR engagements:** Subject line `[ANCHOR — {Organization}]`
+**For peer review:** GitHub Discussions → Peer Review category
+
+Response within 48 hours for all substantive inquiries.
+
+---
+
+[![FCL Protocol](https://img.shields.io/badge/FCL-PREDICTION_BEFORE_EXECUTION-16213e?style=for-the-badge&labelColor=0d1117)](validation/fcl/)
+[![Negative Results](https://img.shields.io/badge/NEGATIVE_RESULTS-PUBLISHED_EQUALLY-16213e?style=for-the-badge&labelColor=0d1117)](validation/)
+[![No Entries Removed](https://img.shields.io/badge/ARCHIVE-NOTHING_DELETED-16213e?style=for-the-badge&labelColor=0d1117)](validation/)
+[![Open Science](https://img.shields.io/badge/FCL_DATA-PUBLIC_AND_IMMUTABLE-16213e?style=for-the-badge&labelColor=0d1117)](validation/fcl/)
 
 ---
 
@@ -205,6 +272,6 @@ All validation data in FCL is public, timestamped, and immutable. Negative resul
 
 *Maintained by: Sheldon K. Salmon (AI Certainty Architect)*
 *AI Co-Architect: Claude (Anthropic)*
-*Last Updated: February 2026*
+*FCL Master: v2.7 | Last Updated: February 2026*
 
-*The product is ANCHOR. The bedrock is here.*
+*The product is ANCHOR. The bedrock is proprietary. The methodology is here.*
