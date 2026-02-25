@@ -6,6 +6,13 @@
 [![Stack](https://img.shields.io/badge/PRODUCT_STACK-PROPRIETARY-gold?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
 
 ---
+## 📊 Repository Stats
+
+![Files](https://img.shields.io/badge/Files-2023-purple)
+![Directories](https://img.shields.io/badge/Directories-596-purple)
+![Python](https://img.shields.io/badge/Python-255-purple)
+
+*Updated automatically*
 
 > *"Every framework in here was a shovel. Some hit rock. Some hit sand. Some broke entirely. All of them were necessary to find the bedrock."*
 > — Sheldon K. Salmon, AI Certainty Architect
