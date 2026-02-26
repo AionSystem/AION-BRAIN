@@ -1,708 +1,144 @@
-# 🛡️ AION-BRAIN: Certainty Infrastructure for Fearless AI Scaling
+# AION-BRAIN — Commercial Overview
+### AI Reliability Snapshot | For Operating Businesses
 
-> **Lightweight Epistemic Armor That Lets You Move Fast Without Breaking Things**
-
----
-
-## 📍 Quick Navigation
-
-**By Time Available:**
-- ⚡ **2 minutes** → [What This Is](#-what-this-enables) + [Try Demo](https://poe.com/FSVE-Validator)
-- 📖 **10 minutes** → [Architecture Overview](#-certainty-armor-five-layer-infrastructure)
-- 🔬 **30 minutes** → [Technical Specifications](frameworks/) + [Research Foundation](#-research-foundation)
-- 💼 **Full Dive** → [Complete Documentation](#-infrastructure-readiness)
-
-**By Role:**
-- **AI Engineers** → [Integration APIs](#-deployment-pathways) | [Quick Start Guide](frameworks/FSVE/)
-- **Research Scientists** → [Validation Protocols](#-research-foundation) | [Empirical Claims](#testable-acceleration-claims)
-- **Business Leaders** → [Competitive Advantage](#what-this-means-for-you) | [Deployment Tiers](#deployment-tiers)
-- **Compliance Officers** → [Regulatory Mapping](#-professional-oversight-requirements) | [Audit Trails](#graduated-safety-infrastructure-asl-v20)
-- **Open Source Contributors** → [Collaboration Pathways](#-collaboration-pathways) | [Technical Review](#path-d-open-research)
-
-**Core Resources:**
-- 📄 [One-Page Summary](EXECUTIVE-SUMMARY.md)
-- 🤖 [Live Demo](https://poe.com/FSVE-Validator) (FSVE-Validator Bot)
-- 📚 [Framework Specifications](frameworks/)
-- 🌕 [ECF Moon-View Instrument](outputs/ECF-One-Page-Moon-View.md) ← **Validation methodology proven**
-- 💬 [Community Discussions](https://github.com/AionSystem/AION-BRAIN/discussions)
+[![README — Start Here](https://img.shields.io/badge/README-START_HERE-e94560?style=for-the-badge&labelColor=0d1117)](README.md)
+[![README — Academic](https://img.shields.io/badge/README-ACADEMIC-6b3fa0?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
+[![README — Technical](https://img.shields.io/badge/README-TECHNICAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](README-TECHNICAL.md)
+[![README — Commercial](https://img.shields.io/badge/README-COMMERCIAL-2d6a4f?style=for-the-badge&labelColor=0d1117)](README-COMMERCIAL.md)
+[![Apply Now](https://img.shields.io/badge/FOUNDING_SPOTS-3_FREE-gold?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
 
 ---
 
-## 📊 Repository Stats & Status
+## What I Do
 
-### Infrastructure Metrics
+I evaluate the AI outputs your business depends on — and tell you exactly where human oversight is required.
 
-![Version](https://img.shields.io/badge/version-v3.5-blue)
-![Files](https://img.shields.io/badge/files-2017-purple)
-![Directories](https://img.shields.io/badge/directories-595-blue)
-![Python](https://img.shields.io/badge/python-255_files-gold)
-![License](https://img.shields.io/badge/license-Apache_2.0-green)
-![Stack Maturity](https://img.shields.io/badge/certainty_stack-M--MODERATE-yellow)
-![ECF Maturity](https://img.shields.io/badge/ECF_v0.5-M--STRONG-brightgreen)
+Most founders using AI don't have a clear picture of which outputs are safe to act on, where hallucinations are creating hidden risk, or what their real exposure looks like. I make that clear in a structured written report, in plain language, in 48–72 hours.
 
-### Framework Versions
-
-[![FSVE](https://img.shields.io/badge/FSVE-v3.5-blue)](frameworks/FSVE/)
-[![AION](https://img.shields.io/badge/AION-v3.0-purple)](frameworks/AION/)
-[![ASL](https://img.shields.io/badge/ASL-v2.0-orange)](frameworks/ASL/)
-[![GENESIS](https://img.shields.io/badge/GENESIS-v1.0-green)](frameworks/GENESIS/)
-[![ECF](https://img.shields.io/badge/ECF-v0.5_M--STRONG-brightgreen)](frameworks/ECF/)
-
-### Quality & Compliance
-
-[![Epistemic Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
-[![Research Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml)
-[![CodeQL Advanced](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml)
-[![Lint Documentation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/lint-docs.yml)
-
-### Maintenance
-
-[![Check Dependabot](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/check-dependabot.yml)
-[![Dependabot Updates](https://github.com/AionSystem/AION-BRAIN/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/dependabot/dependabot-updates)
-[![AION Structure](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml/badge.svg?branch=main)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/aion-structure.yml)
-[![Render Diagrams](https://github.com/AionSystem/AION-BRAIN/actions/workflows/render-diagrams.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/render-diagrams.yml)
-
-### Community
-
-![Contributors](https://img.shields.io/github/contributors/AionSystem/AION-BRAIN)
-![Issues](https://img.shields.io/github/issues/AionSystem/AION-BRAIN)
-![Pull Requests](https://img.shields.io/github/issues-pr/AionSystem/AION-BRAIN)
-![Last Commit](https://img.shields.io/github/last-commit/AionSystem/AION-BRAIN)
+I use a structured multi-axis evaluation method developed over several years of focused research into how AI systems fail at the output level — where 80% of reliability failures actually live. The report shows you the findings, not the machinery.
 
 ---
 
-## 📈 Current Development Status
+## The Service — AI Reliability Snapshot
 
-**Last Updated:** 2026-02-19
+### What You Submit
 
-| Component | Specification | Implementation | Demo/Pilot | FCL Entries | Convergence | Status |
-|-----------|--------------|----------------|-----------|-------------|-------------|--------|
-| **FSVE v3.5** | ✅ Complete | ✅ Reference | ✅ [Live Demo](https://poe.com/FSVE-Validator) | 🧪 0/5 | M-MODERATE | Seeking Pilots |
-| **AION v3.0** | ✅ Complete | 🔧 In Progress | 🧪 Seeking Pilots | 🧪 0/5 | M-MODERATE | Active Development |
-| **ASL v2.0** | ✅ Complete | 🔧 In Progress | 🧪 Seeking Pilots | 🧪 0/5 | M-MODERATE | Active Development |
-| **GENESIS v1.0** | ✅ Complete | 🔧 In Progress | 🧪 Seeking Pilots | 🧪 0/5 | M-MODERATE | Active Development |
-| **ECF v0.5** | ✅ Complete | ✅ Reference | ✅ Validated | ✅ **30/30** | **M-STRONG** | **Proven** |
+One PDF containing the AI outputs your business relies on for decisions. Up to 10 outputs. No calls. No account. No access to your model or infrastructure required.
 
-**Certainty Stack Maturity:** **M-MODERATE** (specifications mathematically validated, empirical testing in progress)
-
-**ECF Maturity:** **M-STRONG** (30 real FCL entries · 0 BVL failures · EV: 0.716 · EXCELLENT calibration all 6 cycles)
-
-**Next Milestone (Certainty Stack):** 5 pilot deployments per framework → **M-STRONG** status
-
-> **Why ECF matters to you:** ECF v0.5 is the first AION-BRAIN framework to reach M-STRONG. Its 30-entry validation arc proves the FCL methodology works before we ask you to trust it for the certainty stack. The validation infrastructure is not speculative — it has a track record.
-
----
-
-## 🎯 What This Enables
-
-**AION-BRAIN** provides **pre-built epistemic validation infrastructure** that enables AI organizations to scale at maximum velocity while maintaining rigorous safety through real-time certainty monitoring.
-
-**Five interlocking validation layers** operating under-the-skin:
-
-- 🟢 **Identify exactly where maximum velocity is justified** (green zones = high-confidence deployment)
-- 🟡 **Map areas where light monitoring accelerates trust** (yellow zones = instrumented deployment)
-- 🔴 **Flag contexts requiring expert validation** (red zones = human-in-loop)
-- 🔵 **Ensure language executing in your AI stack carries the precision your communication requires** (ECF — proven M-STRONG)
-
-**This is acceleration infrastructure, not constraint bureaucracy.**
-
----
-
-## 🚀 The Problem We Solve
-
-**Frontier AI organizations face a velocity-safety paradox:**
-
-**Move Fast:**
-- ❌ Silent overconfidence (looks perfect until production catastrophe)
-- ❌ Unknown breaking points (reasoning collapse at untested depths)
-- ❌ Regulatory bottlenecks (compliance = manual review delays)
-- ❌ Imprecise AI communication (language that looks correct but executes incorrectly in the human compiler)
-
-**Move Cautiously:**
-- ❌ Competitive disadvantage (slower time-to-market)
-- ❌ Artificial capability ceilings (conservative limits)
-- ❌ Opportunity cost (delayed innovation)
-
-**Certainty Infrastructure resolves the paradox:**
-- ✅ Real-time epistemic validation enables confident scaling
-- ✅ Automated green-zone deployment removes manual bottlenecks
-- ✅ Graduated safety preserves maximum safe velocity
-- ✅ Lexical precision QA ensures AI output executes as intended in both compilers
-
----
-
-## 🛡️ Certainty Armor: Five-Layer Infrastructure
-
-**Unified Technical Foundation:**
-- Normalized [0,1] scoring across all layers
-- Self-validating protocols (UVK compliance)
-- Operational definitions (ODR registry)
-- Falsification conditions (NBP tracking)
-- Calibration logging (FCL integration — methodology proven via ECF M-STRONG)
-
-**Certainty Stack Maturity:** M-MODERATE (peer-reviewable specifications, empirical validation in progress)
-**ECF Maturity:** M-STRONG (30 real entries, 0 failures, EV: 0.716)
-
----
-
-### **1. Certainty Scoring Engine** (FSVE v3.5)
-
-**What It Enables:** Deploy 30-50% faster by **knowing** which outputs warrant auto-deployment vs. expert review
-
-**Real-Time Dashboard Metrics:**
-- **Confidence** — Trust level for this specific claim [0.0-1.0]
-- **Certainty** — Resilience under structured challenge [0.0-1.0]
-- **Validity** — Legitimacy of scoring methodology [0.0-1.0]
-- **Completeness** — Coverage of problem space [0.0-1.0]
-- **Consistency** — Internal logical coherence [0.0-1.0]
-- **Risk Exposure** — Potential damage magnitude × likelihood [0.0-1.0]
-
-**Acceleration Mechanism:**
-
-| Without Certainty Scoring | With Certainty Scoring | Time Savings |
-|--------------------------|------------------------|--------------|
-| Manual review of all outputs | Auto-deploy green zones (EV ≥ 0.70) | **30-50% faster** |
-| Blanket constraints | Targeted oversight (EV ∈ [0.40, 0.70)) | deployment cycles |
-| Unknown failure boundaries | Mapped certainty zones (EV < 0.40 = review) | |
-
-**Hypothesis Status:** ⚠️ **UNTESTED** (0/5 deployment comparisons) — Seeking pilot deployments to validate time savings claim
-
-**Hard Safety Boundary:** `Epistemic Validity < 0.40` → Automatic SUSPENDED status (no exceptions)
-
-**Five Core Principles:**
-1. **Transparency of Limits** — Confidence ceilings derived from evidence quality
-2. **Uncertainty Visibility** — Real-time dashboards expose gaps in knowledge
-3. **Continuous Validation** — Dynamic scoring, not periodic snapshots
-4. **Falsifiable Claims** — Every score has defined failure conditions
-5. **Structural Honesty** — Admitting limits enables pushing harder where justified
-
-**Technical Documentation:** [`/frameworks/FSVE/`](frameworks/FSVE/)
-
-**Live Demo:** [FSVE-Validator Bot](https://poe.com/FSVE-Validator)
-
----
-
-### **2. Depth Acceleration Governor** (AION v3.0)
-
-**What It Enables:** Scale reasoning depth 2x without catastrophic collapse risk
-
-**The Depth Scaling Challenge:**
-- GPT-4 → GPT-5: 10x more reasoning steps
-- Unknown: Breaking points for extended reasoning chains
-- Result: Conservative depth limits = artificial capability ceilings
-
-**Depth Governor Infrastructure:**
-- **System Resilience Index (SRI)** — Overall fragility quantification [0.0-1.0]
-- **Breaking Point Mapping** — Exact depth thresholds for reasoning collapse
-- **Cascade Risk Analysis** — Failure propagation through dependency chains
-- **Safe Scaling Zones** — Push to SRI 0.75 with confidence, beyond requires reinforcement
-
-**Acceleration Mechanism:**
-
-| Without Governor | With Governor | Depth Advantage |
-|-----------------|---------------|-----------------|
-| Conservative testing (depth 20) | Push to validated limits (depth 40+) | **2x deeper** |
-| Occasional sudden failures | Gradual degradation, no cliff edges | reasoning without |
-| Unknown breaking points | Mapped fragility boundaries | collapse risk |
-
-**Hypothesis Status:** ⚠️ **UNTESTED** (0/5 scaling benchmarks) — Seeking pilot deployments to validate depth claims
-
-**Compound SRI Formula:**
-```
-SRI_compound = 1 - ∏(1 - (EL_i × PM_i × RC_i))
-              i=1 to n
-
-Where:
-  EL_i = Epistemic Leverage (amplification factor)
-  PM_i = Propagation Multiplier (cascade risk)
-  RC_i = Recovery Cost (remediation difficulty)
-
-Acceleration Zones:
-  SRI < 0.40 → MAXIMUM VELOCITY (green zone)
-  SRI ∈ [0.40, 0.75] → CONFIDENT SCALING (yellow zone)
-  SRI > 0.75 → REINFORCEMENT NEEDED (red zone)
-```
-
-**Five-Perspective Stress Testing:**
-- **Hostile** — Adversarial challenge (breaks optimistic assumptions)
-- **Naive** — Non-expert perspective (finds UX collapse points)
-- **Constructive** — Optimization focus (identifies acceleration opportunities)
-- **Paranoid** — Catastrophic risk (catches hidden failure modes)
-- **Temporal** — Historical analysis (predicts degradation patterns)
-
-**Technical Documentation:** [`/frameworks/AION/`](frameworks/AION/)
-
----
-
-### **3. Graduated Safety Infrastructure** (ASL v2.0)
-
-**What It Enables:** Sustain high velocity with safety nets instead of blanket constraints
-
-**Five-Tier Graduated Response:**
-
-| Tier | Trigger | System Response | Velocity Impact | Operator Action |
-|------|---------|----------------|-----------------|-----------------|
-| 🟢 **Warning** | Minor anomaly | Log + continue | 100% | Informational only |
-| 🟡 **Constraint** | Elevated risk | Light guardrails | 90% | Optional review |
-| 🟠 **Throttle** | Significant risk | Targeted slowdown | 70% | Required review |
-| 🔴 **Quarantine** | High risk | Isolated operation | 40% | Expert validation |
-| ⛔ **Shutdown** | Critical failure | Emergency stop | 0% | Immediate intervention |
-
-**Hypothesis Status:** ⚠️ **UNTESTED** (0/5 stress tests) — Seeking pilot deployments to validate uptime claims
-
-**Dual-Watchdog Architecture:**
-- Primary monitoring + independent secondary
-- Secondary operates with conservative defaults if primary fails
-- Prevents single-point-of-failure in safety infrastructure
-
-**Technical Documentation:** [`/frameworks/ASL/`](frameworks/ASL/)
-
----
-
-### **4. Pattern Validation Layer** (GENESIS v1.0)
-
-**What It Enables:** Compose validated patterns confidently instead of exhaustive combination testing
-
-**Pattern Validation Metrics:**
-- **Pattern Legitimacy Score (PLS)** — Deployment readiness [0.0-1.0]
-- **Composition Integrity Score (CIS)** — Safe combination guarantee [0.0-1.0]
-
-**Seven Legitimacy Dimensions:** Mechanistic Clarity · Replication Strength · Boundary Precision · Transferability · Performance Stability · Compositional Compatibility · Falsifiability
-
-**Pattern Legitimacy Formula:**
-```
-PLS = min(PLS_base, k_bottleneck × min(Axis_i))
-
-Where:
-  PLS_base = (M + R + B + T + P + C + F) / 7
-  k_bottleneck = 1.5 (default) or 1.0 (safety-critical)
-
-Deployment Certification:
-  PLS ≥ 0.70 → CERTIFIED (approved for deployment)
-  PLS ∈ [0.40, 0.70) → CONDITIONAL (deploy with monitoring)
-  PLS < 0.40 → UNVALIDATED (requires additional validation)
-```
-
-**Hypothesis Status:** ⚠️ **UNTESTED** (0/5 composition studies) — Seeking pilot deployments to validate composition claims
-
-**Technical Documentation:** [`/frameworks/GENESIS/`](frameworks/GENESIS/)
-
----
-
-### **5. Emergence Conversion Framework** (ECF v0.5) ✅ M-STRONG
-
-**What It Enables:** Guarantee that language entering and exiting your AI stack carries the precision your communication requires — and that the human reading the output compiles the same meaning the AI intended
-
-**The Two-Compiler Problem:**
-
-Every human-AI exchange runs through two compilers — the human brain and the AI model — executing on the same words but producing different outputs because their architectures differ. ECF is the QA layer between them: detecting viral language before it executes, substituting imprecise tokens with etymologically grounded alternatives, and verifying intent survived.
-
-**Validated Results — 30 Real FCL Entries:**
-
-| Metric | Result |
-|--------|--------|
-| Intent-fidelity (BVL) failures | **0 / 30** |
-| Mean precision gain per entry | **+0.41** |
-| Mean intent match | **92.0%** |
-| Calibration grade | **EXCELLENT — all 6 cycles** |
-| Convergence | **M-STRONG (EV: 0.716)** |
-
-**What the validation discovered:**
-
-- **JARGON_VOID** — Sentences whose vague tokens, when removed, reveal no underlying concept. The sentence is performing the appearance of meaning. Commercial relevance: standard content review passes it. ECF catches it.
-- **WORLDVIEW_CONTAMINATION** — Multiple individually precise words assembling a self-sealing epistemic field. Token-level scanning misses this entirely. Assembly-level scanning catches it.
-- **TRANSCENDENT_REFERENT** — A real concept that structurally resists lexical precision because the phenomenon is first-person and language is third-person. ECF designates the boundary rather than pretending it resolved.
-- **Gravitational Petrichor Protocol (GPP)** — Three-body field alignment that releases latent precision without forcing substitution. First viable product feature generated through validation testing.
-
-**This is not a hypothesis. These results are real, timestamped, and independently verifiable.**
-
-**Technical Documentation:** [`/frameworks/ECF/`](frameworks/ECF/)
-**Moon-View Instrument:** [`/outputs/ECF-One-Page-Moon-View.md`](outputs/ECF-One-Page-Moon-View.md)
-**Validation Archive:** [`/frameworks/ECF/Completed Cycles/`](frameworks/ECF/Completed%20Cycles/)
-
----
-
-## 🔧 Unified Infrastructure Standards
-
-All layers comply with these foundational protocols:
-
-### **Unified Validation Kernel (UVK)**
-
-Five mandatory infrastructure tests:
-
-1. **Logical Consistency** — Mathematics verified, no contradictions
-2. **Evidence Discipline** — Claims tagged [D]ata / [R]easoned / [S]trategic / [?]Unverified
-3. **Multi-Perspective Review** — 5 reviewer types (Hostile, Naive, Constructive, Paranoid, Temporal)
-4. **Replication Viability** — Independent teams can reproduce results
-5. **Self-Application** — Infrastructure validates itself per same standards
-
-### **Operational Definition Registry (ODR)**
-
-Every measurement specifies exact protocol, valid domain, inter-rater reliability target (κ ≥ 0.70), and calibration requirements.
-
-### **Nullification Boundary Protocol (NBP)**
-
-Every claim includes its falsification condition, minimum test count, evidence threshold, and confidence ceiling if falsified.
-
-### **Framework Calibration Log (FCL) — v2.6 (M-STRONG)**
-
-The empirical backbone. FCL Master v2.6 achieved M-STRONG convergence through the ECF validation arc — 30 real entries, 6 cycles, 0 failures. The methodology is proven. When certainty stack pilots begin, they run on validated infrastructure, not theory.
-
----
-
-## 📊 Validated Claims vs. Active Hypotheses
-
-### ✅ **Validated (Empirical Evidence)**
-
-| Claim | Evidence | Status |
-|-------|----------|--------|
-| Framework specifications mathematically consistent | UVK §1.1 verification complete — all frameworks | ✅ **PROVEN** |
-| FSVE demo bot functional | Live deployment on Poe platform | ✅ **OPERATIONAL** |
-| Reference implementations complete | Code available in `/frameworks/` | ✅ **AVAILABLE** |
-| FCL methodology produces calibration improvement | 30 ECF entries, EXCELLENT grade all 6 cycles, 0 BVL failures | ✅ **PROVEN** |
-| ECF precision gain measurable and consistent | Mean LGS_effective delta +0.41 across 30 entries | ✅ **PROVEN** |
-| ECF intent fidelity tracking reliable | 92.0% BVL match, 0 failures across 30 entries | ✅ **PROVEN** |
-| JARGON_VOID is a real, detectable phenomenon | FCL-019 — confirmed in testing, distinct from APORIC and UNRESOLVED | ✅ **PROVEN** |
-| WORLDVIEW_CONTAMINATION evades token-level scanning | FCL-028 — individually authentic words, collectively self-sealing | ✅ **PROVEN** |
-
-### 🧪 **Hypotheses (Certainty Stack — Testing in Progress)**
-
-| Hypothesis | Predicted Outcome | Current Evidence | FCL Status |
-|------------|------------------|------------------|------------|
-| **30-50% faster deployment cycles** (FSVE) | Reduced time-to-production via automated green-zone approval | 0 deployment comparisons | 🧪 **0/5** |
-| **2x deeper reasoning without collapse** (AION) | Extended chain-of-thought via SRI-mapped boundaries | 0 scaling benchmarks | 🧪 **0/5** |
-| **Sustained operation under stress** (ASL) | Higher uptime than unarmored systems via graduated response | 0 stress tests | 🧪 **0/5** |
-| **5x faster pattern composition** (GENESIS) | Reduced integration time via pre-certified compatibility | 0 composition studies | 🧪 **0/5** |
-
-**Transparency Commitment:**
-- All validation attempts logged in FCL (success or failure)
-- Results published within 90 days of completion
-- Methodology failures trigger framework revision (11 triggered in ECF arc)
-- No cherry-picking of favorable results
-
----
-
-## 💼 Deployment & Services
-
-### **Current Research Status**
-
-**Phase:** Seeking pilot deployments for certainty stack empirical validation (M-MODERATE → M-STRONG)
-
-**Available Now:**
-- ✅ Complete framework specifications (Apache 2.0 license)
-- ✅ FSVE demo bot (live on Poe: [FSVE-Validator](https://poe.com/FSVE-Validator))
-- ✅ ECF v0.5 — M-STRONG validated, available for deployment
-- ✅ Reference implementations (in active development)
-- ✅ Integration consultation (email: aionsystem@outlook.com)
-
-### **Pilot Deployment Program**
-
-**Seeking:** 5 pilot deployments per certainty stack framework (20 total)
-
-**Pilot Benefits:**
-- ✅ **No cost** — Research collaboration basis
-- ✅ **Full infrastructure access** — Complete framework stack
-- ✅ **Priority support** — Direct architect engagement
-- ✅ **Co-authorship** — Validation publication credits
-- ✅ **Early access** — Pre-release features and updates
-
-**Pilot Requirements:**
-- Share anonymized deployment data for FCL validation
-- Participate in quarterly validation reviews
-- Provide feedback on integration experience
-- Permission to publish results (with anonymization)
-
-**Apply:** Email `aionsystem@outlook.com` with subject `[Pilot Deployment - {Framework Name}]`
-
-### **Post-Validation Commercial Services** (After M-STRONG Milestone)
-
-Once empirical validation reaches M-STRONG (≥5 FCL entries per framework):
-
-| Service Tier | Target Audience | Infrastructure Delivered | Investment |
-|-------------|----------------|-------------------------|------------|
-| **Velocity** | Startups, rapid iteration | Certainty dashboards + SRI mapping | $5,000 |
-| **Scale** | Growth companies | Full 5-layer stack + monitoring | $15,000 |
-| **Enterprise** | Mission-critical systems | Custom hardening + 24/7 support | $25,000–50,000 |
-
-**Note:** Commercial services contingent on successful validation of acceleration claims. Pricing subject to revision based on empirical performance data.
-
----
-
-## 🔬 Research Foundation
-
-### **Core Research Question**
-
-Can pre-built epistemic validation infrastructure enable AI organizations to scale faster while maintaining safety through real-time certainty monitoring?
-
-### **Testable Acceleration Claims**
-
-| Infrastructure Layer | Acceleration Hypothesis | Validation Protocol | FCL ID |
-|---------------------|------------------------|-------------------|--------|
-| Certainty Scoring (FSVE) | 30-50% faster deployment cycles | Compare deployment timelines with/without dashboards (n≥5) | FCL-FSVE-001 |
-| Depth Governor (AION) | 2x deeper reasoning without collapse | Measure maximum stable depth with/without SRI (n≥5) | FCL-AION-002 |
-| Graduated Safety (ASL) | Sustained operation when competitors shut down | Track uptime under equivalent stress conditions (n≥5) | FCL-ASL-003 |
-| Pattern Validation (GENESIS) | 5x faster component composition | Time integration cycles with/without CIS (n≥5) | FCL-GEN-004 |
-| Lexical Precision QA (ECF) | Intent fidelity ≥85% across processing stack | BVL back-translation comparison — **VALIDATED: 92.0% across 30 entries** | FCL-ECF-001–030 ✅ |
-
-### **Empirical Validation Protocol**
-
-All acceleration claims require: baseline measurement → instrumented deployment → outcome logging → calibration check → falsification test.
-
-**Quality Standards:** Minimum n=5 independent deployments · IRR κ ≥ 0.70 · Confidence intervals on all quantitative claims · Negative results published with equal prominence
-
-**Current Progress:** 30/30 ECF validations complete (M-STRONG) · 0/20 certainty stack validations complete
-
----
-
-## 📈 Infrastructure Maturity Roadmap
-
-### Phase 0: FCL Methodology Validation — ✅ COMPLETE
-
-**Completed:** February 2026
-
-ECF v0.5 — 30 FCL entries · 6 cycles · 0 BVL failures · M-STRONG (EV: 0.716)
-
-**What this means:** The validation methodology running the entire AION-BRAIN stack is not speculative. It has a 30-entry empirical track record before we ask you to use it to validate anything else. The infrastructure that will certify certainty stack claims has itself been certified.
-
----
-
-### Phase 1: Certainty Stack Empirical Validation (Current)
-
-**Timeline:** 2026 Q1–Q3 | **Goal:** M-MODERATE → M-STRONG (20 validations)
-
-| Milestone | Requirements | Timeline | Unlocks |
-|-----------|--------------|----------|---------|
-| **FSVE M-STRONG** | ≥5 deployment validations | 6 months | Certified time savings claims |
-| **AION M-STRONG** | ≥5 depth scaling benchmarks | 6 months | Certified depth limits |
-| **ASL M-STRONG** | ≥5 stress test comparisons | 12 months | Uptime guarantees |
-| **GENESIS M-STRONG** | ≥5 composition studies | 6 months | Certified pattern library |
-
----
-
-### Phase 2: Independent Replication (2026 Q4 – 2027 Q2)
-
-**Goal:** M-STRONG → M-VERY STRONG (80 validations, 3+ replication teams)
-
----
-
-### Phase 3: Standardization & Adoption (2027 Q3+)
-
-**Goal:** Tier-1 publications · Conference presentations · Industry adoption case studies
-
----
-
-## ✅ What This Means For You
-
-| Your Organization | Without Certainty Infrastructure | With Certainty Infrastructure | Competitive Edge |
-|-------------------|--------------------------------|------------------------------|------------------|
-| **Frontier AI Lab** | Conservative testing, 12-week deployment cycles | Automated green-zone deployment, 8-week cycles | **33% faster to market** (hypothesis) |
-| **AI Startup** | Manual review bottleneck, scared to scale | Real-time certainty dashboards enable confident scaling | **2x deployment velocity** (hypothesis) |
-| **Enterprise AI** | Regulatory compliance = months of documentation | Auto-generated audit trails, instant compliance docs | **Eliminates compliance delays** (hypothesis) |
-| **Research Institution** | Unknown failure boundaries limit exploration | SRI-mapped safe scaling zones | **2x deeper reasoning** (hypothesis) |
-| **Any AI communicator** | Language that looks correct, executes incorrectly | ECF QA layer catches JARGON_VOID and WORLDVIEW_CONTAMINATION | **Proven — not a hypothesis** |
-
-**Hypothesis Disclaimer:** Competitive advantages marked (hypothesis) are predicted outcomes based on theoretical analysis. Empirical validation in progress (0/20 certainty stack validations). ECF results are empirically validated — 30 real entries, 0 failures.
-
----
-
-## 🎯 Deployment Pathways
-
-### **When To Consider This Infrastructure**
-
-| Your Challenge | Relevant Infrastructure | Expected Benefit |
-|----------------|------------------------|------------------|
-| **Slow deployment cycles** | Certainty Scoring Engine (FSVE) | Auto-deploy green zones, review red zones only (hypothesis) |
-| **Unknown scaling limits** | Depth Acceleration Governor (AION) | Push to validated depth limits (hypothesis) |
-| **Regulatory compliance delays** | Full 5-layer stack | Auto-generate audit documentation (hypothesis) |
-| **AI communication failures** | ECF v0.5 | Lexical QA layer — **M-STRONG proven** |
-| **Corporate language that means nothing** | ECF JARGON_VOID detection | Catch it before it reaches decision-making — **proven** |
-
-### **Integration Readiness Assessment**
-
-**Your organization is ready for pilot deployment if:**
-- ✅ Deploying AI systems to production (or planning to within 6 months)
-- ✅ Willing to share anonymized deployment data for research
-- ✅ Can dedicate engineering resources to integration (10-40 hours)
-- ✅ Interested in co-authoring validation publications
-- ✅ Committed to quarterly feedback/review cycles
-
-**Apply for pilot:** `aionsystem@outlook.com` with subject `[Pilot Assessment]`
-
----
-
-## 🤝 Collaboration Pathways
-
-### **Path A: Pilot Deployment Partner**
-
-You contribute integration engineering (10-40 hours), anonymized deployment data, quarterly validation feedback, and co-authorship collaboration. You receive full infrastructure access at no cost, priority architect support, early feature access, and publication co-authorship.
-
-**Apply:** Email `aionsystem@outlook.com` | Subject: `[Pilot Deployment - {Framework}]`
-
----
-
-### **Path B: Validation Funding**
-
-**Modular Units:**
-- $50 — Single deployment comparison (10 test cases)
-- $100 — Scaling benchmark study (25 depth measurements)
-- $300 — Complete layer validation (full protocol)
-- $1,000 — Production proof package (comprehensive study)
-
-**Fund validation:** Email `aionsystem@outlook.com` | Subject: `[Fund Validation - {Amount} - {Layer}]`
-
----
-
-### **Path C: Technical Integration Support**
-
-Direct architect consultation, custom integration guidance, priority bug fixes, contributing credit.
-
-**Engage:** Email `aionsystem@outlook.com` | Subject: `[Technical Integration]`
-
----
-
-### **Path D: Open Research Collaboration**
-
-Specification review, methodology improvement, independent replication, documentation enhancements.
-
-- 💬 [GitHub Discussions](https://github.com/AionSystem/AION-BRAIN/discussions)
-- 🐛 [GitHub Issues](https://github.com/AionSystem/AION-BRAIN/issues)
-- 📧 `aionsystem@outlook.com`
-
----
-
-## 📚 Comparison to Existing Approaches
-
-| Existing Approach | Primary Focus | AION-BRAIN Differentiation |
-|------------------|---------------|---------------------------|
-| **NIST AI RMF** | Risk management guidelines | Executable infrastructure, not just principles |
-| **Model Cards** | Static documentation | Real-time dashboards with continuous validation |
-| **Manual Review** | Human oversight | Automated green-zone certification (hypothesis) |
-| **Blanket Constraints** | Conservative safety limits | Graduated response preserves maximum safe velocity |
-| **No Safety Infrastructure** | Maximum speed, eventual failures | Same speed + armor = sustained velocity (hypothesis) |
-| **Standard content review** | Token-level quality checks | ECF catches JARGON_VOID and WORLDVIEW_CONTAMINATION that token-level misses — **proven** |
-
----
-
-## ⚠️ Professional Oversight Requirements
-
-**Critical Disclaimer:** Certainty infrastructure **accelerates** expert-driven domains but does **not replace** human expertise.
-
-| Domain | Required Human Oversight |
-|--------|-------------------------|
-| **Medical AI** | Licensed physician review |
-| **Legal AI** | Attorney validation |
-| **Financial AI** | Compliance officer approval |
-| **Crisis Intervention AI** | Licensed therapist supervision |
-| **Safety-Critical Systems** | Domain expert certification |
-
-**Certainty Armor Use Case:**
-- ✅ **Accelerate** expert review by pre-filtering low-confidence outputs
-- ✅ **Support** expert decisions with epistemic transparency
-- ✅ **Automate** high-confidence, low-stakes routine operations
-- ❌ **Replace** expert judgment in high-stakes decisions
-
----
-
-## 📞 Getting Started
-
-📧 **Email:** `aionsystem@outlook.com`
-
-| Purpose | Subject Line |
-|---------|-------------|
-| Pilot deployment | `[Pilot Deployment - {Framework Name}]` |
-| Validation funding | `[Fund Validation - ${Amount} - {Layer}]` |
-| Technical integration | `[Technical Integration]` |
-| Research collaboration | `[Research Collaboration - {Institution}]` |
-| General inquiry | `[General Inquiry - {Topic}]` |
-
-**Response Time:** Within 48 hours
-
-💬 **Discussions:** [github.com/AionSystem/AION-BRAIN/discussions](https://github.com/AionSystem/AION-BRAIN/discussions)
-🐛 **Issues:** [github.com/AionSystem/AION-BRAIN/issues](https://github.com/AionSystem/AION-BRAIN/issues)
-
----
-
-## 📁 Repository Structure
+### What You Receive
 
 ```
-aion-brain/
-├── frameworks/                      # Core technical specifications
-│   ├── FSVE/                       # Certainty Scoring Engine v3.5
-│   ├── AION/                       # Depth Acceleration Governor v3.0
-│   ├── ASL/                        # Graduated Safety Infrastructure v2.0
-│   ├── GENESIS/                    # Pattern Validation Layer v1.0
-│   └── ECF/                        # Emergence Conversion Framework v0.5 ← M-STRONG
-│       ├── Completed Cycles/       # 30 real FCL entries (public)
-│       ├── ECF-MoonViews/          # §4.8 Moon-View Instruments
-│       ├── ECF-Summaries/          # §4.6 Cycle summary blocks
-│       └── ecf-v0.5.md             # Live specification (125 KB)
-├── outputs/                         # Validated deliverables
-│   └── ECF-One-Page-Moon-View.md   # ECF Moon-View Instrument (publish-ready)
-├── certainty-armor/                 # Deployment infrastructure
-├── validation/                      # Empirical validation
-│   └── fcl/                        # Framework Calibration Log (v2.6 — M-STRONG)
-├── legal/                          # Compliance and oversight
-├── docs/                           # Additional documentation
-├── EXECUTIVE-SUMMARY.md
-├── CONTRIBUTING.md
-└── README.md                       # This file
+╔══════════════════════════════════════════════════════╗
+║           AI RELIABILITY SNAPSHOT                    ║
+║           Executive Report | 5–7 Pages               ║
+╚══════════════════════════════════════════════════════╝
+
+Doc 01 — Executive Summary
+         Plain language. What we found. What it means.
+         What to do next.
+
+Doc 02 — Output Classification Table
+         Every output evaluated and classified:
+         GREEN  ██  Holds — safe to act on
+         AMBER  ░░  Review required — verify before acting
+         RED    ▒▒  Oversight required — human in this loop
+         GRAY   ??  Insufficient signal — unestablished
+
+Doc 03 — Oversight Recommendations
+         Specific actions required by zone.
+         Exactly where a human must be in the loop.
+
+Doc 04 — Observed Patterns (if present)
+         Systemic issues surfaced across multiple outputs.
 ```
 
----
-
-## 💬 From The Architect
-
-> *"I think in failure modes to build better shields. The value isn't in keeping them in my workshop — it's in organizations wearing them, scaling faster than unarmored competitors while maintaining epistemic rigor."*
-> — **Sheldon K. Salmon** (Mr.AION)
-
-**Independent researcher.** Not affiliated with any "Aion"-branded commercial entities.
-
-**Contact:** `aionsystem@outlook.com`
+**Turnaround:** 48–72 hours from receipt of your PDF.
+**Format:** PDF executive report — signed, dated, yours to keep.
 
 ---
 
-## 📄 Repository Metadata
+## Who This Is For
 
-**Version:** Certainty Armor v1.0 (Technical Foundation v3.5)
-**Last Updated:** 2026-02-19
-**License:** Apache 2.0
-**Certainty Stack Maturity:** M-MODERATE (0/20 empirical validations)
-**ECF Maturity:** M-STRONG (30/30 FCL entries · 0 BVL failures · EV: 0.716)
-**FCL Master:** v2.6 — M-STRONG
-**Architect:** Sheldon K. Salmon (Mr.AION) · AI Co-Architect: Claude (Anthropic)
-**Repository Size:** 595 directories · 2,017 files · 255 Python modules
+Founders using AI in daily operations. Teams making real decisions from AI outputs. Businesses wanting clarity before scaling automation.
 
-**Transparency Commitment:**
-- ✅ All technical specifications public (Apache 2.0)
-- ✅ All validation results published (success AND failure)
-- ✅ All deployment claims testable and falsifiable
-- ✅ FCL entries logged within 90 days
-- ✅ No cherry-picking of favorable results
-- ✅ ECF validation: 30 real entries, all public, all timestamped before outcomes
+High-stakes domains where this matters most: financial advisory, legal, healthcare, hiring, compliance. Standard domains where volume makes it matter anyway: customer communication, operations, internal productivity.
 
-**Citation:**
-```bibtex
-@software{aion_brain_2026,
-  author  = {Salmon, Sheldon K.},
-  title   = {AION-BRAIN: Certainty Infrastructure for AI Scaling},
-  year    = {2026},
-  url     = {https://github.com/AionSystem/AION-BRAIN},
-  version = {v3.5},
-  note    = {Certainty stack M-MODERATE (0/20 validations).
-             ECF v0.5 M-STRONG (30 FCL entries, 0 BVL failures, EV: 0.716).
-             FCL Master v2.6 M-STRONG. Co-architect: Claude (Anthropic).}
-}
-```
+Not for hobby projects. Not for theoretical research.
 
 ---
 
-**🛡️ Pre-Built Infrastructure. ⚡ Maximum Velocity. 📊 Continuous Validation. ✅ One Layer Already Proven.**
+## Current Offer — 3 Free Founding Reviews
 
-*Building epistemic armor for organizations scaling AI systems.*
+Three founding organizations are receiving a full AI Reliability Snapshot at no cost — in exchange for honest feedback and a testimonial if the report is valuable.
 
-**The companies winning the AI race aren't the most cautious. They're the best armored.**
+[![Apply for Free Founding Review](https://img.shields.io/badge/APPLY-FREE_FOUNDING_REVIEW-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
+
+**What happens after you apply:**
+
+1. We review your application within one business day
+2. If selected — you receive instructions for submitting your PDF
+3. We return your executive report within 48–72 hours
+4. We ask for written feedback and a testimonial if the report is valuable
+
+Three spots. When filled, this offer closes.
 
 ---
 
-**Keywords:** AI Safety, Epistemic Validation, Certainty Scoring, Fragility Mapping, Graduated Safety, Pattern Validation, Real-time Monitoring, AI Deployment, System Resilience, Acceleration Infrastructure, Lexical Precision, FSVE, AION, ASL, GENESIS, ECF, M-STRONG, M-MODERATE
- 
+## Try the Demo First
+
+Not sure what the assessment feels like? The ANCHOR-Reliability demo bot walks you through a three-question intake and produces a sample finding based on what you share.
+
+[![Try the Demo](https://img.shields.io/badge/DEMO-ANCHOR--Reliability-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://poe.com/ANCHOR-Reliability)
+
+*Requires a free Poe account.*
+
+---
+
+## After the Founding Round
+
+Once three engagements are complete and validated:
+
+| Stage | Price | What Changes |
+|-------|-------|--------------|
+| Founding round | Free | Exchange for testimonial |
+| Transition round | $150 | Same service, first paying clients |
+| Standard rate | $500 | Founding rate — full service |
+| Full engagement | $3K–$25K | Expanded scope, larger output sets |
+
+Pricing moves after proof. Not before.
+
+---
+
+## The Methodology — What Runs in the Background
+
+Every output is evaluated against structured criteria developed over a year of focused research:
+
+Does it hold under the load being placed on it? Does it stay consistent across uses? Does it express appropriate uncertainty? Does it stay within its reliable domain?
+
+The frameworks that power this evaluation are documented in the academic and technical READMEs. You do not need to understand them to use the service. The report is the output — not the methodology.
+
+[![See the Academic README](https://img.shields.io/badge/METHODOLOGY-ACADEMIC_README-6b3fa0?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
+
+---
+
+## Contact
+
+📧 aionsystem@outlook.com
+
+**For the service:** Subject `[AI Reliability Snapshot]`
+**For questions before applying:** Reply directly to this email
+
+**Response within one business day.**
+
+---
+
+[![Apply](https://img.shields.io/badge/APPLY-https://tally.so/r/b5ljko-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
+[![Demo](https://img.shields.io/badge/DEMO-poe.com/ANCHOR--Reliability-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://poe.com/ANCHOR-Reliability)
+[![Email](https://img.shields.io/badge/EMAIL-aionsystem@outlook.com-e94560?style=for-the-badge&labelColor=0d1117)](mailto:aionsystem@outlook.com)
+
+---
+
+*README-COMMERCIAL | AION-BRAIN*
+*Sheldon K. Salmon — AI Reliability Architect*
+*February 2026*
+*The methodology lives here. The service is what you pay for.*
