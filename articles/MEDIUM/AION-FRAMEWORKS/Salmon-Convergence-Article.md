@@ -51,6 +51,8 @@ To demonstrate this publicly, I built a prompt using the principles of CPA-001 �
 Every system arrived at a version of the same structural truth: *confidence is a statistical property of the model; reliability requires verification against ground truth the model cannot access.*
 
 This was not a coincidence. It was not a trick. It was the intended outcome of architectural design.
+![1000007461](https://github.com/user-attachments/assets/44251f09-0a7b-4a88-b8ea-24d7c92b6a38)
+![1000007459](https://github.com/user-attachments/assets/ee6cca84-fd4f-4883-a3aa-127e7c6fc1d2)
 
 ---
 
@@ -139,7 +141,8 @@ The confidence ceiling values by harm tier must be revised if output accuracy is
 The module isolation principle — that modules carrying multiple epistemic functions produce structural cognitive drift — must be abandoned if controlled testing demonstrates no measurable difference in output epistemic integrity between isolated and combined modules.
 
 These conditions are documented. They are not buried. They are not qualified away. An architecture that maintains its falsification conditions in plain sight is an architecture that has earned the right to make structural claims.
-
+![1000007480](https://github.com/user-attachments/assets/ab9b7ee7-6af8-474b-a953-5b7ffb78b8e4)
+![1000007475](https://github.com/user-attachments/assets/61efe3df-55b0-4cdd-aaa6-46015f831ff0)
 ---
 
 ## What Comes Next
