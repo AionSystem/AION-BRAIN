@@ -4,13 +4,13 @@
 
 ---
 
-![Framework](https://img.shields.io/badge/Framework-CDIP%20v1.5-1a1a2e?style=for-the-badge&logo=blueprint&logoColor=white)
+![Framework](https://img.shields.io/badge/Framework-CDIP%20v1.5-1a1a2e?style=for-the-badge&logoColor=white)
 ![Audit](https://img.shields.io/badge/Linguistic%20Audit-ECF%20v0.5%20%7C%20LAV%20v1.5-16213e?style=for-the-badge&logoColor=white)
 ![Epistemic](https://img.shields.io/badge/Epistemic%20Engine-FSVE%20v3.5-0f3460?style=for-the-badge&logoColor=white)
 ![Validation](https://img.shields.io/badge/Validation-CONCEPTUAL-e94560?style=for-the-badge&logoColor=white)
 ![License](https://img.shields.io/badge/License-Open%20Source-53d8fb?style=for-the-badge&logoColor=black)
-![Stack](https://img.shields.io/badge/Stack%20Status-IN%20PROGRESS-f5a623?style=for-the-badge&logoColor=black)
-![Sessions](https://img.shields.io/badge/Sessions%20Complete-2%20of%204-4ecdc4?style=for-the-badge&logoColor=black)
+![Stack](https://img.shields.io/badge/Stack%20Status-CONCEPTUALLY%20CLOSED-27ae60?style=for-the-badge&logoColor=white)
+![Sessions](https://img.shields.io/badge/Sessions%20Complete-4%20of%204-4ecdc4?style=for-the-badge&logoColor=black)
 ![BDI](https://img.shields.io/badge/Max%20BDI-HIGH%20RISK%20(2)-ff6b6b?style=for-the-badge&logoColor=white)
 ![FCL](https://img.shields.io/badge/FCL%20Entries-0%20%E2%80%94%20Empirical%20Validation%20Pending-95a5a6?style=for-the-badge&logoColor=white)
 ![Architect](https://img.shields.io/badge/Architect-Sheldon%20K.%20Salmon-2ecc71?style=for-the-badge&logoColor=black)
@@ -48,43 +48,48 @@ The specifications are open-source by design. The constraint architecture belong
 
 `[R]` No current production architecture formally resolves this conflict. Every existing system defers it to the human at the worst possible moment.
 
-**This stack formally isolates and specifies the components required to address that conflict.**
+**This stack formally isolates and specifies the components required to address that conflict — including what happens when the human cannot respond at all.**
 
 ---
 
 ## Stack Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    AV-UBI STACK OVERVIEW                    │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  AV-UBI-001  ←──────────────────────────────────────────┐  │
-│  Operational Envelope Decision Logic                     │  │
-│  BDI: 2 | Status: CONCEPTUAL | Session: COMPLETE        │  │
-│                    ↑                                     │  │
-│                    │ Readiness Signal                    │  │
-│                    │                                     │  │
-│  AV-UBI-002  ──────┘                                    │  │
-│  Cabin Occupant Readiness Classification                 │  │
-│  BDI: 2 (reduced from 4) | Status: CONCEPTUAL           │  │
-│  Session: COMPLETE                                       │  │
-│       │                                                  │  │
-│       ├──→ AV-UBI-002B (future)                         │  │
-│       │    Conscious Passenger Capability Detection      │  │
-│       │                                                  │  │
-│       └──→ AV-UBI-002C (future)                         │  │
-│            Choking & Seizure Classification              │  │
-│                                                          │  │
-│  AV-UBI-003  ────────────────────────────────────────→  │  │
-│  Reaction-Latency / Decision-Cycle Gap Resolution        │  │
-│  BDI: TBD | Status: PENDING SESSION                     │  │
-│                                                          │  │
-│  AV-UBI-004  ────────────────────────────────────────→  │  │
-│  Emergency Routing & Services Contact Decision Logic     │  │
-│  BDI: TBD | Status: PENDING SESSION                     │  │
-│                                                          │  │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│                      AV-UBI STACK OVERVIEW                       │
+│                    All Primary Sessions Complete                  │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  AV-UBI-001 v1.1                                                 │
+│  Operational Envelope Decision Logic                             │
+│  Gradient Envelope Model — 5 States                              │
+│  BDI: 2 | Status: CONCEPTUAL | ✅ COMPLETE                       │
+│       ↑              ↑                                           │
+│       │              │ Authority Window Status (continuous)      │
+│       │              │                                           │
+│  AV-UBI-002     AV-UBI-003                                       │
+│  Cabin Occupant     Reaction-Latency /                           │
+│  Readiness          Decision-Cycle Gap                           │
+│  Classification     Resolution                                   │
+│  BDI: 2             BDI: 2                                       │
+│  ✅ COMPLETE        ✅ COMPLETE                                   │
+│       │                  │                                       │
+│       ├──→ AV-UBI-002B   │ Predictive Escalation +              │
+│       │    (future)       │ Authority Extension                  │
+│       └──→ AV-UBI-002C   │                                       │
+│            (future)       ↓                                      │
+│                    AV-UBI-004                                    │
+│                    Emergency Contact &                           │
+│                    Routing Execution                             │
+│                    BDI: 1 — LOWEST IN STACK                      │
+│                    ✅ COMPLETE                                    │
+│                           ↓                                      │
+│                    AV-UBI-005 (next)                             │
+│                    AI-Assisted 911                               │
+│                    Dispatcher Intelligence                       │
+│                    ⏳ FUTURE SESSION                             │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -94,37 +99,50 @@ The specifications are open-source by design. The constraint architecture belong
 ```
 /AV-UBI-specification-stack/
 │
-├── README.md                                         ← You are here
+├── README.md
 │
-├── AV-UBI-001_envelope-decision-logic.md             ← COMPLETE
+├── AV-UBI-001_envelope-decision-logic.md             ✅ COMPLETE v1.0
 │   Operational envelope decision logic
-│   Urban intersection scope
+│   Binary envelope model — baseline
 │   BDI = 2 | Validation: CONCEPTUAL
 │
-├── AV-UBI-002_cabin-occupant-readiness-             ← COMPLETE
+├── AV-UBI-001-v1.1_envelope-decision-logic.md        ✅ COMPLETE v1.1
+│   Gradient envelope model — 5 formal states
+│   AV-UBI-003 interface integration
+│   Authority window as first-class envelope sub-state
+│   BDI = 2 | Validation: CONCEPTUAL
+│
+├── AV-UBI-002_cabin-occupant-readiness-              ✅ COMPLETE
 │   classification.md
 │   Cabin-wide multi-occupant state classification
 │   8-stream sensor fusion architecture
 │   Disambiguation timer — novel contribution
 │   BDI = 2 (reduced from 4) | Validation: CONCEPTUAL
 │
-├── AV-UBI-003_reaction-latency-gap-resolution.md    ← PENDING
-│   Structural resolution of the reaction-latency
-│   vs. decision-cycle constraint conflict
-│   Session not yet run
+├── AV-UBI-003_reaction-latency-gap-resolution.md     ✅ COMPLETE
+│   Predictive escalation — primary path
+│   Bounded autonomous authority extension — failsafe
+│   Distraction-adjusted simultaneous alert modality
+│   BDI = 2 | Validation: CONCEPTUAL
 │
-├── AV-UBI-004_emergency-routing-decision-logic.md   ← PENDING
-│   Emergency services routing and contact
-│   decision logic for MEDICAL_EMERGENCY state
-│   Session not yet run
+├── AV-UBI-004_emergency-contact-routing-             ✅ COMPLETE
+│   execution.md
+│   Structured AV-to-911 emergency data package
+│   Three-phase contact and routing protocol
+│   Concurrent MRC + autonomous routing architecture
+│   BDI = 1 — lowest in stack | Validation: CONCEPTUAL
 │
-├── AV-UBI-002B_conscious-passenger-capability.md    ← FUTURE
-│   Detailed conscious passenger capability
-│   assessment — scoped out of AV-UBI-002
+├── AV-UBI-002B_conscious-passenger-capability.md     ⏳ FUTURE
+│   Detailed conscious passenger capability assessment
+│   Scoped out of AV-UBI-002
 │
-└── AV-UBI-002C_choking-seizure-classification.md    ← FUTURE
-    Choking and seizure state classification
-    Scoped out of AV-UBI-002
+├── AV-UBI-002C_choking-seizure-classification.md     ⏳ FUTURE
+│   Choking and seizure state classification
+│   Scoped out of AV-UBI-002
+│
+└── AV-UBI-005_ai-dispatcher-intelligence.md          ⏳ FUTURE
+    AI-assisted 911 dispatcher intelligence
+    AV-UBI-004 interface co-specification required
 ```
 
 ---
@@ -133,64 +151,85 @@ The specifications are open-source by design. The constraint architecture belong
 
 | Component | Description | BDI | Validation | Session | FCL |
 |-----------|-------------|-----|------------|---------|-----|
-| **AV-UBI-001** | Operational envelope decision logic | 2 — HIGH RISK | CONCEPTUAL | ✅ COMPLETE | 0 |
+| **AV-UBI-001 v1.0** | Operational envelope decision logic — binary model | 2 — HIGH RISK | CONCEPTUAL | ✅ COMPLETE | 0 |
+| **AV-UBI-001 v1.1** | Operational envelope decision logic — gradient model | 2 — HIGH RISK | CONCEPTUAL | ✅ COMPLETE | 0 |
 | **AV-UBI-002** | Cabin occupant readiness classification | 2 — HIGH RISK | CONCEPTUAL | ✅ COMPLETE | 0 |
-| **AV-UBI-003** | Reaction-latency gap resolution | TBD | PENDING | 🔄 IN PROGRESS | 0 |
-| **AV-UBI-004** | Emergency routing decision logic | TBD | PENDING | ⏳ QUEUED | 0 |
-| **AV-UBI-002B** | Conscious passenger capability | TBD | FUTURE | ⏳ FUTURE | 0 |
+| **AV-UBI-003** | Reaction-latency / decision-cycle gap resolution | 2 — HIGH RISK | CONCEPTUAL | ✅ COMPLETE | 0 |
+| **AV-UBI-004** | Vehicle-side emergency contact and routing | 1 — FOCUSED RESEARCH | CONCEPTUAL | ✅ COMPLETE | 0 |
+| **AV-UBI-002B** | Conscious passenger capability detection | TBD | FUTURE | ⏳ FUTURE | 0 |
 | **AV-UBI-002C** | Choking/seizure classification | TBD | FUTURE | ⏳ FUTURE | 0 |
+| **AV-UBI-005** | AI-assisted 911 dispatcher intelligence | TBD | FUTURE | ⏳ FUTURE | 0 |
 
 ---
 
 ## Open Breakthrough Requirements
 
-`[D]` The following breakthrough requirements are formally identified and unresolved across the current stack. Per CDIP v1.5 Section 1B: a breakthrough is a requirement that cannot be satisfied by applying existing validated knowledge, even with additional time or effort.
+`[D]` The following breakthrough requirements are formally identified and unresolved. Per CDIP v1.5 Section 1B: a breakthrough is a requirement that cannot be satisfied by applying existing validated knowledge, even with additional time or effort.
 
 | # | COMPONENT | BREAKTHROUGH REQUIREMENT | STATUS |
 |---|-----------|-------------------------|--------|
-| BR-001 | AV-UBI-001 / AV-UBI-002 | Driver/occupant readiness state detection with sufficient accuracy and latency to inform decision logic | OPEN — AV-UBI-002 addresses sensor architecture; research pre-phase required |
-| BR-002 | AV-UBI-001 / AV-UBI-003 | Resolution of reaction-latency vs. decision-cycle structural conflict without defaulting to MRC in all cases | OPEN — AV-UBI-003 targets this directly |
-| BR-003 | AV-UBI-002 | 8-stream sensor fusion at 150–175ms continuously in automotive-grade embedded hardware | OPEN — research pre-phase required |
+| BR-001 | AV-UBI-001 / AV-UBI-002 | Occupant readiness state detection with sufficient accuracy and latency to inform decision logic | OPEN — AV-UBI-002 specifies sensor architecture; research pre-phase required |
+| BR-002 | AV-UBI-001 / AV-UBI-003 | Resolution of reaction-latency vs. decision-cycle structural conflict without defaulting to MRC in all cases | OPEN — AV-UBI-003 specifies conceptual architecture; empirical validation pending |
+| BR-003 | AV-UBI-002 | 8-stream sensor fusion at 150–175ms continuously in automotive-grade embedded hardware | OPEN — research pre-phase required; prerequisite for BR-004 |
 | BR-004 | AV-UBI-002 | Reliable medical emergency detection using contactless sensors under vehicle motion and variable lighting | OPEN — dependent on BR-003 resolution |
+| BR-005 | AV-UBI-004 | Emergency data package interoperability with AV-UBI-005 without translation layer introducing unacceptable latency | OPEN — closes when AV-UBI-005 session complete and interface co-validated |
 
-`[R]` BR-001 and BR-002 are the same structural conflict viewed from different components. A solution to either substantially reduces the other. BR-003 is a necessary precondition for BR-004.
+`[R]` BR-001 and BR-002 are the same structural conflict viewed from different components. BR-003 is a necessary precondition for BR-004. BR-005 is a co-specification gap — not a fundamental knowledge gap — and is the most readily closable breakthrough in the stack.
 
 ---
 
 ## Novel Architectural Contributions
 
-The following architectural elements in this stack are not present in any current production autonomous vehicle system to the authors' knowledge. They are formally specified here for the first time under CDIP constraint-resolved architecture discipline.
+The following architectural elements are not present in any current production autonomous vehicle system to the authors' knowledge. Formally specified here for the first time under CDIP constraint-resolved architecture discipline.
 
-### 1 — Cabin-Wide Multi-Occupant Readiness Classification
+### 1 — Gradient Operational Envelope Model
+**Component:** AV-UBI-001 v1.1
+
+Current production systems treat the operational envelope as binary — IN or OUT. AV-UBI-001 v1.1 replaces this with a five-state gradient: NOMINAL → PREDICTIVE ESCALATION → AUTHORITY WINDOW → MEDICAL EMERGENCY OVERRIDE → TERMINAL FALLBACK. Each state has declared decision authority, entry conditions, and transition logic. The authority window is a first-class envelope state, not an exception beyond it. Binary cannot express conditional authorization without creating undefined exception logic — the gradient model eliminates the exception by making the window a named state.
+
+### 2 — Cabin-Wide Multi-Occupant Readiness Classification
 **Component:** AV-UBI-002
 
-All current Driver Monitoring Systems (DMS) — including those mandated by EU regulation from 2024 — monitor the driver seat exclusively. AV-UBI-002 specifies a classification architecture covering all occupied seats simultaneously, producing a per-occupant confidence score and categorical state, plus a cabin-level aggregate readiness summary.
+All current Driver Monitoring Systems — including those mandated by EU regulation from 2024 — monitor the driver seat exclusively. AV-UBI-002 specifies classification architecture covering all occupied seats simultaneously, producing per-occupant confidence scores and categorical state classifications across 1–5 occupants dynamically, with a cabin-level aggregate readiness summary.
 
-### 2 — Disambiguation Timer
+### 3 — Disambiguation Timer
 **Component:** AV-UBI-002
 
 A time-bounded escalation protocol: if `BEHAVIORAL_UNRESPONSIVE` persists beyond 15–20 seconds without any recovery signal, the classification automatically escalates to `MEDICAL_EMERGENCY_SUSPECTED` and re-classifies using remaining stream data. This is the circuit-break condition for the primary false-negative cascade chain. No current production system implements this.
 
-### 3 — Hybrid Graduated / Categorical Output with Automatic Failsafe
-**Component:** AV-UBI-002
-
-The classification output is both a continuous confidence score [0.00–1.00] AND a categorical state classification simultaneously. If output is not produced within 175ms, the failsafe delivers `UNRESPONSIVE` automatically — null output and `UNRESPONSIVE` output are hardwired to produce identical downstream behavior in AV-UBI-001. No current system specifies this dual-format failsafe architecture.
-
 ### 4 — Asymmetric Error Cost Threshold Architecture
 **Component:** AV-UBI-002
 
-Formal acknowledgment that `MEDICAL_EMERGENCY` false negative (fatal cost) and `MEDICAL_EMERGENCY` false positive (disruption cost) are not equivalent, and that classification thresholds must be set asymmetrically to reflect this — with `MEDICAL_EMERGENCY` threshold set lower than `BEHAVIORAL_UNRESPONSIVE`. No current DMS architecture formally addresses this asymmetry.
+Formal declaration that `MEDICAL_EMERGENCY` false negative (fatal cost) and false positive (disruption cost) are not equivalent. Classification thresholds are set asymmetrically — `MEDICAL_EMERGENCY` threshold lower than `BEHAVIORAL_UNRESPONSIVE` — to reflect the asymmetric consequence structure. No current DMS architecture formally addresses this asymmetry.
 
-### 5 — Formal Isolation of the Reaction-Latency / Decision-Cycle Conflict
-**Component:** AV-UBI-001
+### 5 — Predictive Escalation via Confidence Score Trajectory
+**Component:** AV-UBI-003
 
-The gap between the SAE Level 3 standard 10-second takeover window and the documented 2.3-second pre-incident demand issuance is formally identified as a **structural conflict**, not a calibration problem. This distinction has significant implications for how the problem is approached: calibration solutions cannot close a structural gap. AV-UBI-003 addresses this directly.
+Current systems trigger takeover demand at threshold crossing. AV-UBI-003 triggers escalation from the *rate of change* of AV-UBI-002's confidence score — 3–5 seconds before boundary contact — giving the human time to restore readiness before the boundary arrives rather than after. No production system uses confidence score trajectory as a predictive escalation trigger.
+
+### 6 — Formally Bounded Autonomous Authority Extension
+**Component:** AV-UBI-003
+
+When predictive escalation fails — or when a driver is texting, asleep, or otherwise unresponsive — AV-UBI-003 activates a formally bounded autonomous authority extension: maximum 3 seconds, declared entry conditions, three formally specified exit conditions (FULL SUCCESS / PARTIAL SUCCESS / FAILURE). The vehicle uses this window to continue decelerating while giving the human additional time to respond. No current system formally specifies this window; current behavior at this point is undefined.
+
+### 7 — Distraction-Adjusted Simultaneous Alert Modality
+**Component:** AV-UBI-003
+
+Standard alert sequences are visual → auditory → haptic sequential. When AV-UBI-002 confirms a distracted state, AV-UBI-003 switches to simultaneous auditory + haptic at onset — bypassing the visual lead that cannot register when eyes are off the road. Modality sequencing adapts to confirmed occupant state rather than applying a uniform protocol regardless of attention.
+
+### 8 — Structured AV-to-911 Emergency Data Package
+**Component:** AV-UBI-004
+
+eCall — the current industry standard — transmits GPS coordinates and opens an audio channel. AV-UBI-004 specifies a full structured data package: vehicle ID, coordinates with accuracy estimate, derived address, speed and trajectory, emergency type and confidence score, time since onset, occupant count, conscious occupant count, and autonomous routing capability — transmitted within 3–5 seconds of MEDICAL_EMERGENCY trigger.
+
+### 9 — Concurrent MRC and Autonomous Emergency Routing with Priority Arbitration
+**Component:** AV-UBI-004
+
+MRC (controlled stop safety floor) and autonomous emergency routing are both active simultaneously from STATE 4 entry. MRC provides the safety floor; routing executes toward the received facility address; MRC always wins in a control conflict. No current AV system specifies concurrent operation of these two control modes with a formal priority rule.
 
 ---
 
 ## Epistemic Standards
-
-All specifications in this stack are produced under the following epistemic discipline:
 
 | STANDARD | PURPOSE |
 |----------|---------|
@@ -218,13 +257,9 @@ All specifications in this stack are produced under the following epistemic disc
 | EXPERIMENTALLY VALIDATED | Confirmed through physical or operational testing |
 | PRODUCTION-GRADE | Validated under production conditions with documented performance envelope |
 
-`[D]` All components in this stack are currently at CONCEPTUAL validation level. No implicit validation claims are made anywhere in this repository.
-
 ---
 
 ## BDI Classification Reference
-
-The Breakthrough Density Index (BDI) counts design requirements that cannot be satisfied by applying existing validated knowledge, even with additional time or effort.
 
 | BDI | CLASSIFICATION | MEANING |
 |-----|---------------|---------|
@@ -262,62 +297,51 @@ No section is optional. No dependency is hidden. No assumption is unlabeled.
 
 | CONDITION | COMPONENT AFFECTED | CONSEQUENCE |
 |-----------|-------------------|-------------|
-| Decision cycle (300–800ms) demonstrated incompatible with any decision logic architecture | AV-UBI-001 | Component invalid — structural constraint cannot be met |
-| Human reaction latency floor demonstrated incorrect | AV-UBI-001, AV-UBI-002 | Domain Lock requires revision across stack |
-| 8-stream fusion at 150–175ms demonstrated physically incompatible with automotive-grade hardware | AV-UBI-002 | BDI item 1 becomes permanently unresolvable — scope requires fundamental restructure |
-| rPPG demonstrated insufficient for medical emergency detection under motion regardless of algorithm | AV-UBI-002 | BDI item 2 becomes permanently unresolvable — sensor architecture requires replacement |
-| Four-output decision space demonstrated incomplete | AV-UBI-001 | Output specification requires revision |
-| MRC demonstrated geometrically unavailable in >30% of urban intersection scenarios | AV-UBI-001 | Primary cascade circuit-break condition removed — fundamental architectural revision required |
+| Decision cycle (300–800ms) incompatible with any decision logic architecture | AV-UBI-001 | Component invalid |
+| Human reaction latency floor demonstrated incorrect | AV-UBI-001, AV-UBI-002, AV-UBI-003 | Domain Lock revision across stack |
+| 8-stream fusion at 150–175ms incompatible with automotive-grade hardware | AV-UBI-002 | BR-003 permanently unresolvable — fundamental restructure required |
+| rPPG insufficient for medical emergency detection under motion regardless of algorithm | AV-UBI-002 | BR-004 permanently unresolvable — sensor architecture requires replacement |
+| Five-state gradient envelope model demonstrated non-exhaustive | AV-UBI-001 v1.1 | Model revision required |
+| Authority extension window demonstrated to elevate risk above immediate MRC | AV-UBI-003 | Failsafe path invalid — MRC becomes primary in all cases |
+| MRC geometrically unavailable in >30% of urban intersection scenarios | AV-UBI-001 | Primary cascade circuit-break removed |
+| Concurrent MRC and autonomous routing irresolvably conflicting | AV-UBI-004 | Three-phase protocol invalid |
 
 ---
 
 ## Contributing
 
+This stack was built to be engaged with. The constraint architecture is open. What's formal is the standard for that engagement.
 
-## Serious Collaboration Only
+If you've read this far and found yourself thinking about the gaps, the cascade chains, the breakthrough requirements, or how you'd actually test any of this — that's the signal. That's the kind of thinking this work is looking for.
 
-This AV-UBI Specification Stack — and the entire AION-BRAIN ecosystem behind it — was designed, written, and refined **entirely solo** under severe resource constraints. Every framework, every epistemic tag, every breakthrough requirement was produced without funding, without a team, without institutional support.
+**What moves this stack forward:**
 
-I therefore maintain full curatorial control.
+Research or simulation work that closes a Breakthrough Requirement directly: sensor fusion benchmarks, rPPG accuracy data under vehicle-condition motion, attention restoration measurements under simultaneous modality alerting, precedent analysis of bounded authority windows in aviation or medical devices, STPA or SOTIF analysis applied to the failure horizon maps, NG911 deployment landscape expertise, embedded systems constraints at the fusion latency target, or safety case engineering on any component.
 
-I do **not** accept unsolicited Pull Requests or merges at this time. I’ve seen too many carefully crafted solo projects diluted by well-meaning but low-context contributions.
+Implementation-level insight that reveals a constraint the specification missed, an invalidation condition that should be added, or an assumption that should be reclassified — that's equally valuable.
 
-**I am actively open to:**
+**How to engage:**
 
-- High-signal, deeply considered critique and strategic advice  
-- Substantive technical or research input that helps close Breakthrough Requirements or raise validation levels  
-- Serious collaboration discussions (implementation, simulation testing, sensor-fusion research, safety-case work)  
-- Conversations about funding, research partnerships, or co-development with people who can materially accelerate this from CONCEPTUAL → PHYSICS-CONSISTENT → deployed
+Open a GitHub Issue — not a Pull Request. Include your relevant background, a link to work you've done at a comparable level of rigor, and specific feedback tied to named components and sections. Reference the component ID, the section, and the claim tag.
 
-**How to engage (high bar — this is intentional):**
+For private discussion: reach out via X ([@SheldonKSalmon](https://x.com/SheldonKSalmon)) or email with subject line `[AV-UBI Collaboration]`.
 
-1. Demonstrate that you have actually engaged with the material.  
-2. Open a detailed GitHub Issue (not a PR) that includes:  
-   - Your relevant background and a link to substantial work you’ve done (repo, paper, safety case, etc.)  
-   - Specific, tagged feedback or proposal referencing exact components  
-   - Why you believe it strengthens the architecture without compromising standards  
-3. For private discussion, reach out via X (@SheldonKSalmon) or email with subject line `[AV-UBI Serious Collaboration]`.
-
-Casual comments, “this looks cool”, feature requests without substance, or low-effort PRs will be closed without reply. This is deliberate gatekeeping to protect the integrity of work built on fumes.
-
-If your own track record shows you operate at this same level of rigor, I very much want to hear from you.
-
-
+The bar is the work itself. If you operate at this standard, the door is open.
 
 ---
 
 ## Roadmap
 
-| MILESTONE | CONDITION |
-|-----------|-----------|
-| AV-UBI-003 specification complete | Next session |
-| AV-UBI-004 specification complete | Following session |
-| Stack conceptually closed | All four primary sessions complete |
-| Published article | Stack conceptually closed |
-| Physics-Consistent validation | BR-001 and BR-002 resolved by research pre-phase |
-| First FCL entry | Simulation or hardware testing begins |
-| AV-UBI-002B/C specifications | After core stack reaches Physics-Consistent |
-| First funded research pre-phase or simulation partnership | Serious collaboration secured |
+| MILESTONE | STATUS | CONDITION |
+|-----------|--------|-----------|
+| AV-UBI-001 through AV-UBI-004 complete | ✅ DONE | Stack conceptually closed |
+| Published article | 🔄 IN PROGRESS | Writing phase open |
+| AV-UBI-005 session | ⏳ NEXT | AI-assisted 911 dispatcher — closes BR-005 |
+| Physics-Consistent validation | ⏳ PENDING | BR-001 through BR-004 resolved by research pre-phase |
+| First FCL entry | ⏳ PENDING | Simulation or hardware testing begins |
+| AV-UBI-002B/C specifications | ⏳ FUTURE | After core stack reaches Physics-Consistent |
+| Research or simulation partnership | ⏳ OPEN | Serious collaboration secured |
+
 ---
 
 ## Authors
@@ -329,16 +353,17 @@ If your own track record shows you operate at this same level of rigor, I very m
 
 ## Origin
 
-Built solo, on fumes, with no budget, no team, and no institutional backing.  
-Every framework in AION-BRAIN and every component in this stack was produced the same way: late nights, relentless constraint harvesting, and an uncompromising commitment to epistemic honesty.
+Built solo. No budget, no team, no institutional backing.
 
-Imagine what becomes possible with real resources and the right collaborators.
+Every framework in the AION-BRAIN ecosystem and every component in this stack was produced under the same conditions: relentless constraint harvesting, uncompromising epistemic standards, and the conviction that formal honesty about what we don't know is more valuable than premature claims about what we do.
+
+The stack is conceptually closed. What comes next requires the right collaborators, a simulation environment, and resources to move from CONCEPTUAL to PHYSICS-CONSISTENT to deployed. If you can contribute any of those things at the level this work demands — the conversation is worth having.
 
 ---
 
 ## License
 
-Open source. All specifications in this repository are freely available for use, adaptation, and implementation. Attribution appreciated.
+Open source. All specifications freely available for use, adaptation, and implementation. Attribution appreciated.
 
 ---
 
@@ -348,12 +373,12 @@ Open source. All specifications in this repository are freely available for use,
 Salmon, S.K. (2026). AV-UBI Specification Stack: Constraint-Resolved Component
 Architecture for Autonomous Vehicle Operational Envelope Decision Systems.
 Produced under CDIP v1.5 | ECF v0.5 | LAV v1.5 | FSVE v3.5.
-https://github.com/AionSystem 
+https://github.com/AionSystem
 ```
 
 ---
 
 *AV-UBI Specification Stack | CDIP v1.5 | ECF v0.5 | LAV v1.5 | FSVE v3.5*
+*4 of 4 primary sessions complete — stack conceptually closed.*
 *All components at CONCEPTUAL validation. Empirical validation pending.*
 *Open source — freely available for implementation and adaptation.*
-
