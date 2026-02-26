@@ -1,5 +1,7 @@
 # I Built 60+ AI Frameworks. Now I'm Selling a 7-Page Report for Free. Here's Why.
 
+![1000007435](https://github.com/user-attachments/assets/b61f00a1-6593-4039-bb95-cb40d9e1d4a0)
+
 I spent the last year building in isolation.
 
 Not metaphorically. Literally isolated — heads down, building frameworks, validating methods, red-teaming my own outputs. I built over 60 open-source AI governance frameworks covering epistemic scoring, sovereignty layers, lexical precision, uncertainty inheritance. Serious work. Rigorous work.
