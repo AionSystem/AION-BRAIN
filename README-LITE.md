@@ -1,108 +1,109 @@
-# 🛡️ AION-BRAIN
+# AION-BRAIN
+### The Mind Behind the Work
 
-> **Epistemic armor for AI systems. Know exactly where you can move fast — and where you can't.**
-
-[![License](https://img.shields.io/badge/license-Apache_2.0-blue?style=for-the-badge)](LICENSE)
-[![Contact](https://img.shields.io/badge/contact-aionsystem%40outlook.com-blue?style=for-the-badge)](mailto:aionsystem@outlook.com)
-[![Demo](https://img.shields.io/badge/live_demo-FSVE--Validator_on_Poe-brightgreen?style=for-the-badge)](https://poe.com/FSVE-Validator)
-
----
-
-## What Is This
-
-Five frameworks that tell you, in real time, whether your AI output can be trusted — and exactly how much.
-
-**One framework is already proven. Four are being validated now.**
+[![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
+[![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-1a1a2e?style=for-the-badge&labelColor=16213e&color=0f3460)](https://github.com/AionSystem/AION-BRAIN)
+[![Service](https://img.shields.io/badge/SERVICE-AI_RELIABILITY_SNAPSHOT-gold?style=for-the-badge&labelColor=16213e)](https://tally.so/r/b5ljko)
 
 ---
 
-## Framework Status
+### Read this first. Then choose your path.
 
-| Framework | What It Does | FCL Entries | Status |
-|-----------|-------------|-------------|--------|
-| 🔵 **FSVE v3.5** | Certainty scoring — 6 axes, [0–1] | 0 / 5 | M-MODERATE |
-| 🟣 **AION v3.0** | Fragility mapping — where your AI breaks | 0 / 5 | M-MODERATE |
-| 🟠 **ASL v2.0** | Graduated safety — 5 tiers, not binary | 0 / 5 | M-MODERATE |
-| 🟢 **GENESIS v1.0** | Pattern validation — compose AI safely | 0 / 5 | M-MODERATE |
-| ✅ **ECF v0.5** | Lexical precision QA — language that executes correctly | **30 / 30** | **M-STRONG** |
+[![README — Academic](https://img.shields.io/badge/README-ACADEMIC-6b3fa0?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
+[![README — Technical](https://img.shields.io/badge/README-TECHNICAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](README-TECHNICAL.md)
+[![README — Commercial](https://img.shields.io/badge/README-COMMERCIAL-2d6a4f?style=for-the-badge&labelColor=0d1117)](README-COMMERCIAL.md)
 
 ---
 
-## ECF Is Already Proven
+## START HERE
 
-![ECF](https://img.shields.io/badge/ECF_v0.5-M--STRONG-brightgreen?style=for-the-badge)
-![Entries](https://img.shields.io/badge/FCL_entries-30_real-brightgreen?style=for-the-badge)
-![Failures](https://img.shields.io/badge/BVL_failures-0-brightgreen?style=for-the-badge)
-![EV](https://img.shields.io/badge/epistemic_validity-0.716-brightgreen?style=for-the-badge)
-![Intent](https://img.shields.io/badge/intent_match-92.0%25-brightgreen?style=for-the-badge)
+This repository is my mind made external.
 
-30 real validation entries. 6 cycles. 0 failures. All timestamped before outcomes were known.
+AION-BRAIN is where I build, break, validate, and archive every framework, method, and system I develop for working with AI. Over the past year I built 60+ frameworks covering epistemic scoring, linguistic precision, sovereignty layers, uncertainty inheritance, and AI output reliability. It is all here — the wins, the failures, the rebuilds, the open questions.
 
-**What ECF found that standard review misses:**
-- 🕳️ **JARGON_VOID** — sentences performing the appearance of meaning with nothing underneath
-- 🌐 **WORLDVIEW_CONTAMINATION** — individually valid words assembling a self-sealing epistemic trap
-- 🔒 **TRANSCENDENT_REFERENT** — the boundary where language structurally cannot go
+**But here is the thing you need to know if you just arrived:**
 
----
+I don't sell frameworks. I use them.
 
-## Certainty Stack
+Everything in this repository is the kitchen. What I actually deliver to clients is a single clean report — an **AI Reliability Snapshot** — that tells a founder or CEO exactly which AI outputs their business depends on are safe, which need review, and where a human must be in the loop.
 
-![Stack](https://img.shields.io/badge/certainty_stack-M--MODERATE-yellow?style=for-the-badge)
-![Validations](https://img.shields.io/badge/validations-0%2F20_pending-orange?style=for-the-badge)
-![Demo](https://img.shields.io/badge/FSVE_demo-live_on_Poe-brightgreen?style=for-the-badge)
-
-The four certainty stack frameworks are fully specified and mathematically consistent. Empirical pilot validation is next.
-
-**Hypotheses under test (not yet proven):**
-- FSVE → 30–50% faster deployment cycles
-- AION → 2× deeper reasoning without collapse
-- ASL → higher uptime under stress vs binary systems
-- GENESIS → 5× faster pattern composition
+The frameworks run in the background. You get the findings.
 
 ---
 
-## Try It Now
+## What AION-BRAIN Is
 
-[![Live Demo](https://img.shields.io/badge/🤖_FSVE--Validator-Try_on_Poe-brightgreen?style=for-the-badge)](https://poe.com/FSVE-Validator)
+This is my research workspace. It will keep growing. Every new framework I build goes here — not as a product, but as the methodology I pull from to deliver better work.
 
----
+Think of it this way:
 
-## Repo
+```
+AION-BRAIN  →  The mind. Always building. Never stops.
+     ↓
+ANCHOR      →  The product. Simple. Deliverable. Gets paid.
+     ↓
+AI Reliability Snapshot  →  What the client receives.
+                             5–7 pages. 48–72 hours.
+```
 
-![Files](https://img.shields.io/badge/files-2017-purple?style=flat-square)
-![Dirs](https://img.shields.io/badge/directories-595-blue?style=flat-square)
-![Python](https://img.shields.io/badge/python-255_files-gold?style=flat-square)
-![FCL](https://img.shields.io/badge/FCL_Master-v2.6_M--STRONG-brightgreen?style=flat-square)
-
-[![Epistemic Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/epistemic-validation-audit.yml)
-[![CodeQL](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/codeql.yml)
-[![Research Validation](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml/badge.svg)](https://github.com/AionSystem/AION-BRAIN/actions/workflows/research-validation.yml)
-
----
-
-## Go Deeper
-
-| I want to... | Go here |
-|---|---|
-| Read the full commercial overview | [README-commercial.md](README-commercial.md) |
-| Read the technical architecture | [README-technical.md](README-technical.md) |
-| See the academic validation framework | [README-academic.md](README-academic.md) |
-| Read the ECF validation proof | [ECF Moon-View](outputs/ECF-One-Page-Moon-View.md) |
-| Browse framework specs | [frameworks/](frameworks/) |
-| See all 30 ECF validation entries | [ECF Completed Cycles](frameworks/ECF/Completed%20Cycles/) |
-| Collaborate or pilot | `aionsystem@outlook.com` |
+The sophistication lives here. The simplicity is what I sell.
 
 ---
 
-## Transparency
+## If You Want the Service
 
-![Negative Results](https://img.shields.io/badge/negative_results-published-brightgreen?style=flat-square)
-![No Cherry Picking](https://img.shields.io/badge/cherry_picking-never-brightgreen?style=flat-square)
-![Open Source](https://img.shields.io/badge/specs-Apache_2.0-blue?style=flat-square)
-![COI](https://img.shields.io/badge/conflict_of_interest-none_declared-brightgreen?style=flat-square)
+Three founding organizations are currently receiving a free AI Reliability Snapshot — a structured review of up to 10 real AI outputs with a plain-language executive report returned in 48–72 hours.
 
-All validation entries are public. All are timestamped before outcomes. Failures would be published the same as successes.
+**→ Apply here: https://tally.so/r/b5ljko**
+
+No calls. No account. Just a report.
 
 ---
 
-*Sheldon K. Salmon · AI Certainty Engineer · Co-Architect: Claude (Anthropic) · February 2026*
+## If You Want to Explore the Research
+
+Choose your path:
+
+| Who you are | Where to go |
+|-------------|-------------|
+| Researcher or academic | [README-ACADEMIC.md](README-ACADEMIC.md) — full framework specs, FCL validation data, convergence states, open questions |
+| Engineer or technical collaborator | [README-TECHNICAL.md](README-TECHNICAL.md) — stack architecture, scoring engines, integration specs |
+| Founder, CEO, or potential client | [README-COMMERCIAL.md](README-COMMERCIAL.md) — what the service does, what you receive, how to engage |
+
+---
+
+## The Honest State in One Paragraph
+
+Two frameworks are FCL-validated to M-STRONG and near-M-VERY-STRONG: FSVE v3.5 (30 real entries, EV 0.813) and LAV v1.5 (45 real entries, 77.5% running mean). Three frameworks are specified but not yet empirically validated: AION v3.0, ASL v2.0, GENESIS v1.0. The proprietary stack — MENSCAPE, DERU, full LAV, ANCHOR — is active and not open-sourced. The first client engagement generates the first ANCHOR FCL entry. That is the next milestone.
+
+---
+
+## Repository Stats
+
+![Files](https://img.shields.io/badge/Files-2023-purple)
+![Directories](https://img.shields.io/badge/Directories-596-purple)
+![Frameworks](https://img.shields.io/badge/Frameworks-60%2B-e94560)
+![FCL Entries](https://img.shields.io/badge/FCL_Entries-75_Real-brightgreen)
+
+---
+
+## Contact
+
+📧 aionsystem@outlook.com
+
+**For the service:** Subject `[AI Reliability Snapshot]`
+**For research:** Subject `[Research — {Framework}]`
+**For collaboration:** Subject `[Collaboration Proposal]`
+
+---
+
+[![FCL Protocol](https://img.shields.io/badge/FCL-PREDICTION_BEFORE_EXECUTION-16213e?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
+[![Negative Results](https://img.shields.io/badge/NEGATIVE_RESULTS-PUBLISHED_EQUALLY-16213e?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
+[![Service](https://img.shields.io/badge/FOUNDING_SPOTS-3_AVAILABLE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
+
+---
+
+*AION-BRAIN — The Research Workspace*
+*Maintained by: Sheldon K. Salmon — AI Reliability Architect*
+*Co-Architect: Claude (Anthropic) | February 2026*
+*The mind keeps building. The product stays simple.*
