@@ -1,5 +1,6 @@
 # The Architecture of Honest Questions
 ## How Engineered Prompts Produce Convergent Intelligence Across Every Major AI System
+![grok_image_1772140951012](https://github.com/user-attachments/assets/a46e9097-05fa-40d5-b0da-16d2f136a2ea)
 
 **By Sheldon K. Salmon — AI Reliability Architect**
 
