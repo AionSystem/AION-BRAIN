@@ -320,7 +320,7 @@ Open source. All specifications in this repository are freely available for use,
 Salmon, S.K. (2026). AV-UBI Specification Stack: Constraint-Resolved Component
 Architecture for Autonomous Vehicle Operational Envelope Decision Systems.
 Produced under CDIP v1.5 | ECF v0.5 | LAV v1.5 | FSVE v3.5.
-https://github.com/[your-repo-path]
+https://github.com/AionSystem 
 ```
 
 ---
