@@ -11,7 +11,7 @@
 
 [![README — Academic](https://img.shields.io/badge/README-ACADEMIC-6b3fa0?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
 [![README — Technical](https://img.shields.io/badge/README-TECHNICAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](README-TECHNICAL.md)
-[![README — Commercial](https://img.shields.io/badge/README-COMMERCIAL-2d6a4f?style=for-the-badge&labelColor=0d1117)](README-COMMERCIAL.md)
+[![README — COMMERCIAL](https://img.shields.io/badge/README-COMMERCIAL-2d6a4f?style=for-the-badge&labelColor=0d1117)](README-COMMERCIAL.md)
 
 ---
 
