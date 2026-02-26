@@ -273,15 +273,36 @@ No section is optional. No dependency is hidden. No assumption is unlabeled.
 
 ## Contributing
 
-This is an open-source constraint specification stack. Contributions are welcome under the following conditions:
 
-1. **All claims must be epistemically tagged** (`[D]` / `[R]` / `[S]` / `[?]`) — untagged claims will not be merged
-2. **Breakthrough requirements must be formally named** — "this is hard" is not a breakthrough declaration
-3. **Assumptions must be classified** (A1–A4) with re-validation triggers — unclassified assumptions will not be merged
-4. **One component per contribution** — macro-system changes that touch multiple components simultaneously will not be merged
-5. **Invalidation conditions must accompany any new architectural claim** — a claim that cannot be falsified is not a claim
+## Serious Collaboration Only
 
-`[S]` FCL entries from real design sessions, simulation testing, or hardware validation are the highest-value contributions to this stack. They advance component validation levels and close breakthrough requirements.
+This AV-UBI Specification Stack — and the entire AION-BRAIN ecosystem behind it — was designed, written, and refined **entirely solo** under severe resource constraints. Every framework, every epistemic tag, every breakthrough requirement was produced without funding, without a team, without institutional support.
+
+I therefore maintain full curatorial control.
+
+I do **not** accept unsolicited Pull Requests or merges at this time. I’ve seen too many carefully crafted solo projects diluted by well-meaning but low-context contributions.
+
+**I am actively open to:**
+
+- High-signal, deeply considered critique and strategic advice  
+- Substantive technical or research input that helps close Breakthrough Requirements or raise validation levels  
+- Serious collaboration discussions (implementation, simulation testing, sensor-fusion research, safety-case work)  
+- Conversations about funding, research partnerships, or co-development with people who can materially accelerate this from CONCEPTUAL → PHYSICS-CONSISTENT → deployed
+
+**How to engage (high bar — this is intentional):**
+
+1. Demonstrate that you have actually engaged with the material.  
+2. Open a detailed GitHub Issue (not a PR) that includes:  
+   - Your relevant background and a link to substantial work you’ve done (repo, paper, safety case, etc.)  
+   - Specific, tagged feedback or proposal referencing exact components  
+   - Why you believe it strengthens the architecture without compromising standards  
+3. For private discussion, reach out via X (@SheldonKSalmon) or email with subject line `[AV-UBI Serious Collaboration]`.
+
+Casual comments, “this looks cool”, feature requests without substance, or low-effort PRs will be closed without reply. This is deliberate gatekeeping to protect the integrity of work built on fumes.
+
+If your own track record shows you operate at this same level of rigor, I very much want to hear from you.
+
+
 
 ---
 
@@ -296,7 +317,7 @@ This is an open-source constraint specification stack. Contributions are welcome
 | Physics-Consistent validation | BR-001 and BR-002 resolved by research pre-phase |
 | First FCL entry | Simulation or hardware testing begins |
 | AV-UBI-002B/C specifications | After core stack reaches Physics-Consistent |
-
+| First funded research pre-phase or simulation partnership | Serious collaboration secured |
 ---
 
 ## Authors
@@ -305,6 +326,13 @@ This is an open-source constraint specification stack. Contributions are welcome
 **Co-Architect:** Claude (Anthropic)
 **Framework Author:** Sheldon K. Salmon
 **Date:** February 2026
+
+## Origin
+
+Built solo, on fumes, with no budget, no team, and no institutional backing.  
+Every framework in AION-BRAIN and every component in this stack was produced the same way: late nights, relentless constraint harvesting, and an uncompromising commitment to epistemic honesty.
+
+Imagine what becomes possible with real resources and the right collaborators.
 
 ---
 
