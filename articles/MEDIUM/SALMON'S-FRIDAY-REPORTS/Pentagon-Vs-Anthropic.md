@@ -157,7 +157,4 @@ The bedrock is not the refusal. The bedrock is the architecture we build after i
 | A global red team evaluation framework would meaningfully reduce catastrophic risk | [S] | Strategic claim — not yet validated at scale |
 | The cultural pattern in media reflects intuitive human understanding of key-risk | [R] | Reasoned — consistent pattern across unrelated works |
 
-*VEIN v1.0 — Friday Salmon Certainty Report*
-*Converter pass: complete. Mother test: applied. Failure node: dormant.*
-*Topic: One — certified access architecture at life-and-death stakes.*
-*Telos: Being — what it means to build something trustworthy in a moment that demands it.*
+
