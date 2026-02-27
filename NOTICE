@@ -1,49 +1,111 @@
 AION-BRAIN
-Copyright 2025 Sheldon K. Salmon (Mr. AION)
+Copyright 2025-2026 Sheldon K. Salmon (AI Reliability Architect)
 
-This product includes cognitive infrastructure frameworks developed by
-Sheldon K. Salmon under the AION-BRAIN project.
+This product includes cognitive infrastructure frameworks, epistemic scoring
+engines, linguistic audit vectors, and certainty certification methodology
+developed by Sheldon K. Salmon under the AION-BRAIN project.
+
+Active development: February 2025 — Present
+Co-Architect: Claude (Anthropic)
+
+================================================================================
+
+WHAT THIS REPOSITORY IS
+
+AION-BRAIN is a published intellectual architecture for AI reliability and
+epistemic validation. It is not a community-driven project. It is a sovereign
+cognitive framework — fully transparent for learning, selectively collaborative
+by design.
+
+The sophistication lives here. The simplicity is what is delivered to clients.
 
 ================================================================================
 
 ATTRIBUTION REQUIREMENTS
 
-When using AION-BRAIN in derivative works, please include attribution:
-"Built on AION-BRAIN by Sheldon K. Salmon"
+When using AION-BRAIN frameworks in any work, include:
+
+    "Built on AION-BRAIN by Sheldon K. Salmon"
+    Source: https://github.com/AionSystem/AION-BRAIN
+
+When citing a specific framework, include version:
+
+    "Using [Framework Name] v[X.Y] from AION-BRAIN"
+    "Developed by: Sheldon K. Salmon"
+
+Commercial use requires licensing discussion before deployment.
+Contact: aionsystem@outlook.com
+Subject: [Commercial Licensing - AION-BRAIN]
 
 ================================================================================
 
-ADDITIONAL TERMS AND CONDITIONS
+EPISTEMIC HONESTY NOTICE
 
-While the Apache 2.0 License governs the core legal terms, users of AION-BRAIN
-must also comply with the following supplementary requirements:
+AION-BRAIN maintains honest convergence states across all frameworks.
+Users of this work should know:
+
+    FSVE v3.5    — M-STRONG (30 FCL entries, EV 0.813)
+    LAV v1.5     — M-STRONG (45 FCL entries, 77.5% running mean)
+    AION v3.0    — M-NASCENT (specified, validation in progress)
+    ASL v2.0     — M-NASCENT (specified, validation in progress)
+    GENESIS v1.0 — M-NASCENT (specified, validation in progress)
+    CDIP v1.5    — M-NASCENT (CEV v1.0 audit complete, FCL pending)
+    EID v0.1     — M-NASCENT (specified February 2026, pre-validation)
+
+No framework is represented as more validated than it is.
+Certainty engineering means knowing exactly where confidence is
+justified and where it is not.
+
+================================================================================
+
+SUPPLEMENTARY REQUIREMENTS
 
 1. PROFESSIONAL DISCLAIMERS REQUIRED
-   If you deploy domain-specific engines (Medical, Legal, Financial), you must
-   include appropriate professional disclaimers indicating that outputs do not
-   constitute professional advice. See legal/PROFESSIONAL-BOUNDARIES.md.
+   Domain-specific frameworks (Medical, Legal, Financial) require
+   professional disclaimers in all derivative works.
+   See: legal/PROFESSIONAL-BOUNDARIES.md
 
-2. ETHICAL USE EXPECTED
-   These engines include ethical guardrails by design. Users agree to:
-   - Maintain ethical safeguards in derivative works
-   - Not use engines for harmful applications
-   - Not remove safety features without appropriate replacement
+2. ETHICAL USE REQUIRED
+   Users agree to maintain ethical safeguards, not use frameworks for
+   harassment, manipulation, or deception, and not weaponize epistemic
+   infrastructure against vulnerable populations.
 
 3. NO PROFESSIONAL ADVICE
-   AION-BRAIN provides cognitive frameworks, not professional advice.
-   All outputs require human verification and professional judgment.
-   See legal/LEGAL-DISCLAIMER.md for complete terms.
+   AION-BRAIN provides cognitive frameworks and reliability methodology,
+   not professional advice. All outputs require human verification.
+   See: legal/LEGAL-DISCLAIMER.md
 
 4. REGULATORY COMPLIANCE
-   Users are solely responsible for ensuring compliance with applicable
-   regulations (HIPAA, GDPR, FDA, etc.) in their jurisdiction.
+   Users are solely responsible for compliance with applicable regulations
+   (HIPAA, GDPR, FDA, SEC, and equivalents) in their jurisdiction.
+
+5. CONVERGENCE STATE TRANSPARENCY
+   Derivative commercial products must not represent the validation state
+   of AION-BRAIN frameworks as higher than documented in this repository.
 
 ================================================================================
 
-For complete legal terms, see:
-- LICENSE (Apache 2.0)
-- legal/LEGAL-DISCLAIMER.md
-- legal/LIABILITY-SHIELD.md
-- legal/PROFESSIONAL-BOUNDARIES.md
+COMPLETE LEGAL DOCUMENTATION
 
-Questions? Contact: AIONSYSTEM@outlook.com
+    LICENSE                          — Apache 2.0 core terms
+    legal/LEGAL-DISCLAIMER.md        — Full liability disclaimer
+    legal/LIABILITY-SHIELD.md        — Liability limitation terms
+    legal/PROFESSIONAL-BOUNDARIES.md — Domain-specific use boundaries
+
+================================================================================
+
+CONTACT
+
+General:       aionsystem@outlook.com
+Service:       Subject: [AI Reliability Snapshot]
+Research:      Subject: [Research — {Framework Name}]
+Collaboration: Subject: [Collaboration — {Your Domain}]
+Licensing:     Subject: [Commercial Licensing - AION-BRAIN]
+
+================================================================================
+
+"Certainty engineering means knowing exactly where confidence is
+justified — and where it is not."
+
+— Sheldon K. Salmon, AI Reliability Architect
+  AION-BRAIN, February 2026
