@@ -1,444 +1,231 @@
 # Code of Conduct
+## Intellectual Rigor and Personal Respect — Both Required
 
-## Our Foundation
-
-AION-BRAIN is a published intellectual architecture—a cognitive framework for AI safety and epistemic validation developed by Sheldon K Salmon.
-
-This Code of Conduct governs how individuals engage with this work, whether as observers, learners, critics, or invited collaborators.
-
-**Core Principle**: Respectful engagement with ideas and rigorous intellectual discourse.
+[![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
+[![Version](https://img.shields.io/badge/VERSION-4.0_Connection_Model-0f3460?style=for-the-badge&labelColor=16213e)]()
+[![Updated](https://img.shields.io/badge/UPDATED-February_2026-2d6a4f?style=for-the-badge&labelColor=16213e)]()
 
 ---
 
-## What AION-BRAIN Represents
-
-**This is**:
-- A published body of intellectual work
-- A demonstration of systematic methodology
-- An externalized cognitive architecture
-- A foundation for professional services
-
-**This is not**:
-- A community-driven project seeking consensus
-- A democratic space where all voices have equal authority
-- A collaborative work-in-progress expecting contributions from everyone
-
-**Your role**: Observer, learner, applier, critic—not co-author (unless invited).
+> *"Intellectual rigor and personal respect are not mutually exclusive. We demand both."*
 
 ---
 
-## Standards for Engagement
+## What This Space Is
 
-### ✅ Encouraged Behaviors
+AION-BRAIN is a published intellectual architecture — a cognitive framework for AI reliability and epistemic validation developed by Sheldon K. Salmon over nine months of deliberate building.
 
-**Intellectual Engagement**:
-- Ask challenging questions about methodology
-- Point out potential flaws or blind spots
-- Propose alternative approaches for consideration
-- Engage in rigorous critique (ideas, not people)
-- Share applications and results transparently
+This is not a community-driven project seeking consensus. It is also not a closed fortress. It is a **published mind made transparent** — fully visible, fully learnable, selectively collaborative.
 
-**Respectful Learning**:
-- Study the frameworks deeply before critiquing
-- Acknowledge what you don't understand
-- Ask clarifying questions before challenging
-- Cite AION-BRAIN when using methodologies
-- Respect intellectual property boundaries
-
-**Ethical Application**:
-- Use frameworks for prosocial purposes
-- Consider downstream impacts of applications
-- Report potential misuse or harmful applications
-- Respect epistemic humility principles embedded in frameworks
-- Share learnings that might improve safety
-
-**Professional Conduct**:
-- Disagree with ideas, not people
-- Provide evidence for critiques
-- Acknowledge when your critique is speculative vs. demonstrated
-- Respect decision authority (architect maintains final say)
-- Be patient with response times
+The people I am hoping to find here are serious builders working adjacent problems who recognize the frequency when they encounter it. The engagement model is designed to make that recognition possible — and to protect the coherence that makes the work worth finding in the first place.
 
 ---
 
-### ❌ Unacceptable Behaviors
+## Encouraged Behaviors
 
-**Intellectual Misconduct**:
-- Claiming AION-BRAIN work as your own without attribution
-- Plagiarizing frameworks or methodologies
-- Misrepresenting the architect's positions
-- Creating "clone" projects that copy branding/methodology
-- Ignoring intellectual property boundaries
+[![Rigorous Critique](https://img.shields.io/badge/ENCOURAGED-Rigorous_Critique-2d6a4f?style=flat-square&labelColor=0d1117)]()
+[![Honest Questions](https://img.shields.io/badge/ENCOURAGED-Honest_Questions-1a6b9a?style=flat-square&labelColor=0d1117)]()
+[![Deep Study](https://img.shields.io/badge/ENCOURAGED-Deep_Study-6b3fa0?style=flat-square&labelColor=0d1117)]()
+[![Real Application](https://img.shields.io/badge/ENCOURAGED-Real_Application-e94560?style=flat-square&labelColor=0d1117)]()
 
-**Interpersonal Misconduct**:
-- Personal attacks, harassment, or discrimination
-- Trolling, inflammatory language, or bad-faith arguments
-- Publishing private communications without permission
-- Demanding attention, responses, or implementation of suggestions
-- Repeated boundary violations after warnings
+**Intellectual engagement:**
+Ask challenging questions about methodology. Point out potential flaws or blind spots. Propose alternative approaches for consideration. Engage in rigorous critique — of ideas, not people. Share applications and results transparently including failures.
 
-**Engagement Violations**:
-- Submitting PRs after being told contributions are invite-only
-- Arguing about the contribution policy itself (accept or leave)
-- Demanding "democratic" decision-making in a sovereign architecture
-- Treating observation privilege as contribution entitlement
-- Using guilt or pressure to gain commit access
+**Respectful learning:**
+Study the frameworks deeply before critiquing. Acknowledge what you do not understand. Ask clarifying questions before challenging. Cite AION-BRAIN when using methodologies in your work.
 
-**Ethical Violations**:
-- Using frameworks for harmful purposes (harassment, manipulation, deception)
-- Ignoring safety protocols embedded in methodologies
-- Weaponizing frameworks against vulnerable populations
-- Deliberately misapplying frameworks to cause harm
-- Advocating for unethical applications
+**Honest falsification:**
+If you find a condition that breaks a framework — say so clearly with evidence. This is the most valuable thing an outside observer can contribute. The FCL grows through honest challenge, not through politeness.
+
+**Genuine synthesis inquiry:**
+If you are working adjacent problems and see a real intersection — name it precisely and open a conversation. The door is open for people whose work connects at a real technical or epistemic level.
 
 ---
 
-## Engagement Tiers & Expectations
+## Unacceptable Behaviors
 
-### **Tier 1: Observer / Learner** (Everyone)
+[![IP Violation](https://img.shields.io/badge/PROHIBITED-IP_Violation-FFD700?style=flat-square&labelColor=0d1117)]()
+[![Personal Attack](https://img.shields.io/badge/PROHIBITED-Personal_Attack-FFD700?style=flat-square&labelColor=0d1117)]()
+[![Bad Faith](https://img.shields.io/badge/PROHIBITED-Bad_Faith_Engagement-FFD700?style=flat-square&labelColor=0d1117)]()
+[![Ethical Misuse](https://img.shields.io/badge/PROHIBITED-Ethical_Misuse-FFD700?style=flat-square&labelColor=0d1117)]()
 
-**Your Rights**:
-- Full access to all public documentation
-- Ability to fork for personal learning
-- Freedom to ask questions via Discussions/Issues
-- Permission to apply frameworks in your work (with attribution)
+**Intellectual misconduct:**
+Claiming AION-BRAIN work as your own without attribution. Plagiarizing frameworks or methodologies. Misrepresenting the architect's positions. Creating clone projects that copy branding or methodology without acknowledgment.
 
-**Your Responsibilities**:
-- Respect intellectual property
-- Engage respectfully
-- Follow this Code of Conduct
-- Accept that observation ≠ collaboration
+**Interpersonal misconduct:**
+Personal attacks, harassment, or discrimination. Trolling, inflammatory language, or bad-faith arguments. Publishing private communications without permission. Demanding responses or implementation of suggestions as if entitlement exists.
 
-**Boundaries**:
-- You may critique; you may not dictate
-- You may suggest; you may not demand
-- You may learn; you may not plagiarize
+**Boundary violations:**
+Submitting PRs after being told contributions are invite-only. Arguing about the contribution policy itself — accept the model or do not engage. Using pressure or guilt to gain commit access.
+
+**Ethical violations:**
+Using frameworks for harassment, manipulation, or deception. Applying methodologies to harm vulnerable populations. Weaponizing epistemic infrastructure against the people it was built to protect.
 
 ---
 
-### **Tier 2: Domain Validator** (Invited)
+## Engagement Tiers
 
-**Your Rights** (in addition to Tier 1):
-- Invitation to provide expert feedback on specific frameworks
-- Acknowledgment in documentation if contribution is integrated
-- Potential for deeper collaboration if alignment continues
+### Tier 1 — Observer and Learner
+[![Open to All](https://img.shields.io/badge/TIER_1-Open_to_Everyone-2d6a4f?style=flat-square&labelColor=0d1117)]()
 
-**Your Responsibilities** (in addition to Tier 1):
-- Provide domain-specific expertise honestly
-- Acknowledge limits of your expertise
-- Respect that final decisions remain with architect
-- Maintain confidentiality of pre-publication work (if applicable)
+Full access to all public documentation. Freedom to fork for personal learning. Ability to ask questions via Discussions and Issues. Permission to apply frameworks with attribution.
 
-**Boundaries**:
-- Validation input ≠ commit access
-- Expert feedback ≠ co-authorship
-- Invitation to comment ≠ invitation to change
+You may critique. You may not dictate. You may suggest. You may not demand. You may learn. You may not plagiarize.
 
 ---
 
-### **Tier 3: Collaborator** (Invitation Only)
+### Tier 2 — Domain Validator
+[![Invited](https://img.shields.io/badge/TIER_2-Invited_Experts-1a6b9a?style=flat-square&labelColor=0d1117)]()
 
-**Your Rights** (in addition to Tiers 1-2):
-- Potential commit access to specific sub-projects
-- Co-authorship credit on jointly developed frameworks
-- Deeper engagement in architectural decisions (within scope)
+Invitation to provide expert feedback on specific frameworks. Acknowledgment in documentation if contribution is integrated. Potential for deeper collaboration if alignment continues.
 
-**Your Responsibilities** (in addition to Tiers 1-2):
-- Maintain intellectual coherence with existing architecture
-- Accept that architect has final say on integration
-- Preserve voice consistency in documentation
-- Honor confidentiality agreements
+Validation input is not commit access. Expert feedback is not co-authorship. An invitation to comment is not an invitation to change architecture.
 
-**Boundaries**:
-- Collaboration is scoped (specific projects, not everything)
-- Final authority remains with architect
-- Collaboration can be terminated if alignment diverges
+---
+
+### Tier 3 — Synthesis Collaborator
+[![Synthesis](https://img.shields.io/badge/TIER_3-Synthesis_Connection-e94560?style=flat-square&labelColor=0d1117)]()
+
+Reserved for people working the same territory from a genuinely complementary layer. Potential co-authorship on jointly developed frameworks. Deeper engagement in architectural decisions within defined scope.
+
+Collaboration is scoped to specific intersection. Final authority remains with architect. Collaboration can be paused if alignment diverges. Credit is explicit, visible, and permanent.
+
+This tier is not recruited. It is recognized when the frequency test passes naturally.
+
+---
+
+## Attribution Requirements
+
+**Always required:**
+```
+Based on AION-BRAIN framework by Sheldon K. Salmon
+Source: https://github.com/AionSystem/AION-BRAIN
+```
+
+**When citing specific frameworks:**
+```
+Using [Framework Name] v[X.Y] from AION-BRAIN
+Developed by: Sheldon K. Salmon
+```
+
+| USE TYPE | REQUIREMENT |
+|----------|-------------|
+| Personal study | Attribution sufficient |
+| Academic publication | Attribution + cite framework version |
+| Commercial products | Contact for licensing discussion |
+| Competing audit services | Consult legal counsel |
+
+---
+
+## Ethical Use
+
+You may not use AION-BRAIN frameworks for harassment, manipulation, or deception of individuals. You may not apply them to discriminatory purposes that harm protected groups. You may not weaponize epistemic infrastructure against the people it was built to serve.
+
+If you observe misuse — report it. The frameworks were built to make AI more honest. Using them to do the opposite is the one thing this architecture cannot tolerate.
 
 ---
 
 ## Enforcement
 
-**Who Enforces**: Sheldon K Salmon (architect & maintainer)
+[![Report](https://img.shields.io/badge/REPORT-aionsystem@outlook.com-e94560?style=flat-square&labelColor=0d1117)](mailto:aionsystem@outlook.com)
 
-**Reporting**: AIONSYSTEM@outlook.com with subject line [Code of Conduct Issue]
+**Subject line:** `[Code of Conduct Issue]`
 
-**Include**:
-- Description of incident with evidence (links, screenshots)
-- Impact on you or the work
-- Any prior related incidents
-- What resolution you're seeking
+**Include:** Description of incident with evidence. Impact on you or the work. What resolution you are seeking.
 
----
+| STEP | TIMELINE | ACTION |
+|------|----------|--------|
+| Review | 24–48 hours | Acknowledge receipt, preliminary assessment |
+| Investigation | 2–7 days | Review evidence, consult parties |
+| Decision | 7–14 days | Determine violation, decide response |
+| Action | Immediate | Implement, document, monitor |
 
-### Response Process
+**Possible responses:**
 
-**Step 1: Review** (24-48 hours)
-- Acknowledge receipt of report
-- Preliminary assessment of severity
+| RESPONSE | TRIGGER |
+|----------|---------|
+| Warning | First offense, minor violation |
+| Temporary suspension (7–30 days) | Repeated minor or moderate single violation |
+| Permanent ban | Severe violation or repeated suspensions |
+| Content removal | IP theft, plagiarism, extreme misrepresentation |
 
-**Step 2: Investigation** (2-7 days)
-- Review evidence
-- Consult with involved parties if needed
-- Determine facts of situation
-
-**Step 3: Decision** (7-14 days)
-- Determine if conduct violated Code
-- Decide on appropriate response
-- Communicate decision to all parties
-
-**Step 4: Action** (immediate upon decision)
-- Implement response
-- Document for future reference
-- Monitor for compliance
-
----
-
-### Possible Responses
-
-**Warning** (First offense, minor violations):
-- Private communication explaining violation
-- Clarification of expectations
-- Guidance on how to engage appropriately
-- No public record (unless violation continues)
-
-**Temporary Suspension** (Repeated minor violations or moderate single violation):
-- Temporary restriction from Discussions/Issues (7-30 days)
-- Public notice of suspension (if violation was public)
-- Clear conditions for reinstatement
-- Permanent record in moderation log
-
-**Permanent Ban** (Severe violations or repeated suspensions):
-- Permanent removal from all AION-BRAIN spaces
-- Blocking on GitHub and other platforms
-- Public statement (if violation was public)
-- Potential legal action (if IP theft, harassment, etc.)
-
-**Content Removal** (Extreme cases):
-- Deletion of violating content
-- Removal of attribution if plagiarism proven
-- Takedown requests to external platforms (if applicable)
-
----
-
-### Appeals Process
-
-**Timeline**: Within 14 days of decision
-
-**Process**:
-1. Email AIONSYSTEM@outlook.com with subject [CoC Appeal]
-2. Provide new evidence or clarification not previously available
-3. Explain why decision was unjust
-4. Appeals are NOT for disagreeing with policy, only with application of policy
-
-**Outcome**:
-- Upheld (decision stands)
-- Modified (lesser response applied)
-- Overturned (decision reversed, apology issued)
-
-**Note**: Appeals are reviewed but not guaranteed to change outcome.
-
----
-
-## Special Provisions
-
-### **Attribution & Intellectual Property**
-
-If you use AION-BRAIN frameworks in your work:
-
-**Required Attribution** (always):
-Based on AION-BRAIN framework by Sheldon K Salmon
-Source: https://github.com/AionSystem/AION-BRAIN
-**When Citing Specific Frameworks**:
-Using [Framework Name] v[X.Y] from AION-BRAIN
-Developed by: Sheldon K Salmon
-**Commercial Use**:
-- Personal/academic use: Attribution sufficient
-- Commercial products/services: Contact for licensing discussion
-- Competing audit services: Consult legal counsel (we're not providing legal advice)
-
-**Violation**: Using frameworks commercially without attribution = IP violation, subject to legal action.
-
----
-
-### **Ethical Use Requirements**
-
-You may NOT use AION-BRAIN frameworks for:
-- Harassment, manipulation, or deception of individuals
-- Discriminatory applications that harm protected groups
-- Surveillance or tracking without informed consent
-- Weaponization or military applications without ethical review
-- Undermining democratic processes or public trust
-- Any purpose that violates epistemic humility principles
-
-**If you observe unethical use**: Report to AIONSYSTEM@outlook.com with evidence.
-
-**Response**: Public statement disavowing misuse, potential legal action, takedown requests.
-
----
-
-### **Research Ethics**
-
-If using AION-BRAIN in academic research:
-
-**Required**:
-- Cite appropriately
-- Acknowledge any consultation with architect
-- Share findings (even if they critique the frameworks)
-- Follow academic integrity standards
-
-**Encouraged**:
-- Pre-register studies testing AION-BRAIN frameworks
-- Share results publicly (replication is valuable)
-- Contribute to FCL (Framework Calibration Log) if testing predictions
-
-**Prohibited**:
-- Misrepresenting architect's positions
-- Cherry-picking results to make frameworks look better/worse
-- Claiming joint authorship without collaboration agreement
+**Appeals:** Within 14 days of decision. Email with subject `[CoC Appeal]`. New evidence or clarification only — not disagreement with policy itself.
 
 ---
 
 ## Scope
 
-This Code of Conduct applies to:
+**In scope:**
+GitHub repository. Official AION-BRAIN communications. Professional services engagements. Any space where you are representing yourself as engaging with AION-BRAIN.
 
-**✅ In Scope**:
-- GitHub repository (Issues, Discussions, PRs)
-- Official AION-BRAIN communications
-- Professional services engagements
-- Representations of AION-BRAIN in external spaces (conferences, publications, social media)
-- Any space where you're representing yourself as engaging with AION-BRAIN
+**Out of scope:**
+Your personal social media unless representing AION-BRAIN. Private conversations not involving this work. Other projects even if inspired by AION-BRAIN.
 
-**❌ Out of Scope**:
-- Your personal social media (unless representing AION-BRAIN)
-- Private conversations not involving AION-BRAIN work
-- Other projects (even if inspired by AION-BRAIN)
-
-**Boundary Case**: If you're critiquing AION-BRAIN publicly (blog, Twitter, etc.):
-- Critique the ideas: ✅ Totally fine
-- Attack the architect personally: ❌ We reserve right to respond or block
-- Misrepresent the work: ❌ We may issue corrections
+**Public critique:** Critique the ideas freely. Attack the architect personally and we reserve the right to respond or block. Misrepresent the work and we will issue corrections.
 
 ---
 
-## Philosophy of This Code
+## The Philosophy Behind This Code
 
-**We believe**:
-- Ideas should be criticized rigorously (intellectual honesty)
-- People should be treated respectfully (basic decency)
-- Authority should be clear (architect maintains final say)
-- Boundaries should be explicit (no false collaboration expectations)
-- Engagement should be voluntary (accept terms or don't engage)
+This code is not written from fear or defensiveness. It is written from clarity about what this architecture is and who it is for.
 
-**We reject**:
-- Democratic governance of intellectual property
-- Entitlement to contribute without invitation
-- Consensus-seeking that dilutes coherence
-- "Radical openness" that compromises quality
-- Community pressure to change architectural decisions
+The boundaries exist because coherence is the value. A mind is not improved by letting everyone edit it. But a mind that never encounters honest challenge calcifies. Both things are true simultaneously.
 
-**This is not**:
-- Hostility to community (observers are welcome)
-- Rejection of feedback (critique is valued)
-- Authoritarianism (you're free to leave anytime)
-- Closed-mindedness (we learn from engagement)
+The goal is not maximum protection. The goal is the right kind of openness — full transparency for learning, honest challenge welcome, genuine synthesis sought, architectural sovereignty maintained.
 
-**This is**:
-- Clarity about what AION-BRAIN is (sovereign architecture)
-- Honesty about engagement model (observation + selective collaboration)
-- Protection of intellectual coherence (business foundation)
-- Respect for everyone's time (clear expectations prevent frustration)
+**What this is:**
+Clarity about what AION-BRAIN is. Honesty about the engagement model. Protection of the coherence that makes the work worth finding. Respect for everyone's time through clear expectations.
+
+**What this is not:**
+Hostility to observers. Rejection of critique. Closed-mindedness to outside perspective. Fear dressed up as policy.
 
 ---
 
-## Acknowledgments
+## Common Questions
 
-This Code of Conduct draws from:
-- [Contributor Covenant](https://www.contributor-covenant.org) v2.1 (ethical standards)
-- Academic publication ethics (attribution, integrity)
-- Professional services standards (client relationships, IP protection)
-- Intellectual property law principles (attribution, fair use)
-
-**Customized for**: A sovereign intellectual architecture with selective collaboration model.
-
----
-
-## Updates & Evolution
-
-**Current Version**: 3.0 (Sovereign Architecture Model)  
-**Last Updated**: February 2026  
-**Next Review**: June 2026 or as needed
-
-**Policy may evolve as**:
-- AION-BRAIN scales
-- New engagement patterns emerge
-- Legal requirements change
-- Business model evolves
-
-**Notification**: Major changes announced via GitHub Discussions with 30-day comment period.
-
-**Your continued engagement implies acceptance of updates.**
-
----
-
-## Questions About This Code
-
-**"This seems strict. Why?"**
-
-It's not strict—it's clear. You can do everything except commit code without invitation. That's one boundary.
+**"This seems strict."**
+It has one real boundary — no unsolicited PRs. Everything else is open. That is not strict. That is clear.
 
 **"What if I disagree with the policy?"**
+You are free to not engage, to build your own methodology elsewhere, or to critique the policy publicly on ideas. You are not free to violate it while engaging or demand it change to suit you.
 
-You're free to:
-- Not engage with AION-BRAIN
-- Build your own methodology elsewhere
-- Critique the policy publicly (ideas, not personal attacks)
+**"How is this different from proprietary software?"**
+Proprietary: Hidden methodology, no visibility, no learning.
+AION-BRAIN: Full transparency, complete visibility, free application, one boundary on commit access.
 
-You're not free to:
-- Demand the policy change to suit you
-- Violate it while engaging
-- Claim it's "against open-source values" (this isn't traditional open-source)
+**"What counts as violation versus disagreement?"**
 
-**"How is this different from proprietary closed-source?"**
+| DISAGREEMENT ✅ | VIOLATION ❌ |
+|----------------|------------|
+| "Framework X doesn't handle edge case Y because [evidence]" | "This architect is wrong for not accepting my PR" |
+| "This policy limits potential impact" | "I will keep submitting PRs until you accept them" |
+| Rigorous public critique of ideas | Personal attack on the architect |
 
-Proprietary: Can't see code, can't learn, can't apply  
-AION-BRAIN: Full transparency, complete learning access, free application
-
-**Difference**: You can see and learn everything. You just can't merge PRs without invitation.
-
-**"Can I fork and change the code for my own use?"**
-
-For learning: Yes  
-For creating competing "AION-BRAIN Clone" business: Consult a lawyer
-
-**"What counts as a Code of Conduct violation vs. just disagreement?"**
-
-Disagreement: "I don't think Framework X handles edge case Y well because [evidence]." ✅  
-Violation: "This architect is an idiot for not accepting my PR." ❌
-
-Disagreement: "I believe this policy limits AION-BRAIN's potential impact." ✅  
-Violation: "I'm going to keep submitting PRs until you accept them." ❌
-
-**When in doubt**: Critique ideas, respect people and boundaries.
+When in doubt: critique ideas, respect people and boundaries.
 
 ---
 
 ## Contact
 
-**Code of Conduct Issues**: AIONSYSTEM@outlook.com | Subject: [CoC Issue]  
-**Policy Questions**: Open a GitHub Discussion  
-**Collaboration Inquiries**: AIONSYSTEM@outlook.com | Subject: [Collaboration Proposal]
+| PURPOSE | CONTACT |
+|---------|---------|
+| Code of Conduct issues | aionsystem@outlook.com — Subject: `[CoC Issue]` |
+| Policy questions | GitHub Discussions |
+| Collaboration inquiries | aionsystem@outlook.com — Subject: `[Collaboration — {Domain}]` |
+| Error reports | GitHub Issues |
 
 ---
 
-**By engaging with AION-BRAIN, you agree to this Code of Conduct.**
-
-**If you don't agree, you're free not to engage.**
-
-**Clarity now prevents frustration later.**
+[![Explore](https://img.shields.io/badge/EXPLORE-AION_BRAIN_Repository-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN)
+[![Discuss](https://img.shields.io/badge/DISCUSS-GitHub_Discussions-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/discussions)
+[![Service](https://img.shields.io/badge/SERVICE-AI_Reliability_Snapshot-FFD700?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
 
 ---
 
-*"Intellectual rigor and personal respect are not mutually exclusive. We demand both."*
+*By engaging with AION-BRAIN you agree to this Code of Conduct.*
+*If you do not agree you are free not to engage.*
+*Clarity now prevents frustration later.*
 
-—AION-BRAIN Code of Conduct, v3.0
+*Code of Conduct v4.0 — Connection Model*
+*Maintained by: Sheldon K. Salmon — AI Reliability Architect*
+*Co-Architect: Claude (Anthropic) | February 2026*
