@@ -1,5 +1,6 @@
 # The Moving Floor Problem
 ## Why AI Reliability Boundaries Expire the Moment Your System Adapts
+![1000007508](https://github.com/user-attachments/assets/d9673b77-49f1-4af8-adcf-f426bb26e272)
 
 **By Sheldon K. Salmon — AI Reliability Architect**  
 **Published:** February 2026  
