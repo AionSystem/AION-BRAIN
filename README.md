@@ -2,104 +2,121 @@
 ### The Mind Behind the Work
 
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
-[![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-1a1a2e?style=for-the-badge&labelColor=16213e&color=0f3460)](https://github.com/AionSystem/AION-BRAIN)
-[![Service](https://img.shields.io/badge/SERVICE-AI_RELIABILITY_SNAPSHOT-gold?style=for-the-badge&labelColor=16213e)](https://tally.so/r/b5ljko)
+[![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-0f3460?style=for-the-badge&labelColor=16213e)](https://github.com/AionSystem/AION-BRAIN)
+[![Service](https://img.shields.io/badge/SERVICE-AI_RELIABILITY_SNAPSHOT-FFD700?style=for-the-badge&labelColor=16213e)](https://tally.so/r/b5ljko)
 
 ---
 
-### Read this first. Then choose your path.
-
-[![README — Academic](https://img.shields.io/badge/README-ACADEMIC-6b3fa0?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
-[![README — Technical](https://img.shields.io/badge/README-TECHNICAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](README-TECHNICAL.md)
-[![README — COMMERCIAL](https://img.shields.io/badge/README-COMMERCIAL-2d6a4f?style=for-the-badge&labelColor=0d1117)](README-COMMERCIAL.md)
+> *"The sophistication lives here. The simplicity is what I sell."*
 
 ---
 
-## START HERE
+## WHAT THIS REPO IS
 
-This repository is my mind made external.
+This is the external mind of an AI Reliability Architect.
 
-AION-BRAIN is where I build, break, validate, and archive every framework, method, and system I develop for working with AI. Over the past year I built 60+ frameworks covering epistemic scoring, linguistic precision, sovereignty layers, uncertainty inheritance, and AI output reliability. It is all here — the wins, the failures, the rebuilds, the open questions.
+60+ frameworks. 75+ real FCL validation entries. Every method, rebuild, failure, and open question from a year of building certainty infrastructure for AI systems used in real business decisions.
 
-**But here is the thing you need to know if you just arrived:**
-
-I don't sell frameworks. I use them.
-
-Everything in this repository is the kitchen. What I actually deliver to clients is a single clean report — an **AI Reliability Snapshot** — that tells a founder or CEO exactly which AI outputs their business depends on are safe, which need review, and where a human must be in the loop.
-
-The frameworks run in the background. You get the findings.
+**You don't need to read all of it. Choose your path below.**
 
 ---
 
-## What AION-BRAIN Is
+## CHOOSE YOUR PATH
 
-This is my research workspace. It will keep growing. Every new framework I build goes here — not as a product, but as the methodology I pull from to deliver better work.
-
-Think of it this way:
-
-```
-AION-BRAIN  →  The mind. Always building. Never stops.
-     ↓
-ANCHOR      →  The product. Simple. Deliverable. Gets paid.
-     ↓
-AI Reliability Snapshot  →  What the client receives.
-                             5–7 pages. 48–72 hours.
-```
-
-The sophistication lives here. The simplicity is what I sell.
+| Who you are | Go here |
+|-------------|---------|
+| Researcher or academic | [![README Academic](https://img.shields.io/badge/README-ACADEMIC-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-ACADEMIC.md) |
+| Engineer or technical collaborator | [![README Technical](https://img.shields.io/badge/README-TECHNICAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-TECHNICAL.md) |
+| Founder, CEO, or potential client | [![README Commercial](https://img.shields.io/badge/README-COMMERCIAL-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-COMMERCIAL.md) |
+| Just want the full picture | [![README Lite](https://img.shields.io/badge/README-FULL_OVERVIEW-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-LITE.md) |
 
 ---
 
-## If You Want the Service
+## EXPLORE THE REPO
 
-Three founding organizations are currently receiving a free AI Reliability Snapshot — a structured review of up to 10 real AI outputs with a plain-language executive report returned in 48–72 hours.
+### Core Architecture
 
-**→ Apply here: https://tally.so/r/b5ljko**
+[![Frameworks](https://img.shields.io/badge/FRAMEWORKS-60%2B_Active-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks)
 
-No calls. No account. Just a report.
-
----
-
-## If You Want to Explore the Research
-
-Choose your path:
-
-| Who you are | Where to go |
-|-------------|-------------|
-| Researcher or academic | [README-ACADEMIC.md](README-ACADEMIC.md) — full framework specs, FCL validation data, convergence states, open questions |
-| Engineer or technical collaborator | [README-TECHNICAL.md](README-TECHNICAL.md) — stack architecture, scoring engines, integration specs |
-| Founder, CEO, or potential client | [README-COMMERCIAL.md](README-COMMERCIAL.md) — what the service does, what you receive, how to engage |
+The full stack. FSVE, AION, ASL, CDIP, GENESIS, CPA-001, LAV, DERU, MENSCAPE and more. Every framework has version history, epistemic tags, convergence state, and open questions documented.
 
 ---
 
-## The Honest State in One Paragraph
+### Governance
 
-Two frameworks are FCL-validated to M-STRONG and near-M-VERY-STRONG: FSVE v3.5 (30 real entries, EV 0.813) and LAV v1.5 (45 real entries, 77.5% running mean). Three frameworks are specified but not yet empirically validated: AION v3.0, ASL v2.0, GENESIS v1.0. The proprietary stack — MENSCAPE, DERU, full LAV, ANCHOR — is active and not open-sourced. The first client engagement generates the first ANCHOR FCL entry. That is the next milestone.
+[![Constitutional Laws](https://img.shields.io/badge/CONSTITUTIONAL-LAWS_%26_GOVERNANCE-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+
+The governing rules the entire stack operates under. Epistemic standards, falsification protocols, and the constraint architecture that keeps every framework honest.
+
+[![Legal](https://img.shields.io/badge/LEGAL-IP_%26_LICENSING-0f3460?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/legal)
+
+Intellectual property, licensing terms, and usage rights for all frameworks in this repository.
 
 ---
 
-## Repository Stats
+### Assessment
 
-![Files](https://img.shields.io/badge/Files-2023-purple)
-![Directories](https://img.shields.io/badge/Directories-596-purple)
+[![PSA Assessment](https://img.shields.io/badge/PSA_v3.0-PLATFORM_STABILITY_ASSESSMENT-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/assessments/PSA-v3.0.md)
+
+A live platform stability assessment. Methodology in action on a real subject with full audit trail visible.
+
+---
+
+### Innovation Lab
+
+[![Hyperloop](https://img.shields.io/badge/INNOVATION_LAB-HYPERLOOP-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/innovation-lab/HYPERLOOP)
+
+Experimental frameworks and speculative architecture. Where new ideas get stress-tested before entering the main stack.
+
+[![AV UBI Specification](https://img.shields.io/badge/INNOVATION_LAB-AV_UBI_SPECIFICATION-FFD700?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/innovation-lab/CDIP/AV-UBI-Specification-stack)
+
+Autonomous vehicle and universal basic income specification stack — a demonstration of CDIP applied to a complex multi-domain regulatory problem.
+
+---
+
+## THE SERVICE
+
+If you are deploying AI where the answer actually matters:
+
+[![Apply Now](https://img.shields.io/badge/FOUNDING_SPOTS-3_FREE_SNAPSHOTS_AVAILABLE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
+
+**AI Reliability Snapshot** — up to 10 real AI outputs reviewed, plain-language executive report returned in 48–72 hours. No calls. No account. Just a report.
+
+---
+
+## REPO STATS
+
+![Files](https://img.shields.io/badge/Files-2040-blue)
+![Directories](https://img.shields.io/badge/Directories-604-green)
+![Python](https://img.shields.io/badge/Python-255-yellow)
 ![Frameworks](https://img.shields.io/badge/Frameworks-60%2B-e94560)
 ![FCL Entries](https://img.shields.io/badge/FCL_Entries-75_Real-brightgreen)
 
----
-
-## Contact
-
-📧 aionsystem@outlook.com
-
-**For the service:** Subject `[AI Reliability Snapshot]`
-**For research:** Subject `[Research — {Framework}]`
-**For collaboration:** Subject `[Collaboration Proposal]`
+*Stats updated automatically*
 
 ---
 
-[![FCL Protocol](https://img.shields.io/badge/FCL-PREDICTION_BEFORE_EXECUTION-16213e?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
-[![Negative Results](https://img.shields.io/badge/NEGATIVE_RESULTS-PUBLISHED_EQUALLY-16213e?style=for-the-badge&labelColor=0d1117)](README-ACADEMIC.md)
-[![Service](https://img.shields.io/badge/FOUNDING_SPOTS-3_AVAILABLE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
+## HONEST STATE
+
+Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) and **LAV v1.5** (45 entries, 77.5% running mean). Three frameworks specified, validation in progress: AION v3.0, ASL v2.0, GENESIS v1.0. Proprietary stack — MENSCAPE, DERU, ANCHOR — active and not open-sourced. M-NASCENT on new components. Every convergence state is documented honestly. Nothing is overclaimed.
+
+---
+
+## CONTACT
+
+📧 [aionsystem@outlook.com](mailto:aionsystem@outlook.com)
+
+| Purpose | Subject Line |
+|---------|-------------|
+| Service inquiry | `[AI Reliability Snapshot]` |
+| Research | `[Research — {Framework Name}]` |
+| Collaboration | `[Collaboration Proposal]` |
+
+---
+
+[![FCL Protocol](https://img.shields.io/badge/FCL-PREDICTION_BEFORE_EXECUTION-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-ACADEMIC.md)
+[![Negative Results](https://img.shields.io/badge/NEGATIVE_RESULTS-PUBLISHED_EQUALLY-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-ACADEMIC.md)
+[![Epistemic Standard](https://img.shields.io/badge/EPISTEMIC_STANDARD-ECF_ACTIVE-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks)
 
 ---
 
