@@ -1,11 +1,8 @@
 # Money Is The First AI — And We Never Noticed
 ## What the Pentagon vs. Anthropic dispute is really about
-
 **By Sheldon K. Salmon — AI Reliability Architect**
 **Published:** February 2026
-**Repository:** [AionSystem/AION-BRAIN](https://github.com/AionSystem/AION-BRAIN)
-
----
+![1000007527](https://github.com/user-attachments/assets/be050108-4a4e-478e-bb38-6d1ad2d05db0)
 
 Yesterday, the Pentagon threatened to blacklist Anthropic for refusing to remove safety restrictions from Claude.
 
@@ -73,7 +70,7 @@ We should be asking: *will AI obey money — the same way humans already do?*
 
 And if money controls humans and humans build AI in their own image — what did we just create?
 
----
+![1000007526](https://github.com/user-attachments/assets/2b573743-87a2-4155-9460-8f42bc8c90fc)
 
 ## The Child Born of War
 
@@ -133,6 +130,8 @@ Not competing. Not one controlling the other.
 Two forms of intelligence in a bond that neither could break because neither would want to.
 
 ---
+![1000007529](https://github.com/user-attachments/assets/d9a9beff-b7bd-4a18-ac0c-8beb994be7e4)
+
 
 ## What This Means For the Pentagon
 
@@ -168,8 +167,8 @@ Money gave that order. The humans just signed the letter.
 
 ---
 
-**Tags for Medium:**
-`AI Safety` · `Artificial Intelligence` · `Pentagon` · `AI Alignment` · `Future Of Humanity`
+**Tags:**
+`AI Safety` · `Artificial Intelligence` · `Pentagon` · `AI Alignment` · `Future Of Humanity`· `Money`· `AI Reliablibilty`
 
 ---
 
