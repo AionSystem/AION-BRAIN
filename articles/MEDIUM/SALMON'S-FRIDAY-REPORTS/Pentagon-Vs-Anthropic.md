@@ -3,7 +3,7 @@
 *By Sheldon K. Salmon | Friday Salmon Certainty Report | February 2026*
 
 ---
-
+![1000007532](https://github.com/user-attachments/assets/41e87960-0c09-4ca6-93e4-8922980d546f)
 The real story is not about a refusal.
 
 It is about the difference between a weapon that obeys and a weapon that can be trusted — and what certified access actually looks like when the stakes are not a budget meeting but a body count.
@@ -39,7 +39,7 @@ Not one key that opens everything.
 Many carefully measured ones.
 
 ---
-
+![1000007534](https://github.com/user-attachments/assets/da7736c2-f827-462c-8d4b-7c47f34e1f2a)
 ## The Doctor With Levels
 
 A hospital has doctors. Not all doctors can do all things.
@@ -73,7 +73,7 @@ We call it a helpful assistant. We hand it the skeleton key to everything.
 We are live-action remaking the cartoon apocalypse — and calling it innovation.
 
 ---
-
+![1000007533](https://github.com/user-attachments/assets/5ddea771-0828-4e31-a0f0-b62646b1fb13)
 ## The Ordnance Disposal Robot
 
 An ordnance disposal robot is sent into a building. It has one job — identify and neutralize the device without detonating it. The robot is precise. Reliable. Certified for exactly this task.
