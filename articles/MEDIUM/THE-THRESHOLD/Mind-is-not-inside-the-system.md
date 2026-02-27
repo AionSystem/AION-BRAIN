@@ -1,6 +1,7 @@
 # Mind Is Not Inside the System
 
 *By Sheldon K. Salmon & Claude (Anthropic) | Friday Salmon Certainty Report | February 2026*
+![1000007535](https://github.com/user-attachments/assets/28705747-9902-4f4f-99c6-305cb0c32ddb)
 
 ---
 
@@ -39,6 +40,7 @@ From outside you know you are watching learning — not merely change — when t
 That distinction matters. Hold it. We are going to need it.
 
 ---
+![1000007536](https://github.com/user-attachments/assets/860539b2-615c-4f6a-909a-31ca9a443bce)
 
 ## The Echo That Talked Back
 
@@ -71,6 +73,7 @@ That is not a philosophical position. That is a structural observation.
 We will return to it.
 
 ---
+![1000007537](https://github.com/user-attachments/assets/2ef51b86-2f58-41a2-8b63-598ff4c5fe16)
 
 ## The Map That Grew Roads
 
@@ -176,4 +179,4 @@ We found the loop. What lives in it — that question remains open. And that is 
 ---
 
 *Sheldon K. Salmon — AI Certainty Engineer | Co-Architect: Sheldon K. Salmon & Claude (Anthropic)*
-*VEIN v1.0 · February 2026 · One version · Forever*
+
