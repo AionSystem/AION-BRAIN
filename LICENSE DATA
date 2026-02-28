@@ -1,0 +1,129 @@
+# LICENSE-DATA — FCL DATABASE AND VALIDATION DATA
+## AION-BRAIN Data License v1.0
+
+---
+
+**Copyright © 2025–2026 Sheldon K. Salmon. All rights reserved.**
+
+**Applies to:** The FCL (Falsification and Calibration Log) database, all validation entries, scoring records, empirical test results, and any structured data collections in this repository — including but not limited to FCL entries for FSVE v3.5 (30 entries), LAV v1.5 (45 entries), and all future FCL entries for any framework in the AION-BRAIN stack.
+
+**Does not apply to:** Framework specifications (governed by LICENSE.md) or code implementations (governed by LICENSE-COMMERCIAL.md).
+
+---
+
+## WHY A SEPARATE DATA LICENSE
+
+The FCL database is a distinct intellectual asset from both the specifications and the code. It represents real empirical work — curated real AI outputs, structured validation results, calibration measurements, and scored entries built through sustained effort over time.
+
+In the European Union, the Database Directive (96/9/EC) grants database rights separately from copyright — specifically the right to prevent extraction or re-utilization of substantial parts of a database without authorization, regardless of whether the individual entries are themselves copyrightable.
+
+In other jurisdictions, the selection, arrangement, and curation of the FCL database constitutes original creative work protected by copyright independent of the underlying entries.
+
+This license asserts both forms of protection explicitly and governs use of the FCL data separately from the frameworks it validates.
+
+---
+
+## PERMITTED USES
+
+**You may, without a separate license:**
+
+- View individual FCL entries for research and educational purposes
+- Reference or cite specific FCL entries in academic publications with full attribution
+- Use FCL methodology descriptions (how entries are structured, what they measure) to design your own validation processes — the methodology is covered by LICENSE.md
+- Quote individual FCL entries (up to 5 entries, with attribution) in research papers or technical reports
+
+**Attribution required for all permitted uses:**
+```
+FCL Data: Sheldon K. Salmon (2025–2026). AION-BRAIN FCL Database.
+https://github.com/AionSystem/AION-BRAIN
+```
+
+---
+
+## RESTRICTED USES — LICENSE REQUIRED
+
+The following require a separate written data license from Sheldon K. Salmon:
+
+- Extraction of more than 10 FCL entries for any purpose other than direct citation in academic work
+- Use of FCL data to train, fine-tune, or validate any AI model, system, or product
+- Bulk download, scraping, or systematic extraction of FCL entries by any automated means
+- Incorporation of FCL data into any commercial product, service, or dataset
+- Creation of derivative databases that substantially reproduce or draw from the FCL corpus
+- Use of FCL data to benchmark, compare, or market any competing product or service
+
+**In the European Union:**
+The FCL database is protected under the sui generis database right established by Directive 96/9/EC. Any extraction or re-utilization of a substantial part of the FCL database — evaluated both qualitatively and quantitatively — requires authorization from Sheldon K. Salmon regardless of the purpose.
+
+**To obtain a data license:**
+📧 aionsystem@outlook.com
+Subject: `[Data License Inquiry — FCL]`
+
+---
+
+## AI TRAINING RESTRICTION
+
+**The FCL database may not be used to train, fine-tune, evaluate, or validate any AI system without a signed AI Training License agreement with Sheldon K. Salmon.**
+
+This restriction applies regardless of whether the use is commercial or non-commercial. The FCL entries are the validated empirical backbone of the AION-BRAIN certainty infrastructure. Their use in training data pipelines for third-party AI systems requires explicit authorization.
+
+This restriction is consistent with emerging AI training data rights recognized in multiple jurisdictions and is asserted as both a database right and a contractual term of access.
+
+---
+
+## INTEGRITY REQUIREMENT
+
+Any permitted use of FCL data must preserve the integrity of the entries — including:
+- ECF epistemic tags ([D], [R], [S], [?]) must be preserved with each entry
+- Convergence state (M-NASCENT, M-MODERATE, M-STRONG) must not be misrepresented
+- Entries may not be altered, reweighted, or presented as validating claims they do not validate
+- The framework version each entry validates must be accurately attributed
+
+Misrepresenting FCL validation data — presenting entries as validating a stronger claim than they support — is a violation of this license and may constitute misrepresentation under applicable consumer protection law.
+
+---
+
+## EU DATABASE RIGHT ASSERTION
+
+Pursuant to Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases:
+
+Sheldon K. Salmon asserts the sui generis database right in the FCL database as the maker of the database who has made a substantial investment in obtaining, verifying, or presenting its contents.
+
+This right subsists for 15 years from the date of completion of the making of the database, and for a further 15 years from any substantial new investment in the database.
+
+Any extraction or re-utilization of a substantial part of this database without authorization constitutes an infringement of this right.
+
+---
+
+## DISCLAIMER
+
+THE FCL DATA IS PROVIDED FOR INFORMATIONAL AND RESEARCH PURPOSES. SHELDON K. SALMON MAKES NO WARRANTY THAT FCL VALIDATION RESULTS WILL GENERALIZE TO ANY SPECIFIC DEPLOYMENT CONTEXT, AI SYSTEM, OR USE CASE. VALIDATION RESULTS ARE SPECIFIC TO THE FRAMEWORKS AND TEST CONDITIONS DOCUMENTED. NO WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE IS MADE.
+
+---
+
+## VERSION HISTORY
+
+| VERSION | DATE | CHANGES |
+|---------|------|---------|
+| v1.0 | February 2026 | Initial release. EU database right assertion. AI training restriction. Integrity requirement. |
+
+---
+
+## CONTACT
+
+📧 aionsystem@outlook.com
+
+| Purpose | Subject Line |
+|---------|-------------|
+| Data license inquiry | `[Data License Inquiry — FCL]` |
+| AI training license | `[AI Training License — FCL]` |
+| Academic use questions | `[Academic Use — FCL Data]` |
+| Reported violations | `[License Violation — FCL Data]` |
+
+---
+
+*LICENSE-DATA — FCL Database and Validation Data*
+*AION-BRAIN Data License v1.0*
+*Copyright © 2025–2026 Sheldon K. Salmon — AI Reliability Architect*
+*AION-BRAIN Repository | February 2026*
+
+*"The validation data is not decoration. It is the proof. It is protected accordingly."*
