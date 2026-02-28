@@ -1,5 +1,4 @@
 # AION-BRAIN
-### The Mind Behind the Work
 
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
 [![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-0f3460?style=for-the-badge&labelColor=16213e)](https://github.com/AionSystem/AION-BRAIN)
@@ -33,6 +32,14 @@ This is the external mind of an AI Reliability Architect.
 ---
 
 ## EXPLORE THE REPO
+
+### Published Work
+
+[![Articles](https://img.shields.io/badge/ARTICLES-FRIDAY_SALMON_CERTAINTY_REPORT-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/articles)
+
+Published work. The frameworks applied to real arguments in plain language. Start here if you found this repo through Medium or Hacker News.
+
+---
 
 ### Core Architecture
 
