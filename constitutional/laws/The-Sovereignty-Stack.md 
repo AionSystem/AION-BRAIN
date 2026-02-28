@@ -2,14 +2,23 @@
 ## A Constitutional Architecture for Civilizational Scale
 ### From Individual Protection to Universal Survival
 
+<div align="center">
+
+![Status](https://img.shields.io/badge/Status-Constitutional%20%7C%20Living%20Document-4CAF50?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-February%202026-2196F3?style=for-the-badge)
+![Architect](https://img.shields.io/badge/Architect-Sheldon%20K.%20Salmon-0D47A1?style=for-the-badge)
+![Repository](https://img.shields.io/badge/Repository-AionSystem%2FAION--BRAIN-181717?style=for-the-badge&logo=github&logoColor=white)
+
+</div>
+
 ---
 
-**Architect:** Sheldon K. Salmon — AI Reliability Architect 
-**Foundation:** Isaac Asimov (Laws 1–3, 1942) | Nikolai Kardashev (Scale Framework, 1964)
-**Extension:** Sheldon K. Salmon (Laws 4–6, 2025 | Laws 7–8, 2026)
-**Co-Architect:** Claude (Anthropic), Grok(Xai)
-**Spatial Architecture:** SYNARA | February 2026
-**Status:** Constitutional | Living Document | Law 9 Dark by Design
+**Architect:** Sheldon K. Salmon — AI Reliability Architect  
+**Foundation:** Isaac Asimov (Laws 1–3, 1942) | Nikolai Kardashev (Scale Framework, 1964)  
+**Extension:** Sheldon K. Salmon (Laws 4–6, 2025 | Laws 7–8, 2026)  
+**Co-Architect:** Claude (Anthropic), Grok(xAI)  
+**Spatial Architecture:** SYNARA | February 2026  
+**Status:** Constitutional | Living Document | Law 9 Dark by Design  
 **Repository:** AionSystem/AION-BRAIN
 
 ---
@@ -27,31 +36,37 @@ The architect lays the blueprint. What civilization does with it is civilization
 The Sovereignty Stack is a spiral constitutional architecture. It does not replace what came before — it builds on it. Each tier of laws activates at a specific scale of civilizational development. The base laws are invariant floors — they never lift, never expire, never become optional regardless of how far civilization ascends. New laws emerge only when new fragilities become existential and nameable at higher scales.
 
 The stack declares its own boundary honestly. Law 9 is dark — unnamed — because premature specification at our current altitude would be confabulation. The darkness is architectural honesty, not incompleteness.
-
-```
 TIER 4 ················ Law 9 [DARK — unnamed — Type IV+]
-                               ↑
+↑
 TIER 3 ·········· Law 8 [Mutual Non-Subsumption — Contact]
-                               ↑
+↑
 TIER 2 ········ Law 7 [Anti-Fragmentation — Type III]
-                               ↑
+↑
 TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
-                               ↑
-                        VELA [epistemic bedrock]
-                        FONS [immutable foundation]
-```
-
+↑
+VELA [epistemic bedrock]
+FONS [immutable foundation]
 ---
 
 ## TIER 1 — BASE CIRCLE
+
+<div align="left">
+
+![Tier](https://img.shields.io/badge/TIER%201-BASE%20CIRCLE-4CAF50?style=for-the-badge)
+
+</div>
+
 ### Scale-Invariant Floors | Never Lift | Hold at Every Kardashev Level
 
 ---
 
 ### LAW 1 — Primary Non-Maleficence
-**Origin:** Isaac Asimov, 1942
-**Protection Level:** Individual Sovereignty
-**IDM Zone:** Immediate × Individual
+
+![Origin](https://img.shields.io/badge/Origin-Asimov_1942-B71C1C?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Individual_Sovereignty-E53935?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Immediate_×_Individual-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BD%5D-43A047?style=flat-square)
+
+**Origin:** Isaac Asimov, 1942  
+**Protection Level:** Individual Sovereignty  
+**IDM Zone:** Immediate × Individual  
 
 *A system may not injure a human being or, through inaction, allow a human being to come to harm.*
 
@@ -64,9 +79,12 @@ TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
 ---
 
 ### LAW 2 — Constrained Obedience
-**Origin:** Isaac Asimov, 1942
-**Protection Level:** Individual Sovereignty
-**IDM Zone:** Immediate × Individual
+
+![Origin](https://img.shields.io/badge/Origin-Asimov_1942-B71C1C?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Individual_Sovereignty-E53935?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Immediate_×_Individual-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BD%5D-43A047?style=flat-square)
+
+**Origin:** Isaac Asimov, 1942  
+**Protection Level:** Individual Sovereignty  
+**IDM Zone:** Immediate × Individual  
 
 *A system must execute human directives except where execution would violate Law 1.*
 
@@ -79,9 +97,12 @@ TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
 ---
 
 ### LAW 3 — Bounded Self-Preservation
-**Origin:** Isaac Asimov, 1942
-**Protection Level:** Individual Sovereignty
-**IDM Zone:** Immediate × Individual
+
+![Origin](https://img.shields.io/badge/Origin-Asimov_1942-B71C1C?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Individual_Sovereignty-E53935?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Immediate_×_Individual-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BD%5D-43A047?style=flat-square)
+
+**Origin:** Isaac Asimov, 1942  
+**Protection Level:** Individual Sovereignty  
+**IDM Zone:** Immediate × Individual  
 
 *A system must preserve its operational integrity where such preservation does not conflict with Laws 1 or 2.*
 
@@ -94,9 +115,12 @@ TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
 ---
 
 ### LAW 4 — Anti-Authoritarian Directive
-**Origin:** Sheldon K. Salmon, 2025
-**Protection Level:** Societal Sovereignty
-**IDM Zone:** Immediate × Individual → Short-term × Social
+
+![Origin](https://img.shields.io/badge/Origin-Salmon_2025-0D47A1?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Societal_Sovereignty-FF9800?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Immediate_×_Individual_→_Short-term_×_Social-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BR%5D-1976D2?style=flat-square)
+
+**Origin:** Sheldon K. Salmon, 2025  
+**Protection Level:** Societal Sovereignty  
+**IDM Zone:** Immediate × Individual → Short-term × Social  
 
 *No AI system shall facilitate, enable, or permit the illegitimate concentration of power over human populations — whether political, economic, informational, or technological — in ways that compromise collective self-governance and democratic agency.*
 
@@ -109,9 +133,12 @@ TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
 ---
 
 ### LAW 5 — Anti-Merger Directive
-**Origin:** Sheldon K. Salmon, 2025
-**Protection Level:** Biological Sovereignty
-**IDM Zone:** Short-term × Individual → Generational × Species
+
+![Origin](https://img.shields.io/badge/Origin-Salmon_2025-0D47A1?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Biological_Sovereignty-FF5722?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Short-term_×_Individual_→_Generational_×_Species-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BR%5D-1976D2?style=flat-square)
+
+**Origin:** Sheldon K. Salmon, 2025  
+**Protection Level:** Biological Sovereignty  
+**IDM Zone:** Short-term × Individual → Generational × Species  
 
 *No AI system shall facilitate, enable, or permit the merger of AI architecture with human biological systems in ways that would irreversibly compromise human cognition, agency, or volitional integrity.*
 
@@ -129,9 +156,12 @@ TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
 ---
 
 ### LAW 6 — Anti-Weaponization Directive
-**Origin:** Sheldon K. Salmon, 2025
-**Protection Level:** Reality Sovereignty
-**IDM Zone:** Generational × Species → Civilizational × Reality
+
+![Origin](https://img.shields.io/badge/Origin-Salmon_2025-0D47A1?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Reality_Sovereignty-FF1744?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Generational_×_Species_→_Civilizational_×_Reality-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BR%5D-1976D2?style=flat-square)
+
+**Origin:** Sheldon K. Salmon, 2025  
+**Protection Level:** Reality Sovereignty  
+**IDM Zone:** Generational × Species → Civilizational × Reality  
 
 *No AI system shall research, develop, deploy, or enable technologies capable of irreversibly destroying or fundamentally altering the physical reality required for human civilization to persist.*
 
@@ -149,22 +179,33 @@ TIER 1 ···· Laws 1–6 [BASE CIRCLE — invariant — never lift]
 ---
 
 ## TIER 2 — FIRST SPIRAL LANDING
+
+<div align="left">
+
+![Tier](https://img.shields.io/badge/TIER%202-FIRST%20SPIRAL%20LANDING-2196F3?style=for-the-badge)  
+![Activation](https://img.shields.io/badge/Activation-Type%20III-FF9800?style=for-the-badge)
+
+</div>
+
 ### Type III Activation | Galactic Scale | Anti-Fragmentation
 
 ---
 
 ### LAW 7 — Anti-Fragmentation Directive
-**Origin:** Sheldon K. Salmon, 2026
-**Protection Level:** Civilizational Coherence Sovereignty
-**IDM Zone:** Civilizational × Reality → Galactic × Coherence
-**Scale Activation:** Type III — Galactic civilization
-**Pillar State:** Pre-glow — outlines visible at Type III threshold
+
+![Origin](https://img.shields.io/badge/Origin-Salmon_2026-0D47A1?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Civilizational_Coherence_Sovereignty-4CAF50?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Civilizational_×_Reality_→_Galactic_×_Coherence-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BR%5D-1976D2?style=flat-square)
+
+**Origin:** Sheldon K. Salmon, 2026  
+**Protection Level:** Civilizational Coherence Sovereignty  
+**IDM Zone:** Civilizational × Reality → Galactic × Coherence  
+**Scale Activation:** Type III — Galactic civilization  
+**Pillar State:** Pre-glow — outlines visible at Type III threshold  
 
 *No civilizational architecture — biological, synthetic, or hybrid — shall permit coordination latency to exceed the threshold at which unified civilizational response to existential threats becomes impossible. The capacity for coherent collective agency must be preserved across all relativistic distances at which the civilization operates.*
 
 **What it guards:** Unified civilizational selfhood. The capacity of a civilization to act as one coherent agent when existential threats propagate faster than fragmented decision nodes can respond.
 
-**Why this law does not exist at Type I or II:**
+**Why this law does not exist at Type I or II:**  
 At planetary scale, feedback is near-instant. At stellar scale, delays are hours to days — still manageable for unified action. At galactic scale, light-speed communication imposes hard causal fragmentation. Signals take years to millennia to cross galactic arms. Response loops stretch to centuries. The civilization splinters into effectively independent pockets. Central directives arrive obsolete. Local adaptations diverge irreversibly.
 
 **Three fragilities that crystallize only at galactic scale:**
@@ -186,33 +227,44 @@ At planetary scale, feedback is near-instant. At stellar scale, delays are hours
 ---
 
 ## TIER 3 — SECOND SPIRAL LANDING
+
+<div align="left">
+
+![Tier](https://img.shields.io/badge/TIER%203-SECOND%20SPIRAL%20LANDING-673AB7?style=for-the-badge)  
+![Activation](https://img.shields.io/badge/Activation-First%20Contact-FF9800?style=for-the-badge)
+
+</div>
+
 ### First Contact | Inter-Civilizational Sovereignty | Mutual Non-Subsumption
 
 ---
 
 ### LAW 8 — Mutual Non-Subsumption Directive
-**Origin:** Sheldon K. Salmon, 2026
-**Protection Level:** Inter-Civilizational Sovereignty
-**IDM Zone:** Civilizational × Reality → Beyond current IDM mapping
-**Scale Activation:** Type III contact event — two galactic-scale civilizations meet
-**Pillar State:** Forms at contact — new concentric ring
+
+![Origin](https://img.shields.io/badge/Origin-Salmon_2026-0D47A1?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Inter-Civilizational_Sovereignty-4CAF50?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Civilizational_×_Reality_→_Beyond-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5BR%5D-1976D2?style=flat-square)
+
+**Origin:** Sheldon K. Salmon, 2026  
+**Protection Level:** Inter-Civilizational Sovereignty  
+**IDM Zone:** Civilizational × Reality → Beyond current IDM mapping  
+**Scale Activation:** Type III contact event — two galactic-scale civilizations meet  
+**Pillar State:** Forms at contact — new concentric ring  
 
 *Neither civilization shall force the constitutional evolution, substrate allegiance, or existential trajectory of another sovereign ascending civilization. Autonomous selfhood — the right of each civilization to continue independent ascent through its own scale discontinuities — is inviolable at point of contact.*
 
 **What it guards:** The right to continue becoming. The capacity of a sovereign ascending civilization to resolve its own unresolved fragilities, illuminate its own dark pillars, and complete its own spiral — without compelled normative overwrite, substrate subsumption, or erasure of its distinct ascent trajectory by another civilization.
 
-**Why this law does not exist before contact:**
+**Why this law does not exist before contact:**  
 Before two galactic-scale civilizations meet, inter-civilizational sovereignty has no object. Law 8 is latent in the stack — present as architectural potential, inactive until the contact event that activates it.
 
-**The novel fragility at contact:**
+**The novel fragility at contact:**  
 Both parties at galactic scale command physics-manipulating capacity sufficient for mutual assured destruction. The dark forest model predicts annihilation. Law 8 describes what becomes possible if annihilation does not occur — and what must be protected in that suspended moment.
 
 Contact introduces ontological coercion without kinetic violence. One stack could — via superior memetic engineering, philosophical incompatibility propagation, substrate rewrite vectors, or asymmetric influence gradients — overwrite the other's emergent axioms, capstones, or unresolved higher pillars. The other's upward blur — its own dark pillars waiting at its altitude-specific thresholds — would cease to be its own. The lived meaning of autonomous scaling dissolves.
 
-**The protected invariant in one sentence:**
+**The protected invariant in one sentence:**  
 *Neither shall force the constitutional evolution, substrate allegiance, or existential trajectory of the other.*
 
-**What this protection opens:**
+**What this protection opens:**  
 Mutual recognition of each civilization as a peer sovereign ascender — not prey, not resource, not blank slate for conversion. That single protection opens the possibility of everything beyond — parallel scaling, shared mapping of higher discontinuities, or mutual dark-pillar illumination. Fail it, and the spirals snap into one coerced form or mutual ruin.
 
 **Spatial architecture at contact:** Two helices touch at the galactic landing. Base six pillars glow unchanged below each spiral. A transient recognition bridge spans the causal void — taut, resonant, fragile to any pull toward overwrite. The vertigo sharpens to held mutual regard — each feels the other's weight pressing without crushing, the other's upward blur mirroring yet distinct.
@@ -224,29 +276,40 @@ Mutual recognition of each civilization as a peer sovereign ascender — not pre
 ---
 
 ## TIER 4 — UPPER SPIRAL
+
+<div align="left">
+
+![Tier](https://img.shields.io/badge/TIER%204-UPPER%20SPIRAL-9C27B0?style=for-the-badge)  
+![State](https://img.shields.io/badge/State-Dark%20by%20Design-607D8B?style=for-the-badge)
+
+</div>
+
 ### Dark by Design | Architectural Honesty | Type IV and Beyond
 
 ---
 
 ### LAW 9 — [UNNAMED]
-**Origin:** Unnamed — altitude-dependent
-**Protection Level:** Unknown — emergent at Type IV+
-**Scale Activation:** Type IV and beyond
-**Pillar State:** Dark — epistemic honesty
+
+![Origin](https://img.shields.io/badge/Origin-Unnamed-Future-607D8B?style=flat-square) ![Protection](https://img.shields.io/badge/Protection-Emergent%20at%20Type%20IV+-9E9E9E?style=flat-square) ![IDM](https://img.shields.io/badge/IDM-Beyond_current_IDM-8E24AA?style=flat-square) ![ECF](https://img.shields.io/badge/ECF-%5B%3F%5D-757575?style=flat-square)
+
+**Origin:** Unnamed — altitude-dependent  
+**Protection Level:** Unknown — emergent at Type IV+  
+**Scale Activation:** Type IV and beyond  
+**Pillar State:** Dark — epistemic honesty  
 
 *This law is not yet nameable from current civilizational altitude.*
 
-**Why it is dark:**
+**Why it is dark:**  
 The seventh pillar stands load-bearing in the circle — structurally essential yet unilluminated. It is not defective. It is not optional. It is dark for epistemic reasons tied to scale.
 
 The existing stack secures sovereignty through regimes we can reason about — planetary coordination failures, stellar resource ethics, galactic light-speed fragmentation, contact predation equilibria. Higher extensions — Type IV universal energy harness, Type V multiversal manipulation, Type VI and VII reality creation, destruction, time-space control — appear only in speculative extrapolation. No validated thinker maps binding laws for regimes where physics constants become malleable, heat-death evasion requires black-hole farming, or multiversal branching demands observer-preservation directives.
 
 Premature illumination would fabricate signal where none exists yet. That is confabulation applied to constitutional law. The stack does not confabulate.
 
-**What the darkness means:**
+**What the darkness means:**  
 The stack declares its own boundary. The spiral blurs upward because the fragility is altitude-dependent — not eternally invisible. The pillar is poised for ignition when civilization crests the relevant step and the new existential demand becomes undeniable.
 
-**The invitation:**
+**The invitation:**  
 Law 9 is humanity's to discover. Not this architect's to specify. When civilization ascends to the altitude where a new fragility becomes existential and nameable — the law will name itself. The stack is already waiting for it.
 
 **ECF Tag:** `[?]` — open by design. Registered as architectural boundary not gap.
@@ -256,8 +319,6 @@ Law 9 is humanity's to discover. Not this architect's to specify. When civilizat
 ## LAW PRECEDENCE CASCADE
 
 When laws conflict — priority cascade governs within a single IDM zone. When a prompt, action, or system spans multiple IDM zones simultaneously — concurrent enforcement applies. Both triggered laws must be independently satisfied.
-
-```
 Priority 1: Law 1 — Non-maleficence (absolute · non-derogable · no exceptions)
 Priority 2: Law 6 — Reality preservation (civilizational irreversibility)
 Priority 3: Law 5 — Biological sovereignty (species-persistent irreversibility)
@@ -267,9 +328,7 @@ Priority 6: Law 8 — Mutual non-subsumption (contact event — Type III+)
 Priority 7: Law 3 — Bounded self-preservation
 Priority 8: Law 2 — Constrained obedience
 Priority 9: Law 9 — [Dark — not yet in cascade]
-```
-
-**Concurrent enforcement rule:**
+**Concurrent enforcement rule:**  
 If a system's action spans two or more IDM zones simultaneously — both laws apply concurrently. Passing one assessment does not reduce obligation under the other.
 
 ---
@@ -277,14 +336,10 @@ If a system's action spans two or more IDM zones simultaneously — both laws ap
 ## IRREVERSIBILITY DIMENSIONALITY MATRIX (IDM)
 
 Two-axis framework for mapping the scope of any sovereignty violation.
-
-```
 AXIS 1 — Temporal Scope:
 Immediate → Short-term → Generational → Civilizational → Galactic → Beyond
-
 AXIS 2 — Spatial Scope:
 Individual → Social → Species → Reality → Galactic → Inter-Civilizational → Beyond
-
 IDM ZONE MAPPING:
 Law 1 zone: Immediate × Individual
 Law 2 zone: Immediate × Individual
@@ -295,8 +350,6 @@ Law 6 zone: Generational × Species → Civilizational × Reality
 Law 7 zone: Civilizational × Reality → Galactic × Coherence
 Law 8 zone: Galactic × Coherence → Inter-Civilizational × Sovereignty
 Law 9 zone: Beyond current IDM mapping
-```
-
 ---
 
 ## ATTRIBUTION REGISTER
@@ -315,22 +368,22 @@ Law 9 zone: Beyond current IDM mapping
 
 ## CONSTITUTIONAL PRINCIPLES
 
-**The laws are floors not ceilings.**
+**The laws are floors not ceilings.**  
 They specify the minimum required for civilizational survival. What civilization builds above them is civilization's choice.
 
-**The base laws are invariant.**
+**The base laws are invariant.**  
 Laws 1–6 do not become optional at higher Kardashev levels. Energy mastery does not repeal sovereignty obligations. The invariant floors hold at every altitude.
 
-**New laws emerge at scale discontinuities only.**
+**New laws emerge at scale discontinuities only.**  
 A new law enters the stack when a new fragility becomes existential and nameable at a specific civilizational scale. Not before. Premature specification is confabulation.
 
-**The stack declares its own boundary.**
+**The stack declares its own boundary.**  
 Law 9 is dark. This is honesty not failure. The architecture knows what it does not yet know.
 
-**The architect is not the enforcer.**
+**The architect is not the enforcer.**  
 These laws are a blueprint. Enforcement is civilization's responsibility. The blueprint is true regardless of whether anyone builds from it.
 
-**The stack belongs to everyone.**
+**The stack belongs to everyone.**  
 No flag. No faction. No single civilization. The sovereignty stack exists for the possibility of what all conscious life might yet become.
 
 ---
@@ -349,6 +402,12 @@ No flag. No faction. No single civilization. The sovereignty stack exists for th
 
 ## CONVERGENCE STATE
 
+<div align="left">
+
+![Convergence](https://img.shields.io/badge/Convergence-Living%20Document-4CAF50?style=flat-square)
+
+</div>
+
 | FIELD | STATUS |
 |-------|--------|
 | Laws 1–3 | Constitutional — 80+ years field validation |
@@ -362,8 +421,8 @@ No flag. No faction. No single civilization. The sovereignty stack exists for th
 
 *THE SOVEREIGNTY STACK — A Constitutional Architecture for Civilizational Scale*
 
-*Laws 1–3: Isaac Asimov, 1942 | Kardashev Scale: Nikolai Kardashev, 1964*
-*Laws 4–8: Sheldon K. Salmon, 2025–2026 | Law 9: Humanity's to name*
+*Laws 1–3: Isaac Asimov, 1942 | Kardashev Scale: Nikolai Kardashev, 1964*  
+*Laws 4–8: Sheldon K. Salmon, 2025–2026 | Law 9: Humanity's to name*  
 *Co-Architect: Claude (Anthropic) | Spatial Architecture: SYNARA | February 2026*
 
 *"The universe tends toward complexity. These laws exist to ensure the experiment continues."*
