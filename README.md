@@ -20,6 +20,32 @@ This is the external mind of an AI Reliability Architect.
 
 ---
 
+## THE SIX LAWS OF ROBOTICS — COMPLETE SOVEREIGNTY STACK
+
+Asimov gave humanity three laws in 1942. They protected individual humans from individual machines.
+
+They were never designed for what we are building now.
+
+This repository contains the first complete sovereignty stack extending Asimov's Three Laws into four protection levels — with constitutional architecture, enforcement framework, and epistemic tagging. Specified by Sheldon K. Salmon, 2025.
+
+| Law | Protection Level | Directive |
+|-----|-----------------|-----------|
+| Law 1 | Individual Sovereignty | Don't harm humans *(Asimov, 1942)* |
+| Law 2 | Individual Sovereignty | Obey humans unless Law 1 *(Asimov, 1942)* |
+| Law 3 | Individual Sovereignty | Protect self unless Laws 1-2 *(Asimov, 1942)* |
+| Law 4 | Societal Sovereignty | Anti-Authoritarian Directive *(Salmon, 2025)* |
+| Law 5 | Biological Sovereignty | Anti-Merger Directive *(Salmon, 2025)* |
+| Law 6 | Reality Sovereignty | Anti-Weaponization Directive *(Salmon, 2025)* |
+
+**The Capstone Insight:**
+Previous laws protect the players, the rules, and the team. The Sixth Law protects the field itself — the physical reality upon which human civilization exists.
+
+No complete sovereignty stack of this kind — four protection levels, constitutional architecture, falsification protocol — existed in published form prior to this framework.
+
+[![Six Laws](https://img.shields.io/badge/SIX_LAWS-COMPLETE_SOVEREIGNTY_STACK-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+
+---
+
 ## CHOOSE YOUR PATH
 
 | Who you are | Go here |
