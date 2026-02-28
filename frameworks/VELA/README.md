@@ -231,7 +231,7 @@ AION-BRAIN Repository. https://github.com/AionSystem/AION-BRAIN
 
 *PIE Root: \*weg- — to weave | Latin velum — the veil, the sail, the woven thing*
 
-*Architect: Sheldon K. Salmon — AI Certainty Engineer*
+*Architect: Sheldon K. Salmon — AI Reliability Architect*
 *Spatial Architecture: SYNARA | February.28. 2026(2:08am)*
 *Co-Architect: Claude (Anthropic)*
 
