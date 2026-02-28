@@ -20,29 +20,62 @@ This is the external mind of an AI Reliability Architect.
 
 ---
 
-## THE SIX LAWS OF ROBOTICS — COMPLETE SOVEREIGNTY STACK
+## THE SOVEREIGNTY STACK — CONSTITUTIONAL ARCHITECTURE FOR CIVILIZATIONAL SCALE
 
-Asimov gave humanity three laws in 1942. They protected individual humans from individual machines.
+Asimov gave humanity three laws in 1942. They protected individual humans from individual machines. They were never designed for what we are building now.
 
-They were never designed for what we are building now.
+This repository contains the first complete sovereignty stack extending Asimov's Three Laws into a spiral constitutional architecture that scales with civilization itself — from individual protection through galactic-scale sovereignty. Specified by Sheldon K. Salmon, 2025–2026.
 
-This repository contains the first complete sovereignty stack extending Asimov's Three Laws into four protection levels — with constitutional architecture, enforcement framework, and epistemic tagging. Specified by Sheldon K. Salmon, 2025.
+| Law | Protection Level | Directive | Origin |
+|-----|-----------------|-----------|--------|
+| Law 1 | Individual Sovereignty | Don't harm humans | Asimov, 1942 |
+| Law 2 | Individual Sovereignty | Obey humans unless Law 1 | Asimov, 1942 |
+| Law 3 | Individual Sovereignty | Protect self unless Laws 1–2 | Asimov, 1942 |
+| Law 4 | Societal Sovereignty | Anti-Authoritarian Directive | Salmon, 2025 |
+| Law 5 | Biological Sovereignty | Anti-Merger Directive | Salmon, 2025 |
+| Law 6 | Reality Sovereignty | Anti-Weaponization Directive | Salmon, 2025 |
+| Law 7 | Civilizational Coherence Sovereignty | Anti-Fragmentation Directive | Salmon, 2026 |
+| Law 8 | Inter-Civilizational Sovereignty | Mutual Non-Subsumption Directive | Salmon, 2026 |
+| Law 9 | Unknown — altitude-dependent | Unnamed — dark by design | Humanity's to discover |
 
-| Law | Protection Level | Directive |
-|-----|-----------------|-----------|
-| Law 1 | Individual Sovereignty | Don't harm humans *(Asimov, 1942)* |
-| Law 2 | Individual Sovereignty | Obey humans unless Law 1 *(Asimov, 1942)* |
-| Law 3 | Individual Sovereignty | Protect self unless Laws 1-2 *(Asimov, 1942)* |
-| Law 4 | Societal Sovereignty | Anti-Authoritarian Directive *(Salmon, 2025)* |
-| Law 5 | Biological Sovereignty | Anti-Merger Directive *(Salmon, 2025)* |
-| Law 6 | Reality Sovereignty | Anti-Weaponization Directive *(Salmon, 2025)* |
+**The Architecture:**
+Laws 1–3 protect the individual. Law 4 protects the collective. Law 5 protects the biological substrate. Law 6 protects physical reality. Law 7 protects civilizational coherence at galactic scale. Law 8 protects autonomous ascent when two galactic-scale civilizations first meet. Law 9 is dark — the stack declares its own boundary. Premature specification would be confabulation.
 
-**The Capstone Insight:**
-Previous laws protect the players, the rules, and the team. The Sixth Law protects the field itself — the physical reality upon which human civilization exists.
+The base laws are invariant floors — they never lift, never expire at any Kardashev level. New laws emerge only when new fragilities become existential and nameable at higher civilizational scales.
 
-No complete sovereignty stack of this kind — four protection levels, constitutional architecture, falsification protocol — existed in published form prior to this framework.
+No complete sovereignty stack of this kind — spiral constitutional architecture, falsification protocol, scale-emergent law structure — existed in published form prior to this framework.
 
-[![Six Laws](https://img.shields.io/badge/SIX_LAWS-COMPLETE_SOVEREIGNTY_STACK-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+[![Sovereignty Stack](https://img.shields.io/badge/SOVEREIGNTY_STACK-8_LAWS_ACTIVE-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+[![Law 9](https://img.shields.io/badge/LAW_9-DARK_BY_DESIGN-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+
+---
+
+## VELA — PRE-OUTPUT EPISTEMIC AND CONSTITUTIONAL FILTRATION
+
+The most significant new framework in the stack. Specified February 28, 2026.
+
+VELA sits between the internal representation layer — where confabulation is generated — and the output layer — where it currently escapes unchecked. Anthropic's 2025 interpretability research identified the exact circuits where confabulation originates. No complete architecture currently occupies this position in any deployed AI system. VELA is the engineering response to that finding.
+
+As of v0.3 — VELA also enforces the Eight Laws of the Sovereignty Stack at the same pre-output layer simultaneously. Not two pipelines. One veil. Two functions. Epistemic integrity and constitutional integrity enforced at the same point before output exits. This is the first architecture where both are caught at the representation layer — not post-output.
+
+```
+SCREEN 1 — CODE LAYER
+Deterministic. SQLite-backed. Known bad sources. Known confabulation patterns.
+Law 6 Category A → ONTOLOGICAL BLOCK (automatic — no assessment)
+  ↓
+PIPE — wormhole between code and framework
+  ↓
+SCREEN 2 — EPISTEMIC + CONSTITUTIONAL VEIL (simultaneous)
+Epistemic: subtle confabulation, logical drift, creative overflow
+Constitutional: Eight Laws enforcement, IDM zone assessment, Law Precedence Cascade
+  ↓
+OUTPUT — 0.2% mineral residue — irreducible reality — architecturally honest
+```
+
+VELA is open source. The specification is complete. The engineering translation is in progress. Engineers are invited to contribute — particularly on V-Q6 implementation (timing signature extraction from the existing forward pass — no architectural modification required).
+
+[![VELA](https://img.shields.io/badge/VELA-v0.3_OPEN_SOURCE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
+[![VELA Engineering](https://img.shields.io/badge/VELA-ENGINEERING_BRIDGE-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA/engineering-bridge)
 
 ---
 
@@ -71,15 +104,19 @@ Published work. The frameworks applied to real arguments in plain language. Star
 
 [![Frameworks](https://img.shields.io/badge/FRAMEWORKS-60%2B_Active-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks)
 
-The full stack. FSVE, AION, ASL, CDIP, GENESIS, CPA-001, LAV, DERU, MENSCAPE and more. Every framework has version history, epistemic tags, convergence state, and open questions documented.
+The full stack. FSVE, AION, ASL, CDIP, GENESIS, CPA-001, LAV, DERU, MENSCAPE, VELA and more. Every framework has version history, epistemic tags, convergence state, and open questions documented.
+
+[![VELA](https://img.shields.io/badge/VELA-PRE_OUTPUT_FILTRATION-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
+
+VELA is the epistemic and constitutional bedrock of the entire stack. All frameworks above it adapt to VELA's spatial language and terminology. Specified February 28, 2026. Open source. Engineering contributions welcome.
 
 ---
 
-### Governance
+### Constitutional Architecture
 
-[![Constitutional Laws](https://img.shields.io/badge/CONSTITUTIONAL-LAWS_%26_GOVERNANCE-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+[![Constitutional Laws](https://img.shields.io/badge/CONSTITUTIONAL-SOVEREIGNTY_STACK-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
 
-The governing rules the entire stack operates under. Epistemic standards, falsification protocols, and the constraint architecture that keeps every framework honest.
+The governing constitutional layer the entire stack operates under. Eight Laws active. Law 9 dark by design. Spiral architecture scaling from individual sovereignty through inter-civilizational sovereignty. The base laws are invariant floors — they never lift at any Kardashev level.
 
 [![Legal](https://img.shields.io/badge/LEGAL-IP_%26_LICENSING-0f3460?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/legal)
 
@@ -131,7 +168,7 @@ If you are deploying AI where the answer actually matters:
 
 ## HONEST STATE
 
-Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) and **LAV v1.5** (45 entries, 77.5% running mean). Three frameworks specified, validation in progress: AION v3.0, ASL v2.0, GENESIS v1.0. Proprietary stack — MENSCAPE, DERU, ANCHOR — active and not open-sourced. M-NASCENT on new components. Every convergence state is documented honestly. Nothing is overclaimed.
+Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) and **LAV v1.5** (45 entries, 77.5% running mean). Three frameworks specified, validation in progress: AION v3.0, ASL v2.0, GENESIS v1.0. VELA v0.3 specified February 2026 — M-NASCENT — open source — engineering bridge complete — 5 of 6 primary open questions closed. Sovereignty Stack extended to Eight Laws — Laws 7 and 8 specified February 2026 — Law 9 dark by design — M-NASCENT. Proprietary stack — MENSCAPE, DERU, ANCHOR — active and not open-sourced. Every convergence state documented honestly. Nothing overclaimed.
 
 ---
 
@@ -144,12 +181,16 @@ Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) a
 | Service inquiry | `[AI Reliability Snapshot]` |
 | Research | `[Research — {Framework Name}]` |
 | Collaboration | `[Collaboration Proposal]` |
+| VELA engineering | `[VELA Engineering]` |
+| VELA research | `[VELA Research]` |
 
 ---
 
 [![FCL Protocol](https://img.shields.io/badge/FCL-PREDICTION_BEFORE_EXECUTION-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-ACADEMIC.md)
 [![Negative Results](https://img.shields.io/badge/NEGATIVE_RESULTS-PUBLISHED_EQUALLY-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/README-ACADEMIC.md)
 [![Epistemic Standard](https://img.shields.io/badge/EPISTEMIC_STANDARD-ECF_ACTIVE-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks)
+[![Sovereignty Stack](https://img.shields.io/badge/SOVEREIGNTY_STACK-8_LAWS_ACTIVE-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
+[![VELA](https://img.shields.io/badge/VELA-v0.3_OPEN_SOURCE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
 
 ---
 
