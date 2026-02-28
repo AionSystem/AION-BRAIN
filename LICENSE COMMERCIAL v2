@@ -1,0 +1,243 @@
+# LICENSE-COMMERCIAL — CODE IMPLEMENTATIONS
+## AION-BRAIN Commercial Source License v1.1
+
+---
+
+**Copyright © 2025–2026 Sheldon K. Salmon. All rights reserved.**
+
+**Applies to:** All code implementations, software, scripts, executable files, and technical builds in this repository — including but not limited to Screen 1 SQLite implementation, FONS Archive code, provenance filament implementations, sensor code, and any working software derived from the AION-BRAIN framework specifications.
+
+**Does not apply to:** Framework specifications, constitutional documents, engineering bridge documents, and written methodology — which are governed by LICENSE.md (CC BY 4.0).
+
+---
+
+## PLAIN LANGUAGE SUMMARY
+
+**Free for:**
+- Individual use — personal research, learning, experimentation
+- Academic and non-commercial research
+- Open source projects with no commercial revenue
+- Internal evaluation and proof-of-concept testing (non-production)
+
+**Requires a commercial license for:**
+- Any deployment in a product or service that generates revenue
+- Any SaaS, API, or platform that uses this code to serve paying customers
+- Any enterprise internal deployment where the code contributes to commercial operations
+- Any resale, sublicensing, or redistribution of implementations for commercial gain
+
+**How to obtain a commercial license:**
+Contact aionsystem@outlook.com with subject line `[Commercial License Inquiry]`. Licenses are negotiated individually. There is no fixed fee — the conversation is the starting point. Sheldon K. Salmon reserves the right to decline any commercial license request.
+
+---
+
+## FULL LICENSE TERMS
+
+### 1. DEFINITIONS
+
+**"Software"** means the code implementations, scripts, executable files, and technical builds in the AION-BRAIN repository governed by this license.
+
+**"Specifications"** means the framework documents, constitutional documents, engineering bridges, and written methodology governed by LICENSE.md — not covered by this license.
+
+**"Non-Commercial Use"** means use for personal research, academic research, educational purposes, or open source projects that generate no revenue directly or indirectly from the Software.
+
+**"Commercial Use"** means any use of the Software in connection with a business, product, service, or activity that generates or is intended to generate revenue — including internal enterprise deployment where the Software contributes to commercial operations.
+
+**"Derivative Work"** means any work that is based on or derived from the Software, including modifications, translations, adaptations, or works that incorporate the Software in whole or in part.
+
+**"Contribution"** means any code, documentation, or other material submitted to this repository by any means — including pull requests, issues, patches, or other communications.
+
+**"Contributor"** means any individual or entity that submits a Contribution to this repository.
+
+**"You"** or **"Your"** means the individual or legal entity exercising rights under this license.
+
+**"Licensor"** means Sheldon K. Salmon.
+
+---
+
+### 2. GRANT OF LICENSE — NON-COMMERCIAL
+
+Subject to the terms of this license, Licensor grants You a worldwide, royalty-free, non-exclusive, non-transferable license to:
+
+- Use, copy, and modify the Software for Non-Commercial Use only
+- Distribute copies of the Software for Non-Commercial Use provided this complete license is included unmodified in all distributions
+- Create Derivative Works for Non-Commercial Use provided attribution requirements in Section 6 are met and this complete license is included in all Derivative Works
+
+This grant is conditional on continued compliance with all terms of this license. Any breach terminates this grant subject to the cure provisions of Section 9.
+
+---
+
+### 3. COMMERCIAL USE — SEPARATE LICENSE REQUIRED
+
+**COMMERCIAL USE OF THE SOFTWARE REQUIRES A SEPARATE WRITTEN COMMERCIAL LICENSE AGREEMENT SIGNED BY SHELDON K. SALMON.**
+
+No commercial license is granted by this document. Using the Software for Commercial Use without a signed commercial license agreement is copyright infringement and a breach of this license, and may subject You to civil and criminal liability under applicable copyright law.
+
+The court in *Artifex Software, Inc. v. Hancom, Inc.* (N.D. Cal. 2017) confirmed that dual-licensed software is enforceable and that unlicensed commercial use of open source code constitutes both breach of contract and copyright infringement. A jury may use the value of a commercial license as the basis for damages.
+
+**To obtain a commercial license:**
+
+📧 aionsystem@outlook.com
+Subject: `[Commercial License Inquiry]`
+
+---
+
+### 4. CONTRIBUTOR LICENSE AGREEMENT
+
+By submitting a Contribution to this repository — whether by pull request, issue, patch, email, or any other means — You grant to Sheldon K. Salmon a perpetual, worldwide, irrevocable, non-exclusive, royalty-free license (with the right to sublicense) to:
+
+- Reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute Your Contributions and Derivative Works thereof under any license terms, including commercial terms
+- Use Your Contributions in any current or future version of the Software under any license, including this license or a more restrictive or permissive license
+
+**You represent and warrant that:**
+- You are the original author of Your Contribution or have the right to grant the above license
+- Your Contribution does not infringe any third-party intellectual property rights
+- You have the authority to grant this license if submitting on behalf of an organization
+
+This CLA is a condition of contribution. Submitting a Contribution constitutes acceptance of these terms. If You do not accept these terms, do not submit Contributions.
+
+---
+
+### 5. RESTRICTIONS
+
+Without prior written permission from Licensor, You may not:
+
+- Use the Software for Commercial Use without a signed commercial license agreement
+- Sublicense the Software to any third party
+- Transfer Your rights under this license to any third party
+- Remove or alter copyright notices, attribution notices, or license notices from the Software or any copy thereof
+- Use the names, marks, or logos "AION," "AION-BRAIN," "VELA," "FSVE," "LAV," "Friday Salmon Certainty Report," or "Sheldon K. Salmon" in any manner that implies endorsement of Your product or service
+- Represent the Software or any Derivative Work as Your own original work without crediting Sheldon K. Salmon
+
+---
+
+### 6. ATTRIBUTION REQUIREMENTS
+
+All distributions, Derivative Works, and Non-Commercial deployments under this license must include the following notices in both source code and documentation:
+
+**In source code files:**
+```
+# AION-BRAIN Implementation
+# Original architecture: Sheldon K. Salmon — AI Reliability Architect
+# Repository: https://github.com/AionSystem/AION-BRAIN
+# License: AION-BRAIN Commercial Source License v1.1
+# Copyright © 2025–2026 Sheldon K. Salmon. All rights reserved.
+```
+
+**In user-facing documentation or materials:**
+```
+Built on AION-BRAIN implementations by Sheldon K. Salmon.
+https://github.com/AionSystem/AION-BRAIN
+```
+
+---
+
+### 7. DISCLAIMER OF WARRANTIES
+
+**THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, LICENSOR EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:**
+
+**- THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT**
+
+**- ANY WARRANTY THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE**
+
+**- ANY WARRANTY ARISING FROM COURSE OF DEALING, COURSE OF PERFORMANCE, OR USAGE OF TRADE**
+
+**YOU ASSUME ALL RISKS ASSOCIATED WITH YOUR USE OF THE SOFTWARE. LICENSOR DOES NOT WARRANT THAT THE SOFTWARE IS FREE OF DEFECTS, VIRUSES, OR OTHER HARMFUL COMPONENTS.**
+
+*Note: Some jurisdictions do not allow the exclusion of implied warranties. In such jurisdictions, the above exclusions apply only to the maximum extent permitted by applicable law.*
+
+---
+
+### 8. LIMITATION OF LIABILITY
+
+**TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL LICENSOR BE LIABLE TO YOU FOR ANY:**
+
+**- DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, CONSEQUENTIAL, OR PUNITIVE DAMAGES**
+
+**- DAMAGES FOR LOSS OF PROFITS, REVENUE, GOODWILL, DATA, BUSINESS, OR ANTICIPATED SAVINGS**
+
+**- DAMAGES FOR BUSINESS INTERRUPTION OR LOSS OF BUSINESS OPPORTUNITY**
+
+**- WHETHER ARISING UNDER CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, OR ANY OTHER LEGAL THEORY**
+
+**- EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES**
+
+**LICENSOR'S TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING UNDER OR RELATED TO THIS LICENSE SHALL NOT EXCEED ONE HUNDRED UNITED STATES DOLLARS (USD $100.00).**
+
+*Note: Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages. In such jurisdictions, the above limitations apply only to the maximum extent permitted by applicable law.*
+
+---
+
+### 9. TERM AND TERMINATION
+
+This license is effective until terminated.
+
+**Automatic termination:** Your rights under this license terminate automatically and without notice if You materially breach any term of this license.
+
+**Cure period:** If You cure a material breach within thirty (30) days of becoming aware of the breach — or within thirty (30) days of receiving written notice of the breach from Licensor, whichever is earlier — your rights are automatically reinstated. Each breach may be cured only once. A second material breach of the same provision terminates this license without right of cure.
+
+**Effect of termination:** Upon termination, You must immediately cease all use, reproduction, and distribution of the Software and destroy all copies in Your possession or control. Sections 1, 5, 6, 7, 8, 10, 11, 12, and 13 survive termination.
+
+---
+
+### 10. GOVERNING LAW AND DISPUTE RESOLUTION
+
+This license is governed by and construed in accordance with the laws of the Province of Ontario, Canada, without regard to its conflict of law provisions.
+
+Any dispute arising under or related to this license shall be subject to the exclusive jurisdiction of the courts of the Province of Ontario, Canada. You consent to personal jurisdiction in such courts.
+
+*Note to Licensor: Update governing jurisdiction to match your current domicile before deploying this license.*
+
+---
+
+### 11. SEVERABILITY
+
+If any provision of this license is held to be invalid, illegal, or unenforceable under applicable law, that provision shall be reformed to the minimum extent necessary to make it enforceable, or if it cannot be reformed, it shall be severed from this license. The invalidity, illegality, or unenforceability of any provision shall not affect the validity, legality, or enforceability of any other provision of this license.
+
+---
+
+### 12. ENTIRE AGREEMENT
+
+This license, together with LICENSE.md governing specifications, constitutes the entire agreement between You and Licensor with respect to the AION-BRAIN repository materials. It supersedes all prior or contemporaneous oral or written agreements, representations, or understandings. No amendment or modification of this license is binding unless made in writing and signed by Licensor.
+
+---
+
+### 13. RELATIONSHIP OF THE TWO LICENSES
+
+LICENSE.md (CC BY 4.0) and this license (AION-BRAIN Commercial Source License v1.1) govern distinct categories of material in this repository. They operate independently. Compliance with one does not constitute compliance with the other.
+
+Reading the Specifications and building a new implementation from scratch based on those specifications is a use of the Specifications governed by LICENSE.md.
+
+Copying, modifying, or deploying the existing implementation code from this repository is a use of the Software governed by this license.
+
+**The blueprint is open. The built engine is not.**
+
+---
+
+## VERSION HISTORY
+
+| VERSION | DATE | CHANGES |
+|---------|------|---------|
+| v1.0 | February 2026 | Initial release |
+| v1.1 | February 2026 | ALL CAPS warranty disclaimer per UCC § 2-316 conspicuousness requirement. Cure period added (30 days). Named jurisdiction (Ontario, Canada — update as needed). CLA language formalized. Severability clause added. Liability cap specified. Derivative Work defined. Artifex v. Hancom citation added. |
+
+---
+
+## CONTACT
+
+📧 aionsystem@outlook.com
+
+| Purpose | Subject Line |
+|---------|-------------|
+| Commercial license inquiry | `[Commercial License Inquiry]` |
+| Licensing questions | `[Licensing — Implementation]` |
+| Contribution questions | `[Contribution — Licensing]` |
+| Reported violations | `[License Violation — AION-BRAIN]` |
+
+---
+
+*LICENSE-COMMERCIAL — Code Implementations*
+*AION-BRAIN Commercial Source License v1.1*
+*Copyright © 2025–2026 Sheldon K. Salmon — AI Reliability Architect*
+*AION-BRAIN Repository | February 2026*
+
+*"The blueprint is open. The built engine is not."*
