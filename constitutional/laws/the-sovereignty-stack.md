@@ -1,3 +1,4 @@
+
 # THE SOVEREIGNTY STACK
 ## A Constitutional Architecture for Civilizational Scale
 ### From Individual Protection to Universal Survival
