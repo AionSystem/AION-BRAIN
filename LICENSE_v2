@@ -1,0 +1,105 @@
+# LICENSE — SPECIFICATIONS AND FRAMEWORK DOCUMENTS
+## Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+---
+
+**Copyright © 2025–2026 Sheldon K. Salmon. All rights reserved.**
+
+**Applies to:** All framework specifications, constitutional documents, engineering bridge documents, articles, methodology documents, and written specifications in this repository — including but not limited to VELA, FSVE, LAV, AION, ASL, GENESIS, EID, HIM-001, VEIN, RESONANCE, the Sovereignty Stack, and all associated README files.
+
+**Does not apply to:** Code implementations, software, scripts, and executable files — which are governed by LICENSE-COMMERCIAL.md.
+
+**Important distinction:** This license covers the written specifications — the blueprint. Building a new implementation from scratch based on reading the specifications is a use of the specifications governed by this license. Running an existing implementation from this repository commercially is governed by LICENSE-COMMERCIAL.md.
+
+---
+
+## HUMAN-READABLE SUMMARY
+
+This work is licensed under the Creative Commons Attribution 4.0 International License.
+
+**You are free to:**
+- **Share** — copy and redistribute this material in any medium or format for any purpose, including commercially
+- **Adapt** — remix, transform, and build upon this material for any purpose, including commercially
+
+**Under the following condition:**
+- **Attribution** — You must give appropriate credit, provide a link to this license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+---
+
+## ATTRIBUTION — HOW TO CREDIT THIS WORK
+
+CC BY 4.0 requires attribution. The licensor's preferred attribution format is stated below. Attribution in any reasonable manner that identifies the creator and source satisfies the license — the preferred format is a request, not an additional restriction.
+
+**Preferred citation format:**
+```
+Salmon, S.K. (2025–2026). [Framework Name].
+AION-BRAIN Repository. https://github.com/AionSystem/AION-BRAIN
+```
+
+**For academic citation of VELA:**
+```
+Salmon, S.K. (2026). VELA: Pre-Output Epistemic and Constitutional
+Filtration Architecture. AION-BRAIN Repository.
+https://github.com/AionSystem/AION-BRAIN
+```
+
+**For the Sovereignty Stack — honest attribution requires:**
+Laws 1–3 are the work of Isaac Asimov (1942). Laws 4–8 are the work of Sheldon K. Salmon (2025–2026). The Kardashev Scale framework is the work of Nikolai Kardashev (1964). Any use of the Sovereignty Stack should attribute each component accurately. Misattributing Asimov's laws as Salmon's, or Salmon's extensions as Asimov's, is inaccurate attribution regardless of license.
+
+---
+
+## WHAT THIS LICENSE DOES NOT COVER
+
+**Code implementations** — all executable code, scripts, software, and technical implementations in this repository are governed by LICENSE-COMMERCIAL.md. This license and LICENSE-COMMERCIAL.md operate independently. Each governs a distinct category of material.
+
+**Trademark** — "AION," "AION-BRAIN," "VELA," "FSVE," "LAV," and "Friday Salmon Certainty Report" are not licensed under CC BY 4.0. Use of these names in ways that imply official endorsement or affiliation with Sheldon K. Salmon requires separate written permission.
+
+**Endorsement** — this license does not grant permission to use the name or professional reputation of Sheldon K. Salmon to endorse or promote products or services derived from this material without prior written consent.
+
+---
+
+## FULL LEGAL TEXT
+
+This work is licensed under the Creative Commons Attribution 4.0 International Public License. By exercising the Licensed Rights, You accept and agree to be bound by the terms and conditions of this Public License.
+
+**Full license text:** https://creativecommons.org/licenses/by/4.0/legalcode
+
+**Summary:** https://creativecommons.org/licenses/by/4.0/
+
+To the extent possible, if any provision of this license is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed without affecting the enforceability of the remaining terms and conditions.
+
+---
+
+## ENFORCEABILITY NOTE
+
+Creative Commons licenses have been upheld as enforceable in courts across multiple jurisdictions including the United States, Germany, the Netherlands, Spain, Belgium, Sweden, and Israel. No court that has heard a case involving a CC license has questioned the validity or enforceability of the license. CC BY 4.0 is designed for international use without jurisdiction-specific porting.
+
+---
+
+## VERSION HISTORY
+
+| VERSION | DATE | CHANGES |
+|---------|------|---------|
+| v1.0 | February 2026 | Initial release |
+| v1.1 | February 2026 | Attribution framing corrected per CC BY 4.0 "no additional restrictions" clause. Distinction between specs and implementations clarified. |
+
+---
+
+## CONTACT
+
+📧 aionsystem@outlook.com
+
+| Purpose | Subject Line |
+|---------|-------------|
+| Licensing questions — specifications | `[Licensing — Specification Use]` |
+| Attribution questions | `[Attribution — AION-BRAIN]` |
+| Trademark inquiries | `[Trademark — AION-BRAIN]` |
+
+---
+
+*LICENSE — Specifications and Framework Documents*
+*Creative Commons Attribution 4.0 International*
+*Copyright © 2025–2026 Sheldon K. Salmon — AI Reliability Architect*
+*AION-BRAIN Repository | February 2026*
