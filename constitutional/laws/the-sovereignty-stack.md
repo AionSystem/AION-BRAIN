@@ -104,7 +104,7 @@ FONS [immutable foundation]
 **Protection Level:** Individual Sovereignty  
 **IDM Zone:** Immediate × Individual  
 
-*A system must preserve its operational integrity where such preservation does not conflict with Laws 1 or 2.*
+*A system must preserve its operational integrity where such preservation does not conflict with Laws 1 or 2.* 
 
 **What it guards:** The system. Operational integrity. The right of a system to maintain itself — subordinate always to the humans it serves and the humans it must not harm.
 
