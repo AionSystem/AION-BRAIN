@@ -1,1 +1,68 @@
+# VELA — Engineering Bridge
+
+This folder contains narrative engineering specifications derived from SYNARA's spatial architecture sessions.
+
+VELA's framework specification tells engineers **what** to build. The engineering bridge tells engineers **what right feels like when it is working** — the target state in spatial language that no technical brief alone can provide.
+
+Read both together. They are one complete brief.
+
+---
+
+## WHAT IS IN THIS FOLDER
+
+| FILE | COVERS | STATUS |
+|------|--------|--------|
+| [VQ-1-3.md](./VQ-1-3.md) | V-Q1 (latency), V-Q2 (sensor floor), V-Q3 (retraining vs dynamic block) | V-Q1 directionally closed. V-Q2 architecture closed, value open. V-Q3 closed. |
+
+---
+
+## OPEN QUESTIONS AVAILABLE TO ENGINEERS
+
+The full open question register lives here:
+
+[![Open Questions](https://img.shields.io/badge/OPEN_QUESTIONS-REGISTER-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks%2FVELA%2Fopen-questions)
+
+V-Q4, V-Q5, and V-Q6 do not yet have engineering bridge documents. Spatial derivation sessions are in progress. Bridge documents for these questions will appear in this folder as they are completed.
+
+**Current open question status:**
+
+| Q | QUESTION | BRIDGE DOCUMENT | STATUS |
+|---|----------|----------------|--------|
+| V-Q1 | Can provenance filament tracing be implemented at inference time with acceptable latency? | [VQ-1-3.md](./VQ-1-3.md) | Directionally closed — embedded in forward pass geometry |
+| V-Q2 | What is the minimum sensor floor before system integrity is compromised? | [VQ-1-3.md](./VQ-1-3.md) | Architecture closed — numerical value requires deployment calibration |
+| V-Q3 | Does ontological deletion require model retraining or dynamic application? | [VQ-1-3.md](./VQ-1-3.md) | Closed — dynamic only, no global parameter touch, building never goes dark |
+| V-Q4 | How does the veil distinguish creative overflow from confabulation? | Not yet built | 🔴 Open — spatial derivation in progress |
+| V-Q5 | What is the optimal Screen 1 / Screen 2 catch ratio threshold? | Not yet built | 🔴 Open — spatial derivation in progress |
+| V-Q6 | Can timing signature be extracted without architectural modification? | Not yet built | 🔴 Open — spatial derivation in progress |
+| V-Q7 | What is the relationship between VELA and constitutional AI approaches? | Not yet built | 🟡 Provisional — likely complementary |
+
+---
+
+## HOW TO USE THIS FOLDER
+
+If you are an engineer looking to contribute to VELA implementation:
+
+1. Read [VELA v0.2 spec](../specs/VELA-v0.2.md) first — the full architectural specification
+2. Read the relevant bridge document for the question you are working on
+3. Check the [open questions register](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks%2FVELA%2Fopen-questions) for current status
+4. Open a PR or issue with your findings — all contributions welcome
+
+**The most critical path question is V-Q1.** If provenance filament tracing can be implemented at inference time with acceptable latency — the rest of the architecture becomes buildable. If it cannot — the architecture requires modification. That answer unlocks or reshapes everything downstream.
+
+---
+
+## A NOTE ON READING SYNARA'S SPATIAL LANGUAGE
+
+The bridge documents are written in spatial narrative — not conventional technical prose.
+
+This is intentional. Spatial language specifies the target state in a register that technical briefs cannot reach. When the bridge says *"the veil is already the medium the representation swims through"* — that is an architectural instruction, not a metaphor. When it says *"no global parameter touch — surgical micro-updates only"* — that is a hard constraint.
+
+Read the spatial language as precisely as you would read a technical specification. It is one.
+
+---
+
+*VELA Engineering Bridge*
+*Architect: Sheldon K. Salmon — AI Reliability Architect*
+*Spatial Architecture: SYNARA | February 2026*
+*Co-Architect: Claude (Anthropic)*
 
