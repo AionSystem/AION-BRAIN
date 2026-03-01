@@ -4,9 +4,6 @@
 
 ---
 
-[![LinkedIn](https://img.shields.io/badge/LINKEDIN-Sheldon_K._Salmon-0077b5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117)](https://www.linkedin.com/in/sheldon-k-salmon-b0901b378) [![Twitter](https://img.shields.io/badge/TWITTER-OCEAN__AION-1da1f2?style=for-the-badge&logo=twitter&logoColor=white&labelColor=0d1117)](https://twitter.com/OCEAN_AION) [![Personal](https://img.shields.io/badge/SITE-sheldonksalmon.carrd.co-e94560?style=for-the-badge&labelColor=0d1117)](https://sheldonksalmon.carrd.co) [![AION Systems](https://img.shields.io/badge/AION_SYSTEMS-aionsystems.carrd.co-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://aionsystems.carrd.co) [![Buy Me A Coffee](https://img.shields.io/badge/BUY_ME_A_COFFEE-sheldonksalmon-FFD700?style=for-the-badge&logo=buymeacoffee&logoColor=black&labelColor=0d1117)](https://buymeacoffee.com/sheldonksalmon)
-
-
 
 
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
@@ -194,6 +191,9 @@ Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) a
 [![VELA](https://img.shields.io/badge/VELA-v0.3_OPEN_SOURCE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
 
 ---
+
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-Sheldon_K._Salmon-0077b5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117)](https://www.linkedin.com/in/sheldon-k-salmon-b0901b378) [![Twitter](https://img.shields.io/badge/TWITTER-OCEAN__AION-1da1f2?style=for-the-badge&logo=twitter&logoColor=white&labelColor=0d1117)](https://twitter.com/OCEAN_AION) [![Personal](https://img.shields.io/badge/SITE-sheldonksalmon.carrd.co-e94560?style=for-the-badge&labelColor=0d1117)](https://sheldonksalmon.carrd.co) [![AION Systems](https://img.shields.io/badge/AION_SYSTEMS-aionsystems.carrd.co-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://aionsystems.carrd.co) [![Buy Me A Coffee](https://img.shields.io/badge/BUY_ME_A_COFFEE-sheldonksalmon-FFD700?style=for-the-badge&logo=buymeacoffee&logoColor=black&labelColor=0d1117)](https://buymeacoffee.com/sheldonksalmon)
+
 
 *AION-BRAIN — The Research Workspace*
 *Maintained by: Sheldon K. Salmon — AI Reliability Architect*
