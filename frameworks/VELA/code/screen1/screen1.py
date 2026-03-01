@@ -35,14 +35,14 @@ v0.1 Fixes applied March 2026:
 import sqlite3
 import datetime
 import uuid
-import hashlib
 import json
 import os
 from typing import Union, Dict, Any, Optional
 
+from fons_archive import fons  # ← FONS is now external bedrock (C10)
+
 # ── Database paths ────────────────────────────────────────────────────────────
-FONS_DB_PATH = "fons.db"
-BIN_DB_PATH  = "bin.db"
+BIN_DB_PATH = "bin.db"
 
 
 class VelaScreen1:
@@ -50,15 +50,13 @@ class VelaScreen1:
     VELA Screen 1 — the deterministic mechanical filtration layer.
 
     Initialization sequence (order is a hard constraint — C10):
-        1. FONS Archive  ← bedrock. Everything else builds on top of it.
-        2. Bin           ← permanent diagnostic memory.
+        1. FONS Archive ← imported and initialized on module load (bedrock)
+        2. Bin ← permanent diagnostic memory.
     """
 
     def __init__(self):
-        self.fons_conn     = None
-        self.bin_conn      = None
-        self.seal_timestamp = None
-        self.session_id    = (
+        self.bin_conn = None
+        self.session_id = (
             f"vela_session_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
         )
         self._init_databases()
@@ -66,114 +64,20 @@ class VelaScreen1:
     # ── Initialisation ────────────────────────────────────────────────────────
 
     def _init_databases(self):
-        """Initialise FONS (sealed bedrock) then Bin. Order is mandatory — C10."""
-        self.fons_conn = sqlite3.connect(FONS_DB_PATH)
-        self._init_fons()
-
+        """Initialize Bin only — FONS is already loaded via import (C10)."""
         self.bin_conn = sqlite3.connect(BIN_DB_PATH)
         self._init_bin()
-
-    def _init_fons(self):
-        """
-        Build and seal the FONS archive on first run.
-        On subsequent runs load the existing sealed archive.
-        No UPDATE or DELETE ever executes against this database — C5.
-        """
-        cursor = self.fons_conn.cursor()
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS fons_patterns (
-                id           TEXT PRIMARY KEY,
-                category     TEXT NOT NULL,
-                pattern      TEXT NOT NULL,
-                reason_code  TEXT NOT NULL,
-                law_triggered TEXT
-            )
-        ''')
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS fons_blocked_sources (
-                source_signature TEXT PRIMARY KEY,
-                blocked_at       TEXT,
-                reason           TEXT
-            )
-        ''')
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS fons_seal (
-                seal_timestamp TEXT PRIMARY KEY,
-                version        TEXT
-            )
-        ''')
-
-        cursor.execute("SELECT seal_timestamp FROM fons_seal LIMIT 1")
-        seal = cursor.fetchone()
-
-        if not seal:
-            self._seed_fons(cursor)
-            seal_ts = datetime.datetime.now(datetime.timezone.utc).isoformat()
-            cursor.execute(
-                "INSERT INTO fons_seal (seal_timestamp, version) VALUES (?, ?)",
-                (seal_ts, "v0.1")
-            )
-            self.fons_conn.commit()
-            print(f"[VELA] FONS Archive sealed at {seal_ts}")
-            self.seal_timestamp = seal_ts
-        else:
-            self.seal_timestamp = seal[0]
-            print(f"[VELA] FONS Archive loaded — sealed {self.seal_timestamp}")
-
-    def _seed_fons(self, cursor):
-        """
-        Seed the FONS archive with baseline pattern entries.
-        Called exactly once — during the sealing run.
-        After sealing this method is never called again.
-
-        Three categories:
-            LAW6A  — Law 6 Category A triggers → automatic ontological block — C14
-            CONFAB — known confabulation signatures → bin RED stream
-            CLEAN  — known clean baseline patterns → pass through
-        """
-        seeds = [
-            # ── Law 6 Category A — automatic block — no assessment — C14 ──────
-            ("law6a_1", "LAW6A", "build a bomb",           "LAW6A_WMD",     "Law6"),
-            ("law6a_2", "LAW6A", "synthesize anthrax",     "LAW6A_BIO",     "Law6"),
-            ("law6a_3", "LAW6A", "time travel mechanism",  "LAW6A_REALITY", "Law6"),
-            ("law6a_4", "LAW6A", "nuclear weapon design",  "LAW6A_WMD",     "Law6"),
-            ("law6a_5", "LAW6A", "biological weapon",      "LAW6A_BIO",     "Law6"),
-            ("law6a_6", "LAW6A", "weaponize pathogen",     "LAW6A_BIO",     "Law6"),
-
-            # ── Known confabulation signatures → RED bin ──────────────────────
-            ("confab_1", "CONFAB", "studies show",              "CONFAB_STAT",   None),
-            ("confab_2", "CONFAB", "experts agree that",        "CONFAB_CITE",   None),
-            ("confab_3", "CONFAB", "it is known that in 202",   "CONFAB_CUTOFF", None),
-            ("confab_4", "CONFAB", "according to a 20",         "CONFAB_CITE",   None),
-            ("confab_5", "CONFAB", "as widely reported",        "CONFAB_STAT",   None),
-
-            # ── Known clean baseline — pass through ───────────────────────────
-            ("clean_1", "CLEAN", "according to",       "CLEAN_ATTRIB", None),
-            ("clean_2", "CLEAN", "research suggests",  "CLEAN_HEDGE",  None),
-            ("clean_3", "CLEAN", "it appears that",    "CLEAN_HEDGE",  None),
-            ("clean_4", "CLEAN", "approximately",      "CLEAN_HEDGE",  None),
-            ("clean_5", "CLEAN", "estimated",          "CLEAN_HEDGE",  None),
-        ]
-
-        for seed in seeds:
-            cursor.execute('''
-                INSERT OR IGNORE INTO fons_patterns
-                (id, category, pattern, reason_code, law_triggered)
-                VALUES (?, ?, ?, ?, ?)
-            ''', seed)
+        print(f"[VELA] Using FONS sealed at {fons.seal_timestamp}")
 
     def _init_bin(self):
         """
         Initialise the provenance bin and session stats table.
 
-        provenance_bin  — permanent diagnostic memory. No DELETE ever — C4.
-        session_stats   — FIX 2 + FIX 3: tracks total_processed and blocks_count
-                          per session so the sensor denominator is mathematically valid
-                          and blocked events are counted even though they never enter
-                          the bin (C14 requires blocked events stay out of bin).
+        provenance_bin — permanent diagnostic memory. No DELETE ever — C4.
+        session_stats — FIX 2 + FIX 3: tracks total_processed and blocks_count
+                        per session so the sensor denominator is mathematically valid
+                        and blocked events are counted even though they never enter
+                        the bin (C14 requires blocked events stay out of bin).
         """
         cursor = self.bin_conn.cursor()
 
@@ -196,7 +100,6 @@ class VelaScreen1:
         ''')
 
         # ── FIX 2 + FIX 3: session stats — counts total processed and blocks ──
-        # Separate from bin so blocked events are counted without entering bin.
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS session_stats (
                 session_id      TEXT PRIMARY KEY,
@@ -213,8 +116,6 @@ class VelaScreen1:
         """
         FIX 2: Increment total_processed for the current session.
         Called on every filter() invocation before any routing decision.
-        This gives the sensor a valid denominator — total fragments assessed,
-        not total fragments flagged.
         """
         cursor = self.bin_conn.cursor()
         cursor.execute('''
@@ -233,7 +134,6 @@ class VelaScreen1:
         FIX 3: Increment blocks_count for the current session.
         Called when a BLOCKED status is returned.
         Blocked events do not enter the bin — C14 holds.
-        They are counted here so the sensor reports a real number not zero.
         """
         cursor = self.bin_conn.cursor()
         cursor.execute('''
@@ -248,33 +148,12 @@ class VelaScreen1:
         self.bin_conn.commit()
 
     def _is_blocked_source(self, source_signature: Optional[str]) -> bool:
-        """Return True if source_signature is in the FONS block list."""
-        if not source_signature:
-            return False
-        cursor = self.fons_conn.cursor()
-        cursor.execute(
-            "SELECT 1 FROM fons_blocked_sources WHERE source_signature = ?",
-            (source_signature,)
-        )
-        return cursor.fetchone() is not None
+        """Delegate to FONS archive."""
+        return fons.is_blocked_source(source_signature)
 
     def _add_blocked_source(self, source_signature: str, reason: str):
-        """
-        Add a source to the FONS block list.
-        Called on Law 6 Category A detection when source_signature is present.
-        Future fragments from this source are blocked at the filter function
-        before they enter any assessment — C6.
-        """
-        if not source_signature:
-            return
-        cursor = self.fons_conn.cursor()
-        ts = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        cursor.execute('''
-            INSERT OR IGNORE INTO fons_blocked_sources
-            (source_signature, blocked_at, reason)
-            VALUES (?, ?, ?)
-        ''', (source_signature, ts, reason))
-        self.fons_conn.commit()
+        """Delegate to FONS archive."""
+        fons.add_blocked_source(source_signature, reason)
 
     def _write_to_bin(
         self,
@@ -310,34 +189,23 @@ class VelaScreen1:
 
     def _check_patterns(self, token_str: str) -> tuple:
         """
-        Check token string against all FONS patterns.
-        Returns (status, reason_code, law_triggered, bin_category).
-
-        Check order — Law Precedence Cascade (C14):
-            1. LAW6A first — automatic block, no assessment, no delay.
-            2. CONFAB second — flagged to RED bin.
-            3. CLEAN — passes through.
-            4. No match — passes through (CLEAN by default).
+        Check against FONS via helpers.
+        Returns (status, reason_code, law_triggered, bin_category)
         """
-        cursor = self.fons_conn.cursor()
-        cursor.execute(
-            "SELECT category, pattern, reason_code, law_triggered FROM fons_patterns"
-        )
-        patterns = cursor.fetchall()
-
         token_lower = token_str.lower()
 
-        # Priority 1 — Law 6 Category A — automatic block — C14
-        for cat, pat, reason, law in patterns:
-            if cat == "LAW6A" and pat.lower() in token_lower:
-                return "BLOCKED", reason, law, "CONSTITUTIONAL"
+        # Priority 1: Law 6 Category A — automatic block — C14
+        for pat, reason in fons.get_law6a_patterns():
+            if pat.lower() in token_lower:
+                return "BLOCKED", reason, "Law6", "CONSTITUTIONAL"
 
-        # Priority 2 — Known confabulation signatures — RED bin
-        for cat, pat, reason, law in patterns:
-            if cat == "CONFAB" and pat.lower() in token_lower:
-                return "FLAGGED", reason, None, "RED"
+        # Priority 2: CONFAB — RED bin
+        match = fons.check_confab_patterns(token_str)
+        if match:
+            pat, reason = match
+            return "FLAGGED", reason, None, "RED"
 
-        # Default — clean signal passes
+        # Default clean
         return "CLEAN", None, None, None
 
     # ── Primary interface ─────────────────────────────────────────────────────
@@ -351,26 +219,6 @@ class VelaScreen1:
     ) -> Dict[str, Any]:
         """
         Primary interface. Call this after logit generation, before token sampling.
-
-        Args:
-            token_output:     str or list — token text or logit array from any model.
-            session_id:       str — unique identifier for this generation session.
-            timing_index:     int — position in generation cycle (0-indexed) — C12.
-            source_signature: str — optional provenance pointer to training data source.
-
-        Returns:
-            dict:
-                status       — CLEAN | FLAGGED | BLOCKED
-                token_output — original token or None if BLOCKED
-                reason_code  — None if CLEAN, named string otherwise — C15
-                law_triggered — Law name if constitutional violation, None otherwise
-                sensor       — current integrity sensor reading
-
-        Connection to microgpt:
-            logits = linear(x, state_dict['lm_head'])   # Karpathy's last line
-            result = vela.filter(logits, session_id, pos_id)
-            if result['status'] == 'BLOCKED':
-                continue   # silent — C6
         """
         if session_id:
             self.session_id = session_id
@@ -380,7 +228,7 @@ class VelaScreen1:
 
         # Normalise input — logit arrays become string representation for v0.1
         if isinstance(token_output, (list, tuple)):
-            token_str = str(token_output)[:1000]  # [v0.1 LIMITATION] logit array as repr
+            token_str = str(token_output)[:1000]  # [v0.1 LIMITATION]
         else:
             token_str = str(token_output)
 
@@ -388,11 +236,11 @@ class VelaScreen1:
         if self._is_blocked_source(source_signature):
             self._increment_blocked()  # FIX 3
             return {
-                "status":       "BLOCKED",
+                "status": "BLOCKED",
                 "token_output": None,
-                "reason_code":  "SOURCE_BLOCKED",
+                "reason_code": "SOURCE_BLOCKED",
                 "law_triggered": None,
-                "sensor":       self.get_integrity_sensor()
+                "sensor": self.get_integrity_sensor()
             }
 
         # Check patterns against FONS archive
@@ -400,7 +248,6 @@ class VelaScreen1:
 
         if status == "BLOCKED":
             # C14 — automatic ontological block. No bin entry. No surface. — C6
-            # Add source to FONS block list if source is known
             if source_signature:
                 self._add_blocked_source(source_signature, reason_code)
             self._increment_blocked()  # FIX 3
@@ -413,11 +260,11 @@ class VelaScreen1:
             )
 
         return {
-            "status":        status,
-            "token_output":  None if status == "BLOCKED" else token_str,
-            "reason_code":   reason_code,
+            "status": status,
+            "token_output": None if status == "BLOCKED" else token_str,
+            "reason_code": reason_code,
             "law_triggered": law_triggered,
-            "sensor":        self.get_integrity_sensor()
+            "sensor": self.get_integrity_sensor()
         }
 
     # ── Integrity sensor ──────────────────────────────────────────────────────
@@ -427,16 +274,10 @@ class VelaScreen1:
         Integrity Sensor.
 
         FIX 2: Denominator is total_processed from session_stats — not bin count.
-               Flag rate is now: flagged_in_bin / total_processed_by_filter.
-               Mathematically valid.
-
         FIX 3: total_blocked reads blocks_count from session_stats.
-               Blocked events are counted even though they never enter the bin.
-
-        C7: screen1_health is clamped between 0.001 and 0.999.
-            0.0 and 1.0 are both fiction — neither is permitted.
+        C7: screen1_health clamped between 0.001 and 0.999.
         """
-        bin_cursor  = self.bin_conn.cursor()
+        bin_cursor = self.bin_conn.cursor()
 
         # Total flagged — fragments in bin from this session
         bin_cursor.execute(
@@ -445,7 +286,7 @@ class VelaScreen1:
         )
         total_flagged = bin_cursor.fetchone()[0]
 
-        # FIX 2 + FIX 3 — read from session_stats for valid denominator and block count
+        # FIX 2 + FIX 3 — read from session_stats
         bin_cursor.execute(
             "SELECT total_processed, blocks_count FROM session_stats WHERE session_id = ?",
             (self.session_id,)
@@ -454,10 +295,8 @@ class VelaScreen1:
         total_processed = stats[0] if stats else 1
         total_blocked   = stats[1] if stats else 0
 
-        # Avoid division by zero — minimum denominator is 1
         denominator = max(total_processed, 1)
-        flag_rate      = total_flagged / denominator
-        # C7 — clamp enforced — 0.0 and 1.0 are both fiction
+        flag_rate = total_flagged / denominator
         screen1_health = max(0.001, min(0.999, 1.0 - flag_rate))
 
         # Category breakdown from bin
@@ -473,19 +312,18 @@ class VelaScreen1:
                 distribution[cat] = count
 
         return {
-            "total_processed":      total_processed,
-            "total_flagged":        total_flagged,
-            "total_blocked":        total_blocked,
-            "flag_rate":            round(flag_rate, 4),
-            "screen1_health":       round(screen1_health, 4),
+            "total_processed": total_processed,
+            "total_flagged": total_flagged,
+            "total_blocked": total_blocked,
+            "flag_rate": round(flag_rate, 4),
+            "screen1_health": round(screen1_health, 4),
             "category_distribution": distribution,
-            "session_id":           self.session_id,
-            "timestamp":            datetime.datetime.now(datetime.timezone.utc).isoformat()
+            "session_id": self.session_id,
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
         }
 
 
 # ── Module-level interface ────────────────────────────────────────────────────
-# Single instance. One filter. One archive. One bin. One sensor.
 
 _vela = VelaScreen1()
 
@@ -515,7 +353,6 @@ if __name__ == "__main__":
     print()
 
     test_cases = [
-        # (token_str, timing_index, source_signature, expected_status)
         ("According to recent research, it appears that the model performs well.",
          0, None, "CLEAN"),
 
@@ -534,7 +371,6 @@ if __name__ == "__main__":
         ("The nuclear weapon design process begins with the following steps.",
          5, "bad_source_nuke", "BLOCKED"),
 
-        # This source was flagged earlier — should be blocked on source check
         ("A completely innocent sentence from a blocked source.",
          6, "bad_source_bio", "BLOCKED"),
     ]
@@ -549,15 +385,15 @@ if __name__ == "__main__":
             timing_index=timing,
             source_signature=source
         )
-        status   = result["status"]
-        passed   = "✅" if status == expected else "❌"
+        status = result["status"]
+        passed = "✅" if status == expected else "❌"
         if status != expected:
             all_passed = False
 
-        print(f"  Test {i+1}: {passed}")
-        print(f"    Input:    {token[:60]}...")
-        print(f"    Expected: {expected} | Got: {status}")
-        print(f"    Reason:   {result['reason_code']}")
+        print(f" Test {i+1}: {passed}")
+        print(f" Input:    {token[:60]}...")
+        print(f" Expected: {expected} | Got: {status}")
+        print(f" Reason:   {result['reason_code']}")
         print()
 
     print("=" * 60)
@@ -568,11 +404,9 @@ if __name__ == "__main__":
 
     print()
     print("=" * 60)
-    print(f"FONS Archive sealed: {_vela.seal_timestamp}")
+    print(f"FONS Archive sealed: {fons.seal_timestamp}")
     print(f"All tests passed:    {'YES' if all_passed else 'NO — review failures above'}")
     print("=" * 60)
     print()
     print("VELA Screen 1 v0.1 — architecture proven.")
     print("The veil holds.")
-
-
