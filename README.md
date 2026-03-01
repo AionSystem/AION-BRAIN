@@ -1,5 +1,9 @@
 # AION-BRAIN
 
+[![🛑 STUPID — READ HERE FIRST](https://img.shields.io/badge/🛑_STUPID-READ_HERE_FIRST-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/GETTING_STARTED.md)
+
+---
+
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
 [![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-0f3460?style=for-the-badge&labelColor=16213e)](https://github.com/AionSystem/AION-BRAIN)
 [![Service](https://img.shields.io/badge/SERVICE-AI_RELIABILITY_SNAPSHOT-FFD700?style=for-the-badge&labelColor=16213e)](https://tally.so/r/b5ljko)
@@ -56,7 +60,7 @@ The most significant new framework in the stack. Specified February 28, 2026.
 
 VELA sits between the internal representation layer — where confabulation is generated — and the output layer — where it currently escapes unchecked. Anthropic's 2025 interpretability research identified the exact circuits where confabulation originates. No complete architecture currently occupies this position in any deployed AI system. VELA is the engineering response to that finding.
 
-As of v0.3 — VELA also enforces the Eight Laws of the Sovereignty Stack at the same pre-output layer simultaneously. Not two pipelines. One veil. Two functions. Epistemic integrity and constitutional integrity enforced at the same point before output exits. This is the first architecture where both are caught at the representation layer — not post-output.
+As of v0.3 — VELA also enforces the Eight Laws of the Sovereignty Stack at the same pre-output layer simultaneously. Not two pipelines. One veil. Two functions. Epistemic integrity and constitutional integrity enforced at the same point before output exits.
 
 ```
 SCREEN 1 — CODE LAYER
@@ -108,7 +112,7 @@ The full stack. FSVE, AION, ASL, CDIP, GENESIS, CPA-001, LAV, DERU, MENSCAPE, VE
 
 [![VELA](https://img.shields.io/badge/VELA-PRE_OUTPUT_FILTRATION-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
 
-VELA is the epistemic and constitutional bedrock of the entire stack. All frameworks above it adapt to VELA's spatial language and terminology. Specified February 28, 2026. Open source. Engineering contributions welcome.
+VELA is the epistemic and constitutional bedrock of the entire stack. Specified February 28, 2026. Open source. Engineering contributions welcome.
 
 ---
 
@@ -116,11 +120,9 @@ VELA is the epistemic and constitutional bedrock of the entire stack. All framew
 
 [![Constitutional Laws](https://img.shields.io/badge/CONSTITUTIONAL-SOVEREIGNTY_STACK-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
 
-The governing constitutional layer the entire stack operates under. Eight Laws active. Law 9 dark by design. Spiral architecture scaling from individual sovereignty through inter-civilizational sovereignty. The base laws are invariant floors — they never lift at any Kardashev level.
+Eight Laws active. Law 9 dark by design. Spiral architecture scaling from individual sovereignty through inter-civilizational sovereignty.
 
 [![Legal](https://img.shields.io/badge/LEGAL-IP_%26_LICENSING-0f3460?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/legal)
-
-Intellectual property, licensing terms, and usage rights for all frameworks in this repository.
 
 ---
 
@@ -136,11 +138,7 @@ A live platform stability assessment. Methodology in action on a real subject wi
 
 [![Hyperloop](https://img.shields.io/badge/INNOVATION_LAB-HYPERLOOP-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/innovation-lab/HYPERLOOP)
 
-Experimental frameworks and speculative architecture. Where new ideas get stress-tested before entering the main stack.
-
 [![AV UBI Specification](https://img.shields.io/badge/INNOVATION_LAB-AV_UBI_SPECIFICATION-FFD700?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/innovation-lab/CDIP/AV-UBI-Specification-stack)
-
-Autonomous vehicle and universal basic income specification stack — a demonstration of CDIP applied to a complex multi-domain regulatory problem.
 
 ---
 
@@ -162,13 +160,11 @@ If you are deploying AI where the answer actually matters:
 ![Frameworks](https://img.shields.io/badge/Frameworks-60%2B-e94560)
 ![FCL Entries](https://img.shields.io/badge/FCL_Entries-75_Real-brightgreen)
 
-*Stats updated automatically*
-
 ---
 
 ## HONEST STATE
 
-Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) and **LAV v1.5** (45 entries, 77.5% running mean). Three frameworks specified, validation in progress: AION v3.0, ASL v2.0, GENESIS v1.0. VELA v0.3 specified February 2026 — M-NASCENT — open source — engineering bridge complete — 5 of 6 primary open questions closed. Sovereignty Stack extended to Eight Laws — Laws 7 and 8 specified February 2026 — Law 9 dark by design — M-NASCENT. Proprietary stack — MENSCAPE, DERU, ANCHOR — active and not open-sourced. Every convergence state documented honestly. Nothing overclaimed.
+Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) and **LAV v1.5** (45 entries, 77.5% running mean). Three frameworks specified, validation in progress: AION v3.0, ASL v2.0, GENESIS v1.0. VELA v0.3 specified February 2026 — M-NASCENT — open source — engineering bridge complete — 5 of 6 primary open questions closed. Sovereignty Stack extended to Eight Laws — Law 9 dark by design. Every convergence state documented honestly. Nothing overclaimed.
 
 ---
 
@@ -182,7 +178,7 @@ Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) a
 | Research | `[Research — {Framework Name}]` |
 | Collaboration | `[Collaboration Proposal]` |
 | VELA engineering | `[VELA Engineering]` |
-| VELA research | `[VELA Research]` |
+| FCL candidate | `[FCL Candidate — {brief description}]` |
 
 ---
 
