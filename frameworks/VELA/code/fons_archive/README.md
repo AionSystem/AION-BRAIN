@@ -49,3 +49,41 @@ blocked = fons.is_blocked_source(sig)       # bool
 
 # Constitutional patterns (precedence ordered)
 const = fons.get_constitutional_patterns()  # List[(cat, pat, reason, law)]
+Hard Constraints Enforced
+C5: No writes after seal (exception on attempt)
+C10: Positioned underneath VELA — imported before any consumer
+Write-once lifecycle: seed → seal → read-only forever
+Tamper detection: post-seal modifications blocked structurally
+Current Convergence State
+Item
+State
+Note
+FONS version
+v0.2
+Hardened March 2026
+FCL entries
+0
+M-NASCENT
+Patterns cached
+Yes
+In-memory for lookup speed
+Constitutional seeds
+Expanded
+Law 1–8 variants + precedence
+Indexes
+Yes
+blocked_sources + bin keys
+Epistemic Promise
+[D] Seal timestamp, pattern counts, and helper behavior are directly observed in execution.
+[R] Immutability and precedence derived from VELA v0.3 Section 5 + constitutional cascade.
+[S] This module serves as bedrock for Screen 1 — no overclaiming of catch fidelity.
+[?] Real-world precision/recall on production models remains unverified; requires deployment data.
+Nothing here is presented as more certain than it is.
+Next Pressure
+Add regex column to patterns table (v0.3 candidate)
+Bulk pattern fuzzing integration with Screen 1 tests
+Filament resolution stub (provenance linking)
+The archive is sealed.
+The veil remembers.
+Co-authored: Sheldon K. Salmon & ALBEDO
+The mind keeps building. The product stays simple.
