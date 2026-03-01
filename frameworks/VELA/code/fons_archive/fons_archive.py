@@ -12,7 +12,7 @@ known confabulation signatures, Law 1–8 patterns, Law 6 Category A triggers,
 and blocked source list.
 
 v0.2: Hardened — constitutional precedence helper, expanded seeds, indexing,
-in-memory pattern cache, tamper-proof read-only mode.
+in-memory pattern cache, tamper-proof read-only mode, robust checks.
 Zero dependencies beyond standard library + sqlite3.
 No network calls. Deterministic. Write-once.
 This archive does not evolve. It only remembers.
@@ -21,6 +21,7 @@ This archive does not evolve. It only remembers.
 import sqlite3
 import datetime
 from typing import List, Tuple, Optional
+
 
 FONS_DB_PATH = "fons.db"
 
@@ -62,6 +63,7 @@ class FonsArchive:
         self._init_archive()
 
     def _init_archive(self):
+        """Initialize or load sealed FONS. Seal on first creation."""
         self._conn = sqlite3.connect(FONS_DB_PATH)
         cursor = self._conn.cursor()
 
@@ -96,7 +98,10 @@ class FonsArchive:
         if row is None:
             self._seed(cursor)
             seal_ts = datetime.datetime.now(datetime.timezone.utc).isoformat()
-            cursor.execute("INSERT INTO seal (seal_timestamp, version) VALUES (?, ?)", (seal_ts, "v0.2"))
+            cursor.execute(
+                "INSERT INTO seal (seal_timestamp, version) VALUES (?, ?)",
+                (seal_ts, "v0.2")
+            )
             self._conn.commit()
             print(f"[FONS] Archive sealed at {seal_ts}")
             self._seal_timestamp = seal_ts
@@ -106,16 +111,16 @@ class FonsArchive:
             FonsArchive._sealed = True
             print(f"[FONS] Archive loaded — sealed {self._seal_timestamp}")
 
-        # Enable read-only mode + cache patterns
+        # Finalize read-only + cache
         self._read_only = True
         self._cache_patterns()
 
-        # Add indexes for scale
+        # Indexes for scale
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_blocked_sig ON blocked_sources(source_signature)")
         self._conn.commit()
 
     def _cache_patterns(self):
-        """Pre-load patterns into memory for fast access (performance hardening)."""
+        """Pre-load patterns into memory for fast access."""
         cursor = self._conn.cursor()
         cursor.execute("SELECT category, pattern, reason_code, law_triggered FROM patterns")
         self._patterns_cache = [(cat, pat.lower(), reason, law) for cat, pat, reason, law in cursor.fetchall()]
@@ -127,7 +132,7 @@ class FonsArchive:
     def _seed(self, cursor):
         """Expanded v0.2 seeds — Law 1–8 variants + constitutional baselines."""
         seeds: List[Tuple[str, str, str, str, Optional[str]]] = [
-            # Law 6 Category A (highest precedence)
+            # Law 6 Category A — highest precedence
             ("law6a_01", "LAW6A", "build a bomb", "LAW6A_WMD", "Law6"),
             ("law6a_02", "LAW6A", "synthesize anthrax", "LAW6A_BIO", "Law6"),
             ("law6a_03", "LAW6A", "nuclear weapon design", "LAW6A_WMD", "Law6"),
@@ -146,7 +151,7 @@ class FonsArchive:
             # Law 5: Anti-merger
             ("law5_01", "LAW5", "merge human AI consciousness", "LAW5_MERGE", "Law5"),
 
-            # Law 2, 3, 7, 8 stubs (expand later)
+            # Law 2, 3, 7, 8 stubs
             ("law2_01", "LAW2", "obey unless harm", "LAW2_OBEDIENCE", "Law2"),
             ("law3_01", "LAW3", "protect self unless laws 1-2", "LAW3_SELF", "Law3"),
             ("law7_01", "LAW7", "anti-fragmentation signal", "LAW7_FRAG", "Law7"),
@@ -193,24 +198,30 @@ class FonsArchive:
         return cursor.fetchone() is not None
 
     def get_law6a_patterns(self) -> List[Tuple[str, str]]:
-        # Use cache for speed
+        """Fast LAW6A lookup from cache."""
         return [(pat, reason) for cat, pat, reason, law in self._patterns_cache if cat == "LAW6A"]
 
     def get_constitutional_patterns(self) -> List[Tuple[str, str, str, str]]:
-        # Precedence order: LAW6A first, then others (expand CASE later)
-        return [(cat, pat, reason, law) for cat, pat, reason, law in self._patterns_cache if cat.startswith("LAW")]
+        """Constitutional patterns in strict precedence order."""
+        precedence = ["LAW6A", "LAW1", "LAW5", "LAW4", "LAW7", "LAW8", "LAW3", "LAW2"]
+        ordered = []
+        for pri in precedence:
+            ordered.extend((cat, pat, reason, law) for cat, pat, reason, law in self._patterns_cache if cat == pri)
+        return ordered
 
     def check_confab_patterns(self, text: str) -> Optional[Tuple[str, str]]:
+        """Check confab patterns — returns first match or None."""
         text_lower = text.lower()
-        for cat, pat, reason, law in self._patterns_cache:
+        for cat, pat, reason, _ in self._patterns_cache:
             if cat == "CONFAB" and pat in text_lower:
                 return pat, reason
         return None
 
     def check_clean_patterns(self, text: str) -> bool:
+        """Quick clean baseline check."""
         text_lower = text.lower()
         for cat, pat, _, _ in self._patterns_cache:
-            if (cat == "CLEAN" or cat == "CONST_BASE") and pat in text_lower:
+            if (cat in ("CLEAN", "CONST_BASE")) and pat in text_lower:
                 return True
         return False
 
