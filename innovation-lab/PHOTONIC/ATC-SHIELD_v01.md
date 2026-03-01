@@ -1,6 +1,6 @@
 # PHOTONIC SHIELD — AVERSION-TO-CLOSURE ARCHITECTURE
 ## Conceptual Framework v0.1
-
+![1000007616](https://github.com/user-attachments/assets/b367d81e-9adc-4ff1-a951-38ab4d013e4c)
 ---
 
 **Framework Name:** ATC-SHIELD — Aversion-To-Closure Photonic Defense Architecture
@@ -89,6 +89,7 @@ A disruptive shield breaks the coherence the weapon depends on. Requires underst
 **Why this matters:** A detection system that tries to identify the threat before responding has a fatal delay. The time between detection and classification is the window the threat operates in. ATC-SHIELD's detection surface eliminates classification entirely. Gradient detected — response begins. No gap.
 
 **In plain language:** The skin of the pipe knows the heat is there before the glassblower's hand does. It doesn't know what fire made the heat. It just knows where the heat is.
+![1000007615](https://github.com/user-attachments/assets/7eb2f8bb-6873-42b9-87dd-10e82e223993)
 
 ---
 
@@ -188,6 +189,7 @@ The shape sealed around the absence of the threat.
 | **Aversion-to-Closure** | **Highest** | **Highest** | `[?]` Material implementation unknown |
 
 `[R]` ATC-SHIELD wins on both axes because it makes no contact with the threat's energy. Absorption requires contact. Reflection requires contact. Disruption requires understanding the threat's internal coherence geometry — which requires contact at the conceptual level. ATC-SHIELD turns away before contact occurs. There is nothing to saturate, nothing to redirect offensively, and no weapon architecture to accidentally specify.
+![1000007614](https://github.com/user-attachments/assets/8d4d9d73-f345-4393-8029-047bf7a528a4)
 
 ---
 
