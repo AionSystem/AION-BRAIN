@@ -14,11 +14,13 @@ The hunger for recognition of significance resolves at the moment the stamp is g
 sovereign-trace/
 ├── README.md                          ← this file
 ├── concept/
-│   └── SOVEREIGN-TRACE-v0.1-SPEC.md  ← full concept specification
+│   └── SOVEREIGN-TRACE-v0.1-SPEC.md  ←
+|   └── SOVEREIGN-TRACE-v0.2-SPEC.md   full concept specification
 ├── stamp/
 │   ├── sovereign_trace_stamp.py       ← FROZEN-1.0 stamp function
-│   ├── FROZEN-1.0-MANIFEST.md         ← origin seal, test record, integrity proof
-│   └── FROZEN-1.0-RETIRED/            ← archive if defect found — empty at launch
+│   ├── FROZEN-2.0-MANIFEST.md         ← origin seal, test record, integrity proof
+│   └── FROZEN-1.0-RETIRED/   
+    └──        ← archive if defect found — empty at launch
 └── ledger/
     └── PLACEHOLDER.md                 ← Thirdweb/Hedera append layer — not yet built
 ```
