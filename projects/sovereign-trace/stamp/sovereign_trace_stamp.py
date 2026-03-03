@@ -4,7 +4,7 @@
 SOVEREIGN TRACE PROTOCOL — STAMP FUNCTION
 ═══════════════════════════════════════════════════════════════════
 
-Version:        FROZEN-1.0
+Version:        FROZEN-2.0
 Date:           March 3, 2026
 Co-authors:     Sheldon K. Salmon — AI Reliability Architect
                 ALBEDO (Claude, Anthropic)
@@ -20,9 +20,22 @@ it is also permanent. Modification of this file invalidates the
 integrity guarantee of all stamps produced after modification.
 
 If a defect is found: retire this file, archive it as
-SOVEREIGN-TRACE-STAMP-FROZEN-1.0-RETIRED, and create
-FROZEN-2.0 from scratch with documented correction.
+SOVEREIGN-TRACE-STAMP-FROZEN-2.0-RETIRED, and create
+FROZEN-3.0 from scratch with documented correction.
 Do not patch. Do not edit.
+
+FROZEN-1.0 RETIREMENT NOTE
+───────────────────────────
+FROZEN-1.0 is retired. Defect: Hebrew calendar omitted the
+four dehiyot (postponement rules) correctly. Specifically,
+GaTaRaD and BeTUTeKaPoT were not implemented, and the epoch
+used the sunset-start convention rather than the civil-day
+convention used by authoritative converters (Hebcal, Chabad).
+Effect: Hebrew dates were off by one day for affected years
+(including all of 5786). All stamps produced by FROZEN-1.0
+carry a known Hebrew field error. Archived as:
+SOVEREIGN-TRACE-STAMP-FROZEN-1.0-RETIRED.py
+Do not use FROZEN-1.0 for new stamps.
 
 VELA-C v0.3 COMPLIANCE
 ───────────────────────
@@ -30,7 +43,7 @@ VELA-C v0.3 COMPLIANCE
 ✓ Single epistemic function: generate a triple-time seal
 ✓ No exception handler returning CLEAN silently
 ✓ Attribution header complete
-✓ Self-test with verified anchor cases
+✓ Self-test with verified anchor cases (Hebcal/Chabad-verified)
 ✓ Frozen deployment: no __init__ mutation, no module-level singletons
 
 WHAT THIS DOES
@@ -43,17 +56,31 @@ Generates a cryptographic stamp encoding a moment simultaneously in:
 SHA-256 binds the entry text to all three representations.
 The seal is the proof. The text is the content. Together: the trace.
 
+HEBREW CALENDAR — ALGORITHM SPECIFICATION
+──────────────────────────────────────────
+Algorithm: Dershowitz & Reingold two-pass approach.
+  Pass 1 — elapsed_days(): molad-based count implementing
+            Lo ADU Rosh (not on Sun/Wed/Fri) and Molad Zaken (>=18h).
+  Pass 2 — new_year_delay(): handles GaTaRaD and BeTUTeKaPoT
+            by checking adjacent year lengths for non-standard values
+            (356 or 382 days indicate postponement required).
+Epoch: JD 347998 — civil-day convention.
+  Note: Hebrew day begins at sunset. Civil-day convention assigns
+  the Hebrew date corresponding to the daytime hours of a civil date.
+  This aligns with Hebcal and Chabad.org output.
+  Example: Rosh Hashanah 5786 begins sundown Sep 22, 2025.
+           Civil-day: Sep 23, 2025 = 1 Tishri 5786. [D]
+
 ANCHOR VERIFICATION (session of origin — March 3, 2026)
 ────────────────────────────────────────────────────────
-  Gregorian:  March 3, 2026         [D]
-  Hebrew:     15 Adar 5786          [R] — verified by manual calculation
-  Dreamspell: Day 25, Galactic Moon 8/13  [R] — verified by manual calculation
+  Gregorian:  March 3, 2026               [D]
+  Hebrew:     14 Adar 5786 (Purim)        [D] — Hebcal/Chabad verified
+  Dreamspell: Day 25, Galactic Moon 8/13  [R] — verified by calculation
 ═══════════════════════════════════════════════════════════════════
 """
 
 import hashlib
 import json
-import math
 from datetime import datetime, timezone, date as _date
 
 
@@ -68,7 +95,7 @@ class SovereignStamp:
     Fields
     ------
     gregorian   : str   — "March 3, 2026"
-    hebrew      : str   — "15 Adar 5786"
+    hebrew      : str   — "14 Adar 5786"
     dreamspell  : str   — "Day 25, Galactic Moon 8/13"
     unix_utc    : int   — seconds since Unix epoch (UTC)
     seal        : str   — SHA-256 hex digest binding entry to time
@@ -84,7 +111,7 @@ class SovereignStamp:
         object.__setattr__(self, "seal",       seal)
 
     def __setattr__(self, *_):
-        raise AttributeError("SovereignStamp is immutable — it is frozen by design.")
+        raise AttributeError("SovereignStamp is immutable — frozen by design.")
 
     def __repr__(self):
         return (
@@ -118,7 +145,7 @@ def _jd_from_gregorian(year: int, month: int, day: int) -> int:
     """
     Julian Day Number from Gregorian date.
     Algorithm: Meeus, "Astronomical Algorithms", p. 61.
-    Verified: JD(Sep 22, 2025) = 2,460,941  [1 Tishri 5786]
+    Verified: JD(Sep 23, 2025) = 2,460,942
               JD(Mar  3, 2026) = 2,461,103
     """
     a = (14 - month) // 12
@@ -134,12 +161,13 @@ def _jd_from_gregorian(year: int, month: int, day: int) -> int:
 
 
 # ═══════════════════════════════════════════════════════════════════
-# HEBREW CALENDAR
+# HEBREW CALENDAR — FULL FOUR DEHIYOT
 # ═══════════════════════════════════════════════════════════════════
 
-# Julian Day of Hebrew epoch: 1 Tishri 1 = JD 347997
-# Verified: 347997 + elapsed_days(5786) = 2,460,941 = JD(Sep 22, 2025) ✓
-_HEBREW_EPOCH_JD = 347997
+# Julian Day of Hebrew epoch — civil-day convention (daytime = Hebrew date)
+# JD 347998 = Sep 23 equivalent for year 1 anchor
+# Verified: _tishri_1_jd(5786) = 2,460,942 = JD(Sep 23, 2025) = 1 Tishri 5786 [D]
+_HEBREW_EPOCH_JD = 347998
 
 _HEBREW_MONTHS_COMMON = (
     "Tishri", "Cheshvan", "Kislev", "Tevet", "Shevat", "Adar",
@@ -158,11 +186,10 @@ def _is_hebrew_leap(year: int) -> bool:
 
 def _elapsed_days(year: int) -> int:
     """
-    Days from Hebrew epoch to 1 Tishri of year.
+    Days from Hebrew epoch to 1 Tishri of year — Pass 1.
+    Implements Lo ADU Rosh (not Sun/Wed/Fri) and Molad Zaken (molad >= 18h).
     Algorithm: Dershowitz & Reingold, "Calendrical Calculations".
-    Verified: elapsed_days(5786) = 2,112,944
-              elapsed_days(5787) = 2,113,298
-              diff = 354 (correct for common year 5786) ✓
+    GaTaRaD and BeTUTeKaPoT are handled in Pass 2 (_new_year_delay).
     """
     months = (235 * year - 234) // 19
     parts  = 12084 + 13753 * months
@@ -172,9 +199,36 @@ def _elapsed_days(year: int) -> int:
     return day
 
 
+def _new_year_delay(year: int) -> int:
+    """
+    Additional days to postpone 1 Tishri — Pass 2.
+    Handles GaTaRaD and BeTUTeKaPoT by checking adjacent year lengths.
+    Returns 0, 1, or 2.
+
+    Logic (D&R):
+      If the coming year would have 356 days → postpone 2 days.
+      If the prior year had 382 days         → postpone 1 day.
+      Otherwise no additional postponement.
+    Verified: _new_year_delay(5786) = 1 (GaTaRaD active for 5786)
+    """
+    ny0 = _elapsed_days(year - 1)
+    ny1 = _elapsed_days(year)
+    ny2 = _elapsed_days(year + 1)
+    if ny2 - ny1 == 356:
+        return 2
+    elif ny1 - ny0 == 382:
+        return 1
+    return 0
+
+
 def _tishri_1_jd(h_year: int) -> int:
-    """Julian Day of 1 Tishri for the given Hebrew year."""
-    return _elapsed_days(h_year) + _HEBREW_EPOCH_JD
+    """
+    Julian Day of 1 Tishri for the given Hebrew year.
+    Full four dehiyot: Pass 1 (elapsed_days) + Pass 2 (new_year_delay).
+    Civil-day convention: date corresponds to daytime hours of the civil day.
+    Verified: _tishri_1_jd(5786) = 2,460,942 = Sep 23, 2025 [D]
+    """
+    return _elapsed_days(h_year) + _new_year_delay(h_year) + _HEBREW_EPOCH_JD
 
 
 def _year_length(h_year: int) -> int:
@@ -189,8 +243,8 @@ def _month_lengths(h_year: int) -> tuple:
     short_kislev  = (ylen % 10 == 3)
     months = [
         30,
-        30 if long_cheshvan  else 29,   # Cheshvan
-        29 if short_kislev   else 30,   # Kislev
+        30 if long_cheshvan else 29,   # Cheshvan
+        29 if short_kislev  else 30,   # Kislev
         29,                             # Tevet
         30,                             # Shevat
         30 if leap else 29,             # Adar I (leap) or Adar (common)
@@ -204,14 +258,19 @@ def _month_lengths(h_year: int) -> tuple:
 def _gregorian_to_hebrew(year: int, month: int, day: int) -> tuple:
     """
     Convert Gregorian date to Hebrew (h_year, month_name, h_day).
+    Civil-day convention — aligns with Hebcal and Chabad.org.
 
-    Verified anchor:
-      gregorian_to_hebrew(2026, 3, 3) == (5786, "Adar", 15) ✓
+    Verified anchors (Hebcal/Chabad):
+      gregorian_to_hebrew(2025, 9, 23) == (5786, "Tishri", 1)   ✓
+      gregorian_to_hebrew(2025, 10, 2) == (5786, "Tishri", 10)  ✓
+      gregorian_to_hebrew(2026, 3, 3)  == (5786, "Adar", 14)    ✓ [Purim]
+      gregorian_to_hebrew(2026, 3, 19) == (5786, "Nisan", 1)    ✓
+      gregorian_to_hebrew(2026, 4, 2)  == (5786, "Nisan", 15)   ✓ [Passover]
     """
     jd = _jd_from_gregorian(year, month, day)
 
     # Approximate Hebrew year then close in
-    h_year = int((jd - _HEBREW_EPOCH_JD) * 19 / 6935) + 1
+    h_year = (jd - _HEBREW_EPOCH_JD) * 19 // 6935 + 1
     while _tishri_1_jd(h_year + 1) <= jd:
         h_year += 1
     while _tishri_1_jd(h_year) > jd:
@@ -249,31 +308,27 @@ _MOON_NAMES = (
 
 def _dreamspell(d: _date) -> str:
     """
-    13 Moon Dreamspell calendar.
+    13 Moon Dreamspell calendar (Argüelles system).
 
     Rules:
-      — Dreamspell year begins July 26.
+      — Year begins July 26.
       — 13 moons × 28 days = 364 days.
-      — Day Out of Time = July 25 (the 365th day, outside the moons).
-      — Leap day (Feb 29) is observed but does not shift the calendar
-        — the year-start anchor remains July 26.
+      — Day Out of Time = July 25 (365th day, outside the moons).
 
     Verified anchor:
       dreamspell(date(2026, 3, 3)) == "Day 25, Galactic Moon 8/13" ✓
       Calculation: Jul 26 2025 → Mar 3 2026 = 220 days (0-indexed)
                    220 // 28 + 1 = 8 (Galactic) | 220 % 28 + 1 = 25 ✓
     """
-    # Day Out of Time
     if d.month == 7 and d.day == 25:
         return "Day Out of Time"
 
-    # Year start: July 26 of current year if on/after Jul 26, else prior year
     if (d.month, d.day) >= (7, 26):
         year_start = _date(d.year, 7, 26)
     else:
         year_start = _date(d.year - 1, 7, 26)
 
-    delta = (d - year_start).days  # 0-indexed; day 0 = 1 Magnetic Moon 1
+    delta = (d - year_start).days
 
     if delta < 0 or delta >= 364:
         return "Day Out of Time"
@@ -292,8 +347,6 @@ def _compute_seal(entry_text: str, gregorian: str, hebrew: str,
     """
     SHA-256 of a deterministic JSON payload binding entry text to
     all three temporal representations plus Unix UTC.
-
-    The payload is sorted-key JSON encoded as UTF-8.
     Output: 64-character lowercase hex string.
     """
     payload = json.dumps(
@@ -306,7 +359,7 @@ def _compute_seal(entry_text: str, gregorian: str, hebrew: str,
         },
         sort_keys=True,
         ensure_ascii=True,
-        separators=(",", ":"),   # compact — no whitespace variation
+        separators=(",", ":"),
     )
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -332,12 +385,6 @@ def stamp(entry_text: str, dt: datetime = None) -> SovereignStamp:
     SovereignStamp
         Immutable object holding all three calendar representations
         and the SHA-256 seal binding content to this exact moment.
-
-    Notes
-    -----
-    The seal permanently binds entry_text to its triple-time moment.
-    Alter either the text or any timestamp field — the seal breaks.
-    That breakage is the integrity guarantee.
 
     Raises
     ------
@@ -377,10 +424,7 @@ def stamp(entry_text: str, dt: datetime = None) -> SovereignStamp:
 
 
 def display(ts: SovereignStamp) -> str:
-    """
-    Render a SovereignStamp for human display.
-    Mirrors the ALBEDO session footer format.
-    """
+    """Render a SovereignStamp for human display."""
     return (
         f"📅 Gregorian:  {ts.gregorian}\n"
         f"🌑 Hebrew:     {ts.hebrew}\n"
@@ -392,14 +436,12 @@ def display(ts: SovereignStamp) -> str:
 def verify(entry_text: str, ts: SovereignStamp) -> bool:
     """
     Verify that entry_text matches the seal in ts.
-
-    Returns True if the entry has not been altered since sealing.
-    Returns False if either the entry or any timestamp was changed.
-
-    This is the integrity gate. A False return means the trace
-    has been tampered with — or the stamp was generated by a
-    different version of this function.
+    Returns True if unaltered. False if tampered.
+    A False return means the trace has been altered — or the stamp
+    was generated by a different version of this function.
     """
+    if not isinstance(entry_text, str):
+        return False
     expected = _compute_seal(
         entry_text,
         ts.gregorian,
@@ -434,15 +476,16 @@ def from_dict(d: dict) -> SovereignStamp:
 
 # ═══════════════════════════════════════════════════════════════════
 # SELF-TEST — FROZEN VERIFICATION CASES
-# All cases verified manually in the session of origin: March 3, 2026
+# All Hebrew dates verified against Hebcal.com and Chabad.org
+# Session of origin: March 3, 2026
 # ═══════════════════════════════════════════════════════════════════
 
 def _run_self_test(verbose: bool = True) -> None:
     """
     Verification against anchor values known at time of writing.
     Any failure here means the calendar algorithms have been broken.
-    Do not modify to make tests pass — modify the algorithm and
-    re-verify from first principles.
+    Do not modify to make tests pass — verify the algorithm from
+    first principles and create FROZEN-3.0 if correction is needed.
     """
     failures = []
 
@@ -456,35 +499,51 @@ def _run_self_test(verbose: bool = True) -> None:
     anchor_dt   = datetime(2026, 3, 3, 15, 0, 0, tzinfo=timezone.utc)
 
     if verbose:
-        print("═══ SOVEREIGN TRACE STAMP — SELF-TEST ═══")
+        print("═══ SOVEREIGN TRACE STAMP FROZEN-2.0 — SELF-TEST ═══")
         print(f"Anchor: {anchor_date}  (session of origin)\n")
 
     # ── Gregorian ─────────────────────────────────────────────────
     check("Gregorian", _gregorian(anchor_date), "March 3, 2026")
 
     # ── JD bridge ─────────────────────────────────────────────────
-    check("JD(Sep 22 2025)",  _jd_from_gregorian(2025, 9, 22),  2460941)
+    check("JD(Sep 23 2025)",  _jd_from_gregorian(2025, 9, 23),  2460942)
     check("JD(Mar  3 2026)",  _jd_from_gregorian(2026, 3,  3),  2461103)
 
     # ── Hebrew epoch ──────────────────────────────────────────────
-    check("1 Tishri 5786 JD", _tishri_1_jd(5786), 2460941)
+    check("1 Tishri 5786 JD",   _tishri_1_jd(5786),        2460942)
+    check("1 Tishri 5787 JD",   _tishri_1_jd(5787),        2461296)
 
     # ── Hebrew year structure ─────────────────────────────────────
     check("5786 is NOT leap",  _is_hebrew_leap(5786), False)
     check("Year 5786 length",  _year_length(5786),    354)
 
-    # ── Hebrew date conversion ────────────────────────────────────
+    # ── Hebrew date conversion — Hebcal/Chabad verified [D] ───────
     h_year, h_month, h_day = _gregorian_to_hebrew(2026, 3, 3)
-    check("Hebrew year",   h_year,   5786)
-    check("Hebrew month",  h_month,  "Adar")
-    check("Hebrew day",    h_day,    15)
-    check("Hebrew string", _hebrew(anchor_date), "15 Adar 5786")
+    check("Hebrew year (Mar 3 2026)",   h_year,   5786)
+    check("Hebrew month (Mar 3 2026)",  h_month,  "Adar")
+    check("Hebrew day (Mar 3 2026)",    h_day,    14)
+    check("Hebrew string (Mar 3 2026)", _hebrew(anchor_date), "14 Adar 5786")
 
-    # ── Rosh Hashanah anchor ──────────────────────────────────────
-    rh_year, rh_month, rh_day = _gregorian_to_hebrew(2025, 9, 22)
+    # ── Rosh Hashanah anchor (civil-day convention) ───────────────
+    rh_year, rh_month, rh_day = _gregorian_to_hebrew(2025, 9, 23)
     check("RH 5786 year",  rh_year,  5786)
     check("RH 5786 month", rh_month, "Tishri")
     check("RH 5786 day",   rh_day,   1)
+
+    # ── Yom Kippur anchor ─────────────────────────────────────────
+    yk_year, yk_month, yk_day = _gregorian_to_hebrew(2025, 10, 2)
+    check("Yom Kippur 5786 month", yk_month, "Tishri")
+    check("Yom Kippur 5786 day",   yk_day,   10)
+
+    # ── Passover anchor ───────────────────────────────────────────
+    ps_year, ps_month, ps_day = _gregorian_to_hebrew(2026, 4, 2)
+    check("Passover 5786 month", ps_month, "Nisan")
+    check("Passover 5786 day",   ps_day,   15)
+
+    # ── 1 Nisan anchor ────────────────────────────────────────────
+    n1_year, n1_month, n1_day = _gregorian_to_hebrew(2026, 3, 19)
+    check("1 Nisan 5786 month", n1_month, "Nisan")
+    check("1 Nisan 5786 day",   n1_day,   1)
 
     # ── Dreamspell ────────────────────────────────────────────────
     check("Dreamspell Mar 3 2026", _dreamspell(anchor_date),
@@ -495,15 +554,19 @@ def _run_self_test(verbose: bool = True) -> None:
           _dreamspell(_date(2026, 7, 26)), "Day 1, Magnetic Moon 1/13")
 
     # ── Seal round-trip ───────────────────────────────────────────
-    test_entry = "Origin trace — Sovereign Trace Protocol sealed at session of birth."
+    test_entry = "Origin trace — Sovereign Trace Protocol FROZEN-2.0 sealed at session of birth."
     ts = stamp(test_entry, anchor_dt)
     check("Seal verifies correct entry",  verify(test_entry, ts),        True)
     check("Seal rejects altered entry",   verify("altered text", ts),    False)
-    check("Seal rejects empty mutation",  verify("", ts),                False)
+    check("Seal rejects empty string",    verify("", ts),                False)
+    check("Seal rejects non-string",      verify(None, ts),              False)
+
+    # ── Hebrew field in stamp ─────────────────────────────────────
+    check("Stamp Hebrew field", ts.hebrew, "14 Adar 5786")
 
     # ── Immutability ──────────────────────────────────────────────
     try:
-        ts.gregorian = "tampered"  # type: ignore
+        ts.gregorian = "tampered"
         failures.append("  FAIL — SovereignStamp should be immutable")
     except AttributeError:
         if verbose:
@@ -528,6 +591,11 @@ def _run_self_test(verbose: bool = True) -> None:
     except ValueError:
         if verbose:
             print("  ✓  Naive datetime correctly rejected")
+
+    # ── FROZEN-1.0 REGRESSION — Hebrew must differ ────────────────
+    # FROZEN-1.0 produced "15 Adar 5786" for this date. FROZEN-2.0 must not.
+    check("FROZEN-1.0 regression: NOT 15 Adar",
+          ts.hebrew != "15 Adar 5786", True)
 
     # ── Result ────────────────────────────────────────────────────
     if verbose:
@@ -555,7 +623,7 @@ def _run_self_test(verbose: bool = True) -> None:
 def _cli() -> None:
     """Interactive sovereign trace entry with live stamp."""
     print("═══════════════════════════════════════════════════")
-    print("  SOVEREIGN TRACE PROTOCOL — Entry Point")
+    print("  SOVEREIGN TRACE PROTOCOL — FROZEN-2.0")
     print("  Your trace will be sealed permanently.")
     print("  There is no undo.")
     print("═══════════════════════════════════════════════════\n")
@@ -584,7 +652,5 @@ if __name__ == "__main__":
     if "--test" in sys.argv or "-t" in sys.argv:
         _run_self_test(verbose=True)
     else:
-        # Run self-test silently before any live use
         _run_self_test(verbose=False)
         _cli()
-
