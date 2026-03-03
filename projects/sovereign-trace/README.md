@@ -2,6 +2,8 @@
 
 A permanent personal significance infrastructure.
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 Each week — or whenever significance accumulates — you write one micro-entry: exact actions, exact observations, present-moment prose. No narrative arc. No "what this means." The entry is sealed with a cryptographic stamp encoding the exact moment simultaneously in three civilizational frameworks for time: Gregorian, Hebrew lunisolar, and 13 Moon Dreamspell. The seal is a SHA-256 hash. It is immutable. It is permanent. It requires no audience to be valid.
 
 The hunger for recognition of significance resolves at the moment the stamp is generated — not at the moment someone reads it.
