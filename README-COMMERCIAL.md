@@ -142,3 +142,33 @@ The frameworks that power this evaluation are documented in the academic and tec
 *Sheldon K. Salmon — AI Reliability Architect*
 *February 2026*
 *The methodology lives here. The service is what you pay for.*
+
+
+Contact
+[![Consulting Inquiries](https://img.shields.io/badge/Consulting-Inquiries-1E3A8A?style=flat-square&logo=mail&logoColor=FFFFFF)](mailto:aionsystem@outlook.com)
+
+Sites
+[![Sheldon K. Salmon](https://img.shields.io/badge/Sheldon_K._Salmon-1E3A8A?style=flat-square&logo=data:image/svg+xml;base64,[YOUR_AION_SVG_BASE64_HERE]&logoColor=FFFFFF)](https://sheldonksalmon.carrd.co)
+[![AION Systems](https://img.shields.io/badge/AION_Systems-1E3A8A?style=flat-square&logo=data:image/svg+xml;base64,[YOUR_AION_SVG_BASE64_HERE]&logoColor=FFFFFF)](https://aionsystems.carrd.co)
+
+Publishing
+[![Medium Profile](https://img.shields.io/badge/Medium_Profile-1E3A8A?style=flat-square&logo=medium&logoColor=FFFFFF)](https://medium.com/sheldonksalmon)
+[![Medium Articles](https://img.shields.io/badge/Medium_Articles-1E3A8A?style=flat-square&logo=medium&logoColor=FFFFFF)](https://medium.com/@sheldonksalmon)
+
+Bots
+[![PSA Grader](https://img.shields.io/badge/PSA_Grader-1E3A8A?style=flat-square&logo=robot&logoColor=FFFFFF)](https://poe.com/PSA-Grader)
+[![ANCHOR Reliability](https://img.shields.io/badge/ANCHOR_Reliability-1E3A8A?style=flat-square&logo=anchor&logoColor=FFFFFF)](https://poe.com/ANCHOR-Reliability)
+
+Repos
+[![AION BRAIN](https://img.shields.io/badge/AION_BRAIN-1E3A8A?style=flat-square&logo=github&logoColor=FFFFFF)](https://github.com/AionSystem/AION-BRAIN)
+[![SHELDON.K.SALMON](https://img.shields.io/badge/SHELDON.K.SALMON-1E3A8A?style=flat-square&logo=github&logoColor=FFFFFF)](https://github.com/AionSystem/SHELDON.K.SALMON)
+[![Whitepaper Blueprint](https://img.shields.io/badge/Whitepaper_Blueprint-1E3A8A?style=flat-square&logo=github&logoColor=FFFFFF)](https://github.com/AionSystem/Whitepaper-Blueprint)
+[![Shared Cognitive Map — AGI](https://img.shields.io/badge/Shared_Cognitive_Map-AGI-1E3A8A?style=flat-square&logo=github&logoColor=FFFFFF)](https://github.com/AionSystem/AGI)
+
+Community
+[![Hacker News Submissions](https://img.shields.io/badge/Hacker_News_Submissions-1E3A8A?style=flat-square&logo=ycombinator&logoColor=FFFFFF)](https://news.ycombinator.com/submitted?id=sheldonksalmon)
+[![LinkedIn Profile](https://img.shields.io/badge/LinkedIn_Profile-1E3A8A?style=flat-square&logo=linkedin&logoColor=FFFFFF)](https://www.linkedin.com/in/sheldon-k-salmon-b0901b378/)
+[![X Profile](https://img.shields.io/badge/X_Profile-1E3A8A?style=flat-square&logo=x&logoColor=FFFFFF)](https://x.com/OCEAN_AION)
+
+Support
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-1E3A8A?style=flat-square&logo=buymeacoffee&logoColor=FFFFFF)](https://buymeacoffee.com/sheldonksalmon)
