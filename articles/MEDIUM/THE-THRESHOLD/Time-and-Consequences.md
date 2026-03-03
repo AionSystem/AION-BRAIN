@@ -3,6 +3,8 @@
 *By Sheldon K. Salmon & Claude (Anthropic) | Friday Salmon Certainty Report | February 2026*
 
 ---
+![1000007687](https://github.com/user-attachments/assets/a3fe8d3f-4085-4c58-a172-61cae292106c)
+
 
 The OpenAI Pentagon deal is not a policy story.
 
