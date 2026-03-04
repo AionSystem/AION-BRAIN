@@ -9,9 +9,9 @@
 
 ---
 
-[![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
-[![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-0f3460?style=for-the-badge&labelColor=16213e)](https://github.com/AionSystem/AION-BRAIN)
-[![Service](https://img.shields.io/badge/SERVICE-AI_RELIABILITY_SNAPSHOT-FFD700?style=for-the-badge&labelColor=16213e)](https://tally.so/r/b5ljko)
+[![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-1a6b9a?style=for-the-badge&labelColor=0d1117)](mailto:aionsystem@outlook.com)
+[![Status](https://img.shields.io/badge/STATUS-ACTIVE_BUILD-0f3460?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/OCEAN-BRAIN)
+[![Brain](https://img.shields.io/badge/BRAIN-LEFT_HEMISPHERE-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
 
 ---
 
