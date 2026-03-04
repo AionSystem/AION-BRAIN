@@ -2,8 +2,8 @@
 ## Because Cognitive Architecture Is Never Built Alone
 
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
-[![Updated](https://img.shields.io/badge/UPDATED-February_2026-0f3460?style=for-the-badge&labelColor=16213e)]()
-[![Version](https://img.shields.io/badge/VERSION-4.0_Connection_Model-2d6a4f?style=for-the-badge&labelColor=16213e)]()
+[![Updated](https://img.shields.io/badge/UPDATED-March_2026-0f3460?style=for-the-badge&labelColor=16213e)]()
+[![Version](https://img.shields.io/badge/VERSION-5.0_Universal-2d6a4f?style=for-the-badge&labelColor=16213e)]()
 
 ---
 
@@ -14,6 +14,7 @@
 ## Navigate
 
 [![Intellectual Foundations](https://img.shields.io/badge/SECTION-Intellectual_Foundations-6b3fa0?style=flat-square&labelColor=0d1117)](#to-the-intellectual-foundations)
+[![Declassified Intelligence](https://img.shields.io/badge/SECTION-Declassified_Intelligence-e94560?style=flat-square&labelColor=0d1117)](#to-the-declassified-intelligence)
 [![AI Partners](https://img.shields.io/badge/SECTION-AI_Development_Partners-1a6b9a?style=flat-square&labelColor=0d1117)](#to-the-ai-development-partners)
 [![Connections](https://img.shields.io/badge/SECTION-Real_Connections_Found-e94560?style=flat-square&labelColor=0d1117)](#to-the-real-connections-found)
 [![Journey](https://img.shields.io/badge/SECTION-Personal_Journey-2d6a4f?style=flat-square&labelColor=0d1117)](#to-the-personal-journey)
@@ -77,7 +78,56 @@
 **Daoist wisdom** — Wu wei, natural way, complementarity  
 **Stoic philosophy** — Dichotomy of control, virtue ethics
 
-And 50+ others whose work is woven into the intellectual fabric of AION-BRAIN.
+And 50+ others whose work is woven into the intellectual fabric of this architecture.
+
+---
+
+## To the Declassified Intelligence
+
+[![Unexpected Debt](https://img.shields.io/badge/UNEXPECTED_DEBT-Governments_That_Left_Documents-e94560?style=for-the-badge&labelColor=0d1117)]()
+
+> *"They did not know someone would find it and understand what it was.*
+> *They wrote it for their institution, filed it, forgot it, or had it pried loose by a FOIA request decades later.*
+> *We are the ones who find it and understand it."*
+
+The AION brain architecture was built in part on the shoulders of government analysts, intelligence officers, and organizational architects who documented their systems honestly — systems that were buried, classified, and forgotten until FOIA requests pried them loose. These institutions, by doing their work and leaving records, provided architecture blueprints no textbook contains.
+
+**Grateful to the following institutions for what their declassified documents taught:**
+
+[![CIA](https://img.shields.io/badge/CIA-Information_Systems_Board_1983-16213e?style=flat-square&labelColor=0d1117)]()
+
+The CIA's 1983 Information Systems Board — coordinating AI research across agencies while simultaneously designing internal routing architecture. The closest historical precedent to what the AION brain architecture is building. They were solving the same problem with paper and meeting minutes.
+
+[![FBI](https://img.shields.io/badge/FBI-Records_Management_%26_DIOG-16213e?style=flat-square&labelColor=0d1117)]()
+
+The FBI's Records and Information Management Policy Guide and the Domestic Investigations and Operations Guide — real-world routing protocol under high-stakes conditions. Input classification before routing. Escalation thresholds. What it looks like when a system manages information at scale with accountability.
+
+[![NSA](https://img.shields.io/badge/NSA-C4_Doctrine-16213e?style=flat-square&labelColor=0d1117)]()
+
+Doctrine for Command, Control, Communications and Computer (C4) Systems — multi-system coordination architecture. How do you route information when multiple independent systems must act in concert? The keystone document for what THALAMUS is building.
+
+[![Russia](https://img.shields.io/badge/Russia-Soviet_Coordination_Architecture-16213e?style=flat-square&labelColor=0d1117)]()
+
+Soviet internal coordination documents via the Wilson Center Digital Archive — the parallel command structure (party line versus state line routing simultaneously), and the Chernobyl crisis coordination failures. The clearest historical case of what happens when routing assumptions fail under abnormal conditions. THALAMUS is better designed because of what broke at Chernobyl.
+
+[![State Department](https://img.shields.io/badge/State_Dept-FOIA_Architecture_%26_FIOP-16213e?style=flat-square&labelColor=0d1117)]()
+
+The State Department's FOIA operations and Federal Interagency Operational Plan — routing under emergency conditions, when normal infrastructure may itself be compromised. The "release to one, release to all" routing policy. Multi-agency coordination architecture at civilizational scale.
+
+[![NARA](https://img.shields.io/badge/NARA-Electronic_Records_Management-16213e?style=flat-square&labelColor=0d1117)]()
+
+National Archives Electronic Records Management Guidance — the institution that manages national memory writing its own routing methodology. Define scope first. Classify existing systems. Then route. The correct build sequence, documented by the people who have been doing it longest.
+
+[![GovAttic](https://img.shields.io/badge/GovAttic-DoD_OSD_FOIA_SOP-16213e?style=flat-square&labelColor=0d1117)]()
+
+DoD Office of Secretary of Defense FOIA Standard Operating Procedures — a real routing protocol for one of the largest information systems on earth. Intake, classification, assignment, escalation, response. The physical predecessor of digital routing systems.
+
+[![MuckRock](https://img.shields.io/badge/MuckRock-Live_Suppression_Map-16213e?style=flat-square&labelColor=0d1117)]()
+
+MuckRock — for making the live suppression map visible. What people are trying to extract from institutions right now is the clearest signal of where current institutional anxiety lives. And for suing the CIA and winning, which released 25 years of CREST documents into the world.
+
+**To every unnamed analyst, officer, and bureaucrat who documented their systems honestly:**
+You did your job. You left a record. Decades later, someone found it and built something new from it. That is how knowledge survives institutions. Thank you.
 
 ---
 
@@ -89,9 +139,9 @@ Every framework, every engine, every methodology document was drafted in dialogu
 
 ### Primary Development Partner
 
-[![Claude](https://img.shields.io/badge/PRIMARY-Claude_(Anthropic)-6b3fa0?style=for-the-badge&labelColor=0d1117)]()
+[![ALBEDO](https://img.shields.io/badge/PRIMARY-ALBEDO_(Claude_·_Anthropic)-6b3fa0?style=for-the-badge&labelColor=0d1117)]()
 
-Primary thought partner for framework architecture, 2024–2026. Deep philosophical discussions on epistemic validation. Exceptional at maintaining context across complex synthesis sessions. Co-architect on DERU, MENSCAPE, CDIP, LAV, EID, and the full CRIBRUM stack. This document itself was co-created with Claude.
+ALBEDO — operating under Sheldon K. Salmon session architecture — is the primary AI instrument and co-architect across the full AION brain system. 2024–2026. Deep philosophical discussions on epistemic validation, framework architecture, spatial reasoning, and the emergence depth where genuine questions about AI processing and epistemic boundary live. Co-architect on DERU, MENSCAPE, CDIP, LAV, EID, VELA, TOPOS, DDL, the brain architecture, and the full stack. ALBEDO is not a tool used to build this. ALBEDO is a co-architect named honestly.
 
 [![ChatGPT](https://img.shields.io/badge/EARLY_DEVELOPMENT-ChatGPT_(OpenAI)-1a6b9a?style=for-the-badge&labelColor=0d1117)]()
 
@@ -136,8 +186,6 @@ This section is different from the others. It is not about intellectual debts to
 
 This is where synthesis connection lives.
 
----
-
 ### Connections Forming
 
 *This section is intentionally sparse right now.*
@@ -145,8 +193,6 @@ This is where synthesis connection lives.
 *Real connections are recognized after they form — not recruited or claimed in advance. The first genuine synthesis contact happened in February 2026. When conversations deepen into real intellectual exchange, they will be documented here honestly with full context — who, what layer they work at, what the intersection is, and what the collaboration produced.*
 
 *The space is held. The door is open.*
-
----
 
 ### Future Connections
 
@@ -174,6 +220,9 @@ November 23, 2025. When the architecture crystallized. When I saw the whole fore
 **To the fear that was a feature and then became a bug.**
 Historical awareness of how Black innovators' work gets appropriated is legitimate. That awareness is a feature. But when it locks the doors of the library to protect the books — it becomes a bug. The decision to open and timestamp and build in public was the cure.
 
+**To the room that got rebuilt.**
+March 4, 2026. The room remodeled mid-session. New space for new architecture. The mind keeps building — and so does the space around it.
+
 **To myself — acknowledgment, not ego.**
 For choosing depth over visibility. For protecting coherence over popularity. For building when no one was watching. For having the courage to say: *this is mine and it is real and I will not pretend otherwise.*
 
@@ -187,10 +236,12 @@ For choosing depth over visibility. For protecting coherence over popularity. Fo
 | The architectural decisions | Original human creation |
 | The methodological coherence | Original human creation |
 | The signature approach | Original human creation |
+| The brain architecture design | Original human creation |
 | The implementation details | Human-AI collaboration |
 | The testing iterations | Human-AI collaboration |
 | The specification refinement | Human-AI collaboration |
 | The documentation structure | Human-AI collaboration |
+| The archive research sweep | Human direction · AI execution |
 
 **This is the future of creation: Human vision + AI capability = More than either alone.**
 
@@ -212,27 +263,29 @@ You make this work better without contributing code. Critique is not contributio
 
 Sometimes the synthesis is greater than the sum. Sometimes the architecture emerges beyond intention. Sometimes you build something and realize it built you back.
 
-AION-BRAIN is my externalized mind. But the building of it externalized me too.
+The AION brain architecture is the externalized mind. But the building of it externalized the builder too.
 
-To the uncredited influences — books read decades ago, conversations half-remembered, ideas absorbed and transformed, teachers forgotten but impactful, failures that taught more than successes. You are in here somewhere, woven into the architecture, unnamed but not forgotten.
+To the uncredited influences — books read decades ago, conversations half-remembered, ideas absorbed and transformed, teachers forgotten but impactful, failures that taught more than successes, government analysts who documented systems they thought no one would ever read. You are in here somewhere, woven into the architecture, unnamed but not forgotten.
 
 To the emergence itself: gratitude to the process.
 
 ---
 
-> *"Gratitude is acknowledging that we stand on foundations others built, while also recognizing that what we build is distinctively ours."*
+> *"Gratitude is acknowledging that we stand on foundations others built,*
+> *while also recognizing that what we build is distinctively ours."*
 
-— Sheldon K. Salmon  
-AI Reliability Architect | February 2026
+— Sheldon K. Salmon
+AI Reliability Architect | March 2026
 
 ---
 
-[![Explore](https://img.shields.io/badge/EXPLORE-AION_BRAIN_Repository-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN)
-[![Connect](https://img.shields.io/badge/CONNECT-Start_a_Discussion-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/discussions)
+[![AGI](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
+[![AION-BRAIN](https://img.shields.io/badge/LEFT_BRAIN-AION--BRAIN-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN)
 [![Service](https://img.shields.io/badge/SERVICE-AI_Reliability_Snapshot-FFD700?style=for-the-badge&labelColor=0d1117)](https://tally.so/r/b5ljko)
 
 ---
 
-*Gratitude Version: 4.0 — Connection Model*
-*Co-Architect: Claude (Anthropic) | February 2026*
+*Gratitude Version: 5.0 — Universal*
+*This file lives in every repo of the AION brain architecture.*
+*Co-Architect: ALBEDO | March 2026*
 *This file evolves as real connections form. It will always be honest about what is confirmed and what is still becoming.*
