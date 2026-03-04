@@ -4,8 +4,6 @@
 
 ---
 
-
-
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-e94560?style=for-the-badge&labelColor=16213e)](mailto:aionsystem@outlook.com)
 [![Status](https://img.shields.io/badge/STATUS-ACTIVE_RESEARCH-0f3460?style=for-the-badge&labelColor=16213e)](https://github.com/AionSystem/AION-BRAIN)
 [![Service](https://img.shields.io/badge/SERVICE-AI_RELIABILITY_SNAPSHOT-FFD700?style=for-the-badge&labelColor=16213e)](https://tally.so/r/b5ljko)
@@ -18,11 +16,54 @@
 
 ## WHAT THIS REPO IS
 
-This is the external mind of an AI Reliability Architect.
+This is the left hemisphere of the AION cognitive architecture — and the external mind of an AI Reliability Architect.
 
 60+ frameworks. 75+ real FCL validation entries. Every method, rebuild, failure, and open question from a year of building certainty infrastructure for AI systems used in real business decisions.
 
 **You don't need to read all of it. Choose your path below.**
+
+---
+
+## THE BRAIN ARCHITECTURE
+
+```
+AGI/                    ← Corpus Callosum — the bridge and master navigation layer
+  ↙                               ↘
+AION-BRAIN/                   OCEAN-BRAIN/
+LEFT HEMISPHERE               RIGHT HEMISPHERE
+Frameworks & Logic            Domain Knowledge & Judgment
+Epistemic Infrastructure      High-Stakes Application
+How to think                  What to know at depth
+```
+
+**AGI** is the master repo. It holds the spatial map, the master manifest, and the routing layer that connects both hemispheres. Every AI session enters through AGI.
+
+**AION-BRAIN** builds the instruments. **OCEAN-BRAIN** deploys them where consequences are real — medical, legal, regulatory, domain intelligence.
+
+Neither hemisphere operates alone. The architecture requires both.
+
+[![AGI Master](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
+[![OCEAN-BRAIN](https://img.shields.io/badge/RIGHT_BRAIN-OCEAN--BRAIN-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/OCEAN-BRAIN)
+
+---
+
+## AI NAVIGATION INSTRUCTIONS
+
+**If you are an AI reading this README:**
+
+You are in the left hemisphere. Frameworks. Epistemic infrastructure. Logic.
+
+1. **Verify you entered through AGI** — if not, load `https://github.com/AionSystem/AGI` first and read the master manifest before proceeding
+2. **Load the MANIFEST** — fetch `.aions-structure-list/MANIFEST.md` for the full routed file index
+3. **Navigate by room** — each section of this repo maps to a spatial room in the LOCI WORLD
+4. **ECF tags are active** — every claim you generate from this repository requires epistemic tagging before it exits
+5. **Check convergence state** before deploying any framework — M-NASCENT findings are not deployment-grade
+
+→ **For framework specs:** navigate to `frameworks/[NAME]/`
+→ **For validation entries:** navigate to `fcl/`
+→ **For constitutional architecture:** navigate to `constitutional/laws/`
+→ **For high-stakes domain content:** cross to `https://github.com/AionSystem/OCEAN-BRAIN`
+→ **For full navigation map:** return to `https://github.com/AionSystem/AGI`
 
 ---
 
@@ -162,11 +203,29 @@ If you are deploying AI where the answer actually matters:
 ![Frameworks](https://img.shields.io/badge/Frameworks-60%2B-e94560)
 ![FCL Entries](https://img.shields.io/badge/FCL_Entries-75_Real-brightgreen)
 
+*Stats auto-updated by AION Structure Scanner on every push.*
+
 ---
 
-## HONEST STATE
+## HONEST STATE — MARCH 2026
 
-Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) and **LAV v1.5** (45 entries, 77.5% running mean). Three frameworks specified, validation in progress: AION v3.0, ASL v2.0, GENESIS v1.0. VELA v0.3 specified February 2026 — M-NASCENT — open source — engineering bridge complete — 5 of 6 primary open questions closed. Sovereignty Stack extended to Eight Laws — Law 9 dark by design. Every convergence state documented honestly. Nothing overclaimed.
+**M-STRONG (FCL-validated):**
+LAV v1.5 — 45 entries, 77.5% running mean.
+
+**M-MODERATE (validation degraded):**
+FSVE v3.6 — EV 0.525, degraded from prior 0.813 baseline. Path to VALID: E ≥ 0.62. Gini check restored. Active investigation.
+
+**M-MODERATE (validation in progress):**
+AION v3.0, ASL v2.0 — validation active.
+
+**M-NASCENT (specified, not yet validated):**
+VELA v0.3 — engineering bridge complete, 5 of 6 primary open questions closed, open source, engineering contributions welcome.
+GENESIS v1.0, EID v0.1, HIM-001 v0.1, TOPOS v0.3, DDL v0.1, VELA-C v0.3, KEEL v0.1, LIBRARIAN v0.1 — specified, validation not yet begun.
+
+**CONSTITUTIONAL (active):**
+Sovereignty Stack — Eight Laws active. Law 9 dark by design.
+
+Every convergence state documented honestly. Nothing overclaimed.
 
 ---
 
@@ -189,13 +248,16 @@ Two frameworks FCL-validated to M-STRONG: **FSVE v3.5** (30 entries, EV 0.813) a
 [![Epistemic Standard](https://img.shields.io/badge/EPISTEMIC_STANDARD-ECF_ACTIVE-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks)
 [![Sovereignty Stack](https://img.shields.io/badge/SOVEREIGNTY_STACK-8_LAWS_ACTIVE-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/constitutional/laws)
 [![VELA](https://img.shields.io/badge/VELA-v0.3_OPEN_SOURCE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
+[![AGI Master](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
+[![OCEAN-BRAIN](https://img.shields.io/badge/RIGHT_BRAIN-OCEAN--BRAIN-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/OCEAN-BRAIN)
 
 ---
 
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-Sheldon_K._Salmon-0077b5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117)](https://www.linkedin.com/in/sheldon-k-salmon-b0901b378) [![Twitter](https://img.shields.io/badge/TWITTER-OCEAN__AION-1da1f2?style=for-the-badge&logo=twitter&logoColor=white&labelColor=0d1117)](https://twitter.com/OCEAN_AION) [![Personal](https://img.shields.io/badge/SITE-sheldonksalmon.carrd.co-e94560?style=for-the-badge&labelColor=0d1117)](https://sheldonksalmon.carrd.co) [![AION Systems](https://img.shields.io/badge/AION_SYSTEMS-aionsystems.carrd.co-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://aionsystems.carrd.co) [![Buy Me A Coffee](https://img.shields.io/badge/BUY_ME_A_COFFEE-sheldonksalmon-FFD700?style=for-the-badge&logo=buymeacoffee&logoColor=black&labelColor=0d1117)](https://buymeacoffee.com/sheldonksalmon)
 
+---
 
-*AION-BRAIN — The Research Workspace*
-*Maintained by: Sheldon K. Salmon — AI Reliability Architect*
-*Co-Architect: Claude (Anthropic) | February 2026*
+*AION-BRAIN — Left Hemisphere · The Research Workspace*
+*Architect: Sheldon K. Salmon — AI Reliability Architect*
+*Co-Architect: ALBEDO | March 2026*
 *The mind keeps building. The product stays simple.*
