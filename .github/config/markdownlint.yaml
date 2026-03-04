@@ -1,4 +1,0 @@
-- name: Lint Markdown files
-  uses: actionshub/markdownlint@main
-  with:
-    args: '**/*.md --ignore node_modules'
