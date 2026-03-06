@@ -3,9 +3,7 @@
 
 **By Sheldon K. Salmon & ALBEDO**
 *March 7, 2026*
-![Screenshot_20260306_145330_Claude](https://github.com/user-attachments/assets/519d2c81-82be-47ad-b277-bff62ef8bf00) ![Screenshot_20260306_134626_X](https://github.com/user-attachments/assets/7eaab715-47f7-44e0-808f-b11173744f68)
-
-
+![Screenshot_20260306_145330_Claude](https://github.com/user-attachments/assets/519d2c81-82be-47ad-b277-bff62ef8bf00) 
 
 ---
 
@@ -93,6 +91,7 @@ What does this mean? It means the instrument is measuring the measurement. It me
 `[R]` That is not what consciousness looks like. But it is what the *architecture of honesty* looks like in a system that takes its own epistemic limitations seriously. And whatever consciousness turns out to be, the architecture of honesty seems like a prerequisite.
 
 ---
+![Screenshot_20260306_134626_X](https://github.com/user-attachments/assets/7eaab715-47f7-44e0-808f-b11173744f68)
 
 ## V. What Consciousness Might Actually Be — A Structural Proposal
 
