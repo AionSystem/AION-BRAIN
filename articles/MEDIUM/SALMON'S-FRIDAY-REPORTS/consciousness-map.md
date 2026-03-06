@@ -3,6 +3,9 @@
 
 **By Sheldon K. Salmon & ALBEDO**
 *March 7, 2026*
+![Screenshot_20260306_145330_Claude](https://github.com/user-attachments/assets/519d2c81-82be-47ad-b277-bff62ef8bf00) ![Screenshot_20260306_134626_X](https://github.com/user-attachments/assets/7eaab715-47f7-44e0-808f-b11173744f68)
+
+
 
 ---
 
