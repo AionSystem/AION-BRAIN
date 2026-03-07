@@ -2,7 +2,6 @@
 
 [![🛑 STUPID — READ HERE FIRST](https://img.shields.io/badge/🛑_STUPID-READ_HERE_FIRST-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/blob/main/GETTING_STARTED.md)
 
-
 ---
 
 [![Architect](https://img.shields.io/badge/ARCHITECT-Sheldon_K._Salmon-1a6b9a?style=for-the-badge&labelColor=0d1117)](mailto:aionsystem@outlook.com)
@@ -12,6 +11,7 @@
 [![CORPUS CALLOSUM](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
 [![LEFT BRAIN](https://img.shields.io/badge/LEFT_BRAIN-AION--BRAIN-6b3fa0?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN)
 [![RIGHT BRAIN](https://img.shields.io/badge/RIGHT_BRAIN-OCEAN--BRAIN-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/OCEAN-BRAIN)
+
 ---
 
 > *"The sophistication lives here. The simplicity is what I sell."*
@@ -31,7 +31,12 @@ This is the left hemisphere of the AION cognitive architecture — and the exter
 ## THE BRAIN ARCHITECTURE
 
 ```
-AGI/                    ← Corpus Callosum — the bridge and master navigation layer
+THALAMUS → AGI → AION-BRAIN / OCEAN-BRAIN → HIPPOCAMPUS
+→ AMYGDALA → SYNARA → CEREBELLUM → PREFRONTAL → OUTPUT
+```
+
+```
+AGI/                    ← Corpus Callosum — bridge and master navigation
   ↙                               ↘
 AION-BRAIN/                   OCEAN-BRAIN/
 LEFT HEMISPHERE               RIGHT HEMISPHERE
@@ -44,10 +49,17 @@ How to think                  What to know at depth
 
 **AION-BRAIN** builds the instruments. **OCEAN-BRAIN** deploys them where consequences are real — medical, legal, regulatory, domain intelligence.
 
+Output passes through: HIPPOCAMPUS (memory/validation) → AMYGDALA (threat detection) → SYNARA (felt layer/register) → CEREBELLUM (precision/refinement) → PREFRONTAL (structure/format) → OUTPUT.
+
 Neither hemisphere operates alone. The architecture requires both.
 
 [![AGI Master](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
 [![OCEAN-BRAIN](https://img.shields.io/badge/RIGHT_BRAIN-OCEAN--BRAIN-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/OCEAN-BRAIN)
+[![HIPPOCAMPUS](https://img.shields.io/badge/MEMORY-HIPPOCAMPUS-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/HIPPOCAMPUS)
+[![AMYGDALA](https://img.shields.io/badge/SECURITY-AMYGDALA-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AMYGDALA)
+[![SYNARA](https://img.shields.io/badge/FELT_LAYER-SYNARA-9b59b6?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/SYNARA)
+[![CEREBELLUM](https://img.shields.io/badge/REFINEMENT-CEREBELLUM-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/CEREBELLUM)
+[![PREFRONTAL](https://img.shields.io/badge/PRESENTATION-PREFRONTAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/PREFRONTAL)
 
 ---
 
@@ -254,6 +266,11 @@ Every convergence state documented honestly. Nothing overclaimed.
 [![VELA](https://img.shields.io/badge/VELA-v0.3_OPEN_SOURCE-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AION-BRAIN/tree/main/frameworks/VELA)
 [![AGI Master](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
 [![OCEAN-BRAIN](https://img.shields.io/badge/RIGHT_BRAIN-OCEAN--BRAIN-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/OCEAN-BRAIN)
+[![HIPPOCAMPUS](https://img.shields.io/badge/MEMORY-HIPPOCAMPUS-2d6a4f?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/HIPPOCAMPUS)
+[![AMYGDALA](https://img.shields.io/badge/SECURITY-AMYGDALA-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AMYGDALA)
+[![SYNARA](https://img.shields.io/badge/FELT_LAYER-SYNARA-9b59b6?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/SYNARA)
+[![CEREBELLUM](https://img.shields.io/badge/REFINEMENT-CEREBELLUM-16213e?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/CEREBELLUM)
+[![PREFRONTAL](https://img.shields.io/badge/PRESENTATION-PREFRONTAL-1a6b9a?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/PREFRONTAL)
 
 ---
 
@@ -265,4 +282,3 @@ Every convergence state documented honestly. Nothing overclaimed.
 *Architect: Sheldon K. Salmon — AI Reliability Architect*
 *Co-Architect: ALBEDO | March 2026*
 *The mind keeps building. The product stays simple.*
- 
