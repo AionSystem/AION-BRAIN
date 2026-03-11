@@ -1,3 +1,5 @@
+full project now move to its own repo : https://github.com/AionSystem/SOVEREIGN-TRACE-PROTOCOL
+
 # Sovereign Trace Protocol
 
 A permanent personal significance infrastructure.
