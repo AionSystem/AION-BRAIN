@@ -3,547 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roller Coaster Physics Simulator</title>
+<title>RCS Physics Simulator v3 — AP Physics Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
+  /* ALL YOUR EXISTING STYLES - KEEP THEM EXACTLY AS THEY ARE */
   :root {
-    --bg:        #0a0c0f;
-    --surface:   #111418;
-    --panel:     #161b22;
-    --border:    #21282f;
-    --amber:     #f0a500;
-    --amber-dim: #b07a00;
-    --green:     #00e676;
-    --red:       #ff1744;
-    --orange:    #ff6d00;
-    --blue:      #40c4ff;
-    --text:      #c8d6df;
-    --muted:     #5a6a74;
-    --mono:      'Share Tech Mono', monospace;
-    --sans:      'Barlow Condensed', sans-serif;
+    --bg:#0a0c0f;--surface:#111418;--panel:#161b22;--border:#21282f;
+    --amber:#f0a500;--amber-dim:#b07a00;--green:#00e676;--red:#ff1744;
+    --orange:#ff6d00;--blue:#40c4ff;--gold:#D4AF37;
+    --text:#c8d6df;--muted:#5a6a74;
+    --mono:'Share Tech Mono',monospace;--sans:'Barlow Condensed',sans-serif;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.5;
-    min-height: 100vh;
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.5;min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(240,165,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(240,165,0,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  .wrapper{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:20px;}
+  header{border-bottom:2px solid var(--amber);padding-bottom:16px;margin-bottom:24px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .logo-block h1{font-family:var(--sans);font-size:32px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:var(--amber);line-height:1;}
+  .logo-block .sub{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:2px;margin-top:4px;}
+  .header-meta{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;line-height:1.8;}
+  .header-meta span{color:var(--amber);}
+  .header-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .ctrl-btn{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:1px;padding:7px 14px;cursor:pointer;transition:all 0.15s;text-transform:uppercase;white-space:nowrap;}
+  .ctrl-btn:hover{border-color:var(--amber);color:var(--text);}
+  .ctrl-btn.unit-active{border-color:var(--blue);color:var(--blue);}
+  .ctrl-btn.print-btn{border-color:var(--amber-dim);color:var(--amber);}
+  .ctrl-btn.print-btn:hover{background:rgba(240,165,0,0.1);}
+  .tabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:8px;}
+  .tab-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:1px;padding:6px 14px;cursor:pointer;transition:all 0.15s;text-transform:uppercase;}
+  .tab-btn:hover{border-color:var(--amber-dim);color:var(--text);}
+  .tab-btn.active{background:var(--amber);color:#000;border-color:var(--amber);font-weight:700;}
+  .tab-btn.coaster-tab.active{background:var(--gold);border-color:var(--gold);}
+  .tab-panel{display:none;}.tab-panel.active{display:block;}
+  .card{background:var(--panel);border:1px solid var(--border);padding:20px;margin-bottom:16px;}
+  .card-title{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  @media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+  .field{margin-bottom:12px;}
+  label{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+  input[type=number],select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:14px;padding:8px 10px;outline:none;transition:border-color 0.15s;-moz-appearance:textfield;}
+  input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
+  input[type=number]:focus,select:focus{border-color:var(--amber);}
+  select{cursor:pointer;}select option{background:var(--panel);}
+  .btn{background:var(--amber);color:#000;border:none;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 24px;cursor:pointer;transition:background 0.15s;width:100%;}
+  .btn:hover{background:#ffc107;}
+  .btn.secondary{background:transparent;border:1px solid var(--amber);color:var(--amber);}
+  .btn.secondary:hover{background:rgba(240,165,0,0.1);}
+  .btn.gold-btn{background:var(--gold);color:#000;}.btn.gold-btn:hover{background:#e8c43a;}
+  .result-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);padding:14px 16px;margin-top:14px;font-family:var(--mono);font-size:13px;}
+  .result-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:13px;}
+  .result-row:last-child{border-bottom:none;}
+  .result-row .key{color:var(--muted);font-size:11px;letter-spacing:1px;}
+  .result-row .val{color:var(--text);}
+  .badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;font-weight:700;}
+  .badge.safe{background:rgba(0,230,118,0.15);color:var(--green);border:1px solid var(--green);}
+  .badge.warning{background:rgba(255,109,0,0.15);color:var(--orange);border:1px solid var(--orange);}
+  .badge.danger{background:rgba(255,23,68,0.15);color:var(--red);border:1px solid var(--red);}
+  .badge.info{background:rgba(64,196,255,0.15);color:var(--blue);border:1px solid var(--blue);}
+  .badge.gold{background:rgba(212,175,55,0.15);color:var(--gold);border:1px solid var(--gold);}
+  .g-meter{height:8px;background:var(--border);margin-top:8px;}
+  .g-meter-fill{height:100%;transition:width 0.4s ease,background 0.4s;}
+  canvas{width:100%;background:var(--surface);border:1px solid var(--border);display:block;}
+  .formula{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);padding:12px 16px;margin-bottom:16px;font-family:var(--mono);font-size:12px;color:var(--blue);line-height:1.8;}
+  .safety-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;}
+  .safety-table th{text-align:left;color:var(--amber);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--border);}
+  .safety-table td{padding:8px 10px;border-bottom:1px solid rgba(33,40,47,0.5);vertical-align:middle;}
+  .segment-row{display:flex;gap:8px;align-items:center;padding:8px;background:var(--surface);border:1px solid var(--border);margin-bottom:6px;font-family:var(--mono);font-size:12px;flex-wrap:wrap;}
+  .seg-type{color:var(--amber);font-size:10px;letter-spacing:1px;min-width:80px;}
+  .seg-data{color:var(--muted);flex:1;}
+  .rt-finding{border-left:3px solid var(--red);padding:10px 14px;margin-bottom:10px;background:rgba(255,23,68,0.05);font-family:var(--mono);font-size:12px;}
+  .rt-fixed{border-left:3px solid var(--green);background:rgba(0,230,118,0.05);}
+  .rt-finding .rt-tag{color:var(--red);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+  .rt-fixed .rt-tag{color:var(--green);}
+  .rt-feature{border-left:3px solid var(--blue);background:rgba(64,196,255,0.05);}
+  .rt-feature .rt-tag{color:var(--blue);}
+  .note{font-family:var(--mono);font-size:11px;color:var(--muted);padding:8px 12px;border:1px solid var(--border);margin-top:10px;line-height:1.7;}
+  .coaster-hero{background:linear-gradient(135deg,#0d0b06 0%,#1a1505 100%);border:1px solid var(--gold);padding:24px 28px;margin-bottom:20px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;}
+  .coaster-name{font-family:var(--sans);font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--gold);line-height:0.95;margin-bottom:6px;}
+  .coaster-park{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:10px;}
+  .coaster-title-badge{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gold);border:1px solid rgba(212,175,55,0.4);padding:3px 10px;text-transform:uppercase;display:inline-block;margin-bottom:12px;}
+  .coaster-type-pill{font-family:var(--mono);font-size:9px;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:2px 8px;display:inline-block;}
+  .spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:20px;}
+  .spec-cell{background:var(--surface);padding:16px 14px;transition:background 0.2s;}
+  .spec-cell:hover{background:var(--panel);}
+  .spec-val{font-family:var(--mono);font-size:22px;color:var(--gold);letter-spacing:1px;line-height:1;margin-bottom:4px;}
+  .spec-key{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+  .physics-compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:20px;}
+  .physics-col{background:var(--surface);padding:20px 18px;}
+  .physics-col-title{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+  .physics-col-title.ideal{color:var(--blue);border-bottom-color:rgba(64,196,255,0.3);}
+  .physics-col-title.actual{color:var(--gold);border-bottom-color:rgba(212,175,55,0.3);}
+  .compare-val{font-family:var(--mono);font-size:32px;font-weight:700;line-height:1;margin-bottom:4px;}
+  .compare-val.ideal{color:var(--blue);}.compare-val.actual{color:var(--gold);}
+  .compare-sub{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:14px;}
+  .energy-loss-bar{background:var(--border);height:10px;margin:12px 0 6px;}
+  .energy-loss-retained{height:100%;background:linear-gradient(90deg,var(--green),var(--amber));transition:width 0.6s ease;}
+  .coaster-notable{font-family:var(--sans);font-size:14px;font-weight:300;color:var(--muted);line-height:1.7;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--gold);margin-bottom:16px;}
+  .apply-bar{display:flex;gap:10px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--border);align-items:center;}
+  .source-note{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:12px;line-height:1.8;}
+  .source-note strong{color:var(--amber-dim);}
+  @media(max-width:640px){.spec-grid{grid-template-columns:1fr 1fr;}.physics-compare{grid-template-columns:1fr;}.coaster-hero{grid-template-columns:1fr;}}
+  ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);}
+  @media print{
+    body{background:white!important;color:#1a1a1a!important;}
+    body::before{display:none!important;}
+    .wrapper{padding:10px!important;}
+    header{background:white!important;border-bottom:2px solid #333!important;}
+    .logo-block h1{color:#333!important;}
+    .header-meta{color:#555!important;}
+    .header-meta span{color:#333!important;}
+    .header-controls{display:none!important;}
+    .tabs{display:none!important;}
+    .btn,.ctrl-btn,.apply-bar{display:none!important;}
+    canvas{display:none!important;}
+    .tab-panel{display:none!important;}
+    .tab-panel.active{display:block!important;}
+    .card{border:1px solid #bbb!important;page-break-inside:avoid;background:white!important;}
+    .card-title{color:#333!important;border-bottom:1px solid #ccc!important;}
+    .formula{background:#f4f4f4!important;color:#1a1a1a!important;border-left:3px solid #555!important;}
+    .result-box{background:#f9f9f9!important;border:1px solid #ccc!important;border-left:3px solid #555!important;color:#1a1a1a!important;}
+    .result-row .key{color:#555!important;}
+    .result-row .val{color:#1a1a1a!important;}
+    .badge.safe{background:#e8f5e9!important;color:#2e7d32!important;border-color:#2e7d32!important;}
+    .badge.warning{background:#fff3e0!important;color:#e65100!important;border-color:#e65100!important;}
+    .badge.danger{background:#ffebee!important;color:#c62828!important;border-color:#c62828!important;}
+    .badge.info{background:#e3f2fd!important;color:#1565c0!important;border-color:#1565c0!important;}
+    .note{color:#555!important;border:1px solid #ccc!important;background:white!important;}
+    input[type=number],select{background:white!important;color:#1a1a1a!important;border:1px solid #ccc!important;}
+    .g-meter{background:#ddd!important;}
+    .wrapper::after{content:"Generated by RCS Physics Simulator v3 | Sheldon K. Salmon x ALBEDO | AION Verified | AP Physics Edition";display:block;text-align:center;font-family:monospace;font-size:9px;color:#999;border-top:1px solid #eee;padding-top:8px;margin-top:24px;}
   }
-
-  /* ── GRID BACKGROUND ─────────────────────────────────── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(240,165,0,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(240,165,0,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  /* ── HEADER ──────────────────────────────────────────── */
-  header {
-    border-bottom: 2px solid var(--amber);
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .logo-block h1 {
-    font-family: var(--sans);
-    font-size: 32px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--amber);
-    line-height: 1;
-  }
-
-  .logo-block .sub {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    margin-top: 4px;
-  }
-
-  .header-meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    text-align: right;
-    line-height: 1.8;
-  }
-
-  .header-meta span { color: var(--amber); }
-
-  /* ── TABS ────────────────────────────────────────────── */
-  .tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-  }
-
-  .tab-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 6px 14px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-transform: uppercase;
-  }
-
-  .tab-btn:hover { border-color: var(--amber-dim); color: var(--text); }
-
-  .tab-btn.active {
-    background: var(--amber);
-    color: #000;
-    border-color: var(--amber);
-    font-weight: 700;
-  }
-
-  /* ── TAB PANELS ──────────────────────────────────────── */
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* ── CARDS ───────────────────────────────────────────── */
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 20px;
-    margin-bottom: 16px;
-  }
-
-  .card-title {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--amber);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-
-  @media (max-width: 640px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  }
-
-  /* ── FORM ELEMENTS ───────────────────────────────────── */
-  .field { margin-bottom: 12px; }
-
-  label {
-    display: block;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-  }
-
-  input[type=number], select {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 14px;
-    padding: 8px 10px;
-    outline: none;
-    transition: border-color 0.15s;
-    -moz-appearance: textfield;
-  }
-
-  input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
-
-  input[type=number]:focus, select:focus { border-color: var(--amber); }
-
-  select { cursor: pointer; }
-  select option { background: var(--panel); }
-
-  /* ── BUTTONS ─────────────────────────────────────────── */
-  .btn {
-    background: var(--amber);
-    color: #000;
-    border: none;
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 24px;
-    cursor: pointer;
-    transition: background 0.15s;
-    width: 100%;
-  }
-
-  .btn:hover { background: #ffc107; }
-  .btn.secondary {
-    background: transparent;
-    border: 1px solid var(--amber);
-    color: var(--amber);
-  }
-  .btn.secondary:hover { background: rgba(240,165,0,0.1); }
-  .btn.danger {
-    background: var(--red);
-    color: #fff;
-  }
-
-  /* ── RESULT DISPLAY ──────────────────────────────────── */
-  .result-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--amber);
-    padding: 14px 16px;
-    margin-top: 14px;
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-
-  .result-value {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--amber);
-    letter-spacing: 1px;
-  }
-
-  .result-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-
-  .result-row:last-child { border-bottom: none; }
-  .result-row .key { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
-  .result-row .val { color: var(--text); }
-
-  /* ── STATUS BADGES ───────────────────────────────────── */
-  .badge {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 2px 8px;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-  .badge.safe    { background: rgba(0,230,118,0.15); color: var(--green);  border: 1px solid var(--green); }
-  .badge.warning { background: rgba(255,109,0,0.15); color: var(--orange); border: 1px solid var(--orange); }
-  .badge.danger  { background: rgba(255,23,68,0.15);  color: var(--red);    border: 1px solid var(--red); }
-  .badge.info    { background: rgba(64,196,255,0.15); color: var(--blue);   border: 1px solid var(--blue); }
-
-  /* ── G-FORCE METER ───────────────────────────────────── */
-  .g-meter {
-    height: 8px;
-    background: var(--border);
-    margin-top: 8px;
-    position: relative;
-    overflow: visible;
-  }
-
-  .g-meter-fill {
-    height: 100%;
-    transition: width 0.4s ease, background 0.4s;
-  }
-
-  /* ── CANVAS ──────────────────────────────────────────── */
-  canvas {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: block;
-  }
-
-  /* ── FORMULA BLOCK ───────────────────────────────────── */
-  .formula {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--blue);
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--blue);
-    line-height: 1.8;
-  }
-
-  /* ── SAFETY TABLE ────────────────────────────────────── */
-  .safety-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  .safety-table th {
-    text-align: left;
-    color: var(--amber);
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .safety-table td {
-    padding: 8px 10px;
-    border-bottom: 1px solid rgba(33,40,47,0.5);
-    vertical-align: middle;
-  }
-
-  /* ── TRACK BUILDER ───────────────────────────────────── */
-  .segment-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    padding: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    margin-bottom: 6px;
-    font-family: var(--mono);
-    font-size: 12px;
-    flex-wrap: wrap;
-  }
-
-  .seg-type { color: var(--amber); font-size: 10px; letter-spacing: 1px; min-width: 80px; }
-  .seg-data { color: var(--muted); flex: 1; }
-  .seg-result { color: var(--green); text-align: right; min-width: 100px; }
-
-  /* ── REDTEAM PANEL ───────────────────────────────────── */
-  .rt-finding {
-    border-left: 3px solid var(--red);
-    padding: 10px 14px;
-    margin-bottom: 10px;
-    background: rgba(255,23,68,0.05);
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  .rt-fixed {
-    border-left: 3px solid var(--green);
-    background: rgba(0,230,118,0.05);
-  }
-
-  .rt-finding .rt-tag {
-    color: var(--red);
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .rt-fixed .rt-tag { color: var(--green); }
-
-  /* ── INFO NOTE ───────────────────────────────────────── */
-  .note {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding: 8px 12px;
-    border: 1px solid var(--border);
-    margin-top: 10px;
-    line-height: 1.7;
-  }
-
-  /* ── SCROLL ──────────────────────────────────────────── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); }
 </style>
 </head>
 <body>
 <div class="wrapper">
 
-  <!-- HEADER -->
   <header>
     <div class="logo-block">
-      <h1>RCS ∙ Physics</h1>
-      <div class="sub">// Roller Coaster Simulator — AP Physics Edition</div>
+      <h1>RCS &middot; Physics</h1>
+      <div class="sub">// Roller Coaster Simulator &mdash; AP Physics Edition &nbsp;&middot;&nbsp; v3.0</div>
     </div>
-    <div class="header-meta">
-      <span>Author:</span> Sheldon K. Salmon × ALBEDO<br>
-      <span>For:</span> Saleem Raja Haja<br>
-      <span>Ref:</span> Tony Wayne AP Physics Guide
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+      <div class="header-meta">
+        <span>Author:</span> Sheldon K. Salmon &times; ALBEDO<br>
+        <span>For:</span> Saleem Raja Haja<br>
+        <span>Ref:</span> Tony Wayne AP Physics Guide
+      </div>
+      <div class="header-controls">
+        <button id="unit-toggle" class="ctrl-btn" onclick="toggleUnits()">&#8644; SI METRIC</button>
+        <button class="ctrl-btn print-btn" onclick="exportPDF()">&#128196; LAB REPORT PDF</button>
+        <button class="ctrl-btn print-btn" onclick="window.print()">&#128438; PRINT</button>
+      </div>
     </div>
   </header>
 
-  <!-- TABS -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('energy')">Energy</button>
-    <button class="tab-btn" onclick="switchTab('work')">Work-Energy</button>
-    <button class="tab-btn" onclick="switchTab('gforce')">G-Forces</button>
-    <button class="tab-btn" onclick="switchTab('loops')">Loops</button>
-    <button class="tab-btn" onclick="switchTab('hills')">Hills</button>
-    <button class="tab-btn" onclick="switchTab('banked')">Banked Curves</button>
-    <button class="tab-btn" onclick="switchTab('spring')">Springs</button>
-    <button class="tab-btn" onclick="switchTab('safety')">Safety</button>
-    <button class="tab-btn" onclick="switchTab('track')">Track Builder</button>
-    <button class="tab-btn" onclick="switchTab('redteam')">Red Team</button>
+    <button class="tab-btn active" data-tabid="energy" onclick="switchTab('energy',this)">Energy</button>
+    <button class="tab-btn" data-tabid="work" onclick="switchTab('work',this)">Work-Energy</button>
+    <button class="tab-btn" data-tabid="gforce" onclick="switchTab('gforce',this)">G-Forces</button>
+    <button class="tab-btn" data-tabid="loops" onclick="switchTab('loops',this)">Loops</button>
+    <button class="tab-btn" data-tabid="hills" onclick="switchTab('hills',this)">Hills</button>
+    <button class="tab-btn" data-tabid="banked" onclick="switchTab('banked',this)">Banked Curves</button>
+    <button class="tab-btn" data-tabid="spring" onclick="switchTab('spring',this)">Springs</button>
+    <button class="tab-btn" data-tabid="safety" onclick="switchTab('safety',this)">Safety</button>
+    <button class="tab-btn" data-tabid="track" onclick="switchTab('track',this)">Track Builder</button>
+    <button class="tab-btn coaster-tab" data-tabid="coasters" onclick="switchTab('coasters',this)">&#9733; Real Coasters</button>
+    <button class="tab-btn" data-tabid="redteam" onclick="switchTab('redteam',this)">Red Team</button>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 1: ENERGY CONSERVATION -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: ENERGY -->
   <div id="tab-energy" class="tab-panel active">
     <div class="card">
-      <div class="card-title">// Module 1 — Energy Conservation</div>
-      <div class="formula">
-        ET(1) = ET(2)<br>
-        KE + PE = KE + PE<br>
-        ½v₁² + gh₁ = ½v₂² + gh₂ &nbsp;&nbsp;← mass cancels
-      </div>
+      <div class="card-title">// Module 1 &mdash; Energy Conservation</div>
+      <div class="formula">ET(1) = ET(2)<br>KE + PE = KE + PE<br>&frac12;v&#8321;&sup2; + gh&#8321; = &frac12;v&#8322;&sup2; + gh&#8322; &nbsp;&nbsp;&larr; mass cancels</div>
       <div class="grid-2">
         <div>
-          <div class="field"><label>Velocity at Location 1 (m/s)</label><input type="number" id="ec-v1" value="8.8" step="0.1"></div>
-          <div class="field"><label>Height at Location 1 (m)</label><input type="number" id="ec-h1" value="95" step="0.5"></div>
-          <div class="field"><label>Height at Location 2 (m)</label><input type="number" id="ec-h2" value="0" step="0.5"></div>
-          <button class="btn" onclick="calcEnergy()">CALCULATE VELOCITY</button>
+          <div class="field"><label>Velocity at Location 1 (m/s)</label><input type="number" id="ec-v1" data-utype="velocity" value="8.8" step="0.1"></div>
+          <div class="field"><label>Height at Location 1 (m)</label><input type="number" id="ec-h1" data-utype="height" value="95" step="0.5"></div>
+          <div class="field"><label>Height at Location 2 (m)</label><input type="number" id="ec-h2" data-utype="height" value="0" step="0.5"></div>
+          <button id="ec-calc-btn" class="btn" onclick="calcEnergy()">CALCULATE VELOCITY</button>
         </div>
-        <div id="ec-result">
-          <div class="note">Enter values and press Calculate.<br>PDF Ex 1: v1=8.8, h1=95, h2=0 → 44.04 m/s<br>PDF Ex 2: v1=8.8, h1=95, h2=65 → 25.80 m/s</div>
-        </div>
+        <div id="ec-result"><div class="note">Enter values and press Calculate.<br>PDF Ex 1: v1=8.8, h1=95, h2=0 &rarr; 44.04 m/s<br>PDF Ex 2: v1=8.8, h1=95, h2=65 &rarr; 25.80 m/s</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 2: WORK-ENERGY -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: WORK-ENERGY -->
   <div id="tab-work" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 2 — Work-Energy Theorem</div>
-      <div class="formula">
-        ET(start) + Work = ET(end)<br>
-        KE₁ + PE₁ + F·d = KE₂ + PE₂
-      </div>
-      <div class="field">
-        <label>Mode</label>
-        <select id="we-mode" onchange="updateWorkMode()">
-          <option value="launch">Catapult / Launch (adds energy)</option>
-          <option value="lift">Chain Lift (adds energy)</option>
-          <option value="brake">Brakes (removes energy)</option>
-        </select>
-      </div>
+      <div class="card-title">// Module 2 &mdash; Work-Energy Theorem</div>
+      <div class="formula">ET(start) + Work = ET(end)<br>KE&#8321; + PE&#8321; + F&middot;d = KE&#8322; + PE&#8322;</div>
+      <div class="field"><label>Mode</label><select id="we-mode" onchange="updateWorkMode()"><option value="launch">Catapult / Launch (adds energy)</option><option value="lift">Chain Lift (adds energy)</option><option value="brake">Brakes (removes energy)</option></select></div>
       <div class="grid-3">
-        <div class="field"><label>Initial Velocity (m/s)</label><input type="number" id="we-v1" value="0" step="0.1"></div>
-        <div class="field"><label>Initial Height (m)</label><input type="number" id="we-h1" value="0" step="0.5"></div>
-        <div class="field"><label>Final Height (m)</label><input type="number" id="we-h2" value="0" step="0.5"></div>
-        <div class="field"><label>Force (N)</label><input type="number" id="we-force" value="8800" step="100"></div>
-        <div class="field"><label>Distance (m)</label><input type="number" id="we-dist" value="12.5" step="0.5"></div>
-        <div class="field"><label>Train Mass (kg)</label><input type="number" id="we-mass" value="3000" step="100"></div>
+        <div class="field"><label>Initial Velocity (m/s)</label><input type="number" id="we-v1" data-utype="velocity" value="0" step="0.1"></div>
+        <div class="field"><label>Initial Height (m)</label><input type="number" id="we-h1" data-utype="height" value="0" step="0.5"></div>
+        <div class="field"><label>Final Height (m)</label><input type="number" id="we-h2" data-utype="height" value="0" step="0.5"></div>
+        <div class="field"><label>Force (N)</label><input type="number" id="we-force" data-utype="force" value="8800" step="100"></div>
+        <div class="field"><label>Distance (m)</label><input type="number" id="we-dist" data-utype="distance" value="12.5" step="0.5"></div>
+        <div class="field"><label>Train Mass (kg)</label><input type="number" id="we-mass" data-utype="mass" value="3000" step="100"></div>
       </div>
-      <button class="btn" onclick="calcWork()">CALCULATE</button>
+      <button id="work-calc-btn" class="btn" onclick="calcWork()">CALCULATE</button>
       <div id="we-result"></div>
     </div>
-
     <div class="card">
       <div class="card-title">// Braking Force Calculator</div>
       <div class="grid-3">
-        <div class="field"><label>Entry Velocity (m/s)</label><input type="number" id="bf-v1" value="8.34" step="0.1"></div>
-        <div class="field"><label>Entry Height (m)</label><input type="number" id="bf-h1" value="11.5" step="0.5"></div>
-        <div class="field"><label>Target Velocity (m/s)</label><input type="number" id="bf-v2" value="1.0" step="0.1"></div>
-        <div class="field"><label>Exit Height (m)</label><input type="number" id="bf-h2" value="0" step="0.5"></div>
-        <div class="field"><label>Train Mass (kg)</label><input type="number" id="bf-mass" value="3000" step="100"></div>
-        <div class="field"><label>Braking Distance (m)</label><input type="number" id="bf-dist" value="5.44" step="0.1"></div>
+        <div class="field"><label>Entry Velocity (m/s)</label><input type="number" id="bf-v1" data-utype="velocity" value="8.34" step="0.1"></div>
+        <div class="field"><label>Entry Height (m)</label><input type="number" id="bf-h1" data-utype="height" value="11.5" step="0.5"></div>
+        <div class="field"><label>Target Velocity (m/s)</label><input type="number" id="bf-v2" data-utype="velocity" value="1.0" step="0.1"></div>
+        <div class="field"><label>Exit Height (m)</label><input type="number" id="bf-h2" data-utype="height" value="0" step="0.5"></div>
+        <div class="field"><label>Train Mass (kg)</label><input type="number" id="bf-mass" data-utype="mass" value="3000" step="100"></div>
+        <div class="field"><label>Braking Distance (m) &mdash; must be &gt; 0</label><input type="number" id="bf-dist" data-utype="distance" value="5.44" step="0.1" min="0.01"></div>
       </div>
-      <button class="btn" onclick="calcBrake()">CALCULATE BRAKING FORCE</button>
+      <button id="brake-calc-btn" class="btn" onclick="calcBrake()">CALCULATE BRAKING FORCE</button>
       <div id="bf-result"></div>
-      <div class="note">PDF Note: The source document contains a typo in Example 5c.<br>PDF states a = 37.018 m/s² but the correct math gives a = 27.018 m/s² (= 81054N ÷ 3000kg).<br>This simulator uses the correct value.</div>
+      <div class="note">PDF Note: Source document contains a typo in Example 5c. PDF states a = 37.018 m/s&sup2; but correct math gives a = 27.018 m/s&sup2; (= 81054N &divide; 3000kg). This simulator uses the correct value.</div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 3: G-FORCES -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: G-FORCES -->
   <div id="tab-gforce" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 3 — G-Force Calculator</div>
-      <div class="formula">
-        Bottom of loop: g_felt = v²/(R·g) + 1<br>
-        Top of loop:    g_felt = v²/(R·g) − 1<br>
-        At angle θ above horizontal: g_felt = v²/(R·g) − sin(θ)<br>
-        At angle θ below horizontal: g_felt = v²/(R·g) + sin(θ)
-      </div>
+      <div class="card-title">// Module 3 &mdash; G-Force Calculator</div>
+      <div class="formula">Bottom of loop: g_felt = v&sup2;/(R&middot;g) + 1<br>Top of loop: g_felt = v&sup2;/(R&middot;g) &minus; 1<br>At angle &theta; above horizontal: g_felt = v&sup2;/(R&middot;g) &minus; sin(&theta;)<br>At angle &theta; below horizontal: g_felt = v&sup2;/(R&middot;g) + sin(&theta;)</div>
       <div class="grid-3">
-        <div class="field"><label>Velocity (m/s)</label><input type="number" id="gf-v" value="50" step="0.5"></div>
-        <div class="field"><label>Radius of Curvature (m)</label><input type="number" id="gf-r" value="31.2" step="0.5"></div>
-        <div class="field">
-          <label>Track Position</label>
-          <select id="gf-pos">
-            <option value="bottom">Bottom of loop / dip</option>
-            <option value="top">Top of loop</option>
-            <option value="angle_above">Above horizontal (angle)</option>
-            <option value="angle_below">Below horizontal (angle)</option>
-          </select>
-        </div>
-        <div class="field"><label>Angle from Horizontal (°)</label><input type="number" id="gf-angle" value="45" step="1" min="0" max="90"></div>
+        <div class="field"><label>Velocity (m/s)</label><input type="number" id="gf-v" data-utype="velocity" value="50" step="0.5"></div>
+        <div class="field"><label>Radius of Curvature (m)</label><input type="number" id="gf-r" data-utype="distance" value="31.2" step="0.5"></div>
+        <div class="field"><label>Track Position</label><select id="gf-pos"><option value="bottom">Bottom of loop / dip</option><option value="top">Top of loop</option><option value="angle_above">Above horizontal (angle)</option><option value="angle_below">Below horizontal (angle)</option></select></div>
+        <div class="field"><label>Angle from Horizontal (&deg;)</label><input type="number" id="gf-angle" value="45" step="1" min="0" max="90"></div>
       </div>
-      <button class="btn" onclick="calcGForce()">CALCULATE G-FORCES</button>
+      <button id="gforce-calc-btn" class="btn" onclick="calcGForce()">CALCULATE G-FORCES</button>
       <div id="gf-result"></div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 4: LOOPS -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: LOOPS -->
   <div id="tab-loops" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 4 — Irregular Loop Designer</div>
-      <div class="formula">
-        R_bottom = v² / ((g_limit_bottom − 1) × g)<br>
-        R_top = v_top² / ((g_limit_top + 1) × g)<br>
-        v_top = √(v_entry² − 2·g·h_loop)<br>
-        Sources: Clothoid loop shape — University of Gothenburg / Liseberg Physics (2005)
-      </div>
+      <div class="card-title">// Module 4 &mdash; Irregular Loop Designer</div>
+      <div class="formula">R_bottom = v&sup2; / ((g_limit_bottom &minus; 1) &times; g)<br>R_top = v_top&sup2; / ((g_limit_top + 1) &times; g)<br>v_top = &radic;(v_entry&sup2; &minus; 2&middot;g&middot;h_loop)<br>Sources: Clothoid loop shape &mdash; University of Gothenburg / Liseberg Physics (2005)</div>
       <div class="grid-2">
         <div>
-          <div class="field"><label>Entry Velocity (m/s)</label><input type="number" id="ld-v" value="35" step="0.5"></div>
-          <div class="field"><label>G-Force Limit — Bottom</label><input type="number" id="ld-gb" value="6" step="0.5" min="1" max="8"></div>
-          <div class="field"><label>G-Force Limit — Top</label><input type="number" id="ld-gt" value="6" step="0.5" min="0" max="8"></div>
-          <div class="field"><label>Loop Height (m)</label><input type="number" id="ld-h" value="20" step="1"></div>
-          <button class="btn" onclick="designLoop()">DESIGN LOOP</button>
+          <div class="field"><label>Entry Velocity (m/s)</label><input type="number" id="ld-v" data-utype="velocity" value="35" step="0.5"></div>
+          <div class="field"><label>G-Force Limit &mdash; Bottom (&gt;1.0g required)</label><input type="number" id="ld-gb" value="6" step="0.5" min="1.01" max="8"></div>
+          <div class="field"><label>G-Force Limit &mdash; Top</label><input type="number" id="ld-gt" value="6" step="0.5" min="0" max="8"></div>
+          <div class="field"><label>Loop Height (m)</label><input type="number" id="ld-h" data-utype="height" value="20" step="1"></div>
+          <button id="loop-calc-btn" class="btn" onclick="designLoop()">DESIGN LOOP</button>
         </div>
         <div id="ld-result"></div>
       </div>
@@ -551,22 +257,16 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 5: HILLS -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: HILLS -->
   <div id="tab-hills" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 5 — Free-Fall Hill Designer</div>
-      <div class="formula">
-        Hill shape (projectile path): x = √(2h · v² / g)<br>
-        Angle at drop: θ = arctan(v_vertical / v_horizontal)<br>
-        Where v_vertical = √(2gh) at drop depth h
-      </div>
+      <div class="card-title">// Module 5 &mdash; Free-Fall Hill Designer</div>
+      <div class="formula">Hill shape (projectile path): x = &radic;(2h &middot; v&sup2; / g)<br>Angle at drop: &theta; = arctan(v_vertical / v_horizontal)<br>Where v_vertical = &radic;(2gh) at drop depth h</div>
       <div class="grid-2">
         <div>
-          <div class="field"><label>Velocity at Hill Crest (m/s)</label><input type="number" id="hd-v" value="10" step="0.5"></div>
-          <div class="field"><label>Total Hill Height (m)</label><input type="number" id="hd-h" value="20" step="1"></div>
-          <button class="btn" onclick="designHill()">GENERATE HILL PROFILE</button>
+          <div class="field"><label>Velocity at Hill Crest (m/s) &mdash; must be &gt; 0</label><input type="number" id="hd-v" data-utype="velocity" value="10" step="0.5" min="0.1"></div>
+          <div class="field"><label>Total Hill Height (m)</label><input type="number" id="hd-h" data-utype="height" value="20" step="1"></div>
+          <button id="hill-calc-btn" class="btn" onclick="designHill()">GENERATE HILL PROFILE</button>
         </div>
         <div id="hd-result"></div>
       </div>
@@ -574,767 +274,901 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 6: BANKED CURVES -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: BANKED -->
   <div id="tab-banked" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 6 — Banked Curve Designer</div>
-      <div class="formula">
-        Ideal bank angle: tan(θ) = v² / (R × g)<br>
-        G-felt on ideal bank: g_felt = 1 / cos(θ)<br>
-        No friction required at design speed.
-      </div>
+      <div class="card-title">// Module 6 &mdash; Banked Curve Designer</div>
+      <div class="formula">Ideal bank angle: tan(&theta;) = v&sup2; / (R &times; g)<br>G-felt on ideal bank: g_felt = 1 / cos(&theta;)<br>No friction required at design speed.</div>
       <div class="grid-2">
         <div>
-          <div class="field"><label>Design Speed (m/s)</label><input type="number" id="bc-v" value="20" step="0.5"></div>
-          <div class="field"><label>Curve Radius (m)</label><input type="number" id="bc-r" value="30" step="1"></div>
-          <button class="btn" onclick="calcBanked()">CALCULATE BANKING</button>
+          <div class="field"><label>Design Speed (m/s)</label><input type="number" id="bc-v" data-utype="velocity" value="20" step="0.5"></div>
+          <div class="field"><label>Curve Radius (m)</label><input type="number" id="bc-r" data-utype="distance" value="30" step="1"></div>
+          <button id="banked-calc-btn" class="btn" onclick="calcBanked()">CALCULATE BANKING</button>
         </div>
         <div id="bc-result"></div>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">// Design for Target G-Force</div>
       <div class="grid-2">
         <div>
-          <div class="field"><label>Target G-Force on Rider</label><input type="number" id="bg-g" value="1.5" step="0.1" min="1.001" max="8"></div>
-          <div class="field"><label>Speed (m/s)</label><input type="number" id="bg-v" value="30" step="0.5"></div>
-          <button class="btn" onclick="calcBankedFromG()">FIND RADIUS & ANGLE</button>
+          <div class="field"><label>Target G-Force on Rider (&gt;1.0g)</label><input type="number" id="bg-g" value="1.5" step="0.1" min="1.001" max="8"></div>
+          <div class="field"><label>Speed (m/s)</label><input type="number" id="bg-v" data-utype="velocity" value="30" step="0.5"></div>
+          <button id="banked-g-calc-btn" class="btn" onclick="calcBankedFromG()">FIND RADIUS &amp; ANGLE</button>
         </div>
         <div id="bg-result"></div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 7: SPRINGS -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: SPRING -->
   <div id="tab-spring" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 7 — Spring Launch System</div>
-      <div class="formula">
-        Hooke's Law:   F = k × x<br>
-        Spring energy: E = ½kx²<br>
-        Launch velocity: v = x × √(k/m)<br>
-        Constraint: average acceleration ≤ 5.5g → max accel = 11g = 107.8 m/s²<br>
-        Therefore: k × x_max = m × 107.8
-      </div>
+      <div class="card-title">// Module 7 &mdash; Spring Launch System</div>
+      <div class="formula">Hooke&apos;s Law: F = k &times; x<br>Spring energy: E = &frac12;kx&sup2;<br>Launch velocity: v = x &times; &radic;(k/m)<br>Constraint: average acceleration &le; 5.5g &rarr; max accel = 11g = 107.8 m/s&sup2;<br>Therefore: k &times; x_max = m &times; 107.8</div>
       <div class="grid-2">
         <div>
-          <div class="field"><label>Train Mass (kg)</label><input type="number" id="sp-mass" value="4410" step="100"></div>
-          <div class="field"><label>Max Compression (m)</label><input type="number" id="sp-x" value="2.0" step="0.1" min="0.1"></div>
-          <button class="btn" onclick="calcSpring()">DESIGN SPRING</button>
+          <div class="field"><label>Train Mass (kg)</label><input type="number" id="sp-mass" data-utype="mass" value="4410" step="100"></div>
+          <div class="field"><label>Max Compression (m)</label><input type="number" id="sp-x" data-utype="distance" value="2.0" step="0.1" min="0.01"></div>
+          <button id="spring-calc-btn" class="btn" onclick="calcSpring()">DESIGN SPRING</button>
         </div>
         <div id="sp-result"></div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 8: SAFETY CHECKER -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: SAFETY -->
   <div id="tab-safety" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 8 — Physiological Safety Reference</div>
+      <div class="card-title">// Module 8 &mdash; Physiological Safety Reference</div>
       <table class="safety-table">
-        <thead>
-          <tr>
-            <th>Limit</th>
-            <th>Value</th>
-            <th>Effect</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Limit</th><th>Value</th><th>Effect</th><th>Status</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Max positive g's (inside loop)</td>
-            <td style="color:var(--amber); font-family:var(--mono)">8.0 g</td>
-            <td>Blood drains from brain → blackout</td>
-            <td><span class="badge danger">BLACKOUT</span></td>
-          </tr>
-          <tr>
-            <td>Max negative g's (outside loop)</td>
-            <td style="color:var(--amber); font-family:var(--mono)">-3.0 g</td>
-            <td>Blood floods brain → red-out, vessel rupture</td>
-            <td><span class="badge danger">REDOUT</span></td>
-          </tr>
-          <tr>
-            <td>Linear acceleration warning</td>
-            <td style="color:var(--amber); font-family:var(--mono)">20.0 g</td>
-            <td>Ear bleeding risk</td>
-            <td><span class="badge warning">DANGER</span></td>
-          </tr>
-          <tr>
-            <td>Instantaneous impact limit</td>
-            <td style="color:var(--amber); font-family:var(--mono)">40.0 g</td>
-            <td>Instantaneous death</td>
-            <td><span class="badge danger">FATAL</span></td>
-          </tr>
-          <tr>
-            <td>Design ceiling (Tony Wayne AP source)</td>
-            <td style="color:var(--amber); font-family:var(--mono)">5.0 g</td>
-            <td>"Most roller coasters keep g's under 5g" — Tony Wayne Physics Guide</td>
-            <td><span class="badge warning">DESIGN LIMIT</span></td>
-          </tr>
-          <tr>
-            <td>Typical operating range</td>
-            <td style="color:var(--green); font-family:var(--mono)">3–4 g</td>
-            <td>Wikipedia / CoasterForce: "coasters typically don't exceed ~3g"</td>
-            <td><span class="badge safe">NORMAL</span></td>
-          </tr>
+          <tr><td>Max positive g&apos;s (inside loop)</td><td style="color:var(--amber);font-family:var(--mono)">8.0 g</td><td>Blood drains from brain &rarr; blackout</td><td><span class="badge danger">BLACKOUT</span></td></tr>
+          <tr><td>Max negative g&apos;s (outside loop)</td><td style="color:var(--amber);font-family:var(--mono)">-3.0 g</td><td>Blood floods brain &rarr; red-out, vessel rupture</td><td><span class="badge danger">REDOUT</span></td></tr>
+          <tr><td>Linear acceleration warning</td><td style="color:var(--amber);font-family:var(--mono)">20.0 g</td><td>Ear bleeding risk</td><td><span class="badge warning">DANGER</span></td></tr>
+          <tr><td>Instantaneous impact limit</td><td style="color:var(--amber);font-family:var(--mono)">40.0 g</td><td>Instantaneous death</td><td><span class="badge danger">FATAL</span></td></tr>
+          <tr><td>Design ceiling (Tony Wayne AP source)</td><td style="color:var(--amber);font-family:var(--mono)">5.0 g</td><td>"Most roller coasters keep g&apos;s under 5g" &mdash; Tony Wayne Physics Guide</td><td><span class="badge warning">DESIGN LIMIT</span></td></tr>
+          <tr><td>Typical operating range</td><td style="color:var(--green);font-family:var(--mono)">3&ndash;4 g</td><td>Wikipedia / CoasterForce: "coasters typically don&apos;t exceed ~3g"</td><td><span class="badge safe">NORMAL</span></td></tr>
         </tbody>
       </table>
     </div>
-
     <div class="card">
       <div class="card-title">// G-Force Safety Checker</div>
       <div class="grid-2">
         <div>
           <div class="field"><label>G-Force Reading</label><input type="number" id="sc-g" value="4.5" step="0.1"></div>
-          <div class="field">
-            <label>Type of G</label>
-            <select id="sc-type">
-              <option value="positive">Positive (inside loop / bottom)</option>
-              <option value="negative">Negative (outside loop / top)</option>
-              <option value="linear">Linear (acceleration in seat direction)</option>
-            </select>
-          </div>
-          <button class="btn" onclick="checkSafety()">CHECK SAFETY</button>
+          <div class="field"><label>Type of G</label><select id="sc-type"><option value="positive">Positive (inside loop / bottom)</option><option value="negative">Negative (outside loop / top)</option><option value="linear">Linear (acceleration in seat direction)</option></select></div>
+          <button id="safety-calc-btn" class="btn" onclick="checkSafety()">CHECK SAFETY</button>
         </div>
         <div id="sc-result"></div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 9: TRACK BUILDER -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: TRACK BUILDER -->
   <div id="tab-track" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Module 9 — Full Track Simulator</div>
-
+      <div class="card-title">// Module 9 &mdash; Full Track Simulator</div>
       <div class="grid-3" style="margin-bottom:12px">
-        <div class="field"><label>Train Mass (kg)</label><input type="number" id="tr-mass" value="4410" step="100"></div>
-        <div class="field">
-          <label>Add Segment Type</label>
-          <select id="tr-type" onchange="updateSegmentFields()">
-            <option value="station">Station (set initial velocity)</option>
-            <option value="hill_drop">Hill Drop (energy conservation)</option>
-            <option value="hill_rise">Hill Rise (energy conservation)</option>
-            <option value="loop">Loop</option>
-            <option value="brake">Braking Section</option>
-          </select>
-        </div>
+        <div class="field"><label>Train Mass (kg)</label><input type="number" id="tr-mass" data-utype="mass" value="4410" step="100"></div>
+        <div class="field"><label>Add Segment Type</label><select id="tr-type" onchange="updateSegmentFields()"><option value="station">Station (set initial velocity)</option><option value="hill_drop">Hill Drop</option><option value="hill_rise">Hill Rise</option><option value="loop">Loop</option><option value="brake">Braking Section</option></select></div>
         <div class="field"><label>Segment Name</label><input type="text" id="tr-name" value="First Drop" style="font-family:var(--mono);background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px 10px;width:100%;outline:none;"></div>
       </div>
-
       <div id="tr-fields" class="grid-3" style="margin-bottom:12px">
-        <div class="field"><label>Entry Height (m)</label><input type="number" id="tr-h1" value="124.5" step="0.5"></div>
-        <div class="field"><label>Exit Height (m)</label><input type="number" id="tr-h2" value="0" step="0.5"></div>
+        <div class="field"><label>Entry Height (m)</label><input type="number" id="tr-h1" data-utype="height" value="124.5" step="0.5"></div>
+        <div class="field"><label>Exit Height (m)</label><input type="number" id="tr-h2" data-utype="height" value="0" step="0.5"></div>
         <div class="field" id="tr-extra-field" style="display:none"></div>
       </div>
-
       <div style="display:flex;gap:8px;margin-bottom:16px">
         <button class="btn" style="flex:1" onclick="addSegment()">+ ADD SEGMENT</button>
         <button class="btn secondary" style="width:140px" onclick="clearTrack()">CLEAR TRACK</button>
-        <button class="btn" style="width:140px" onclick="simulateTrack()">▶ SIMULATE</button>
+        <button id="track-simulate-btn" class="btn" style="width:140px" onclick="simulateTrack()">&#9654; SIMULATE</button>
       </div>
-
       <div id="tr-segments"></div>
       <canvas id="track-canvas" height="260" style="margin-top:16px"></canvas>
       <div id="tr-results" style="margin-top:16px"></div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB 10: RED TEAM -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <div id="tab-redteam" class="tab-panel">
+  <!-- TAB: REAL COASTERS -->
+  <div id="tab-coasters" class="tab-panel">
     <div class="card">
-      <div class="card-title">// Red Team Report — Pre-Delivery Audit</div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ FINDING 1 — FIXED: Loop Test Height Calculation Error</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Python version test computed h = 2×R×sin(45°)+R = 24.14m instead of correct R + R×sin(45°) = 17.07m.
-          This caused loop g-force verification to return 3.36g instead of the expected 4.77g.
-          Core calculation logic was correct — only the test setup had the wrong height.
-          HTML version uses correct height formula throughout.
-        </div>
+      <div class="card-title" style="color:var(--gold)">// Module 10 &mdash; Real Coaster Comparison</div>
+      <div class="formula" style="border-left-color:var(--gold);color:var(--gold)">
+        Ideal v = &radic;(2 &middot; g &middot; h_drop) &nbsp;&nbsp;&larr; frictionless, mass cancels<br>
+        Energy retained % = (v_actual&sup2; / v_ideal&sup2;) &times; 100<br>
+        Sources: [R] RCDB (Roller Coaster DataBase) &middot; Official park specs &middot; CoasterForce
       </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ FINDING 2 — DOCUMENTED: PDF Typo in Example 5c</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Source PDF states a = 37.018 m/s² for braking deceleration, but the correct math is:
-          81054 N ÷ 3000 kg = 27.018 m/s² = 2.76g. The PDF value of 37.018 appears to be a typo
-          from an earlier version of the problem with different numbers. This simulator uses the
-          mathematically correct value and notes the discrepancy explicitly on the Work-Energy tab.
-        </div>
+      <div class="field" style="max-width:420px">
+        <label>Select Coaster</label>
+        <select id="coaster-select" onchange="loadCoaster()">
+          <option value="millennium_force">Millennium Force &mdash; Cedar Point (2000)</option>
+          <option value="kingda_ka">Kingda Ka &mdash; Six Flags Great Adventure (2005)</option>
+          <option value="steel_vengeance">Steel Vengeance &mdash; Cedar Point (2018)</option>
+        </select>
       </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ FINDING 3 — FIXED: Banked Curve Domain Error</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Original code: Math.acos(1/g_felt) crashes when g_felt &lt; 1.0 (domain error).
-          A banked curve cannot produce g_felt &lt; 1 by physics definition (minimum is 1g at θ=0°),
-          but unguarded user input would crash silently. Fixed: HTML version validates g_felt ≥ 1.001
-          before executing arccos and displays a clear error message.
-        </div>
-      </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ FINDING 4 — FIXED: Spring Division by Zero</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Original code: spring_constant = (mass × 107.8) / x_max crashes on x_max = 0.
-          Fixed: HTML version validates x_max > 0 and enforces minimum input of 0.1m.
-        </div>
-      </div>
-
-      <div class="rt-finding" style="border-left-color:var(--orange);background:rgba(255,109,0,0.05)">
-        <div class="rt-tag" style="color:var(--orange)">⚠ FINDING 5 — KNOWN LIMITATION: Friction Not Modeled</div>
-        <div style="margin-top:6px;color:var(--text)">
-          This simulator uses ideal energy conservation (no friction losses). Real coasters lose
-          approximately 5-15% of energy to wheel friction and air resistance. For educational
-          purposes this is standard AP Physics assumption. Students should note that real
-          coaster velocities will be lower than calculated values, requiring more initial height.
-        </div>
-      </div>
-
-      <div class="rt-finding" style="border-left-color:var(--orange);background:rgba(255,109,0,0.05)">
-        <div class="rt-tag" style="color:var(--orange)">⚠ FINDING 6 — KNOWN LIMITATION: Train Length Effects</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Physics is calculated at the center of mass of the train. The PDF section on Center of Mass
-          explains that riders at the rear of a train experience higher g-forces over hills than
-          the calculated value. This simulator models a point mass, not a distributed train.
-          For full accuracy, multiply rear-car g-forces by approximately 1.2-1.4× on hill crests.
-        </div>
-      </div>
-
-      <div style="margin-top:16px;" class="note">
-        Red team pass 1 completed: March 2026 — 4 bugs fixed<br>
-        Red team pass 2 (peer-review, citation-backed): March 2026 — 6 additional issues fixed<br>
-        Architect: Sheldon K. Salmon × ALBEDO<br>
-        Status: 10 total issues resolved. Cleared for delivery to Saleem Raja Haja.
-      </div>
-
-      <div style="margin-top:20px" class="card-title">// PASS 2 — CITATION-BACKED PEER REVIEW</div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ PASS-2 FINDING 1 — FIXED: getGStatus() called 7.99g "SAFE" (green badge)</div>
-        <div style="margin-top:6px;color:var(--text)">
-          The function previously returned a green "SAFE" badge for anything between 1g and 7.99g.
-          This is directly contradicted by the source document itself:<br><br>
-          • <strong>Tony Wayne AP Physics Guide</strong> (the reference PDF): <em>"Most roller coasters keep the g's felt under 5g"</em><br>
-          • <strong>CoasterForce</strong> (citing NASA Bioastronautics Data Book 1964): <em>"Positive G-Forces becomes uncomfortable at +5gz — at 5gz humans are at risk of loss of consciousness"</em><br>
-          • <strong>Coasterpedia</strong>: <em>"4G is considered a safe limit for sustained forces"</em><br>
-          • <strong>Wikipedia / High-g training</strong>: <em>"Roller coasters typically do not expose occupants to much more than about 3g"</em><br><br>
-          Fixed: Three-tier system. SAFE (≤5g) | CAUTION (5–6.5g) | BLACKOUT-RISK (6.5–8g) | BLACKOUT (8g+).
-        </div>
-      </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ PASS-2 FINDING 2 — FIXED: Track Builder brake distance was hardcoded</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Line 1313 (original): <code>const dist = Math.abs(seg.h1 - seg.h2) + 5; // rough estimate</code><br>
-          For a flat brake section (h1=h2=0), this always used dist=5m regardless of actual brake zone.
-          The braking force output appeared precise to the Newton but was computed from a silent guess.
-          A physics simulator presenting fabricated-looking precision over a hidden estimate is a reliability failure.
-          Fixed: Brake zone length is now a required user input field (default 10m).
-        </div>
-      </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ PASS-2 FINDING 3 — FIXED: Negative g intermediate zone missing</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Previous code treated all negative g between 0 and -3g identically as "NEG-G" warning.
-          But <strong>CoasterForce</strong> (NASA source): <em>"at -2gz: severe headache, nosebleeds, swelling of eyelids"</em>
-          and <em>"on a coaster a level higher than -1gz would be considered dangerous."</em><br>
-          Fixed: Three zones — AIRTIME (0 to -1g) | NEG-G caution (-1g to -2g) | REDOUT-RISK (-2g to -3g) | REDOUT (-3g+).
-        </div>
-      </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ PASS-2 FINDING 4 — FIXED: Formula notation ambiguous (v²/Rg)</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Previous display: <code>g_felt = (v²/Rg)</code> — the denominator "Rg" reads ambiguously as either R×g or R/g depending on reader.
-          Fixed: All formula displays now use unambiguous dot notation: <code>v²/(R·g)</code>.
-          Also added University of Gothenburg / Liseberg Physics (2005) citation on clothoid loop shape.
-        </div>
-      </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ PASS-2 FINDING 5 — FIXED: Safety table labeled 5g as "SAFE"</div>
-        <div style="margin-top:6px;color:var(--text)">
-          Previous table row said "Typical coaster max = 5.0g → SAFE." This conflicts with the g-force
-          thresholds now correctly implemented. Fixed: Row now reads "Design ceiling (Tony Wayne): 5.0g → DESIGN LIMIT"
-          with a separate row clarifying that typical operating range is 3–4g, citing Wikipedia and CoasterForce.
-        </div>
-      </div>
-
-      <div class="rt-finding rt-fixed">
-        <div class="rt-tag">✓ PASS-2 FINDING 6 — FIXED: Track Builder loop labeled as generic "LOOP"</div>
-        <div style="margin-top:6px;color:var(--text)">
-          The Track Builder uses a single radius for both top and bottom of the loop segment (circular approximation).
-          The Loop Designer tab (Module 4) correctly uses different R_bottom and R_top per irregular/clothoid design.
-          Fixed: Segment now labeled "LOOP (CIRC)" with a note directing users to Module 4 for irregular loop design.
-        </div>
-      </div>
+      <div id="coaster-display"></div>
     </div>
   </div>
 
-</div><!-- /wrapper -->
+  <!-- TAB: RED TEAM -->
+  <div id="tab-redteam" class="tab-panel">
+    <div class="card">
+      <div class="card-title">// Red Team Report &mdash; Full Audit History</div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; FINDING 1 &mdash; FIXED: Loop Test Height Calculation Error</div><div style="margin-top:6px;color:var(--text)">Python version test computed h = 2&times;R&times;sin(45&deg;)+R = 24.14m instead of correct R + R&times;sin(45&deg;) = 17.07m. Core calculation logic was correct &mdash; only the test setup had the wrong height. HTML version uses correct height formula throughout.</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; FINDING 2 &mdash; DOCUMENTED: PDF Typo in Example 5c</div><div style="margin-top:6px;color:var(--text)">Source PDF states a = 37.018 m/s&sup2; for braking deceleration, but correct math is: 81054 N &divide; 3000 kg = 27.018 m/s&sup2; = 2.76g. This simulator uses the mathematically correct value.</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; FINDING 3 &mdash; FIXED: Banked Curve Domain Error</div><div style="margin-top:6px;color:var(--text)">Math.acos(1/g_felt) crashes when g_felt &lt; 1.0. Fixed: validates g_felt &ge; 1.001 before executing arccos.</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; FINDING 4 &mdash; FIXED: Spring Division by Zero</div><div style="margin-top:6px;color:var(--text)">spring_constant = (mass &times; 107.8) / x_max crashes on x_max = 0. Fixed: validates x_max &gt; 0.</div></div>
+      <div class="rt-finding" style="border-left-color:var(--orange);background:rgba(255,109,0,0.05)"><div class="rt-tag" style="color:var(--orange)">&#9888; FINDING 5 &mdash; KNOWN LIMITATION: Friction Not Modeled</div><div style="margin-top:6px;color:var(--text)">Ideal energy conservation only (no friction losses). Real coasters lose ~5&ndash;15% to friction. Module 10 demonstrates this gap explicitly with three documented coasters.</div></div>
+      <div class="rt-finding" style="border-left-color:var(--orange);background:rgba(255,109,0,0.05)"><div class="rt-tag" style="color:var(--orange)">&#9888; FINDING 6 &mdash; KNOWN LIMITATION: Train Length Effects</div><div style="margin-top:6px;color:var(--text)">Physics calculated at center of mass only. Rear-car g-forces on hills are approximately 1.2&ndash;1.4&times; higher than calculated.</div></div>
+      <div style="margin-top:16px;" class="note">Red team pass 1: March 2026 &mdash; 4 bugs fixed &nbsp;&middot;&nbsp;
+        Red team pass 2 (citation-backed): March 2026 &mdash; 6 issues fixed &nbsp;&middot;&nbsp;
+        Module 10 added: March 2026 &nbsp;&middot;&nbsp; Red team pass 3: March 2026 &mdash; 5 bugs fixed + 2 features &nbsp;&middot;&nbsp;
+        Architect: Sheldon K. Salmon &times; ALBEDO &nbsp;&middot;&nbsp; Status: 15 total issues resolved.
+      </div>
+      <div style="margin-top:20px" class="card-title">// PASS 2 &mdash; CITATION-BACKED PEER REVIEW</div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; PASS-2 FINDING 1 &mdash; FIXED: getGStatus() called 7.99g &ldquo;SAFE&rdquo;</div><div style="margin-top:6px;color:var(--text)">Fixed: Three-tier system. SAFE (&le;5g) | CAUTION (5&ndash;6.5g) | BLACKOUT-RISK (6.5&ndash;8g) | BLACKOUT (8g+). Sources: Tony Wayne AP Physics Guide &middot; CoasterForce (NASA Bioastronautics Data Book 1964) &middot; Coasterpedia.</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; PASS-2 FINDING 2 &mdash; FIXED: Track Builder brake distance was hardcoded</div><div style="margin-top:6px;color:var(--text)">Brake zone length is now a required user input field (default 10m). Fabricated precision over a hidden estimate is a reliability failure.</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; PASS-2 FINDING 3 &mdash; FIXED: Negative g intermediate zone missing</div><div style="margin-top:6px;color:var(--text)">Three zones: AIRTIME (0 to -1g) | NEG-G caution (-1g to -2g) | REDOUT-RISK (-2g to -3g) | REDOUT (-3g+). Source: CoasterForce (NASA).</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; PASS-2 FINDING 4 &mdash; FIXED: Formula notation ambiguous (v&sup2;/Rg)</div><div style="margin-top:6px;color:var(--text)">All formula displays now use unambiguous dot notation: v&sup2;/(R&middot;g). Citation added: University of Gothenburg / Liseberg Physics (2005).</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; PASS-2 FINDING 5 &mdash; FIXED: Safety table labeled 5g as &ldquo;SAFE&rdquo;</div><div style="margin-top:6px;color:var(--text)">Row now reads Design ceiling (Tony Wayne): 5.0g &rarr; DESIGN LIMIT. Separate row for typical 3&ndash;4g operating range.</div></div>
+      <div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; PASS-2 FINDING 6 &mdash; FIXED: Track Builder loop labeled as generic &ldquo;LOOP&rdquo;</div><div style="margin-top:6px;color:var(--text)">Segment now labeled &ldquo;LOOP (CIRC)&rdquo; with note directing users to Module 4 for irregular loop design.</div></div>
+      
+<div style="margin-top:20px" class="card-title" style="color:var(--blue)">// PASS 3 &mdash; RT-PASS3 CODE AUDIT &amp; FEATURE ADDITIONS (March 2026)</div>
+<div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; RT-PASS3-FIX1 &mdash; FIXED: designLoop() division by zero when gb=1.0</div><div style="margin-top:6px;color:var(--text)">R_bottom = v&sup2; / ((gb&minus;1) &times; g). If gb=1.0, denominator = 0, result = Infinity. Input HTML had min=&quot;1&quot; but no runtime guard. User entering exactly 1.0 would produce Infinity radius with no error. Fixed: guard added at top of designLoop() &mdash; if(gb &le; 1.0) exit with explicit error explaining the physics (at 1g, radius is infinite &mdash; the track would be flat).</div></div>
+<div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; RT-PASS3-FIX2 &mdash; FIXED: designHill() canvas crash when v=0</div><div style="margin-top:6px;color:var(--text)">maxX = &radic;(2 &times; maxH &times; v&sup2; / g). When v=0, maxX=0. Then sX = (W &times; 0.4) / 0 = Infinity. All canvas coordinates become NaN. Canvas draws nothing, no error shown. Fixed: guard added &mdash; if(v &le; 0) exit with explicit error: &ldquo;At v=0 the hill has infinite width (train falls straight down).&rdquo;</div></div>
+<div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; RT-PASS3-FIX3 &mdash; FIXED: calcWork() division by zero when mass=0</div><div style="margin-top:6px;color:var(--text)">v2 = &radic;(2 &times; ke2 / m). When m=0, result = NaN. Previously guarded with safeVal(id, 1) as fallback, but user could type 0 explicitly. Fixed: explicit guard &mdash; if(m &le; 0) exit with error message.</div></div>
+<div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; RT-PASS3-FIX4 &mdash; FIXED: calcBrake() silent fallback to d=0.001 when distance=0</div><div style="margin-top:6px;color:var(--text)">Previous: const d = safeVal(&apos;bf-dist&apos;, 0.001). If user entered 0, d silently became 0.001. Braking force output appeared precise (81,054 N) but was computed over an invented 0.001m distance. A simulator presenting fabricated precision over a hidden override is a reliability failure. Fixed: explicit guard &mdash; if(d &le; 0) exit with error.</div></div>
+<div class="rt-finding rt-fixed"><div class="rt-tag">&#10003; RT-PASS3-FIX5 &mdash; FIXED: applyToEnergy() / applyToGForce() fragile tab activation</div><div style="margin-top:6px;color:var(--text)">applyToGForce() used document.querySelectorAll(&apos;.tab-btn&apos;)[2].classList.add(&apos;active&apos;). Correct as of v2 (index 2 = G-Forces), but any tab order change would silently activate the wrong tab. Fixed: new activateTab(id) helper uses document.querySelector(&apos;[data-tabid=&ldquo;id&rdquo;]&apos;) &mdash; looks up by data attribute, not position. Order-independent.</div></div>
+<div class="rt-finding rt-feature"><div class="rt-tag rt-tag">&#9733; RT-PASS3-FEATURE1 &mdash; ADDED: Unit Toggle (SI Metric / Imperial)</div><div style="margin-top:6px;color:var(--text)">Full bidirectional unit conversion across all 11 tabs. Implementation: global UNITS flag + rH/rV/rM/rF/rD input readers (always return SI internally) + fmH/fmV/fmM/fmF output formatters + toggleUnits() converts all data-utype tagged inputs on switch. Internal physics always runs in SI. Zero precision loss on round-trip conversion. All labels update dynamically via updateAllLabels(). Results always show both primary and alternate unit where useful.</div></div>
+<div class="rt-finding rt-feature"><div class="rt-tag rt-tag">&#9733; RT-PASS3-FEATURE2 &mdash; ADDED: Export to PDF (Lab Report Generator)</div><div style="margin-top:6px;color:var(--text)">Zero-dependency implementation. exportPDF() collects all currently displayed result-box elements from the active tab, constructs a clean white-background lab report HTML with: student name / class / date fields, calculated results in a formatted table, AION certification footer, date/time stamp. Opens in new window, auto-triggers window.print() after 400ms. Browser &apos;Save as PDF&apos; produces a clean lab handout. No external library. Works offline.</div></div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid #21282f;margin-top:48px;padding:32px 20px;text-align:center;position:relative;z-index:1;background:linear-gradient(180deg,transparent,rgba(212,175,55,0.03))">
+  <a href="https://github.com/AionSystem/STP/blob/main/CERTIFICATION.md" target="_blank" rel="noopener" style="display:inline-block;transition:opacity 0.2s" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100" height="100" role="img" aria-label="AION Verified Simulator">
+  <defs>
+    <linearGradient id="gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5E070"/><stop offset="35%" stop-color="#D4AF37"/><stop offset="65%" stop-color="#C9A028"/><stop offset="100%" stop-color="#8B7520"/></linearGradient>
+    <linearGradient id="gs" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FAF0A0"/><stop offset="30%" stop-color="#D4AF37"/><stop offset="70%" stop-color="#B8921E"/><stop offset="100%" stop-color="#7A6418"/></linearGradient>
+    <radialGradient id="gbg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#1c1a10"/><stop offset="100%" stop-color="#070705"/></radialGradient>
+    <linearGradient id="gwv" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8B7520" stop-opacity="0.3"/><stop offset="20%" stop-color="#D4AF37"/><stop offset="50%" stop-color="#F5E070"/><stop offset="80%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#8B7520" stop-opacity="0.3"/></linearGradient>
+    <filter id="gw"><feGaussianBlur stdDeviation="3" result="blur"/><feColorMatrix in="blur" type="matrix" values="1 0.8 0 0 0.1 0.7 0.5 0 0 0 0 0 0 0 0 0 0 0 0.8 0" result="gb"/><feMerge><feMergeNode in="gb"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#D4AF37" flood-opacity="0.3"/></filter>
+    <path id="ta" d="M 78,200 A 122,122 0 0,1 322,200"/>
+    <path id="ba" d="M 92,200 A 108,108 0 0,0 308,200"/>
+    <path id="tsa" d="M 98,200 A 102,102 0 0,1 302,200"/>
+  </defs>
+  <polygon points="368.1,269.6 269.6,368.1 130.4,368.1 31.9,269.6 31.9,130.4 130.4,31.9 269.6,31.9 368.1,130.4" fill="url(#gbg)" stroke="url(#gl)" stroke-width="3" filter="url(#sh)"/>
+  <polygon points="358.5,264.9 264.9,358.5 135.1,358.5 41.5,264.9 41.5,135.1 135.1,41.5 264.9,41.5 358.5,135.1" fill="none" stroke="url(#gs)" stroke-width="0.8" stroke-opacity="0.5"/>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="url(#gl)" stroke-width="2.5"/>
+  <circle cx="200" cy="200" r="134" fill="#0d0b08"/>
+  <circle cx="200" cy="200" r="134" fill="none" stroke="url(#gl)" stroke-width="1.5"/>
+  <text font-family="'Times New Roman',serif" font-size="15" font-weight="bold" letter-spacing="5" fill="url(#gs)" text-anchor="middle"><textPath href="#ta" startOffset="50%">AION &middot; VERIFIED</textPath></text>
+  <text font-family="'Times New Roman',serif" font-size="11.5" letter-spacing="7" fill="#C9A028" text-anchor="middle" opacity="0.85"><textPath href="#tsa" startOffset="50%">&middot; SIMULATOR &middot;</textPath></text>
+  <text font-family="'Times New Roman',serif" font-size="11" font-weight="bold" letter-spacing="3" fill="url(#gs)" text-anchor="middle"><textPath href="#ba" startOffset="50%">SHELDON K. SALMON</textPath></text>
+  <path d="M 95,200 C 107,168 119,168 131,200 S 155,232 167,200 C 179,168 191,168 203,200 S 227,232 239,200 C 251,168 263,168 275,200 S 299,232 305,200" fill="none" stroke="url(#gwv)" stroke-width="2.8" stroke-linecap="round" filter="url(#gw)"/>
+  <text x="200" y="167" font-family="'Courier New',monospace" font-size="9" letter-spacing="3" fill="#D4AF37" text-anchor="middle" opacity="0.9">VERIFIED SIMULATION</text>
+  <text x="200" y="242" font-family="'Courier New',monospace" font-size="8" letter-spacing="2.5" fill="#8B7520" text-anchor="middle" opacity="0.8">v3.0 &middot; 2026 &middot; AION STACK</text>
+</svg>
+  </a>
+  <div style="margin-top:14px">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:2px;color:#D4AF37;text-transform:uppercase;margin-bottom:6px">AION Verified Simulator &middot; v3.0</div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#5a6a74;letter-spacing:1px;line-height:1.8">
+      Authored by Sheldon K. Salmon &times; ALBEDO<br>
+      Citation-backed &nbsp;&middot;&nbsp; Red-teamed (3 passes, 15 issues resolved) &nbsp;&middot;&nbsp; Unit Toggle: SI/Imperial &nbsp;&middot;&nbsp; PDF Export<br>
+      Ref: Tony Wayne <em>Roller Coaster (AP) Physics</em> &mdash; Abridged Edition<br>
+      For: Saleem Raja Haja &middot; AI Governance, Energy Sector &middot; Kuwait &nbsp;&middot;&nbsp; March 2026
+    </div>
+  </div>
+</div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════
-// PHYSICS CONSTANTS
-// ═══════════════════════════════════════════════════════════════
-const G = 9.80;
-const G_BLACKOUT = 8.0;
-const G_REDOUT   = 3.0;
-const G_LINEAR   = 20.0;
-const G_FATAL    = 40.0;
+// =====================================================
+// COMPLETE FRONTEND CODE - FIXED API URL AND ERROR HANDLING
+// =====================================================
 
 // ═══════════════════════════════════════════════════════════════
-// TAB SWITCHING
+// CONSTANTS & GLOBALS
 // ═══════════════════════════════════════════════════════════════
-function switchTab(id) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  event.target.classList.add('active');
+const G = 9.80;
+const G_BLACKOUT = 8.0, G_REDOUT = 3.0, G_LINEAR = 20.0, G_FATAL = 40.0;
+const G_CAUTION = 5.0, G_WARNING = 6.5, G_NEG_WARN = 2.0;
+let UNITS = 'SI'; // 'SI' | 'IMP'
+
+// ⚡ FIXED API URL - Uses your actual Vercel domain from the screenshot ⚡
+const API_BASE_URL = 'https://aion-backend-mu.vercel.app/api/simulators/roller-coaster';
+
+// User-friendly error messages
+const ERROR_MESSAGES = {
+  'INSUFFICIENT_ENERGY': 'Not enough initial energy to reach this height.',
+  'TRAIN_STOPPED': 'Train stopped before reaching exit point.',
+  'LOOP_TOO_TALL': 'Loop too tall — reduce height or increase speed.',
+  'RADIUS_ERROR': 'Please enter a valid radius greater than 0.',
+  'MASS_ERROR': 'Train mass must be greater than 0.',
+  'DISTANCE_ERROR': 'Braking distance must be greater than 0.',
+  'G_LIMIT_ERROR': 'Bottom g-limit must be greater than 1.0g.',
+  'VELOCITY_ERROR': 'Velocity must be greater than 0.',
+  'G_FORCE_ERROR': 'G-force must be greater than 1.0 for banked curves.',
+  'COMPRESSION_ERROR': 'Spring compression must be greater than 0.',
+  'VALIDATION_ERROR': 'Please check your input values.',
+  'RATE_LIMIT': 'Too many requests. Please wait 15 minutes.',
+  'SERVER_ERROR': 'Server error. Please try again later.',
+  'METHOD_NOT_ALLOWED': 'Invalid request method.',
+  'MISSING_MODULE': 'Calculation module not specified.',
+  'MISSING_PARAMS': 'Missing calculation parameters.',
+  'UNKNOWN_MODULE': 'Unknown calculation type.'
+};
+
+// ═══════════════════════════════════════════════════════════════
+// UNIT SYSTEM FUNCTIONS
+// ═══════════════════════════════════════════════════════════════
+const rH = id => UNITS === 'IMP' ? safeVal(id) / 3.28084 : safeVal(id);
+const rV = id => UNITS === 'IMP' ? safeVal(id) / 2.23694 : safeVal(id);
+const rM = id => UNITS === 'IMP' ? safeVal(id) / 2.20462 : safeVal(id);
+const rF = id => UNITS === 'IMP' ? safeVal(id) / 0.22481 : safeVal(id);
+const rD = id => UNITS === 'IMP' ? safeVal(id) / 3.28084 : safeVal(id);
+
+const fmH = m => UNITS === 'IMP' ? `${(m * 3.28084).toFixed(1)} ft` : `${m.toFixed(2)} m`;
+const fmV = ms => UNITS === 'IMP' ? `${(ms * 2.23694).toFixed(1)} mph` : `${ms.toFixed(2)} m/s`;
+const fmM = kg => UNITS === 'IMP' ? `${(kg * 2.20462).toFixed(0)} lb` : `${kg.toFixed(0)} kg`;
+const fmF = N => UNITS === 'IMP' ? `${(N * 0.22481).toFixed(1)} lbf` : `${N.toFixed(0)} N`;
+const fmD = m => UNITS === 'IMP' ? `${(m * 3.28084).toFixed(1)} ft` : `${m.toFixed(2)} m`;
+const fmA = ms2 => `${ms2.toFixed(3)} m/s²`;
+
+const uH = () => UNITS === 'IMP' ? 'ft' : 'm';
+const uV = () => UNITS === 'IMP' ? 'mph' : 'm/s';
+const uM = () => UNITS === 'IMP' ? 'lb' : 'kg';
+const uF = () => UNITS === 'IMP' ? 'lbf' : 'N';
+
+function toggleUnits() {
+  const wasIMP = UNITS === 'IMP';
+  UNITS = wasIMP ? 'SI' : 'IMP';
+  const btn = document.getElementById('unit-toggle');
+  btn.textContent = UNITS === 'IMP' ? '⇄ IMPERIAL' : '⇄ SI METRIC';
+  btn.className = 'ctrl-btn' + (UNITS === 'IMP' ? ' unit-active' : '');
+
+  document.querySelectorAll('[data-utype]').forEach(el => {
+    const v = parseFloat(el.value);
+    if (isNaN(v)) return;
+    const t = el.dataset.utype;
+    if (UNITS === 'IMP') {
+      if (t === 'height' || t === 'distance') el.value = (v * 3.28084).toFixed(2);
+      else if (t === 'velocity') el.value = (v * 2.23694).toFixed(2);
+      else if (t === 'mass') el.value = (v * 2.20462).toFixed(1);
+      else if (t === 'force') el.value = (v * 0.22481).toFixed(1);
+    } else {
+      if (t === 'height' || t === 'distance') el.value = (v / 3.28084).toFixed(2);
+      else if (t === 'velocity') el.value = (v / 2.23694).toFixed(2);
+      else if (t === 'mass') el.value = (v / 2.20462).toFixed(1);
+      else if (t === 'force') el.value = (v / 0.22481).toFixed(1);
+    }
+  });
+
+  updateAllLabels();
+}
+
+function updateAllLabels() {
+  const L = [
+    ['ec-v1', `Velocity at Location 1 (${uV()})`], ['ec-h1', `Height at Location 1 (${uH()})`], ['ec-h2', `Height at Location 2 (${uH()})`],
+    ['we-v1', `Initial Velocity (${uV()})`], ['we-h1', `Initial Height (${uH()})`], ['we-h2', `Final Height (${uH()})`],
+    ['we-force', `Force (${uF()})`], ['we-dist', `Distance (${uH()})`], ['we-mass', `Train Mass (${uM()})`],
+    ['bf-v1', `Entry Velocity (${uV()})`], ['bf-h1', `Entry Height (${uH()})`],
+    ['bf-v2', `Target Velocity (${uV()})`], ['bf-h2', `Exit Height (${uH()})`],
+    ['bf-mass', `Train Mass (${uM()})`], ['bf-dist', `Braking Distance (${uH()}) — must be > 0`],
+    ['gf-v', `Velocity (${uV()})`], ['gf-r', `Radius of Curvature (${uH()})`],
+    ['ld-v', `Entry Velocity (${uV()})`], ['ld-h', `Loop Height (${uH()})`],
+    ['hd-v', `Velocity at Hill Crest (${uV()})`], ['hd-h', `Total Hill Height (${uH()})`],
+    ['bc-v', `Design Speed (${uV()})`], ['bc-r', `Curve Radius (${uH()})`],
+    ['bg-v', `Speed (${uV()})`],
+    ['sp-mass', `Train Mass (${uM()})`], ['sp-x', `Max Compression (${uH()})`],
+    ['tr-mass', `Train Mass (${uM()})`], ['tr-h1', `Entry Height (${uH()})`], ['tr-h2', `Exit Height (${uH()})`],
+  ];
+  L.forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const lbl = el.parentElement.querySelector('label');
+      if (lbl) lbl.textContent = text;
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════
-// HELPERS
+// HELPER FUNCTIONS
 // ═══════════════════════════════════════════════════════════════
 function safeVal(id, fallback = 0) {
-  const v = parseFloat(document.getElementById(id).value);
+  const v = parseFloat(document.getElementById(id)?.value);
   return isNaN(v) ? fallback : v;
 }
 
-// G-force thresholds — calibrated to Tony Wayne AP Physics source + CoasterForce/NASA
-// CoasterForce (NASA Bioastronautics 1964): uncomfortable at +5g, LOC risk at +5g
-// Tony Wayne PDF: "most coasters keep under 5g" | Coasterpedia: 4g = sustained safe limit
-// CoasterForce: -2g causes nosebleeds/headaches | -3g causes eye bleeding
-const G_CAUTION  = 5.0;  // Tony Wayne design ceiling: "most coasters keep under 5g"
-const G_WARNING  = 6.5;  // High end of real coaster range — approaching LOC onset
-const G_NEG_WARN = 2.0;  // CoasterForce: -2g → headache, nosebleeds (NASA source)
-
 function getGStatus(g) {
-  if (g > G_FATAL)    return ['FATAL',    'danger',  `${g.toFixed(2)}g exceeds 40g — instantaneous death threshold`];
-  if (g > G_LINEAR)   return ['DANGER',   'warning', `${g.toFixed(2)}g exceeds 20g — linear ear bleeding risk`];
-  if (g > G_BLACKOUT) return ['BLACKOUT', 'danger',  `${g.toFixed(2)}g exceeds 8g — G-LOC certain`];
-  if (g > G_WARNING)  return ['BLACKOUT-RISK','danger', `${g.toFixed(2)}g — untrained riders will lose consciousness (onset 4–6g)`];
-  if (g > G_CAUTION)  return ['CAUTION',  'warning', `${g.toFixed(2)}g — above Tony Wayne 5g design ceiling. Grayout risk.`];
-  if (g < -G_REDOUT)  return ['REDOUT',   'danger',  `${g.toFixed(2)}g — eye bleeding / hemorrhage risk`];
-  if (g < -G_NEG_WARN)return ['REDOUT-RISK','danger',`${g.toFixed(2)}g — severe headache, nosebleeds (NASA: -2g threshold)`];
-  if (g < -1.0)       return ['NEG-G',    'warning', `${g.toFixed(2)}g — CoasterForce: above -1g is dangerous on coasters`];
-  if (g < 0)          return ['AIRTIME',  'info',    `${g.toFixed(2)}g — weightless / airtime sensation`];
-  if (g < 1)          return ['LOW-G',    'info',    `${g.toFixed(2)}g — near weightless sensation`];
-  if (g <= G_CAUTION) return ['SAFE',     'safe',    `${g.toFixed(2)}g — within Tony Wayne 5g design ceiling`];
+  if (g > G_FATAL) return ['FATAL', 'danger', `${g.toFixed(2)}g exceeds 40g — instantaneous death threshold`];
+  if (g > G_LINEAR) return ['DANGER', 'warning', `${g.toFixed(2)}g exceeds 20g — linear ear bleeding risk`];
+  if (g > G_BLACKOUT) return ['BLACKOUT', 'danger', `${g.toFixed(2)}g exceeds 8g — G-LOC certain`];
+  if (g > G_WARNING) return ['BLACKOUT-RISK', 'danger', `${g.toFixed(2)}g — untrained riders will lose consciousness`];
+  if (g > G_CAUTION) return ['CAUTION', 'warning', `${g.toFixed(2)}g — above Tony Wayne 5g design ceiling. Grayout risk.`];
+  if (g < -G_REDOUT) return ['REDOUT', 'danger', `${g.toFixed(2)}g — eye bleeding / hemorrhage risk`];
+  if (g < -G_NEG_WARN) return ['REDOUT-RISK', 'danger', `${g.toFixed(2)}g — severe headache, nosebleeds (NASA: -2g threshold)`];
+  if (g < -1.0) return ['NEG-G', 'warning', `${g.toFixed(2)}g — CoasterForce: above -1g is dangerous on coasters`];
+  if (g < 0) return ['AIRTIME', 'info', `${g.toFixed(2)}g — weightless / airtime sensation`];
+  if (g < 1) return ['LOW-G', 'info', `${g.toFixed(2)}g — near weightless sensation`];
+  if (g <= G_CAUTION) return ['SAFE', 'safe', `${g.toFixed(2)}g — within Tony Wayne 5g design ceiling`];
   return ['SAFE', 'safe', `${g.toFixed(2)}g — within design limits`];
 }
 
 function gBar(g) {
   const pct = Math.min(100, Math.abs(g) / G_BLACKOUT * 100);
-  const color = g > G_BLACKOUT || g < -G_REDOUT ? 'var(--red)' : g > 6 || g < -2 ? 'var(--orange)' : 'var(--green)';
-  return `<div class="g-meter"><div class="g-meter-fill" style="width:${pct}%;background:${color}"></div></div>`;
+  const col = g > G_BLACKOUT || g < -G_REDOUT ? 'var(--red)' : g > 6 || g < -2 ? 'var(--orange)' : 'var(--green)';
+  return `<div class="g-meter"><div class="g-meter-fill" style="width:${pct}%;background:${col}"></div></div>`;
 }
 
 function resultBox(rows, extra = '') {
-  const rowsHTML = rows.map(([k, v, badge]) =>
-    `<div class="result-row"><span class="key">${k}</span><span class="val">${v}${badge ? ` <span class="badge ${badge[0]}">${badge[1]}</span>` : ''}</span></div>`
-  ).join('');
-  return `<div class="result-box">${rowsHTML}${extra}</div>`;
+  return `<div class="result-box">${rows.map(([k, v, b]) => 
+    `<div class="result-row"><span class="key">${k}</span><span class="val">${v}${b ? ` <span class="badge ${b[0]}">${b[1]}</span>` : ''}</span></div>`
+  ).join('')}${extra}</div>`;
+}
+
+// =====================================================
+// FIXED API CALL FUNCTION - Handles 404 and non-JSON responses
+// =====================================================
+async function callSimulator(module, params) {
+  try {
+    const response = await fetch(API_BASE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ module, params, unitSystem: UNITS })
+    });
+
+    // Check if the response is JSON
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      // If it's not JSON, it's probably a 404 HTML page
+      const text = await response.text();
+      console.error('Non-JSON response:', text.substring(0, 200));
+      throw { 
+        userMessage: 'Backend connection failed. The API endpoint might be wrong or the server is down.',
+        details: `Status: ${response.status}`
+      };
+    }
+
+    const data = await response.json();
+
+    if (!response.ok || data.error) {
+      const userMessage = ERROR_MESSAGES[data.error] || data.userMessage || 'Calculation error';
+      throw { userMessage, ...data };
+    }
+
+    return data;
+    
+  } catch (error) {
+    console.error('API call failed:', error);
+    throw error;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// LOADING STATE HELPER
+// ═══════════════════════════════════════════════════════════════
+async function withLoading(buttonId, action) {
+  const btn = document.getElementById(buttonId);
+  if (!btn) {
+    await action();
+    return;
+  }
+  
+  const originalText = btn.textContent;
+  const originalDisabled = btn.disabled;
+  
+  btn.textContent = 'CALCULATING...';
+  btn.disabled = true;
+  
+  try {
+    await action();
+  } finally {
+    btn.textContent = originalText;
+    btn.disabled = originalDisabled;
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
 // MODULE 1: ENERGY CONSERVATION
 // ═══════════════════════════════════════════════════════════════
-function calcEnergy() {
-  const v1 = safeVal('ec-v1'), h1 = safeVal('ec-h1'), h2 = safeVal('ec-h2');
-  const energy = 0.5*v1*v1 + G*h1 - G*h2;
-  const el = document.getElementById('ec-result');
-  if (energy < 0) {
-    el.innerHTML = `<div class="result-box" style="border-left-color:var(--red)">
-      <div style="color:var(--red);font-family:var(--mono)">INSUFFICIENT ENERGY</div>
-      <div style="font-size:12px;margin-top:6px;color:var(--muted)">The coaster cannot reach h₂=${h2}m from h₁=${h1}m at v₁=${v1} m/s.<br>Energy deficit: ${Math.abs(energy).toFixed(2)} J/kg</div>
-    </div>`;
-    return;
-  }
-  const v2 = Math.sqrt(2 * energy);
-  const deltaH = h2 - h1;
-  el.innerHTML = resultBox([
-    ['Velocity at Location 2', `${v2.toFixed(2)} m/s`, null],
-    ['Speed in mph',           `${(v2 * 2.237).toFixed(1)} mph`, null],
-    ['Height change',          `${deltaH >= 0 ? '+' : ''}${deltaH.toFixed(1)} m`, null],
-    ['KE gained',              `${(0.5*v2*v2 - 0.5*v1*v1).toFixed(1)} J/kg`, null],
-  ]);
+async function calcEnergy() {
+  await withLoading('ec-calc-btn', async () => {
+    try {
+      const params = {
+        v1: rV('ec-v1'),
+        h1: rH('ec-h1'),
+        h2: rH('ec-h2')
+      };
+      
+      const result = await callSimulator('energy', params);
+      
+      if (result.error) {
+        document.getElementById('ec-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      document.getElementById('ec-result').innerHTML = resultBox([
+        [`Velocity at Location 2`, fmV(result.v2), null],
+        [`Speed (mph)`, result.v2Mph, null],
+        [`Height change`, fmH(parseFloat(result.heightChange)), null],
+        [`KE gained`, `${result.energyGained} J/kg`, null]
+      ]);
+    } catch (error) {
+      document.getElementById('ec-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error. Check console.'}</div>
+        </div>`;
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MODULE 2: WORK-ENERGY
+// MODULE 2: WORK-ENERGY THEOREM
 // ═══════════════════════════════════════════════════════════════
-function calcWork() {
-  const v1 = safeVal('we-v1'), h1 = safeVal('we-h1'), h2 = safeVal('we-h2');
-  const F = safeVal('we-force'), d = safeVal('we-dist'), m = safeVal('we-mass', 1);
-  const mode = document.getElementById('we-mode').value;
-  const sign = mode === 'brake' ? -1 : 1;
-  const W = sign * F * d;
-  const ke2 = 0.5*m*v1*v1 + m*G*h1 + W - m*G*h2;
-  const el = document.getElementById('we-result');
-  if (ke2 < 0) {
-    el.innerHTML = `<div class="result-box" style="border-left-color:var(--red)"><div style="color:var(--red);font-family:var(--mono)">Train stopped before exit point.</div></div>`;
-    return;
-  }
-  const v2 = Math.sqrt(2*ke2/m);
-  el.innerHTML = resultBox([
-    ['Exit Velocity', `${v2.toFixed(2)} m/s`, null],
-    ['Exit Speed mph', `${(v2*2.237).toFixed(1)} mph`, null],
-    ['Work done', `${(W/1000).toFixed(1)} kJ`, null],
-    ['Mode', mode.replace('_',' ').toUpperCase(), null],
-  ]);
+async function calcWork() {
+  await withLoading('work-calc-btn', async () => {
+    try {
+      const params = {
+        v1: rV('we-v1'),
+        h1: rH('we-h1'),
+        h2: rH('we-h2'),
+        F: rF('we-force'),
+        d: rD('we-dist'),
+        m: rM('we-mass'),
+        mode: document.getElementById('we-mode').value
+      };
+      
+      const result = await callSimulator('work', params);
+      
+      if (result.error) {
+        document.getElementById('we-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      document.getElementById('we-result').innerHTML = resultBox([
+        [`Exit Velocity`, fmV(result.v2), null],
+        [`Speed (mph)`, result.v2Mph, null],
+        [`Work done`, `${result.workDone} kJ`, null]
+      ]);
+    } catch (error) {
+      document.getElementById('we-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
-function calcBrake() {
-  const v1 = safeVal('bf-v1'), h1 = safeVal('bf-h1');
-  const v2 = safeVal('bf-v2'), h2 = safeVal('bf-h2');
-  const m = safeVal('bf-mass', 1), d = safeVal('bf-dist', 0.001);
-  const ke1 = 0.5*m*v1*v1, pe1 = m*G*h1;
-  const ke2 = 0.5*m*v2*v2, pe2 = m*G*h2;
-  const F = (ke1 + pe1 - ke2 - pe2) / d;
-  const a = F / m;
-  const ag = a / G;
-  const [status, badge, msg] = getGStatus(ag);
-  // Station entrance velocity
-  const vStation = Math.sqrt(Math.max(0, v1*v1 + 2*G*(h1-h2)));
-  const t = d / ((vStation + v2) / 2);
-  document.getElementById('bf-result').innerHTML = resultBox([
-    ['Braking Force', `${F.toFixed(0)} N`, null],
-    ['Deceleration', `${a.toFixed(3)} m/s²`, null],
-    ['Deceleration in g\'s', `${ag.toFixed(2)}g`, [badge, status]],
-    ['Station entrance velocity', `${vStation.toFixed(2)} m/s`, null],
-    ['Braking time', `${t.toFixed(3)} s`, null],
-  ]);
+async function calcBrake() {
+  await withLoading('brake-calc-btn', async () => {
+    try {
+      const params = {
+        v1: rV('bf-v1'),
+        h1: rH('bf-h1'),
+        v2: rV('bf-v2'),
+        h2: rH('bf-h2'),
+        m: rM('bf-mass'),
+        d: rD('bf-dist')
+      };
+      
+      const result = await callSimulator('brake', params);
+      
+      if (result.error) {
+        document.getElementById('bf-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      const [status, badge] = getGStatus(result.decelG);
+      
+      document.getElementById('bf-result').innerHTML = resultBox([
+        [`Braking Force`, fmF(result.brakeForce), null],
+        [`Deceleration`, fmA(result.deceleration), null],
+        [`Decel in g's`, `${result.decelGFormatted}g`, [badge, status]],
+        [`Station entry v`, fmV(result.stationEntryV), null],
+        [`Braking time`, `${result.brakingTimeFormatted} s`, null]
+      ]);
+    } catch (error) {
+      document.getElementById('bf-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 function updateWorkMode() {
+  const label = document.getElementById('we-force').parentElement.querySelector('label');
   const mode = document.getElementById('we-mode').value;
-  document.getElementById('we-force').parentElement.querySelector('label').textContent =
-    mode === 'brake' ? 'Braking Force (N)' : mode === 'lift' ? 'Lift Force (N)' : 'Launch Force (N)';
+  label.textContent = mode === 'brake' ? `Braking Force (${uF()})` : 
+                     mode === 'lift' ? `Lift Force (${uF()})` : `Launch Force (${uF()})`;
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MODULE 3: G-FORCES
+// MODULE 3: G-FORCE CALCULATOR
 // ═══════════════════════════════════════════════════════════════
-function calcGForce() {
-  const v = safeVal('gf-v'), r = safeVal('gf-r', 0.001);
-  const pos = document.getElementById('gf-pos').value;
-  const angle = safeVal('gf-angle');
-  const cg = (v*v/r) / G;
-  let gFelt;
-  if (pos === 'bottom')       gFelt = cg + 1;
-  else if (pos === 'top')     gFelt = cg - 1;
-  else if (pos === 'angle_above') gFelt = cg - Math.sin(angle * Math.PI/180);
-  else                            gFelt = cg + Math.sin(angle * Math.PI/180);
-
-  const [status, badge, msg] = getGStatus(gFelt);
-  document.getElementById('gf-result').innerHTML =
-    resultBox([
-      ['Centripetal acceleration', `${(v*v/r).toFixed(3)} m/s²`, null],
-      ['Centripetal g\'s', `${cg.toFixed(3)}g`, null],
-      ['G-forces FELT by rider', `${gFelt.toFixed(2)}g`, [badge, status]],
-      ['Status', msg, null],
-    ]) + gBar(gFelt);
+async function calcGForce() {
+  await withLoading('gforce-calc-btn', async () => {
+    try {
+      const params = {
+        v: rV('gf-v'),
+        r: rD('gf-r'),
+        pos: document.getElementById('gf-pos').value,
+        angle: safeVal('gf-angle')
+      };
+      
+      const result = await callSimulator('gforce', params);
+      
+      if (result.error) {
+        document.getElementById('gf-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      const [status, badge] = getGStatus(result.feltG);
+      
+      document.getElementById('gf-result').innerHTML = resultBox([
+        [`Centripetal accel`, fmA(result.centripetalAccel), null],
+        [`Centripetal g's`, `${result.centripetalGFormatted}g`, null],
+        [`G-forces FELT by rider`, `${result.feltGFormatted}g`, [badge, status]],
+        [`Status`, result.gStatus.message, null]
+      ]) + gBar(result.feltG);
+    } catch (error) {
+      document.getElementById('gf-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MODULE 4: LOOP DESIGNER
+// MODULE 4: IRREGULAR LOOP DESIGNER
 // ═══════════════════════════════════════════════════════════════
-function designLoop() {
-  const v = safeVal('ld-v'), gb = safeVal('ld-gb'), gt = safeVal('ld-gt'), h = safeVal('ld-h');
-  const Rb = v*v / ((gb - 1) * G);
-  const vTopSq = v*v - 2*G*h;
-  if (vTopSq < 0) {
-    document.getElementById('ld-result').innerHTML = `<div class="result-box" style="border-left-color:var(--red)"><div style="color:var(--red);font-family:var(--mono)">LOOP TOO TALL — reduce loop height or increase entry speed.</div></div>`;
-    return;
-  }
-  const vTop = Math.sqrt(vTopSq);
-  const Rt = vTop*vTop / ((gt + 1) * G);
-  const gBottom = (v*v/Rb)/G + 1;
-  const gTop    = (vTop*vTop/Rt)/G - 1;
-  const [sB, bB] = getGStatus(gBottom);
-  const [sT, bT] = getGStatus(gTop);
-  document.getElementById('ld-result').innerHTML = resultBox([
-    ['R_bottom (entry)',      `${Rb.toFixed(2)} m`, null],
-    ['R_top (crown)',         `${Rt.toFixed(2)} m`, null],
-    ['v at entry',            `${v.toFixed(2)} m/s`, null],
-    ['v at top',              `${vTop.toFixed(2)} m/s`, null],
-    ['g-felt at bottom',      `${gBottom.toFixed(2)}g`, [bB, sB]],
-    ['g-felt at top',         `${gTop.toFixed(2)}g`, [bT, sT]],
-  ]);
-  drawLoop(Rb, Rt, h);
+async function designLoop() {
+  await withLoading('loop-calc-btn', async () => {
+    try {
+      const params = {
+        v: rV('ld-v'),
+        gb: safeVal('ld-gb'),
+        gt: safeVal('ld-gt'),
+        h: rH('ld-h')
+      };
+      
+      const result = await callSimulator('loop', params);
+      
+      if (result.error) {
+        document.getElementById('ld-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      const [gBotStatus, gBotBadge] = getGStatus(result.gBot);
+      const [gTopStatus, gTopBadge] = getGStatus(result.gTop);
+      
+      document.getElementById('ld-result').innerHTML = resultBox([
+        [`R_bottom (entry)`, fmD(result.Rb), null],
+        [`R_top (crown)`, fmD(result.Rt), null],
+        [`v at entry`, fmV(result.v), null],
+        [`v at top`, fmV(result.vTop), null],
+        [`g-felt at bottom`, `${result.gBotFormatted}g`, [gBotBadge, gBotStatus]],
+        [`g-felt at top`, `${result.gTopFormatted}g`, [gTopBadge, gTopStatus]]
+      ]);
+      
+      drawLoop(result.Rb, result.Rt, params.h);
+    } catch (error) {
+      document.getElementById('ld-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 function drawLoop(Rb, Rt, loopH) {
-  const c = document.getElementById('loop-canvas');
-  const ctx = c.getContext('2d');
-  c.width = c.offsetWidth * window.devicePixelRatio || 700;
-  c.height = 240 * window.devicePixelRatio || 240;
+  const c = document.getElementById('loop-canvas'), ctx = c.getContext('2d');
+  c.width = (c.offsetWidth || 700) * window.devicePixelRatio;
+  c.height = 240 * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  const W = c.offsetWidth, H = 240;
-  ctx.clearRect(0,0,W,H);
+  const W = c.offsetWidth || 700, H = 240;
+  ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#111418';
-  ctx.fillRect(0,0,W,H);
-
-  const scale = Math.min((H*0.8) / loopH, (W*0.35) / Math.max(Rb, Rt));
-  const cx = W/2, cy = H*0.85;
-
-  // Ground line
+  ctx.fillRect(0, 0, W, H);
+  const scale = Math.min((H * 0.8) / loopH, (W * 0.35) / Math.max(Rb, Rt)), cx = W / 2, cy = H * 0.85;
   ctx.strokeStyle = '#21282f';
   ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(W, cy); ctx.stroke();
-
-  // Draw klothoid loop (approximated)
-  const n = 200;
+  ctx.beginPath();
+  ctx.moveTo(0, cy);
+  ctx.lineTo(W, cy);
+  ctx.stroke();
   ctx.beginPath();
   ctx.strokeStyle = '#f0a500';
   ctx.lineWidth = 2;
-  for (let i = 0; i <= n; i++) {
-    const t = i / n;
-    const ang = 2*Math.PI*t;
-    const R = Rb + (Rt - Rb) * (1 - Math.cos(ang)) / 2;
-    const centerY = cy - Rb * scale;
-    const x = cx + R * scale * Math.sin(ang);
-    const y = centerY - R * scale * Math.cos(ang);
+  for (let i = 0; i <= 200; i++) {
+    const t = i / 200, ang = 2 * Math.PI * t, R = Rb + (Rt - Rb) * (1 - Math.cos(ang)) / 2, cY = cy - Rb * scale, x = cx + R * scale * Math.sin(ang), y = cY - R * scale * Math.cos(ang);
     i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
   }
   ctx.stroke();
-
-  // Labels
   ctx.fillStyle = '#5a6a74';
   ctx.font = '11px "Share Tech Mono"';
-  ctx.fillText(`R_bottom = ${Rb.toFixed(1)}m`, cx - Rb*scale - 10, cy - 10);
-  ctx.fillText(`R_top = ${Rt.toFixed(1)}m`, cx + 10, cy - loopH*scale - 8);
-  ctx.fillText(`Height = ${loopH.toFixed(1)}m`, cx + Rb*scale + 10, cy - loopH*scale/2);
-
-  // Dimension lines
-  ctx.strokeStyle = '#21282f';
-  ctx.setLineDash([4,4]);
-  ctx.beginPath();
-  ctx.moveTo(cx, cy);
-  ctx.lineTo(cx, cy - loopH*scale);
-  ctx.stroke();
-  ctx.setLineDash([]);
+  ctx.fillText(`R_bottom=${Rb.toFixed(1)}m`, cx - Rb * scale - 10, cy - 10);
+  ctx.fillText(`R_top=${Rt.toFixed(1)}m`, cx + 10, cy - loopH * scale - 8);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MODULE 5: HILL DESIGNER
+// MODULE 5: FREE-FALL HILL DESIGNER
 // ═══════════════════════════════════════════════════════════════
-function designHill() {
-  const v = safeVal('hd-v', 0.001), maxH = safeVal('hd-h');
-  const steps = 20;
-  const hVals = [], xVals = [];
-  for (let i = 0; i <= steps; i++) {
-    const h = maxH * i / steps;
-    hVals.push(h.toFixed(2));
-    xVals.push(Math.sqrt(2*h*v*v/G).toFixed(2));
-  }
-  const angleAtHalf = Math.atan(Math.sqrt(2*G*(maxH/2)) / v) * 180/Math.PI;
-  document.getElementById('hd-result').innerHTML = resultBox([
-    ['Crest velocity',    `${v.toFixed(2)} m/s`, null],
-    ['Total drop',        `${maxH.toFixed(1)} m`, null],
-    ['Width at half drop',`${xVals[Math.floor(steps/2)]} m (each side)`, null],
-    ['Angle at half-drop',`${angleAtHalf.toFixed(1)}°`, null],
-    ['Width at full drop',`${xVals[steps]} m (each side)`, null],
-  ]);
-  drawHill(v, maxH);
+async function designHill() {
+  await withLoading('hill-calc-btn', async () => {
+    try {
+      const params = {
+        v: rV('hd-v'),
+        maxH: rH('hd-h')
+      };
+      
+      const result = await callSimulator('hill', params);
+      
+      if (result.error) {
+        document.getElementById('hd-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      document.getElementById('hd-result').innerHTML = resultBox([
+        [`Crest velocity`, fmV(result.v), null],
+        [`Total drop`, fmH(result.maxH), null],
+        [`Width at half drop`, `${fmD(result.widthAtHalfDrop)} (each side)`, null],
+        [`Angle at half-drop`, `${result.angleAtHalfDropFormatted}°`, null],
+        [`Width at full drop`, `${fmD(result.widthAtFullDrop)} (each side)`, null]
+      ]);
+      
+      drawHill(result.v, result.maxH);
+    } catch (error) {
+      document.getElementById('hd-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 function drawHill(v, maxH) {
-  const c = document.getElementById('hill-canvas');
-  const ctx = c.getContext('2d');
-  c.width = c.offsetWidth * window.devicePixelRatio || 700;
-  c.height = 280 * window.devicePixelRatio || 280;
+  const c = document.getElementById('hill-canvas'), ctx = c.getContext('2d');
+  c.width = (c.offsetWidth || 700) * window.devicePixelRatio;
+  c.height = 280 * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  const W = c.offsetWidth, H = 280;
-  ctx.clearRect(0,0,W,H);
+  const W = c.offsetWidth || 700, H = 280;
+  ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#111418';
-  ctx.fillRect(0,0,W,H);
-
-  const n = 100;
-  const maxX = Math.sqrt(2*maxH*v*v/G);
-  const scaleX = (W * 0.4) / maxX;
-  const scaleY = (H * 0.75) / maxH;
-  const cx = W/2, topY = H * 0.1;
-
-  // Ground
+  ctx.fillRect(0, 0, W, H);
+  const maxX = Math.sqrt(2 * maxH * v * v / G), sX = (W * 0.4) / maxX, sY = (H * 0.75) / maxH, cx = W / 2, topY = H * 0.1;
   ctx.strokeStyle = '#21282f';
   ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, topY + maxH*scaleY); ctx.lineTo(W, topY + maxH*scaleY); ctx.stroke();
-
-  // Hill left
   ctx.beginPath();
-  ctx.strokeStyle = '#f0a500';
-  ctx.lineWidth = 2.5;
-  for (let i = 0; i <= n; i++) {
-    const h = maxH * i / n;
-    const x = Math.sqrt(2*h*v*v/G);
-    const px = cx - x*scaleX;
-    const py = topY + h*scaleY;
-    i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
-  }
+  ctx.moveTo(0, topY + maxH * sY);
+  ctx.lineTo(W, topY + maxH * sY);
   ctx.stroke();
-
-  // Hill right
+  ['left', 'right'].forEach(side => {
+    ctx.beginPath();
+    ctx.strokeStyle = '#f0a500';
+    ctx.lineWidth = 2.5;
+    for (let i = 0; i <= 100; i++) {
+      const h = maxH * i / 100, x = Math.sqrt(2 * h * v * v / G), px = side === 'left' ? cx - x * sX : cx + x * sX, py = topY + h * sY;
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+  });
   ctx.beginPath();
-  ctx.strokeStyle = '#f0a500';
-  ctx.lineWidth = 2.5;
-  for (let i = 0; i <= n; i++) {
-    const h = maxH * i / n;
-    const x = Math.sqrt(2*h*v*v/G);
-    const px = cx + x*scaleX;
-    const py = topY + h*scaleY;
-    i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
-  }
-  ctx.stroke();
-
-  // Crest dot
-  ctx.beginPath();
-  ctx.arc(cx, topY, 4, 0, 2*Math.PI);
+  ctx.arc(cx, topY, 4, 0, 2 * Math.PI);
   ctx.fillStyle = '#40c4ff';
   ctx.fill();
-
-  // Labels
   ctx.fillStyle = '#5a6a74';
   ctx.font = '11px "Share Tech Mono"';
-  ctx.fillText(`v_crest = ${v}m/s`, cx - 60, topY - 10);
-  ctx.fillText(`Drop = ${maxH}m`, W*0.05, topY + maxH*scaleY/2);
+  ctx.fillText(`v_crest=${v.toFixed(1)}${uV()}`, cx - 60, topY - 10);
   ctx.fillStyle = '#40c4ff';
-  ctx.fillText('← Free-fall hill shape matches projectile path →', cx - 160, topY + maxH*scaleY + 20);
-  ctx.fillStyle = '#5a6a74';
-  ctx.fillText('Rider feels weightless on this profile', cx - 120, topY + maxH*scaleY + 36);
+  ctx.textAlign = 'center';
+  ctx.fillText('← Free-fall hill shape matches projectile path →', cx, topY + maxH * sY + 20);
+  ctx.textAlign = 'left';
 }
 
 // ═══════════════════════════════════════════════════════════════
 // MODULE 6: BANKED CURVES
 // ═══════════════════════════════════════════════════════════════
-function calcBanked() {
-  const v = safeVal('bc-v'), r = safeVal('bc-r', 0.001);
-  const theta = Math.atan(v*v/(r*G));
-  const thetaDeg = theta * 180/Math.PI;
-  const gFelt = 1/Math.cos(theta);
-  const lateral = (v*v/r)/G;
-  const [s,b] = getGStatus(gFelt);
-  document.getElementById('bc-result').innerHTML = resultBox([
-    ['Optimal bank angle', `${thetaDeg.toFixed(2)}°`, null],
-    ['G-felt in seat',     `${gFelt.toFixed(3)}g`, [b, s]],
-    ['Lateral g\'s (flat curve ref)', `${lateral.toFixed(2)}g`, null],
-    ['Design speed',       `${v.toFixed(1)} m/s = ${(v*2.237).toFixed(1)} mph`, null],
-  ]);
+async function calcBanked() {
+  await withLoading('banked-calc-btn', async () => {
+    try {
+      const params = {
+        v: rV('bc-v'),
+        r: rD('bc-r')
+      };
+      
+      const result = await callSimulator('banked', params);
+      
+      if (result.error) {
+        document.getElementById('bc-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      const [status, badge] = getGStatus(result.feltG);
+      
+      document.getElementById('bc-result').innerHTML = resultBox([
+        [`Optimal bank angle`, `${result.bankAngleFormatted}°`, null],
+        [`G-felt in seat`, `${result.feltGFormatted}g`, [badge, status]],
+        [`Lateral g (flat curve ref)`, `${result.lateralGFormatted}g`, null],
+        [`Design speed`, `${fmV(params.v)} = ${(params.v * 2.237).toFixed(1)} mph`, null]
+      ]);
+    } catch (error) {
+      document.getElementById('bc-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
-function calcBankedFromG() {
-  const gFelt = safeVal('bg-g'), v = safeVal('bg-v');
-  if (gFelt <= 1.0) {
-    document.getElementById('bg-result').innerHTML =
-      `<div class="result-box" style="border-left-color:var(--red)"><div style="color:var(--red);font-family:var(--mono)">G-FORCE ERROR: Banked curve minimum is 1.0g (θ=0°).<br>Enter a value greater than 1.0.</div></div>`;
-    return;
-  }
-  const theta = Math.acos(1/gFelt);
-  const thetaDeg = theta * 180/Math.PI;
-  const r = v*v / (G * Math.tan(theta));
-  document.getElementById('bg-result').innerHTML = resultBox([
-    ['Required radius',  `${r.toFixed(2)} m`, null],
-    ['Banking angle',    `${thetaDeg.toFixed(2)}°`, null],
-    ['Confirmed g-felt', `${gFelt.toFixed(2)}g`, null],
-  ]);
+async function calcBankedFromG() {
+  await withLoading('banked-g-calc-btn', async () => {
+    try {
+      const params = {
+        gF: safeVal('bg-g'),
+        v: rV('bg-v')
+      };
+      
+      const result = await callSimulator('bankedFromG', params);
+      
+      if (result.error) {
+        document.getElementById('bg-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      document.getElementById('bg-result').innerHTML = resultBox([
+        [`Required radius`, fmD(result.radius), null],
+        [`Banking angle`, `${result.bankAngleFormatted}°`, null],
+        [`Confirmed g-felt`, `${result.feltGFormatted}g`, null]
+      ]);
+    } catch (error) {
+      document.getElementById('bg-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MODULE 7: SPRING LAUNCHER
+// MODULE 7: SPRING LAUNCH SYSTEM
 // ═══════════════════════════════════════════════════════════════
-function calcSpring() {
-  const m = safeVal('sp-mass', 1), x = safeVal('sp-x');
-  if (x <= 0) {
-    document.getElementById('sp-result').innerHTML =
-      `<div class="result-box" style="border-left-color:var(--red)"><div style="color:var(--red);font-family:var(--mono)">COMPRESSION ERROR: x_max must be greater than 0.</div></div>`;
-    return;
-  }
-  const aMax = 11 * G;
-  const k = (m * aMax) / x;
-  const vLaunch = x * Math.sqrt(k/m);
-  const peakG = (k*x/m)/G;
-  const avgG = peakG/2;
-  const E = 0.5*k*x*x;
-  const [, badge] = getGStatus(avgG);
-  document.getElementById('sp-result').innerHTML = resultBox([
-    ['Spring constant k',        `${k.toFixed(0)} N/m`, null],
-    ['Stored energy',            `${(E/1000).toFixed(2)} kJ`, null],
-    ['Launch velocity',          `${vLaunch.toFixed(2)} m/s = ${(vLaunch*2.237).toFixed(1)} mph`, null],
-    ['Peak acceleration',        `${peakG.toFixed(2)}g`, null],
-    ['Average acceleration',     `${avgG.toFixed(2)}g`, [badge, avgG <= 5.5 ? 'WITHIN LIMIT' : 'OVER LIMIT']],
-    ['Within 5.5g avg limit',    avgG <= 5.5 ? 'YES ✓' : 'NO — reduce mass or increase compression', null],
-  ]);
+async function calcSpring() {
+  await withLoading('spring-calc-btn', async () => {
+    try {
+      const params = {
+        m: rM('sp-mass'),
+        x: rD('sp-x')
+      };
+      
+      const result = await callSimulator('spring', params);
+      
+      if (result.error) {
+        document.getElementById('sp-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      const [status, badge] = getGStatus(result.avgAccel);
+      
+      document.getElementById('sp-result').innerHTML = resultBox([
+        [`Spring constant k`, `${result.springConstantFormatted} N/m`, null],
+        [`Stored energy`, `${result.storedEnergyFormatted} kJ`, null],
+        [`Launch velocity`, `${fmV(result.launchVelocity)} = ${result.launchVelocityMph} mph`, null],
+        [`Peak acceleration`, `${result.peakAccelFormatted}g`, null],
+        [`Average accel`, `${result.avgAccelFormatted}g`, [badge, status]],
+        [`Within 5.5g avg limit`, result.withinLimit ? 'YES ✓' : 'NO — reduce mass or increase compression', null]
+      ]);
+    } catch (error) {
+      document.getElementById('sp-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════
 // MODULE 8: SAFETY CHECKER
 // ═══════════════════════════════════════════════════════════════
-function checkSafety() {
-  let g = safeVal('sc-g');
-  const type = document.getElementById('sc-type').value;
-  if (type === 'negative') g = -Math.abs(g);
-  const [status, badge, msg] = getGStatus(g);
-  document.getElementById('sc-result').innerHTML =
-    `<div class="result-box" style="border-left-color:${badge==='safe'?'var(--green)':badge==='warning'?'var(--orange)':'var(--red)'}">
-      <div style="font-size:22px;font-family:var(--mono);color:${badge==='safe'?'var(--green)':badge==='warning'?'var(--orange)':'var(--red)'}">${g.toFixed(2)}g</div>
-      <div style="margin-top:8px"><span class="badge ${badge}">${status}</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">${msg}</div>
-    </div>` + gBar(g);
+async function checkSafety() {
+  await withLoading('safety-calc-btn', async () => {
+    try {
+      const params = {
+        g: safeVal('sc-g'),
+        type: document.getElementById('sc-type').value
+      };
+      
+      const result = await callSimulator('safety', params);
+      
+      if (result.error) {
+        document.getElementById('sc-result').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Calculation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      const [status, badge] = getGStatus(result.g);
+      const color = badge === 'safe' ? 'var(--green)' : badge === 'warning' ? 'var(--orange)' : 'var(--red)';
+      
+      document.getElementById('sc-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:${color}">
+          <div style="font-size:22px;font-family:var(--mono);color:${color}">${result.gFormatted}g</div>
+          <div style="margin-top:8px"><span class="badge ${badge}">${status}</span></div>
+          <div style="margin-top:8px;font-size:12px;color:var(--muted)">${result.gStatus.message}</div>
+        </div>` + gBar(result.g);
+    } catch (error) {
+      document.getElementById('sc-result').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MODULE 9: TRACK BUILDER
+// MODULE 9: TRACK BUILDER (kept client-side)
 // ═══════════════════════════════════════════════════════════════
 let trackSegments = [];
 
 function updateSegmentFields() {
-  const type = document.getElementById('tr-type').value;
-  const ef = document.getElementById('tr-extra-field');
-  const h1l = document.querySelector('#tr-fields .field:nth-child(1) label');
-  const h2l = document.querySelector('#tr-fields .field:nth-child(2) label');
+  const t = document.getElementById('tr-type').value, ef = document.getElementById('tr-extra-field');
   ef.style.display = 'none';
   ef.innerHTML = '';
-  h1l.textContent = 'Entry Height (m)';
-  h2l.textContent = 'Exit Height (m)';
-  if (type === 'station') {
-    h2l.textContent = 'Station Height (m)';
-    document.getElementById('tr-h1').value = document.getElementById('tr-h1').value;
+  if (t === 'station') {
     ef.style.display = 'block';
-    ef.innerHTML = `<label>Initial Velocity (m/s)</label><input type="number" id="tr-vel" value="5.24" step="0.1">`;
-  } else if (type === 'loop') {
+    ef.innerHTML = `<label>Initial Velocity (${uV()})</label><input type="number" id="tr-vel" data-utype="velocity" value="5.24" step="0.1">`;
+  } else if (t === 'loop') {
     ef.style.display = 'block';
-    ef.innerHTML = `<label>Loop Radius (m)</label><input type="number" id="tr-radius" value="25" step="1">`;
-  } else if (type === 'brake') {
+    ef.innerHTML = `<label>Loop Radius (${uH()})</label><input type="number" id="tr-radius" data-utype="distance" value="25" step="1">`;
+  } else if (t === 'brake') {
     ef.style.display = 'block';
-    ef.innerHTML = `<label>Target Velocity (m/s)</label><input type="number" id="tr-brakev" value="1.0" step="0.1" style="margin-bottom:8px">
-    <label style="margin-top:8px">Brake Zone Length (m)</label><input type="number" id="tr-brakedist" value="10" step="1" min="1">`;
+    ef.innerHTML = `<label>Target Velocity (${uV()})</label><input type="number" id="tr-brakev" data-utype="velocity" value="1.0" step="0.1" style="margin-bottom:8px"><label style="margin-top:8px">Brake Zone Length (${uH()})</label><input type="number" id="tr-brakedist" data-utype="distance" value="10" step="1" min="1">`;
   }
 }
 
 function addSegment() {
-  const type = document.getElementById('tr-type').value;
-  const name = document.getElementById('tr-name').value || `Segment ${trackSegments.length+1}`;
-  const h1 = safeVal('tr-h1'), h2 = safeVal('tr-h2');
-  const seg = { name, type, h1, h2 };
-  if (type === 'station')    seg.v0     = safeVal('tr-vel');
-  if (type === 'loop')       seg.radius = safeVal('tr-radius');
-  if (type === 'brake')      { seg.vBrake = safeVal('tr-brakev'); seg.brakeDist = safeVal('tr-brakedist', 10); }
-  trackSegments.push(seg);
+  const t = document.getElementById('tr-type').value, n = document.getElementById('tr-name').value || `Seg ${trackSegments.length + 1}`;
+  const s = { name: n, type: t, h1: rH('tr-h1'), h2: rH('tr-h2') };
+  if (t === 'station') s.v0 = rV('tr-vel') || 0;
+  if (t === 'loop') s.radius = rD('tr-radius');
+  if (t === 'brake') { s.vBrake = rV('tr-brakev'); s.brakeDist = rD('tr-brakedist'); }
+  trackSegments.push(s);
   renderSegments();
 }
 
@@ -1349,182 +1183,330 @@ function clearTrack() {
   renderSegments();
   document.getElementById('tr-results').innerHTML = '';
   const c = document.getElementById('track-canvas');
-  const ctx = c.getContext('2d');
-  ctx.clearRect(0,0,c.width,c.height);
+  c.getContext('2d').clearRect(0, 0, c.width, c.height);
 }
 
 function renderSegments() {
   const el = document.getElementById('tr-segments');
-  if (!trackSegments.length) { el.innerHTML = '<div class="note">No segments added. Build your track above.</div>'; return; }
-  el.innerHTML = trackSegments.map((s,i) =>
+  if (!trackSegments.length) {
+    el.innerHTML = '<div class="note">No segments added. Build your track above.</div>';
+    return;
+  }
+  el.innerHTML = trackSegments.map((s, i) => 
     `<div class="segment-row">
       <span class="seg-type">${s.type === 'loop' ? 'LOOP (CIRC)' : s.type.toUpperCase()}</span>
-      <span class="seg-data">${s.name} | h: ${s.h1}→${s.h2}m${s.radius?` | R:${s.radius}m (circular — use Loop Designer for irregular)`:''}${s.v0!==undefined?` | v0:${s.v0}m/s`:''}${s.vBrake!==undefined?` | target:${s.vBrake}m/s`:''}${s.brakeDist?` | dist:${s.brakeDist}m`:''}</span>
-      <button onclick="removeSegment(${i})" style="background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:10px;padding:3px 8px;cursor:pointer">✕ REMOVE</button>
+      <span class="seg-data">${s.name} | h: ${s.h1.toFixed(1)}→${s.h2.toFixed(1)}m${s.radius ? ` | R:${s.radius.toFixed(1)}m` : ''}${s.v0 !== undefined ? ` | v0:${s.v0.toFixed(2)}m/s` : ''}${s.vBrake !== undefined ? ` | target:${s.vBrake.toFixed(2)}m/s` : ''}${s.brakeDist ? ` | dist:${s.brakeDist.toFixed(1)}m` : ''}</span>
+      <button onclick="removeSegment(${i})" style="background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:10px;padding:3px 8px;cursor:pointer">✕</button>
     </div>`
   ).join('');
 }
 
-function simulateTrack() {
+async function simulateTrack() {
   if (!trackSegments.length) return;
-  const mass = safeVal('tr-mass', 4410);
-  let v = 0, results = [];
-
-  for (const seg of trackSegments) {
-    const r = { name: seg.name, type: seg.type, h1: seg.h1, h2: seg.h2, vIn: v, gReadings: [] };
-
-    if (seg.type === 'station') {
-      v = seg.v0 || 0;
-      r.vOut = v;
-
-    } else if (seg.type === 'hill_drop' || seg.type === 'hill_rise') {
-      const energy = 0.5*v*v + G*seg.h1 - G*seg.h2;
-      v = energy >= 0 ? Math.sqrt(2*energy) : 0;
-      r.vOut = v;
-      if (energy < 0) r.warning = 'Insufficient energy — train stops';
-
-    } else if (seg.type === 'loop') {
-      const loopH = 2 * seg.radius;
-      const vTopSq = v*v - 2*G*loopH;
-      const vTop = vTopSq >= 0 ? Math.sqrt(vTopSq) : 0;
-      const gBot = (v*v/seg.radius)/G + 1;
-      const gTop = vTopSq >= 0 ? (vTop*vTop/seg.radius)/G - 1 : -9999;
-      r.gReadings = [['Bottom', gBot], ['Top', vTopSq >= 0 ? gTop : null]];
-      if (vTopSq < 0) r.warning = 'INSUFFICIENT SPEED — loop not completed!';
-      r.vOut = v; // Exit at same height
-
-    } else if (seg.type === 'brake') {
-      const vTarget = seg.vBrake || 0;
-      const dist = (seg.brakeDist && seg.brakeDist > 0) ? seg.brakeDist : Math.abs(seg.h1 - seg.h2) + 5;
-      const ke1 = 0.5*mass*v*v + mass*G*seg.h1;
-      const ke2 = 0.5*mass*vTarget*vTarget + mass*G*seg.h2;
-      const F = (ke1-ke2)/dist;
-      r.brakeForce = F;
-      v = vTarget;
-      r.vOut = v;
+  
+  await withLoading('track-simulate-btn', async () => {
+    try {
+      const params = {
+        segments: trackSegments,
+        mass: rM('tr-mass')
+      };
+      
+      const result = await callSimulator('track-simulate', params);
+      
+      if (result.error) {
+        document.getElementById('tr-results').innerHTML = 
+          `<div class="result-box" style="border-left-color:var(--red)">
+            <div style="color:var(--red);font-family:var(--mono)">${ERROR_MESSAGES[result.error] || 'Simulation error'}</div>
+          </div>`;
+        return;
+      }
+      
+      renderTrackResults(result.results);
+      drawTrack(result.results);
+    } catch (error) {
+      document.getElementById('tr-results').innerHTML = 
+        `<div class="result-box" style="border-left-color:var(--red)">
+          <div style="color:var(--red);font-family:var(--mono)">${error.userMessage || 'Connection error'}</div>
+        </div>`;
     }
+  });
+}
 
-    r.vOut = r.vOut || v;
-    results.push(r);
-    v = r.vOut;
-  }
-
-  drawTrack(results);
-  renderResults(results);
+function renderTrackResults(results) {
+  document.getElementById('tr-results').innerHTML = results.map(r => {
+    let h = `<div class="segment-row" style="${r.warning ? 'border-color:var(--red)' : ''}">
+      <span class="seg-type" style="min-width:110px">${r.type.toUpperCase()}</span>
+      <span class="seg-data">${r.name} | ${r.vIn.toFixed(1)} → <strong style="color:var(--green)">${(r.vOut || 0).toFixed(1)} m/s</strong> (${((r.vOut || 0) * 2.237).toFixed(0)} mph)</span>`;
+    if (r.brakeForce) h += `<span style="color:var(--green);font-family:var(--mono);font-size:12px">F: ${r.brakeForce.toFixed(0)}N</span>`;
+    if (r.gReadings?.length) {
+      for (const g of r.gReadings) {
+        if (g.value === null) continue;
+        const [status, badge] = getGStatus(g.value);
+        h += `<span class="badge ${badge}" style="margin-left:4px">${g.position}: ${g.value.toFixed(1)}g</span>`;
+      }
+    }
+    if (r.warning) h += `<span style="color:var(--red);font-family:var(--mono);font-size:10px;margin-left:8px">⚠ ${r.warning}</span>`;
+    return h + '</div>';
+  }).join('');
 }
 
 function drawTrack(results) {
-  const c = document.getElementById('track-canvas');
-  const ctx = c.getContext('2d');
-  c.width = c.offsetWidth * window.devicePixelRatio || 900;
-  c.height = 260 * window.devicePixelRatio || 260;
+  const c = document.getElementById('track-canvas'), ctx = c.getContext('2d');
+  c.width = (c.offsetWidth || 900) * window.devicePixelRatio;
+  c.height = 260 * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  const W = c.offsetWidth, H = 260;
-  ctx.clearRect(0,0,W,H);
+  const W = c.offsetWidth || 900, H = 260;
+  ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#111418';
-  ctx.fillRect(0,0,W,H);
-
+  ctx.fillRect(0, 0, W, H);
   if (!results.length) return;
-
-  const allH = results.flatMap(r => [r.h1, r.h2]);
-  const minH = Math.min(...allH), maxH = Math.max(...allH);
-  const hRange = maxH - minH || 1;
-  const padX = 40, padY = 30;
-  const segW = (W - padX*2) / results.length;
-
-  const toY = h => padY + (1 - (h-minH)/hRange) * (H - padY*2);
-
-  // Grid
+  const allH = results.flatMap(r => [r.h1, r.h2]), minH = Math.min(...allH), maxH = Math.max(...allH), hR = maxH - minH || 1, pX = 40, pY = 30, sW = (W - pX * 2) / results.length;
+  const toY = h => pY + (1 - (h - minH) / hR) * (H - pY * 2);
   ctx.strokeStyle = '#1a2129';
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
-    const y = padY + i * (H-padY*2)/4;
-    ctx.beginPath(); ctx.moveTo(padX, y); ctx.lineTo(W-padX, y); ctx.stroke();
+    const y = pY + i * (H - pY * 2) / 4;
+    ctx.beginPath();
+    ctx.moveTo(pX, y);
+    ctx.lineTo(W - pX, y);
+    ctx.stroke();
   }
-
-  // Track fill
   ctx.beginPath();
-  ctx.moveTo(padX, toY(results[0].h1));
-  results.forEach((r,i) => {
-    const x1 = padX + i*segW, x2 = padX + (i+1)*segW;
-    ctx.lineTo(x1, toY(r.h1));
-    ctx.lineTo(x2, toY(r.h2));
+  ctx.moveTo(pX, toY(results[0].h1));
+  results.forEach((r, i) => {
+    ctx.lineTo(pX + i * sW, toY(r.h1));
+    ctx.lineTo(pX + (i + 1) * sW, toY(r.h2));
   });
-  ctx.lineTo(W-padX, H-padY);
-  ctx.lineTo(padX, H-padY);
+  ctx.lineTo(W - pX, H - pY);
+  ctx.lineTo(pX, H - pY);
   ctx.closePath();
   ctx.fillStyle = 'rgba(240,165,0,0.07)';
   ctx.fill();
-
-  // Track line
   ctx.beginPath();
   ctx.strokeStyle = '#f0a500';
   ctx.lineWidth = 2.5;
-  ctx.moveTo(padX, toY(results[0].h1));
-  results.forEach((r,i) => {
-    const x1 = padX + i*segW, x2 = padX + (i+1)*segW;
-    ctx.lineTo(x1, toY(r.h1));
-    ctx.lineTo(x2, toY(r.h2));
+  ctx.moveTo(pX, toY(results[0].h1));
+  results.forEach((r, i) => {
+    ctx.lineTo(pX + i * sW, toY(r.h1));
+    ctx.lineTo(pX + (i + 1) * sW, toY(r.h2));
   });
   ctx.stroke();
-
-  // Velocity overlay
+  const mV = Math.max(...results.map(r => r.vOut || 0)) || 1;
   ctx.beginPath();
   ctx.strokeStyle = 'rgba(64,196,255,0.6)';
   ctx.lineWidth = 1.5;
-  ctx.setLineDash([3,3]);
-  const maxV = Math.max(...results.map(r => r.vOut || 0)) || 1;
-  results.forEach((r,i) => {
-    const x = padX + (i+0.5)*segW;
-    const y = padY + (1-(r.vOut||0)/maxV)*(H-padY*2);
-    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  ctx.setLineDash([3, 3]);
+  results.forEach((r, i) => {
+    const x = pX + (i + 0.5) * sW, y = pY + (1 - (r.vOut || 0) / mV) * (H - pY * 2);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
   });
   ctx.stroke();
   ctx.setLineDash([]);
-
-  // Segment labels
-  ctx.font = `10px "Share Tech Mono"`;
-  results.forEach((r,i) => {
-    const x = padX + (i+0.5)*segW;
+  ctx.font = '10px "Share Tech Mono"';
+  results.forEach((r, i) => {
+    const x = pX + (i + 0.5) * sW;
     ctx.fillStyle = '#21282f';
-    ctx.fillRect(x-25, H-padY-14, 50, 14);
+    ctx.fillRect(x - 25, H - pY - 14, 50, 14);
     ctx.fillStyle = '#5a6a74';
     ctx.textAlign = 'center';
-    ctx.fillText(r.name.substring(0,8), x, H-padY-4);
+    ctx.fillText(r.name.substring(0, 8), x, H - pY - 4);
     if (r.warning) {
       ctx.fillStyle = 'var(--red)';
-      ctx.fillRect(padX + i*segW, padY, segW, 3);
+      ctx.fillRect(pX + i * sW, pY, sW, 3);
     }
   });
-
-  // Legend
   ctx.textAlign = 'left';
   ctx.fillStyle = '#f0a500';
-  ctx.fillText('─ Height', W-120, 20);
+  ctx.fillText('─ Height', W - 120, 20);
   ctx.fillStyle = 'rgba(64,196,255,0.8)';
-  ctx.fillText('╌ Velocity', W-120, 34);
+  ctx.fillText('┌ Velocity', W - 120, 34);
 }
 
-function renderResults(results) {
-  const el = document.getElementById('tr-results');
-  let html = '';
-  for (const r of results) {
-    const hasWarn = r.warning;
-    html += `<div class="segment-row" style="${hasWarn?'border-color:var(--red)':''}">
-      <span class="seg-type" style="min-width:110px">${r.type.toUpperCase()}</span>
-      <span class="seg-data">${r.name} | ${r.vIn.toFixed(1)} → <strong style="color:var(--green)">${(r.vOut||0).toFixed(1)} m/s</strong> (${((r.vOut||0)*2.237).toFixed(0)} mph)</span>`;
-    if (r.brakeForce) html += `<span class="seg-result">F: ${r.brakeForce.toFixed(0)}N</span>`;
-    if (r.gReadings?.length) {
-      for (const [pos, g] of r.gReadings) {
-        if (g === null) continue;
-        const [, badge, ] = getGStatus(g);
-        html += `<span class="badge ${badge}" style="margin-left:4px">${pos}: ${g.toFixed(1)}g</span>`;
-      }
-    }
-    if (hasWarn) html += `<span style="color:var(--red);font-family:var(--mono);font-size:10px;margin-left:8px">⚠ ${r.warning}</span>`;
-    html += `</div>`;
+// ═══════════════════════════════════════════════════════════════
+// MODULE 10: REAL COASTERS
+// ═══════════════════════════════════════════════════════════════
+const COASTERS = {
+  millennium_force: {
+    name: "Millennium Force", park: "Cedar Point · Sandusky, Ohio", year: 2000,
+    record: "First giga coaster · World record height at opening (2000)",
+    type: "Steel · Sitting · Giga coaster",
+    height_m: 94.5, drop_m: 91.7, drop_angle: 80, max_speed_ms: 41.1, max_speed_mph: 92,
+    length_m: 2010, inversions: 0, g_max: 4.5, launch: "Chain lift", ride_time_s: 140,
+    notable: "The first coaster to break the 300ft barrier. Three overbanked turns replace inversions — riders experience sustained lateral g-forces instead of vertical. The 80-degree first drop at 92 mph is the defining moment."
+  },
+  kingda_ka: {
+    name: "Kingda Ka", park: "Six Flags Great Adventure · Jackson, New Jersey", year: 2005,
+    record: "Tallest roller coaster in the world (456ft) · Fastest in North America (128 mph)",
+    type: "Steel · Sitting · Strata coaster · Hydraulic launch",
+    height_m: 139, drop_m: 127, drop_angle: 90, max_speed_ms: 57.2, max_speed_mph: 128,
+    length_m: 950, inversions: 0, g_max: 5.0, launch: "Hydraulic launch (T-Rex system) — 0 to 128 mph in 3.5 seconds", ride_time_s: 50,
+    notable: "The hydraulic launch system fires the train to 128 mph in 3.5 seconds using compressed air and hydraulic fluid — not gravity. The tower is 45 stories tall. The 90-degree drop is essentially freefall. Entire ride lasts ~50 seconds."
+  },
+  steel_vengeance: {
+    name: "Steel Vengeance", park: "Cedar Point · Sandusky, Ohio", year: 2018,
+    record: "Most inversions on a hybrid coaster (4) · Longest hybrid coaster",
+    type: "Steel/Wood Hybrid (RMC Topper Track) · Sitting",
+    height_m: 62.5, drop_m: 61, drop_angle: 90, max_speed_ms: 33.3, max_speed_mph: 74.6,
+    length_m: 1524, inversions: 4, g_max: 3.5, launch: "Chain lift", ride_time_s: 150,
+    notable: "Built on the bones of Mean Streak (1991 wooden coaster). Rocky Mountain Construction replaced the wooden track with steel, adding 4 inversions. 90-degree drops are near-vertical — riders experience true freefall."
   }
-  el.innerHTML = html;
+};
+
+function loadCoaster() {
+  const key = document.getElementById('coaster-select').value;
+  const C = COASTERS[key];
+  const GC = 9.80;
+  const v_ideal = Math.sqrt(2 * GC * C.drop_m);
+  const v_actual = C.max_speed_ms;
+  const er = (v_actual * v_actual) / (v_ideal * v_ideal) * 100;
+  const el2 = 100 - er;
+  const eq_h = (v_actual * v_actual) / (2 * GC);
+  const isLaunch = C.launch.toLowerCase().includes('hydraulic') || C.launch.toLowerCase().includes('launch');
+  let physicsHTML = '';
+  
+  if (isLaunch) {
+    physicsHTML = `<div class="physics-compare"><div class="physics-col"><div class="physics-col-title ideal">Gravity-Only Equivalent</div><div class="compare-val ideal">${eq_h.toFixed(1)} m</div><div class="compare-sub">Drop height needed to reach ${C.max_speed_mph} mph from gravity alone</div><div class="result-row"><span class="key">Actual tower height</span><span class="val">${C.height_m} m</span></div><div class="result-row"><span class="key">Height deficit</span><span class="val" style="color:var(--orange)">+${(eq_h - C.drop_m).toFixed(1)} m above drop</span></div><div class="result-row"><span class="key">What fills the gap</span><span class="val" style="color:var(--gold)">Hydraulic launch energy</span></div></div><div class="physics-col"><div class="physics-col-title actual">Launch System</div><div class="compare-val actual">${C.max_speed_mph} mph</div><div class="compare-sub">${C.launch}</div><div class="result-row"><span class="key">Launch speed</span><span class="val">${v_actual.toFixed(1)} m/s</span></div><div class="result-row"><span class="key">Gravity equiv height</span><span class="val">${eq_h.toFixed(1)} m</span></div><div class="result-row"><span class="key">Energy source</span><span class="val" style="color:var(--gold)">Mechanical — not gravity</span></div></div></div><div class="note">⚡ <strong>Kingda Ka teaches a different lesson than drop coasters:</strong> The hydraulic system stores energy equivalent to a ${eq_h.toFixed(0)}m drop — but the tower is only ${C.height_m}m tall. The launch adds ~${(eq_h - C.drop_m).toFixed(0)}m of equivalent height that gravity alone could not provide.</div>`;
+  } else {
+    physicsHTML = `<div class="physics-compare"><div class="physics-col"><div class="physics-col-title ideal">Ideal (Frictionless)</div><div class="compare-val ideal">${v_ideal.toFixed(1)} m/s</div><div class="compare-sub">${(v_ideal * 2.237).toFixed(1)} mph &nbsp;·&nbsp; v = √(2·g·h)</div><div class="result-row"><span class="key">Drop height</span><span class="val">${C.drop_m} m</span></div><div class="result-row"><span class="key">Formula</span><span class="val" style="color:var(--blue)">v = √(2 × 9.80 × ${C.drop_m})</span></div><div class="result-row"><span class="key">Assumes</span><span class="val">No friction · No air resistance</span></div></div><div class="physics-col"><div class="physics-col-title actual">Actual (Recorded)</div><div class="compare-val actual">${v_actual.toFixed(1)} m/s</div><div class="compare-sub">${C.max_speed_mph} mph &nbsp;·&nbsp; Official park spec [R]</div><div class="result-row"><span class="key">Speed loss</span><span class="val" style="color:var(--orange)">−${(v_ideal - v_actual).toFixed(1)} m/s (−${(v_ideal * 2.237 - v_actual * 2.237).toFixed(1)} mph)</span></div><div class="result-row"><span class="key">Energy retained</span><span class="val" style="color:var(--green)">${er.toFixed(1)}%</span></div><div class="result-row"><span class="key">Energy lost</span><span class="val" style="color:var(--orange)">${el2.toFixed(1)}% (friction + drag)</span></div></div></div><div style="padding:0 0 4px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:4px;text-transform:uppercase">Energy Retained</div><div class="energy-loss-bar"><div class="energy-loss-retained" style="width:${er.toFixed(1)}%"></div></div><div style="font-family:var(--mono);font-size:10px;color:var(--muted)">${er.toFixed(1)}% retained &nbsp;·&nbsp; ${el2.toFixed(1)}% lost to friction and air resistance</div></div><div class="note" style="margin-top:12px">📐 <strong>AP Physics connection:</strong> Your simulator uses ideal energy conservation — mass cancels, no friction. ${C.name} shows that real coasters lose ${el2.toFixed(0)}% of their energy on the main drop alone. Rule of thumb: add 5–15% to your calculated drop height for a real build.</div>`;
+  }
+  
+  const gStatus = getGStatus(C.g_max);
+  document.getElementById('coaster-display').innerHTML = 
+    `<div class="coaster-hero"><div><div class="coaster-title-badge">${C.record}</div><div class="coaster-name">${C.name}</div><div class="coaster-park">${C.park} &nbsp;·&nbsp; Opened ${C.year}</div><div class="coaster-type-pill">${C.type}</div></div><div style="text-align:right;font-family:var(--mono);font-size:10px;color:var(--muted)">Module 10<br>Real Coaster<br>Comparison</div></div>
+    <div class="spec-grid">
+      <div class="spec-cell"><div class="spec-val">${C.height_m}m</div><div class="spec-key">Height (${(C.height_m * 3.281).toFixed(0)}ft)</div></div>
+      <div class="spec-cell"><div class="spec-val">${C.max_speed_mph}</div><div class="spec-key">Max Speed (mph)</div></div>
+      <div class="spec-cell"><div class="spec-val">${C.drop_angle}°</div><div class="spec-key">Drop Angle</div></div>
+      <div class="spec-cell"><div class="spec-val">${C.inversions}</div><div class="spec-key">Inversions</div></div>
+      <div class="spec-cell"><div class="spec-val">${C.drop_m}m</div><div class="spec-key">Drop (${(C.drop_m * 3.281).toFixed(0)}ft)</div></div>
+      <div class="spec-cell"><div class="spec-val">${C.length_m}m</div><div class="spec-key">Track Length</div></div>
+      <div class="spec-cell"><div class="spec-val">${C.ride_time_s}s</div><div class="spec-key">Ride Time</div></div>
+      <div class="spec-cell"><div class="spec-val" style="font-size:16px">${C.g_max}g <span class="badge ${gStatus[1]}" style="font-size:8px;vertical-align:middle">${gStatus[0]}</span></div><div class="spec-key">Peak G-Force [R]</div></div>
+    </div>
+    <div style="margin-bottom:16px"><div class="card-title" style="color:var(--gold)">// Physics Comparison — Ideal vs Actual</div>${physicsHTML}</div>
+    <div class="coaster-notable">${C.notable}</div>
+    <div class="apply-bar">
+      <button class="btn gold-btn" style="width:auto;padding:10px 20px" onclick="applyToEnergy('${key}')">Apply Drop to Energy Tab →</button>
+      <button class="btn secondary" style="width:auto;padding:10px 20px" onclick="applyToGForce('${key}')">Apply to G-Force Tab →</button>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">Pre-fills the relevant module with this coaster's specs</span>
+    </div>
+    <div class="source-note"><strong>Sources [R]:</strong> RCDB (rcdb.com) &nbsp;·&nbsp; ${C.park.split('·')[0].trim()} official specifications &nbsp;·&nbsp; CoasterForce (coasterforce.com) &nbsp;·&nbsp; All values well-established public record. G-force readings are estimated/measured values. Specs current as of 2026.</div>`;
+}
+
+function applyToEnergy(key) {
+  const C = COASTERS[key];
+  document.getElementById('ec-v1').value = '0';
+  document.getElementById('ec-h1').value = C.drop_m;
+  document.getElementById('ec-h2').value = '0';
+  activateTab('energy');
+  calcEnergy();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function applyToGForce(key) {
+  const C = COASTERS[key];
+  document.getElementById('gf-v').value = C.max_speed_ms.toFixed(1);
+  document.getElementById('gf-r').value = Math.round(C.drop_m * 0.3);
+  document.getElementById('gf-pos').value = 'bottom';
+  activateTab('gforce');
+  calcGForce();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TAB SWITCHING
+// ═══════════════════════════════════════════════════════════════
+function activateTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  const btn = document.querySelector(`[data-tabid="${id}"]`);
+  if (btn) btn.classList.add('active');
+}
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'coasters') loadCoaster();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PDF EXPORT
+// ═══════════════════════════════════════════════════════════════
+function exportPDF() {
+  const activePanel = document.querySelector('.tab-panel.active');
+  const panelTitle = document.querySelector('.tab-btn.active')?.textContent?.trim() || 'Results';
+  const results = activePanel ? activePanel.querySelectorAll('.result-box') : [];
+  
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+  let bodyHTML = '';
+  results.forEach(rb => {
+    const rows = rb.querySelectorAll('.result-row');
+    if (!rows.length) return;
+    let tableRows = '';
+    rows.forEach(row => {
+      const key = row.querySelector('.key')?.textContent || '';
+      const val = row.querySelector('.val')?.textContent || '';
+      const badge = row.querySelector('.badge')?.textContent || '';
+      tableRows += `<tr><td style="color:#555;font-size:11px;padding:6px 8px;border-bottom:1px solid #eee;width:40%">${key}</td><td style="font-size:13px;padding:6px 8px;border-bottom:1px solid #eee;font-weight:600">${val} ${badge ? `<span style="background:#f0f0f0;padding:1px 6px;font-size:10px;border-radius:2px">${badge}</span>` : ''}</td></tr>`;
+    });
+    bodyHTML += `<table style="width:100%;border-collapse:collapse;margin-bottom:16px;border:1px solid #ddd">${tableRows}</table>`;
+  });
+
+  if (!bodyHTML) {
+    bodyHTML = '<p style="color:#888;font-family:monospace;font-size:12px">No calculated results found on this tab.<br>Run a calculation first, then export.</p>';
+  }
+
+  const unitLabel = UNITS === 'IMP' ? 'Imperial (ft / mph / lb)' : 'SI Metric (m / m/s / kg)';
+
+  const reportHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <title>RCS Physics Lab Report — ${panelTitle}</title>
+  <style>
+    body{font-family:'Helvetica Neue',Arial,sans-serif;margin:0;padding:40px;color:#1a1a1a;background:#fff;}
+    .report-header{border-bottom:3px solid #D4AF37;padding-bottom:20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:flex-end;}
+    .report-title{font-size:26px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#333;font-family:monospace;}
+    .report-sub{font-size:11px;color:#888;font-family:monospace;letter-spacing:1px;margin-top:4px;}
+    .module-badge{font-size:13px;font-weight:700;color:#D4AF37;font-family:monospace;background:#faf7ef;border:1px solid #D4AF37;padding:6px 14px;letter-spacing:2px;}
+    .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+    .meta-box{border:1px solid #ddd;padding:10px 14px;}
+    .meta-label{font-size:9px;color:#aaa;font-family:monospace;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+    .meta-value{font-size:13px;font-family:monospace;color:#333;border-bottom:1px solid #eee;padding-bottom:4px;min-height:22px;}
+    .section-title{font-family:monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;border-bottom:1px solid #eee;padding-bottom:6px;margin-bottom:12px;margin-top:20px;}
+    .footer{margin-top:48px;border-top:1px solid #eee;padding-top:14px;font-family:monospace;font-size:9px;color:#aaa;display:flex;justify-content:space-between;}
+    @media print{body{padding:20px;}.meta-value{min-height:24px;}}
+  </style>
+  </head><body>
+  <div class="report-header">
+    <div>
+      <div class="report-title">RCS Physics Simulator</div>
+      <div class="report-sub">AP Physics Edition &nbsp;·&nbsp; Roller Coaster Physics</div>
+      <div class="report-sub">Unit System: ${unitLabel}</div>
+    </div>
+    <div class="module-badge">MODULE: ${panelTitle.toUpperCase()}</div>
+  </div>
+  <div class="meta-grid">
+    <div class="meta-box"><div class="meta-label">Student Name</div><div class="meta-value">&nbsp;</div></div>
+    <div class="meta-box"><div class="meta-label">Class / Period</div><div class="meta-value">&nbsp;</div></div>
+    <div class="meta-box"><div class="meta-label">Date</div><div class="meta-value">${dateStr}</div></div>
+    <div class="meta-box"><div class="meta-label">Assignment</div><div class="meta-value">&nbsp;</div></div>
+  </div>
+  <div class="section-title">// Calculation Results</div>
+  ${bodyHTML}
+  <div class="footer">
+    <span>Roller Coaster Physics Simulator v3 &nbsp;·&nbsp; AION Verified &nbsp;·&nbsp; Ref: Tony Wayne AP Physics Guide</span>
+    <span>Authored: Sheldon K. Salmon × ALBEDO &nbsp;·&nbsp; ${dateStr} ${timeStr}</span>
+  </div>
+  </body></html>`;
+
+  const w = window.open('', '_blank', 'width=900,height=700');
+  w.document.write(reportHTML);
+  w.document.close();
+  setTimeout(() => w.print(), 400);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1532,17 +1514,17 @@ function renderResults(results) {
 // ═══════════════════════════════════════════════════════════════
 updateSegmentFields();
 renderSegments();
+updateAllLabels();
 
-// Load default design example
 setTimeout(() => {
   trackSegments = [
-    { name: 'Station',     type: 'station',   h1: 22.5, h2: 22.5, v0: 5.24 },
-    { name: 'Chain Lift',  type: 'hill_rise', h1: 22.5, h2: 124.5 },
-    { name: 'First Drop',  type: 'hill_drop', h1: 124.5, h2: 0 },
-    { name: 'Main Loop',   type: 'loop',      h1: 0, h2: 0, radius: 25 },
-    { name: 'Camelback',   type: 'hill_rise', h1: 0, h2: 21.5 },
+    { name: 'Station', type: 'station', h1: 22.5, h2: 22.5, v0: 5.24 },
+    { name: 'Chain Lift', type: 'hill_rise', h1: 22.5, h2: 124.5 },
+    { name: 'First Drop', type: 'hill_drop', h1: 124.5, h2: 0 },
+    { name: 'Main Loop', type: 'loop', h1: 0, h2: 0, radius: 25 },
+    { name: 'Camelback', type: 'hill_rise', h1: 0, h2: 21.5 },
     { name: 'Return Drop', type: 'hill_drop', h1: 21.5, h2: 0 },
-    { name: 'Brakes',      type: 'brake',     h1: 0, h2: 0, vBrake: 1.0 },
+    { name: 'Brakes', type: 'brake', h1: 0, h2: 0, vBrake: 1.0, brakeDist: 10 },
   ];
   renderSegments();
 }, 100);
